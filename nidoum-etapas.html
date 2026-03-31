@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Etapas del Ecosistema · NIDOUM</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@200;300;400;500&family=Roboto+Serif:ital,wght@0,200;0,300;1,200;1,300&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap" rel="stylesheet">
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -129,8 +129,8 @@
     .header-title {
       font-family: 'Roboto Serif', serif;
       font-size: clamp(28px, 4vw, 48px);
-      font-weight: 200;
-      font-style: italic;
+      font-weight: 400;
+      font-style: normal;
       color: var(--text);
       line-height: 1.15;
       transition: color 0.7s;
@@ -222,10 +222,10 @@
     }
 
     .card-title {
-      font-family: 'Roboto Serif', serif;
+      font-family: 'Albert Sans', serif;
       font-size: clamp(32px, 5vw, 56px);
-      font-weight: 200;
-      font-style: italic;
+      font-weight: 500;
+      font-style: normal;
       line-height: 1.1;
       margin-bottom: 28px;
       color: var(--card-fg);
@@ -241,7 +241,7 @@
     }
 
     .card-body {
-      font-family: 'Albert Sans', sans-serif;
+      font-family: 'Roboto Serif', serif;
       font-size: 14px;
       font-weight: 300;
       line-height: 1.8;
@@ -388,10 +388,10 @@
   <div class="card-viewport">
     <div class="card" id="card">
 
-      <div class="card-number" id="cardNumber">01</div>
+      <div class="card-number" id="cardNumber"></div>
 
       <div class="card-top">
-        <div class="card-tag" id="cardTag">Etapa 01</div>
+        <div class="card-tag" id="cardTag"></div>
         <h3 class="card-title" id="cardTitle">Tierra</h3>
         <div class="card-divider" id="cardDivider"></div>
         <p class="card-body" id="cardBody"></p>
@@ -399,7 +399,7 @@
 
       <div class="card-bottom">
         <span class="card-stage-label">Ecosistema NIDOUM</span>
-        <span class="card-stage-num" id="cardStageNum">01 / 05</span>
+        <span class="card-stage-num" id="cardStageNum"></span>
       </div>
 
     </div>
@@ -427,38 +427,28 @@
   const stages = [
     {
       theme:  'theme-tierra',
-      tag:    'Etapa 01',
       title:  'Tierra',
       body:   'Identificamos y evaluamos de manera estratégica el territorio para asegurar el desarrollo de un proyecto sostenible. Es ahora cuando definimos la manera en la que el territorio formará parte del ecosistema: adquisición directa, aportación de capital o asociación con propietarios locales.',
-      num:    '01',
     },
     {
       theme:  'theme-semilla',
-      tag:    'Etapa 02',
       title:  'Semilla',
       body:   'Detallamos la estructura del desarrollo; se articula nuestra red inicial de aliados estratégicos que participarán en el proyecto. Es en esta etapa donde se concibe la conceptualización de la identidad del desarrollo y la narrativa del ecosistema como un solo sistema.',
-      num:    '02',
     },
     {
       theme:  'theme-nutrimiento',
-      tag:    'Etapa 03',
       title:  'Nutrimiento',
       body:   'Estructuramos el capital vital para desarrollar ecosistemas sostenibles. Un actor puede participar desde la inversión directa, la coinversión, participación patrimonial, esquemas de co-ownership o vehículos de inversión. Así mismo puedes ser parte del Club Nidoum.',
-      num:    '03',
     },
     {
       theme:  'theme-siembra',
-      tag:    'Etapa 04',
       title:  'Siembra',
       body:   'Materializamos los ecosistemas a través de nuestro partner técnico ARCOMPANY, responsables de integrar e implementar arquitectura, ingeniería, construcción modular y diseño interior. El cuidado y la precisión técnica definen cada detalle.',
-      num:    '04',
     },
     {
       theme:  'theme-cosecha',
-      tag:    'Etapa 05',
       title:  'Cosecha',
       body:   'Obtenemos el valor agregado generado por el ecosistema. Esta etapa se manifiesta en dos dimensiones: la Cosecha Comercial, que incluye comercialización directa, intermediarios y licenciamiento; y la Cosecha Operativa, que activa espacios, servicios y flujos económicos recurrentes.',
-      num:    '05',
     },
   ];
 
