@@ -359,10 +359,7 @@
 </head>
 
 <body>
-
-  <!-- ══════════════ HEADER CON ICONO DETRÁS DE LA CASA Y SUBIDO ══════════════ -->
-  <header class="nidoum-header">
-    <!-- Menú movido dentro del header para que flote sobre la imagen de fondo -->
+  <!-- Menú movido dentro del header para que flote sobre la imagen de fondo -->
   <header class="nidoum-header">
     <!-- Capas parallax -->
     <div class="layer-fondo" id="layerFondo"></div>
@@ -379,25 +376,19 @@
       </div>
     </div>
 
-    <!-- Capa de fondo -->
-    <div class="layer-fondo" id="layerFondo"></div>
-
-    <!-- Icono principal – ahora más arriba (padding-top reducido) -->
-    <div class="header-icon">
+    <!-- Logo en esquina superior izquierda -->
+     <div class="header-icon">
       <img src="https://nidoum.com/wp-content/uploads/2026/03/03.1B_9-Logo-Icon_Inv-Core@2x-1.png" alt="Nidoum Icon">
     </div>
 
-    <!-- Capa de la casa (cubre el icono donde su imagen es opaca) -->
-    <div class="layer-casa" id="layerCasa"></div>
-
-    <div class="layer-overlay"></div>
-
     <!-- Scroll hint centrado -->
     <div class="scroll-hint">
-      <span>Entra</span>
+      <span>Desliza</span>
       <div class="scroll-line"></div>
     </div>
   </header>
+
+  <!-- Demo body para mostrar el efecto de scroll -->
   <section class="demo-section">
     <h2>Habitat Consciente</h2>
     <div class="divider"></div>
@@ -416,29 +407,29 @@
     </p>
   </section>
 
-  <!-- El contenido textual ha sido eliminado por completo según solicitud -->
-</body>
-<script>
-  const fondo = document.getElementById('layerFondo');
-  const casa = document.getElementById('layerCasa');
+  <script>
+    const fondo = document.getElementById('layerFondo');
+    const casa = document.getElementById('layerCasa');
 
-  const SPEED_FONDO = 0.55;   // se desplaza hacia ABAJO
-  const SPEED_CASA = -0.40;   // se desplaza hacia ARRIBA
+    const SPEED_FONDO = 0.55;   // se desplaza hacia ABAJO
+    const SPEED_CASA = -0.40;   // se desplaza hacia ARRIBA
 
-  let ticking = false;
+    let ticking = false;
 
-  function updateParallax() {
-    const scrollY = window.scrollY;
-    fondo.style.transform = `translateY(${scrollY * SPEED_FONDO}px)`;
-    casa.style.transform = `translateY(${scrollY * SPEED_CASA}px)`;
-    ticking = false;
-  }
-
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      requestAnimationFrame(updateParallax);
-      ticking = true;
+    function updateParallax() {
+      const scrollY = window.scrollY;
+      fondo.style.transform = `translateY(${scrollY * SPEED_FONDO}px)`;
+      casa.style.transform = `translateY(${scrollY * SPEED_CASA}px)`;
+      ticking = false;
     }
-  }, { passive: true });
-</script>
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    }, { passive: true });
+  </script>
+</body>
+
 </html>
