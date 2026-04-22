@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NIDOUM – Inicio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500&family=Roboto+Serif:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500&family=Roboto+Serif:ital,wght@0,300;0,400;1,300&display=swap"
+    rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     :root {
       /* NIDOUM PALETTE */
@@ -17,7 +26,7 @@
       --sanddusk: xxx;
       --sanddark: #7c6454;
       --sandob: #514946;
-      
+
       /* TIERRA PALETTE */
       --terracotalight: #DFA584;
       --terracotalight60: #EDC8B3;
@@ -34,7 +43,7 @@
       --ochreob: #8F672D;
 
       /* NUTRIMENTO PALETTE */
-      
+
       --white: #ffffff;
       --black: #000000;
 
@@ -72,14 +81,19 @@
       left: 0;
       width: 100%;
       text-align: center;
-      padding-top: 24px;          /* subido: antes era 80px */
-      z-index: 5;                /* por debajo de layer-casa (z-index:10) */
-      pointer-events: none;      /* permite hacer clic a través del icono */
+      padding-top: 24px;
+      /* subido: antes era 80px */
+      z-index: 5;
+      /* por debajo de layer-casa (z-index:10) */
+      pointer-events: none;
+      /* permite hacer clic a través del icono */
     }
 
     .header-icon img {
-      width: 70%;                 /* reducido un 10% respecto al 100% que ocuparía el texto */
-      max-width: 600px;          /* límite para no exceder en pantallas grandes */
+      width: 70%;
+      /* reducido un 10% respecto al 100% que ocuparía el texto */
+      max-width: 600px;
+      /* límite para no exceder en pantallas grandes */
       height: auto;
       display: inline-block;
       filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.15));
@@ -93,18 +107,17 @@
       background-size: cover;
       background-position: center bottom;
       will-change: transform;
-      z-index: 10;              /* cubre el icono donde la imagen es opaca */
+      z-index: 10;
+      /* cubre el icono donde la imagen es opaca */
     }
 
     /* Overlay sutil para profundidad */
     .layer-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(81, 73, 70, 0.08) 0%,
-        rgba(81, 73, 70, 0.22) 100%
-      );
+      background: linear-gradient(to bottom,
+          rgba(81, 73, 70, 0.08) 0%,
+          rgba(81, 73, 70, 0.22) 100%);
       pointer-events: none;
     }
 
@@ -123,32 +136,227 @@
       z-index: 15;
       pointer-events: none;
     }
+
     .scroll-hint span {
       font-family: 'Albert Sans', sans-serif;
       font-size: 0.62rem;
       letter-spacing: 0.35em;
-      color: #F8F3EE;           /* color solicitado */
+      color: #F8F3EE;
+      /* color solicitado */
       text-transform: uppercase;
     }
+
     .scroll-line {
       width: 1px;
       height: 44px;
-      background: #F8F3EE;       /* color solicitado */
+      background: #F8F3EE;
+      /* color solicitado */
       opacity: 0.7;
       animation: scrollPulse 2s 1.8s ease-in-out infinite;
       transform-origin: top;
     }
 
     @keyframes fadeIn {
-      to { opacity: 1; }
+      to {
+        opacity: 1;
+      }
     }
+
     @keyframes scrollPulse {
-      0%   { transform: scaleY(1);   opacity: 0.7; }
-      50%  { transform: scaleY(0.4); opacity: 0.3; }
-      100% { transform: scaleY(1);   opacity: 0.7; }
+      0% {
+        transform: scaleY(1);
+        opacity: 0.7;
+      }
+
+      50% {
+        transform: scaleY(0.4);
+        opacity: 0.3;
+      }
+
+      100% {
+        transform: scaleY(1);
+        opacity: 0.7;
+      }
+    }
+
+    /* ─── MENÚ FLOTANTE (siempre frente a la imagen) ─── */
+    /* Solo se modifica esta parte: ahora el menú es absoluto dentro del header */
+    .header-menu {
+      position: absolute;
+      top: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 30;
+      /* por encima de todas las capas */
+      pointer-events: auto;
+      /* permite interactuar con los enlaces */
+      width: auto;
+      max-width: 90vw;
+    }
+
+    .nav-wrap {
+      /* padding: 28px 32px; */
+      /* display: flex; */
+      align-items: left;
+      /* justify-content: right; */
+      gap: 12px;
+      flex-wrap: wrap;
+      border-radius: 8px;
+      /* fondo semitransparente opcional para mejorar legibilidad (no afecta otras secciones)
+      background-color: rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(3px); */
+    }
+
+    .nav-item {
+      position: relative;
+      display: inline-block;
+      padding: 10px 22px;
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      border-radius: 15px;
+      font-family: 'Albert Sans', sans-serif;
+      font-weight: 400;
+      font-size: 13px;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      overflow: hidden;
+      cursor: pointer;
+      transition: color 0.4s ease, border-color 0.4s ease;
+      white-space: nowrap;
+      background: transparent;
+    }
+
+    .nav-item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--sanddark);
+      transform: translateX(-101%);
+      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 15px;
+      z-index: 0;
+    }
+
+    .nav-item span {
+      position: relative;
+      z-index: 1;
+      transition: font-family 0.3s, color 0.35s;
+      font-family: 'Albert Sans', sans-serif;
+      font-weight: 400;
+    }
+
+    .nav-item:hover::before {
+      transform: translateX(0);
+    }
+
+    .nav-item:hover {
+      color: var(--sandlight60);
+      /* border-color: #7c6454; */
+    }
+
+    .nav-item:hover span {
+      /* font-family: 'Roboto Serif', serif; */
+      font-weight: 500;
+      color: var(--sandlight60);
+    }
+
+    /* Flecha de scroll – centrada horizontalmente y abajo */
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      opacity: 0;
+      animation: fadeIn 1s 1.4s ease forwards;
+      z-index: 15;
+      pointer-events: none;
+    }
+
+    .scroll-hint span {
+      font-family: 'Albert Sans', sans-serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.35em;
+      color: var(--sandlight60);
+      text-transform: uppercase;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 44px;
+      background: var(--sandlight);
+      opacity: 0.7;
+      animation: scrollPulse 2s 1.8s ease-in-out infinite;
+      transform-origin: top;
+    }
+
+    @keyframes fadeDown {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes scrollPulse {
+      0% {
+        transform: scaleY(1);
+        opacity: 0.7;
+      }
+
+      50% {
+        transform: scaleY(0.4);
+        opacity: 0.3;
+      }
+
+      100% {
+        transform: scaleY(1);
+        opacity: 0.7;
+      }
+    }
+
+    /* ── DEMO CONTENT (para que haya scroll) ── */
+    .demo-section {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 7rem 2rem;
+      text-align: center;
+    }
+
+    .demo-section h2 {
+      font-family: 'Roboto Serif', serif;
+      font-weight: 300;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      color: var(--sandlight60);
+      letter-spacing: 0.08em;
+      margin-bottom: 1.2rem;
+    }
+
+    .demo-section p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--sandlight60);
+      font-weight: 300;
+    }
+
+    .divider {
+      width: 48px;
+      height: 1px;
+      background: var(--brown);
+      margin: 2rem auto;
+      opacity: 0.5;
     }
   </style>
 </head>
+
 <body>
 
   <!-- ══════════════ HEADER CON ICONO DETRÁS DE LA CASA Y SUBIDO ══════════════ -->
@@ -162,8 +370,8 @@
     </div>
 
     <!-- Capa de la casa (cubre el icono donde su imagen es opaca) -->
-    <div class="layer-casa"  id="layerCasa"></div>
-    
+    <div class="layer-casa" id="layerCasa"></div>
+
     <div class="layer-overlay"></div>
 
     <!-- Scroll hint centrado -->
@@ -193,26 +401,27 @@
   <!-- El contenido textual ha sido eliminado por completo según solicitud -->
 </body>
 <script>
-    const fondo = document.getElementById('layerFondo');
-    const casa  = document.getElementById('layerCasa');
+  const fondo = document.getElementById('layerFondo');
+  const casa = document.getElementById('layerCasa');
 
-    const SPEED_FONDO =  0.55;   // se desplaza hacia ABAJO
-    const SPEED_CASA  = -0.40;   // se desplaza hacia ARRIBA
+  const SPEED_FONDO = 0.55;   // se desplaza hacia ABAJO
+  const SPEED_CASA = -0.40;   // se desplaza hacia ARRIBA
 
-    let ticking = false;
+  let ticking = false;
 
-    function updateParallax() {
-      const scrollY = window.scrollY;
-      fondo.style.transform = `translateY(${scrollY * SPEED_FONDO}px)`;
-      casa.style.transform  = `translateY(${scrollY * SPEED_CASA}px)`;
-      ticking = false;
+  function updateParallax() {
+    const scrollY = window.scrollY;
+    fondo.style.transform = `translateY(${scrollY * SPEED_FONDO}px)`;
+    casa.style.transform = `translateY(${scrollY * SPEED_CASA}px)`;
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(updateParallax);
+      ticking = true;
     }
+  }, { passive: true });
+</script>
 
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        requestAnimationFrame(updateParallax);
-        ticking = true;
-      }
-    }, { passive: true });
-  </script>
 </html>
