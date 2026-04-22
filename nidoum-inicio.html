@@ -3,22 +3,48 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NIDOUM – Header Parallax</title>
+  <title>NIDOUM – Inicio</title>
   <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500&family=Roboto+Serif:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --brown:     #7c6454;
-      --dark:      #514946;
-      --cream:     #7C6454;
+      /* NIDOUM PALETTE */
+      --sandlight: #e6d6c7;
+      --sandlight60: rgba(248, 243, 238, 0.6);
+      --sandlight30: rgba(248, 243, 238, 0.3);
+      --sandhaze: xxx;
+      --sanddusk: xxx;
+      --sanddark: #7c6454;
+      --sandob: #514946;
+      
+      /* TIERRA PALETTE */
+      --terracotalight: #DFA584;
+      --terracotalight60: #EDC8B3;
+      --terracotalight30: #F6E3D8;
+      --terracotadark: #B35C49;
+      --terracotaob: #7E3E29;
+
+      /* SEMILLA PALETTE */
+      --ochrelight: #F4CC7A;
+      --ochrelight60: #FAE0AF;
+      --ochrelight30: #FDEFD6;
+      --ochrehaze: #DEB55D;
+      --ochredusk: #BE881C;
+      --ochreob: #8F672D;
+
+      /* NUTRIMENTO PALETTE */
+      
+      --white: #ffffff;
+      --black: #000000;
+
       --header-h: 100vh;
     }
 
     body {
-      background: var(--cream);
+      background: var(--sanddark);
       font-family: 'Albert Sans', sans-serif;
-      color: var(--dark);
+      color: var(--sandlight60);
     }
 
     /* ── HEADER ── */
@@ -27,7 +53,6 @@
       width: 100%;
       height: var(--header-h);
       overflow: hidden;
-      background: var(--dark);
     }
 
     /* Layer 1 – fondo: se desplaza HACIA ABAJO */
