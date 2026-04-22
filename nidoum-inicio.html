@@ -180,7 +180,6 @@
     }
 
     /* ─── MENÚ FLOTANTE (siempre frente a la imagen) ─── */
-    /* Solo se modifica esta parte: ahora el menú es absoluto dentro del header */
     .header-menu {
       position: absolute;
       top: 2.5rem;
@@ -359,14 +358,12 @@
 </head>
 
 <body>
-  <!-- Menú movido dentro del header para que flote sobre la imagen de fondo -->
+  <!-- Menú -->
   <header class="nidoum-header">
     <!-- Capas parallax -->
     <div class="layer-fondo" id="layerFondo"></div>
     <div class="layer-casa" id="layerCasa"></div>
     <div class="layer-overlay"></div>
-
-    <!-- MENÚ (única sección modificada) – ahora absoluto y con z-index alto -->
     <div class="header-menu">
       <div class="nav-wrap">
         <a class="nav-item"><span>Nosotros</span></a>
@@ -376,19 +373,19 @@
       </div>
     </div>
 
-    <!-- Logo en esquina superior izquierda -->
+    <!-- Logo -->
      <div class="header-icon">
       <img src="https://nidoum.com/wp-content/uploads/2026/03/03.1B_9-Logo-Icon_Inv-Core@2x-1.png" alt="Nidoum Icon">
     </div>
 
-    <!-- Scroll hint centrado -->
+    <!-- Scroll centrado -->
     <div class="scroll-hint">
       <span>Desliza</span>
       <div class="scroll-line"></div>
     </div>
   </header>
 
-  <!-- Demo body para mostrar el efecto de scroll -->
+  <!-- Demo -->
   <section class="demo-section">
     <h2>Habitat Consciente</h2>
     <div class="divider"></div>
@@ -406,7 +403,6 @@
       florecen. Cada proyecto es una invitación a reconectar con lo esencial.
     </p>
   </section>
-
   <script>
     const fondo = document.getElementById('layerFondo');
     const casa = document.getElementById('layerCasa');
@@ -431,5 +427,4 @@
     }, { passive: true });
   </script>
 </body>
-
 </html>
