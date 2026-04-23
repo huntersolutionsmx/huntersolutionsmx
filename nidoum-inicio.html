@@ -91,15 +91,12 @@
 
     .header-icon img {
       width: 70%;
-      /* reducido un 10% respecto al 100% que ocuparía el texto */
       max-width: 750px;
-      /* límite para no exceder en pantallas grandes */
       height: auto;
       display: inline-block;
       filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.15));
     }
 
-    /* Layer 2 – casa: se desplaza HACIA ARRIBA */
     .layer-casa {
       position: absolute;
       inset: -5% 0;
@@ -108,10 +105,9 @@
       background-position: center bottom;
       will-change: transform;
       z-index: 10;
-      /* cubre el icono donde la imagen es opaca */
     }
 
-    /* Overlay sutil para profundidad */
+    /* Profundidad */
     .layer-overlay {
       position: absolute;
       inset: 0;
@@ -121,7 +117,7 @@
       pointer-events: none;
     }
 
-    /* Flecha de scroll – centrada horizontalmente y abajo */
+    /* Flecha de scroll */
     .scroll-hint {
       position: absolute;
       bottom: 2rem;
@@ -141,16 +137,14 @@
       font-family: 'Albert Sans', sans-serif;
       font-size: 0.62rem;
       letter-spacing: 0.35em;
-      color: #F8F3EE;
-      /* color solicitado */
+      color: var(--sandlight60);
       text-transform: uppercase;
     }
 
     .scroll-line {
       width: 1px;
       height: 44px;
-      background: #F8F3EE;
-      /* color solicitado */
+      background: var(--sandlight60);
       opacity: 0.7;
       animation: scrollPulse 2s 1.8s ease-in-out infinite;
       transform-origin: top;
@@ -179,39 +173,32 @@
       }
     }
 
-    /* ─── MENÚ FLOTANTE (siempre frente a la imagen) ─── */
+    /* MENÚ */
     .header-menu {
-      position: absolute;
-      top: 2.5rem;
-      right: 2rem;
-      left: auto;
-      transform: none;
+      position: fixed;
+      top: 70%;
+      left: 10%;
+      transform: translate(-50%, -50%);
+      right: auto;
       z-index: 30;
-      /* por encima de todas las capas */
       pointer-events: auto;
-      /* permite interactuar con los enlaces */
       width: auto;
       max-width: 90vw;
     }
 
     .nav-wrap {
-      /* padding: 28px 32px; */
-      /* display: flex; */
-      align-items: left;
-      /* justify-content: right; */
-      gap: 12px;
-      flex-wrap: wrap;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
       border-radius: 8px;
-      /* fondo semitransparente opcional para mejorar legibilidad (no afecta otras secciones)
-      background-color: rgba(0, 0, 0, 0.1);
-      backdrop-filter: blur(3px); */
     }
 
     .nav-item {
       position: relative;
       display: inline-block;
       padding: 10px 22px;
-      border: 1px solid rgba(255, 255, 255, 0.75);
+      border: 1px solid var(--sandlight60);
       border-radius: 15px;
       font-family: 'Albert Sans', sans-serif;
       font-weight: 400;
@@ -250,14 +237,14 @@
     }
 
     .nav-item:hover {
-      color: var(--sandlight60);
+      color: var(--white);
       /* border-color: #7c6454; */
     }
 
     .nav-item:hover span {
       /* font-family: 'Roboto Serif', serif; */
       font-weight: 500;
-      color: var(--sandlight60);
+      color: var(--white);
     }
 
     /* Flecha de scroll – centrada horizontalmente y abajo */
@@ -374,7 +361,7 @@
     </div>
 
     <!-- Logo -->
-     <div class="header-icon">
+    <div class="header-icon">
       <img src="https://nidoum.com/wp-content/uploads/2026/03/03.1B_9-Logo-Icon_Inv-Core@2x-1.png" alt="Nidoum Icon">
     </div>
 
@@ -427,4 +414,5 @@
     }, { passive: true });
   </script>
 </body>
+
 </html>
