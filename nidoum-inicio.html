@@ -204,6 +204,28 @@
 
     /* ─── RESPONSIVE MÓVIL ───────────────────────────────────────── */
     @media (max-width: 768px) {
+      .menu-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.1);
+        /* sutil oscurecimiento */
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        z-index: 48;
+        /* debajo del panel (49) */
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.35s ease, visibility 0.35s ease;
+        pointer-events: none;
+      }
+
+      .menu-overlay.active {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        /* bloquea toques en el fondo */
+      }
+
 
       /* Ocultamos menú escritorio */
       .header-menu {
@@ -301,8 +323,8 @@
         width: 100%;
         /* border: 1px solid var(--sandlight60); */
         background: rgba(81, 73, 70, 0.38);
-        backdrop-filter: blur(14px);
-        -webkit-backdrop-filter: blur(14px);
+        /* backdrop-filter: blur(14px); */
+        /* -webkit-backdrop-filter: blur(14px); */
       }
 
       .demo-section {
@@ -424,6 +446,7 @@
         <span></span>
         <span></span>
       </div>
+      <div class="menu-overlay" id="menuOverlay"></div>
       <div class="mobile-nav" id="mobileNav">
         <a class="nav-item"><span>Nosotros</span></a>
         <a class="nav-item"><span>Portafolio</span></a>
@@ -485,11 +508,13 @@
     const hamburger = document.getElementById('hamburgerBtn');
     const mobileNav = document.getElementById('mobileNav');
 
+    const menuOverlay = document.getElementById('menuOverlay');
     hamburger.addEventListener('click', (e) => {
       e.stopPropagation();
       const isOpen = mobileNav.classList.contains('open');
       hamburger.classList.toggle('active');
       mobileNav.classList.toggle('open');
+      menuOverlay.classList.toggle('active'); 
     });
 
     /* Cerrar al hacer clic en un enlace */
@@ -497,6 +522,7 @@
       link.addEventListener('click', () => {
         hamburger.classList.remove('active');
         mobileNav.classList.remove('open');
+        menuOverlay.classList.remove('active');
       });
     });
 
@@ -509,8 +535,10 @@
       ) {
         hamburger.classList.remove('active');
         mobileNav.classList.remove('open');
+        menuOverlay.classList.remove('active');
       }
     });
   </script>
 </body>
+
 </html>
