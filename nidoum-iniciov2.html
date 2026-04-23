@@ -3,8 +3,8 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NIDOUM – Landscape</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>NIDOUM – Móvil + Escritorio</title>
   <link
     href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500&family=Roboto+Serif:ital,wght@0,300;0,400;1,300&display=swap"
     rel="stylesheet" />
@@ -22,31 +22,10 @@
       --sandlight: #e6d6c7;
       --sandlight60: rgba(248, 243, 238, 0.6);
       --sandlight30: rgba(248, 243, 238, 0.3);
-      --sandhaze: xxx;
-      --sanddusk: xxx;
       --sanddark: #7c6454;
       --sandob: #514946;
-
-      /* TIERRA PALETTE */
-      --terracotalight: #DFA584;
-      --terracotalight60: #EDC8B3;
-      --terracotalight30: #F6E3D8;
-      --terracotadark: #B35C49;
-      --terracotaob: #7E3E29;
-
-      /* SEMILLA PALETTE */
-      --ochrelight: #F4CC7A;
-      --ochrelight60: #FAE0AF;
-      --ochrelight30: #FDEFD6;
-      --ochrehaze: #DEB55D;
-      --ochredusk: #BE881C;
-      --ochreob: #8F672D;
-
-      /* NUTRIMENTO PALETTE */
-
       --white: #ffffff;
       --black: #000000;
-
       --header-h: 100vh;
     }
 
@@ -56,7 +35,6 @@
       color: var(--sandlight60);
     }
 
-    /* ── HEADER ── */
     .nidoum-header {
       position: relative;
       width: 100%;
@@ -64,7 +42,6 @@
       overflow: hidden;
     }
 
-    /* Layer 1 – fondo: se desplaza HACIA ABAJO */
     .layer-fondo {
       position: absolute;
       inset: -25% 0;
@@ -72,29 +49,6 @@
       background-size: cover;
       background-position: center;
       will-change: transform;
-    }
-
-    /* Icono principal – ahora más arriba */
-    .header-icon {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      text-align: center;
-      padding-top: 24px;
-      /* subido: antes era 80px */
-      z-index: 5;
-      /* por debajo de layer-casa (z-index:10) */
-      pointer-events: none;
-      /* permite hacer clic a través del icono */
-    }
-
-    .header-icon img {
-      width: 70%;
-      max-width: 750px;
-      height: auto;
-      display: inline-block;
-      filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.15));
     }
 
     .layer-casa {
@@ -107,6 +61,17 @@
       z-index: 10;
     }
 
+    /* Imagen para móvil (ancho <= 768px) */
+    @media (max-width: 768px) {
+      .layer-fondo {
+        background-image: url('https://nidoum.com/wp-content/uploads/2026/03/Nidoum-Header-fondo-scaled.jpg');
+      }
+
+      .layer-casa {
+        background-image: url('https://nidoum.com/wp-content/uploads/2026/04/Nidoum-Headercasamovi.png');
+      }
+    }
+
     /* Profundidad */
     .layer-overlay {
       position: absolute;
@@ -117,7 +82,206 @@
       pointer-events: none;
     }
 
-    /* Flecha de scroll */
+    /* Logo */
+    .header-icon {
+      position: absolute;
+      top: -30px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      /* padding-top: 24px; */
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    .header-icon img {
+      width: 70%;
+      max-width: 750px;
+      height: auto;
+      display: inline-block;
+      filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.15));
+    }
+
+    /* ARREGLAR ESTA FUKIN PARTE */
+    /* Ajuste logo en móvil */
+    @media (max-width: 768px) {
+      .header-icon img {
+        width: 85%;
+        max-width: 400px;
+        top: 15px;
+        padding-top: 24px;
+      }
+    }
+
+    .header-menu {
+      position: fixed;
+      top: 70%;
+      left: 10%;
+      transform: translate(-50%, -50%);
+      z-index: 30;
+      pointer-events: auto;
+      width: auto;
+      max-width: 90vw;
+    }
+
+    .nav-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+      border-radius: 8px;
+    }
+
+    .nav-item {
+      position: relative;
+      display: inline-block;
+      padding: 10px 22px;
+      border: 1px solid var(--sandlight60);
+      border-radius: 15px;
+      font-family: 'Albert Sans', sans-serif;
+      font-weight: 400;
+      font-size: 13px;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      overflow: hidden;
+      cursor: pointer;
+      transition: color 0.4s ease, border-color 0.4s ease;
+      white-space: nowrap;
+      background: transparent;
+    }
+
+    .nav-item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--sanddark);
+      transform: translateX(-101%);
+      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 15px;
+      z-index: 0;
+    }
+
+    .nav-item span {
+      position: relative;
+      z-index: 1;
+      transition: font-weight 0.35s, color 0.35s;
+      font-family: 'Albert Sans', sans-serif;
+      font-weight: 400;
+    }
+
+    .nav-item:hover::before {
+      transform: translateX(0);
+    }
+
+    .nav-item:hover span {
+      font-weight: 500;
+      color: var(--white);
+    }
+
+    .mobile-menu-container {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .mobile-menu-container{
+        display: block;
+      }
+      /* Ocultamos el menú tradicional */
+      .header-menu {
+        display: none;
+      }
+
+      /* Nuevo contenedor del menú móvil */
+      .mobile-menu-container {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 40;
+        pointer-events: auto;
+      }
+
+      /* Botón hamburguesa */
+      .hamburger {
+        width: 48px;
+        height: 48px;
+        background: rgba(124, 100, 84, 0.85);
+        backdrop-filter: blur(8px);
+        border-radius: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+        cursor: pointer;
+        border: 1px solid var(--sandlight60);
+        transition: all 0.3s ease;
+      }
+
+      .hamburger span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: var(--white);
+        transition: 0.3s;
+        border-radius: 2px;
+      }
+
+      /* Animación a X cuando está activo */
+      .hamburger.active span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+
+      /* Panel desplegable */
+      .mobile-nav {
+        position: fixed;
+        top: 80px;
+        right: 20px;
+        background: rgba(81, 73, 70, 0.92);
+        backdrop-filter: blur(12px);
+        border-radius: 24px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        min-width: 200px;
+        transform: translateX(120%);
+        transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        border: 1px solid var(--sandlight60);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        z-index: 39;
+      }
+
+      .mobile-nav.open {
+        transform: translateX(0);
+      }
+
+      .mobile-nav .nav-item {
+        white-space: nowrap;
+        text-align: center;
+        font-size: 15px;
+        padding: 12px 20px;
+        border: 1px solid var(--sandlight60);
+        background: transparent;
+        width: 100%;
+        display: block;
+      }
+
+      /* Ajuste para que el contenido debajo no se solape */
+      .demo-section {
+        padding-top: 6rem;
+      }
+    }
+
+    /* Scroll hint (flecha) */
     .scroll-hint {
       position: absolute;
       bottom: 2rem;
@@ -173,144 +337,7 @@
       }
     }
 
-    /* MENÚ */
-    .header-menu {
-      position: fixed;
-      top: 70%;
-      left: 10%;
-      transform: translate(-50%, -50%);
-      right: auto;
-      z-index: 30;
-      pointer-events: auto;
-      width: auto;
-      max-width: 90vw;
-    }
-
-    .nav-wrap {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 16px;
-      border-radius: 8px;
-    }
-
-    .nav-item {
-      position: relative;
-      display: inline-block;
-      padding: 10px 22px;
-      border: 1px solid var(--sandlight60);
-      border-radius: 15px;
-      font-family: 'Albert Sans', sans-serif;
-      font-weight: 400;
-      font-size: 13px;
-      color: var(--white);
-      text-decoration: none;
-      letter-spacing: 0.04em;
-      overflow: hidden;
-      cursor: pointer;
-      transition: color 0.4s ease, border-color 0.4s ease;
-      white-space: nowrap;
-      background: transparent;
-    }
-
-    .nav-item::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: var(--sanddark);
-      transform: translateX(-101%);
-      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-      border-radius: 15px;
-      z-index: 0;
-    }
-
-    .nav-item span {
-      position: relative;
-      z-index: 1;
-      transition: font-family 0.3s, color 0.35s;
-      font-family: 'Albert Sans', sans-serif;
-      font-weight: 400;
-    }
-
-    .nav-item:hover::before {
-      transform: translateX(0);
-    }
-
-    .nav-item:hover {
-      color: var(--white);
-      /* border-color: #7c6454; */
-    }
-
-    .nav-item:hover span {
-      /* font-family: 'Roboto Serif', serif; */
-      font-weight: 500;
-      color: var(--white);
-    }
-
-    /* Flecha de scroll – centrada horizontalmente y abajo */
-    .scroll-hint {
-      position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.4rem;
-      opacity: 0;
-      animation: fadeIn 1s 1.4s ease forwards;
-      z-index: 15;
-      pointer-events: none;
-    }
-
-    .scroll-hint span {
-      font-family: 'Albert Sans', sans-serif;
-      font-size: 0.62rem;
-      letter-spacing: 0.35em;
-      color: var(--sandlight60);
-      text-transform: uppercase;
-    }
-
-    .scroll-line {
-      width: 1px;
-      height: 44px;
-      background: var(--sandlight);
-      opacity: 0.7;
-      animation: scrollPulse 2s 1.8s ease-in-out infinite;
-      transform-origin: top;
-    }
-
-    @keyframes fadeDown {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
-    }
-
-    @keyframes scrollPulse {
-      0% {
-        transform: scaleY(1);
-        opacity: 0.7;
-      }
-
-      50% {
-        transform: scaleY(0.4);
-        opacity: 0.3;
-      }
-
-      100% {
-        transform: scaleY(1);
-        opacity: 0.7;
-      }
-    }
-
-    /* ── DEMO CONTENT (para que haya scroll) ── */
+    /* Contenido de demostración */
     .demo-section {
       max-width: 760px;
       margin: 0 auto;
@@ -345,14 +372,31 @@
 </head>
 
 <body>
-  <!-- Menú -->
+
   <header class="nidoum-header">
     <!-- Capas parallax -->
     <div class="layer-fondo" id="layerFondo"></div>
     <div class="layer-casa" id="layerCasa"></div>
     <div class="layer-overlay"></div>
+
+    <!-- MENÚ ESCRITORIO (visible solo en pantallas grandes) -->
     <div class="header-menu">
       <div class="nav-wrap">
+        <a class="nav-item"><span>Nosotros</span></a>
+        <a class="nav-item"><span>Portafolio</span></a>
+        <a class="nav-item"><span>Construcción Modular</span></a>
+        <a class="nav-item"><span>Ciclos de Desarrollo</span></a>
+      </div>
+    </div>
+
+    <!-- MENÚ MÓVIL (se añade con JS pero estructura HTML fija) -->
+    <div class="mobile-menu-container">
+      <div class="hamburger" id="hamburgerBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="mobile-nav" id="mobileNav">
         <a class="nav-item"><span>Nosotros</span></a>
         <a class="nav-item"><span>Portafolio</span></a>
         <a class="nav-item"><span>Construcción Modular</span></a>
@@ -365,14 +409,14 @@
       <img src="https://nidoum.com/wp-content/uploads/2026/03/03.1B_9-Logo-Icon_Inv-Core@2x-1.png" alt="Nidoum Icon">
     </div>
 
-    <!-- Scroll centrado -->
+    <!-- Flecha scroll -->
     <div class="scroll-hint">
       <span>Desliza</span>
       <div class="scroll-line"></div>
     </div>
   </header>
 
-  <!-- Demo -->
+  <!-- Contenido de ejemplo -->
   <section class="demo-section">
     <h2>Habitat Consciente</h2>
     <div class="divider"></div>
@@ -390,13 +434,13 @@
       florecen. Cada proyecto es una invitación a reconectar con lo esencial.
     </p>
   </section>
+
   <script>
+    // 1. Parallax (sin cambios)
     const fondo = document.getElementById('layerFondo');
     const casa = document.getElementById('layerCasa');
-
-    const SPEED_FONDO = 0.55;   // se desplaza hacia ABAJO
-    const SPEED_CASA = -0.40;   // se desplaza hacia ARRIBA
-
+    const SPEED_FONDO = 0.55;
+    const SPEED_CASA = -0.40;
     let ticking = false;
 
     function updateParallax() {
@@ -412,6 +456,36 @@
         ticking = true;
       }
     }, { passive: true });
+
+    // 2. Menú hamburguesa (solo en móvil, pero el código JS funciona siempre sin afectar escritorio)
+    const hamburger = document.getElementById('hamburgerBtn');
+    const mobileNav = document.getElementById('mobileNav');
+
+    if (hamburger && mobileNav) {
+      hamburger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        hamburger.classList.toggle('active');
+        mobileNav.classList.toggle('open');
+      });
+
+      // Cerrar menú al hacer clic en un enlace
+      const navLinks = mobileNav.querySelectorAll('.nav-item');
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          hamburger.classList.remove('active');
+          mobileNav.classList.remove('open');
+        });
+      });
+
+      // Cerrar menú si se toca fuera (opcional)
+      document.addEventListener('click', (event) => {
+        if (!hamburger.contains(event.target) && !mobileNav.contains(event.target)) {
+          hamburger.classList.remove('active');
+          mobileNav.classList.remove('open');
+        }
+      });
+    }
   </script>
 </body>
+
 </html>
