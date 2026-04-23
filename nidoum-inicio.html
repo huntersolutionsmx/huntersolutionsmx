@@ -100,11 +100,41 @@
     }
 
     @media (max-width: 768px) {
+
+      /* Logo esquina superior izquierda en móvil */
+      .site-logo {
+        top: 20px;
+        left: 20px;
+      }
+
+      .site-logo img {
+        height: 26px;
+        /* ligeramente más pequeño en pantallas pequeñas */
+      }
+
       .header-icon img {
         width: 100%;
         max-width: 400px;
         padding-top: 40px;
       }
+    }
+
+    /* LOGO POSICION */
+    .site-logo {
+      position: absolute;
+      top: 13px;
+      left: 30px;
+      z-index: 31;
+      display: block;
+      line-height: 0;
+    }
+
+    .site-logo img {
+      height: 75px;
+      width: auto;
+      display: block;
+      filter: drop-shadow(0 1px 6px rgba(0, 0, 0, 0.2));
+      /* sutil sombra opcional */
     }
 
     /* escritorio + móvil */
@@ -124,9 +154,9 @@
       cursor: pointer;
       text-align: center;
       white-space: nowrap;
-      /* background: rgba(81, 73, 70, 0.28); */
-      /* backdrop-filter: blur(10px); */
-      /* -webkit-backdrop-filter: blur(10px); */
+      background: rgba(81, 73, 70, 0.28);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       transition: color 0.4s ease, border-color 0.4s ease, background 0.4s ease;
     }
 
@@ -208,11 +238,9 @@
         position: fixed;
         inset: 0;
         background: rgba(0, 0, 0, 0.1);
-        /* sutil oscurecimiento */
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
         z-index: 48;
-        /* debajo del panel (49) */
         opacity: 0;
         visibility: hidden;
         transition: opacity 0.35s ease, visibility 0.35s ease;
@@ -281,32 +309,21 @@
         transform: translateY(-8px) rotate(-45deg);
       }
 
-      /* ── Panel del menú móvil ──
-         Centrado horizontalmente y posicionado debajo del logo (~30% desde arriba).
-         La animación usa translateX para entrar desde la derecha
-         combinada con el centrado horizontal. */
+      /* Panel del menú móvil */
       .mobile-nav {
         position: fixed;
-        /* Centrado horizontal */
         left: 50%;
-        /* Debajo del logo (logo ocupa ~120px + padding-top 40px ≈ 30% en móvil) */
         top: 42%;
-        /* Estado CERRADO: centrado + desplazado a la derecha fuera de pantalla */
         transform: translate(-50%, -50%) translateX(120vw);
         transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-        /* Tamaño y forma */
         border-radius: 20px;
         padding: 24px 20px;
-        /* ← padding fijo, nunca porcentual */
         display: flex;
         flex-direction: column;
         gap: 14px;
         width: 260px;
-        /* ancho fijo para móvil */
         z-index: 49;
-        /* debajo del hamburger (51) */
         pointer-events: none;
-        /* no intercepta clicks cuando está cerrado */
       }
 
       /* Estado ABIERTO */
@@ -321,10 +338,43 @@
         font-size: 15px;
         padding: 13px 20px;
         width: 100%;
+        border: none;
+        background: transparent;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        /* font-size: 15px;
+        padding: 13px 20px;
+        width: 100%; */
         /* border: 1px solid var(--sandlight60); */
         /* background: rgba(81, 73, 70, 0.38); */
         /* backdrop-filter: blur(14px); */
         /* -webkit-backdrop-filter: blur(14px); */
+      }
+
+      /* Subrayado animado para menú móvil */
+      .mobile-nav .nav-item::before {
+        inset: auto;
+        /* anula el inset: 0 del global */
+        top: auto;
+        bottom: 0;
+        /* línea pegada abajo */
+        left: 0;
+        width: 100%;
+        height: 2px;
+        /* grosor de la línea */
+        background: var(--white);
+        /* color de la línea */
+        border-radius: 0;
+        /* sin bordes redondeados */
+        transform: translateX(-101%);
+        /* parte desde la izquierda fuera de vista */
+        transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+        /* misma curva */
+      }
+
+      /* Estado hover: la línea se desliza hasta ocupar todo el ancho */
+      .mobile-nav .nav-item:hover::before {
+        transform: translateX(0);
       }
 
       .demo-section {
@@ -429,6 +479,11 @@
     <div class="layer-casa" id="layerCasa"></div>
     <div class="layer-overlay"></div>
 
+    <!-- LOGO ESQUINA SUPERIOR IZQUIERDA (escritorio + móvil) -->
+    <a href="https://nidoum.com" class="site-logo" aria-label="Nidoum inicio">
+      <img src="https://nidoum.com/wp-content/uploads/2026/03/03.1_5-MG-Icon_Inv@2x-1.png" alt="Nidoum" />
+    </a>
+
     <!-- MENÚ ESCRITORIO -->
     <div class="header-menu">
       <div class="nav-wrap">
@@ -514,7 +569,7 @@
       const isOpen = mobileNav.classList.contains('open');
       hamburger.classList.toggle('active');
       mobileNav.classList.toggle('open');
-      menuOverlay.classList.toggle('active'); 
+      menuOverlay.classList.toggle('active');
     });
 
     /* Cerrar al hacer clic en un enlace */
