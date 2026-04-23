@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
@@ -64,6 +65,7 @@
       .layer-fondo {
         background-image: url('https://nidoum.com/wp-content/uploads/2026/03/Nidoum-Header-fondo-scaled.jpg');
       }
+
       .layer-casa {
         background-image: url('https://nidoum.com/wp-content/uploads/2026/04/Nidoum-Headercasamovi.png');
       }
@@ -125,9 +127,6 @@
       background: rgba(81, 73, 70, 0.28);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      /* background: var(--black);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px); */
       transition: color 0.4s ease, border-color 0.4s ease, background 0.4s ease;
     }
 
@@ -161,21 +160,41 @@
 
     /* ─── MENÚ ESCRITORIO ────────────────────────────────────────── */
     .header-menu {
-      position: fixed;
+      position: absolute;
+      top: 30px;
+      /* ← fijo arriba */
+      left: 50%;
+      /* ← centro horizontal */
+      transform: translateX(-50%);
+      /* ← centrado exacto */
+      z-index: 30;
+      pointer-events: auto;
+      width: auto;
+
+      /* position: fixed;
       top: 70%;
       left: 10%;
       transform: translate(-50%, -50%);
       z-index: 30;
       pointer-events: auto;
-      width: auto;
+      width: auto; */
     }
 
     .nav-wrap {
       display: flex;
-      flex-direction: column;
-      align-items: stretch;       /* todos al mismo ancho */
+      flex-direction: row;
+      /* ← horizontal */
+      align-items: center;
+      /* ← alineación central vertical */
       gap: 16px;
-      width: 220px;               /* ancho fijo → botones iguales */
+
+      /* display: flex; */
+      /* flex-direction: column; */
+      /* align-items: stretch; */
+      /* todos al mismo ancho */
+      /* gap: 16px; */
+      /* width: 220px; */
+      /* ancho fijo → botones iguales */
     }
 
     /* ─── MENÚ MÓVIL: oculto en escritorio ───────────────────────── */
@@ -197,14 +216,16 @@
         position: fixed;
         top: 20px;
         right: 20px;
-        z-index: 50;              /* ← por encima de todo */
+        z-index: 50;
+        /* ← por encima de todo */
         pointer-events: auto;
       }
 
       /* ── Botón hamburguesa ── */
       .hamburger {
         position: relative;
-        z-index: 51;              /* ← por encima del panel */
+        z-index: 51;
+        /* ← por encima del panel */
         width: 48px;
         height: 48px;
         border-radius: 30px;
@@ -229,9 +250,11 @@
       .hamburger.active span:nth-child(1) {
         transform: translateY(8px) rotate(45deg);
       }
+
       .hamburger.active span:nth-child(2) {
         opacity: 0;
       }
+
       .hamburger.active span:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
       }
@@ -251,19 +274,24 @@
         transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
         /* Tamaño y forma */
         border-radius: 20px;
-        padding: 24px 20px;       /* ← padding fijo, nunca porcentual */
+        padding: 24px 20px;
+        /* ← padding fijo, nunca porcentual */
         display: flex;
         flex-direction: column;
         gap: 14px;
-        width: 260px;             /* ancho fijo para móvil */
-        z-index: 49;              /* debajo del hamburger (51) */
-        pointer-events: none;     /* no intercepta clicks cuando está cerrado */
+        width: 260px;
+        /* ancho fijo para móvil */
+        z-index: 49;
+        /* debajo del hamburger (51) */
+        pointer-events: none;
+        /* no intercepta clicks cuando está cerrado */
       }
 
       /* Estado ABIERTO */
       .mobile-nav.open {
         transform: translate(-50%, -50%) translateX(0);
-        pointer-events: auto;     /* reactiva clicks cuando está visible */
+        pointer-events: auto;
+        /* reactiva clicks cuando está visible */
       }
 
       /* Botones dentro del menú móvil */
@@ -282,7 +310,7 @@
       }
     }
 
-    /* ─── SCROLL HINT ────────────────────────────────────────────── */
+    /* SCROLL HINT */
     .scroll-hint {
       position: absolute;
       bottom: 2rem;
@@ -315,15 +343,30 @@
       transform-origin: top;
     }
 
-    @keyframes fadeIn { to { opacity: 1; } }
-
-    @keyframes scrollPulse {
-      0%   { transform: scaleY(1);   opacity: 0.7; }
-      50%  { transform: scaleY(0.4); opacity: 0.3; }
-      100% { transform: scaleY(1);   opacity: 0.7; }
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
     }
 
-    /* ─── DEMO SECTION ───────────────────────────────────────────── */
+    @keyframes scrollPulse {
+      0% {
+        transform: scaleY(1);
+        opacity: 0.7;
+      }
+
+      50% {
+        transform: scaleY(0.4);
+        opacity: 0.3;
+      }
+
+      100% {
+        transform: scaleY(1);
+        opacity: 0.7;
+      }
+    }
+
+    /* DEMO SECTION */
     .demo-section {
       max-width: 760px;
       margin: 0 auto;
@@ -391,7 +434,7 @@
 
     <!-- Logo -->
     <div class="header-icon">
-      <img src="https://nidoum.com/wp-content/uploads/2026/03/03.1B_9-Logo-Icon_Inv-Core@2x-1.png" alt="Nidoum Icon">
+      <!-- <img src="https://nidoum.com/wp-content/uploads/2026/03/03.1B_9-Logo-Icon_Inv-Core@2x-1.png" alt="Nidoum Icon"> -->
     </div>
 
     <!-- Scroll hint -->
@@ -422,15 +465,15 @@
   <script>
     /* ── Parallax ── */
     const fondo = document.getElementById('layerFondo');
-    const casa  = document.getElementById('layerCasa');
+    const casa = document.getElementById('layerCasa');
     const SPEED_FONDO = 0.2;
-    const SPEED_CASA  = -0.05;
+    const SPEED_CASA = -0.05;
     let ticking = false;
 
     function updateParallax() {
       const scrollY = window.scrollY;
       fondo.style.transform = `translateY(${scrollY * SPEED_FONDO}px)`;
-      casa.style.transform  = `translateY(${scrollY * SPEED_CASA}px)`;
+      casa.style.transform = `translateY(${scrollY * SPEED_CASA}px)`;
       ticking = false;
     }
 
