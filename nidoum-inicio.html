@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
@@ -18,7 +17,6 @@
     }
 
     :root {
-      /* NIDOUM PALETTE */
       --sandlight: #e6d6c7;
       --sandlight60: rgba(248, 243, 238, 0.6);
       --sandlight30: rgba(248, 243, 238, 0.3);
@@ -35,6 +33,7 @@
       color: var(--sandlight60);
     }
 
+    /* ─── HEADER ───────────────────────────────────────────────── */
     .nidoum-header {
       position: relative;
       width: 100%;
@@ -61,18 +60,15 @@
       z-index: 10;
     }
 
-    /* Imagen para móvil (ancho <= 768px) */
     @media (max-width: 768px) {
       .layer-fondo {
         background-image: url('https://nidoum.com/wp-content/uploads/2026/03/Nidoum-Header-fondo-scaled.jpg');
       }
-
       .layer-casa {
         background-image: url('https://nidoum.com/wp-content/uploads/2026/04/Nidoum-Headercasamovi.png');
       }
     }
 
-    /* Profundidad */
     .layer-overlay {
       position: absolute;
       inset: 0;
@@ -82,14 +78,13 @@
       pointer-events: none;
     }
 
-    /* Logo */
+    /* ─── LOGO ───────────────────────────────────────────────────── */
     .header-icon {
       position: absolute;
-      top: -30px;
+      top: 0;
       left: 0;
       width: 100%;
       text-align: center;
-      /* padding-top: 24px; */
       z-index: 5;
       pointer-events: none;
     }
@@ -102,39 +97,18 @@
       filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.15));
     }
 
-    /* ARREGLAR ESTA FUKIN PARTE */
-    /* Ajuste logo en móvil */
     @media (max-width: 768px) {
       .header-icon img {
-        width: 85%;
+        width: 100%;
         max-width: 400px;
-        top: 15px;
-        padding-top: 24px;
+        padding-top: 40px;
       }
     }
 
-    .header-menu {
-      position: fixed;
-      top: 70%;
-      left: 10%;
-      transform: translate(-50%, -50%);
-      z-index: 30;
-      pointer-events: auto;
-      width: auto;
-      max-width: 90vw;
-    }
-
-    .nav-wrap {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 16px;
-      border-radius: 8px;
-    }
-
+    /* ─── NAV ITEMS (compartido escritorio + móvil) ──────────────── */
     .nav-item {
       position: relative;
-      display: inline-block;
+      display: block;
       padding: 10px 22px;
       border: 1px solid var(--sandlight60);
       border-radius: 15px;
@@ -146,16 +120,20 @@
       letter-spacing: 0.04em;
       overflow: hidden;
       cursor: pointer;
-      transition: color 0.4s ease, border-color 0.4s ease;
+      text-align: center;
       white-space: nowrap;
-      background: transparent;
+      /* ── Blur leve ── */
+      background: rgba(81, 73, 70, 0.28);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: color 0.4s ease, border-color 0.4s ease, background 0.4s ease;
     }
 
     .nav-item::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: var(--sanddark);
+      background: rgba(124, 100, 84, 0.75);
       transform: translateX(-101%);
       transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
       border-radius: 15px;
@@ -165,9 +143,9 @@
     .nav-item span {
       position: relative;
       z-index: 1;
-      transition: font-weight 0.35s, color 0.35s;
       font-family: 'Albert Sans', sans-serif;
       font-weight: 400;
+      transition: font-weight 0.35s, color 0.35s;
     }
 
     .nav-item:hover::before {
@@ -179,34 +157,54 @@
       color: var(--white);
     }
 
+    /* ─── MENÚ ESCRITORIO ────────────────────────────────────────── */
+    .header-menu {
+      position: fixed;
+      top: 70%;
+      left: 10%;
+      transform: translate(-50%, -50%);
+      z-index: 30;
+      pointer-events: auto;
+      width: auto;
+    }
+
+    .nav-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;       /* todos al mismo ancho */
+      gap: 16px;
+      width: 220px;               /* ancho fijo → botones iguales */
+    }
+
+    /* ─── MENÚ MÓVIL: oculto en escritorio ───────────────────────── */
     .mobile-menu-container {
       display: none;
     }
 
+    /* ─── RESPONSIVE MÓVIL ───────────────────────────────────────── */
     @media (max-width: 768px) {
-      .mobile-menu-container{
-        display: block;
-      }
-      /* Ocultamos el menú tradicional */
+
+      /* Ocultamos menú escritorio */
       .header-menu {
         display: none;
       }
 
-      /* Nuevo contenedor del menú móvil */
+      /* Contenedor del botón hamburguesa — siempre encima */
       .mobile-menu-container {
+        display: block;
         position: fixed;
         top: 20px;
         right: 20px;
-        z-index: 40;
+        z-index: 50;              /* ← por encima de todo */
         pointer-events: auto;
       }
 
-      /* Botón hamburguesa */
+      /* ── Botón hamburguesa ── */
       .hamburger {
+        position: relative;
+        z-index: 51;              /* ← por encima del panel */
         width: 48px;
         height: 48px;
-        background: rgba(124, 100, 84, 0.85);
-        backdrop-filter: blur(8px);
         border-radius: 30px;
         display: flex;
         flex-direction: column;
@@ -214,7 +212,6 @@
         align-items: center;
         gap: 6px;
         cursor: pointer;
-        border: 1px solid var(--sandlight60);
         transition: all 0.3s ease;
       }
 
@@ -227,61 +224,63 @@
         border-radius: 2px;
       }
 
-      /* Animación a X cuando está activo */
       .hamburger.active span:nth-child(1) {
         transform: translateY(8px) rotate(45deg);
       }
-
       .hamburger.active span:nth-child(2) {
         opacity: 0;
       }
-
       .hamburger.active span:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
       }
 
-      /* Panel desplegable */
+      /* ── Panel del menú móvil ──
+         Centrado horizontalmente y posicionado debajo del logo (~30% desde arriba).
+         La animación usa translateX para entrar desde la derecha
+         combinada con el centrado horizontal. */
       .mobile-nav {
         position: fixed;
-        top: 80px;
-        right: 20px;
-        background: rgba(81, 73, 70, 0.92);
-        backdrop-filter: blur(12px);
-        border-radius: 24px;
-        padding: 20px;
+        /* Centrado horizontal */
+        left: 50%;
+        /* Debajo del logo (logo ocupa ~120px + padding-top 40px ≈ 30% en móvil) */
+        top: 42%;
+        /* Estado CERRADO: centrado + desplazado a la derecha fuera de pantalla */
+        transform: translate(-50%, -50%) translateX(120vw);
+        transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        /* Tamaño y forma */
+        border-radius: 20px;
+        padding: 24px 20px;       /* ← padding fijo, nunca porcentual */
         display: flex;
         flex-direction: column;
-        gap: 16px;
-        min-width: 200px;
-        transform: translateX(120%);
-        transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-        border: 1px solid var(--sandlight60);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-        z-index: 39;
+        gap: 14px;
+        width: 260px;             /* ancho fijo para móvil */
+        z-index: 49;              /* debajo del hamburger (51) */
+        pointer-events: none;     /* no intercepta clicks cuando está cerrado */
       }
 
+      /* Estado ABIERTO */
       .mobile-nav.open {
-        transform: translateX(0);
+        transform: translate(-50%, -50%) translateX(0);
+        pointer-events: auto;     /* reactiva clicks cuando está visible */
       }
 
+      /* Botones dentro del menú móvil */
       .mobile-nav .nav-item {
-        white-space: nowrap;
-        text-align: center;
         font-size: 15px;
-        padding: 12px 20px;
-        border: 1px solid var(--sandlight60);
-        background: transparent;
+        padding: 13px 20px;
         width: 100%;
-        display: block;
+        border: 1px solid var(--sandlight60);
+        background: rgba(81, 73, 70, 0.38);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
       }
 
-      /* Ajuste para que el contenido debajo no se solape */
       .demo-section {
         padding-top: 6rem;
       }
     }
 
-    /* Scroll hint (flecha) */
+    /* ─── SCROLL HINT ────────────────────────────────────────────── */
     .scroll-hint {
       position: absolute;
       bottom: 2rem;
@@ -314,30 +313,15 @@
       transform-origin: top;
     }
 
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
-    }
+    @keyframes fadeIn { to { opacity: 1; } }
 
     @keyframes scrollPulse {
-      0% {
-        transform: scaleY(1);
-        opacity: 0.7;
-      }
-
-      50% {
-        transform: scaleY(0.4);
-        opacity: 0.3;
-      }
-
-      100% {
-        transform: scaleY(1);
-        opacity: 0.7;
-      }
+      0%   { transform: scaleY(1);   opacity: 0.7; }
+      50%  { transform: scaleY(0.4); opacity: 0.3; }
+      100% { transform: scaleY(1);   opacity: 0.7; }
     }
 
-    /* Contenido de demostración */
+    /* ─── DEMO SECTION ───────────────────────────────────────────── */
     .demo-section {
       max-width: 760px;
       margin: 0 auto;
@@ -374,12 +358,11 @@
 <body>
 
   <header class="nidoum-header">
-    <!-- Capas parallax -->
     <div class="layer-fondo" id="layerFondo"></div>
     <div class="layer-casa" id="layerCasa"></div>
     <div class="layer-overlay"></div>
 
-    <!-- MENÚ ESCRITORIO (visible solo en pantallas grandes) -->
+    <!-- MENÚ ESCRITORIO -->
     <div class="header-menu">
       <div class="nav-wrap">
         <a class="nav-item"><span>Nosotros</span></a>
@@ -389,7 +372,7 @@
       </div>
     </div>
 
-    <!-- MENÚ MÓVIL (se añade con JS pero estructura HTML fija) -->
+    <!-- MENÚ MÓVIL -->
     <div class="mobile-menu-container">
       <div class="hamburger" id="hamburgerBtn">
         <span></span>
@@ -409,14 +392,13 @@
       <img src="https://nidoum.com/wp-content/uploads/2026/03/03.1B_9-Logo-Icon_Inv-Core@2x-1.png" alt="Nidoum Icon">
     </div>
 
-    <!-- Flecha scroll -->
+    <!-- Scroll hint -->
     <div class="scroll-hint">
       <span>Desliza</span>
       <div class="scroll-line"></div>
     </div>
   </header>
 
-  <!-- Contenido de ejemplo -->
   <section class="demo-section">
     <h2>Habitat Consciente</h2>
     <div class="divider"></div>
@@ -436,56 +418,54 @@
   </section>
 
   <script>
-    // 1. Parallax (sin cambios)
+    /* ── Parallax ── */
     const fondo = document.getElementById('layerFondo');
-    const casa = document.getElementById('layerCasa');
+    const casa  = document.getElementById('layerCasa');
     const SPEED_FONDO = 0.55;
-    const SPEED_CASA = -0.40;
+    const SPEED_CASA  = -0.40;
     let ticking = false;
 
     function updateParallax() {
       const scrollY = window.scrollY;
       fondo.style.transform = `translateY(${scrollY * SPEED_FONDO}px)`;
-      casa.style.transform = `translateY(${scrollY * SPEED_CASA}px)`;
+      casa.style.transform  = `translateY(${scrollY * SPEED_CASA}px)`;
       ticking = false;
     }
 
     window.addEventListener('scroll', () => {
-      if (!ticking) {
-        requestAnimationFrame(updateParallax);
-        ticking = true;
-      }
+      if (!ticking) { requestAnimationFrame(updateParallax); ticking = true; }
     }, { passive: true });
 
-    // 2. Menú hamburguesa (solo en móvil, pero el código JS funciona siempre sin afectar escritorio)
+    /* ── Menú hamburguesa ── */
     const hamburger = document.getElementById('hamburgerBtn');
     const mobileNav = document.getElementById('mobileNav');
 
-    if (hamburger && mobileNav) {
-      hamburger.addEventListener('click', (e) => {
-        e.stopPropagation();
-        hamburger.classList.toggle('active');
-        mobileNav.classList.toggle('open');
-      });
+    hamburger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = mobileNav.classList.contains('open');
+      hamburger.classList.toggle('active');
+      mobileNav.classList.toggle('open');
+    });
 
-      // Cerrar menú al hacer clic en un enlace
-      const navLinks = mobileNav.querySelectorAll('.nav-item');
-      navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          hamburger.classList.remove('active');
-          mobileNav.classList.remove('open');
-        });
+    /* Cerrar al hacer clic en un enlace */
+    mobileNav.querySelectorAll('.nav-item').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileNav.classList.remove('open');
       });
+    });
 
-      // Cerrar menú si se toca fuera (opcional)
-      document.addEventListener('click', (event) => {
-        if (!hamburger.contains(event.target) && !mobileNav.contains(event.target)) {
-          hamburger.classList.remove('active');
-          mobileNav.classList.remove('open');
-        }
-      });
-    }
+    /* Cerrar al tocar fuera del panel (NO del hamburger) */
+    document.addEventListener('click', (e) => {
+      if (
+        mobileNav.classList.contains('open') &&
+        !hamburger.contains(e.target) &&
+        !mobileNav.contains(e.target)
+      ) {
+        hamburger.classList.remove('active');
+        mobileNav.classList.remove('open');
+      }
+    });
   </script>
 </body>
-
 </html>
