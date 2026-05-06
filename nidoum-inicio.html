@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
@@ -439,10 +440,20 @@
 
     /* DEMO SECTION */
     .demo-section {
-      max-width: 760px;
+      max-width: 1000px;
       margin: 0 auto;
       padding: 7rem 2rem;
-      text-align: center;
+      display: flex;
+      align-items: flex-start;
+      gap: 2rem;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .demo-section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .demo-section h2 {
@@ -451,7 +462,9 @@
       font-size: clamp(1.5rem, 3vw, 2.2rem);
       color: var(--sandlight60);
       letter-spacing: 0.08em;
+      flex: 0 0 33%;
       margin-bottom: 1.2rem;
+      text-align: left;
     }
 
     .demo-section p {
@@ -459,6 +472,9 @@
       line-height: 1.85;
       color: var(--sandlight60);
       font-weight: 300;
+      flex: 1;
+      text-align: right;
+      padding-top: 0.4rem;
     }
 
     .divider {
@@ -525,25 +541,23 @@
     <h2>Qué es NIDOUM</h2>
     <div class="divider"></div>
     <p>
-      Espacios diseñados con intención, donde cada detalle convive en armonía
-      con el entorno natural. Nidoum nace de la convicción de que vivir bien
-      es vivir consciente.
+      Ecosistemas habitacionales conscientes que integran territorio, arquitectura, inversión y comunidad.
     </p>
   </section>
 
   <section class="demo-section">
-    <h2>Qué es NIDOUM</h2>
+    <h2>Nuestros Desarrollos </h2>
     <div class="divider"></div>
-    <p>Ecosistemas habitacionales conscientes que integran territorio, arquitectura, inversión y comunidad.</p>
+    <p>
+      Descubre cada proyecto, hábitats conscientes hechos realidad.
+    </p>
   </section>
 
   <section class="demo-section">
-    <h2>Qué es NIDOUM</h2>
+    <h2>Etapas</h2>
     <div class="divider"></div>
     <p>
-      Espacios diseñados con intención, donde cada detalle convive en armonía
-      con el entorno natural. Nidoum nace de la convicción de que vivir bien
-      es vivir consciente.
+      De la Tierra a la Cosecha: explora cómo desarrollamos cada ecosistema.
     </p>
   </section>
 
@@ -610,6 +624,20 @@
         menuOverlay.classList.remove('active');
       }
     });
+    /* ── Fade-in por scroll ── */
+    const sections = document.querySelectorAll('.demo-section');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible'); /* ← vuelve a ocultarse al salir */
+        }
+      });
+    }, { threshold: 0.15 });
+
+    sections.forEach(sec => observer.observe(sec));
   </script>
 </body>
 </html>
