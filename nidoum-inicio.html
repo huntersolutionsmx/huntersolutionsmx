@@ -73,33 +73,7 @@
       .layer-casa {
         background-image: url('https://nidoum.com/wp-content/uploads/2026/04/Nidoum-Headercasamovi.png');
       }
-    }
 
-    .layer-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(81, 73, 70, 0.08) 0%, rgba(81, 73, 70, 0.22) 100%);
-      pointer-events: none;
-    }
-
-    /* ─── LOGO ESQUINA ───────────────────────────────────────────── */
-    .site-logo {
-      position: absolute;
-      top: 13px;
-      left: 30px;
-      z-index: 31;
-      display: block;
-      line-height: 0;
-    }
-
-    .site-logo img {
-      height: 75px;
-      width: auto;
-      display: block;
-      filter: drop-shadow(0 1px 6px rgba(0, 0, 0, 0.2));
-    }
-
-    @media (max-width: 768px) {
       .site-logo {
         top: 20px;
         left: 20px;
@@ -108,82 +82,7 @@
       .site-logo img {
         height: 26px;
       }
-    }
 
-    /* ─── NAV ITEMS ──────────────────────────────────────────────── */
-    .nav-item {
-      position: relative;
-      display: block;
-      padding: 10px 22px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 15px;
-      font-family: 'Albert Sans', sans-serif;
-      font-weight: 400;
-      font-size: 13px;
-      color: var(--white);
-      text-decoration: none;
-      letter-spacing: 0.04em;
-      overflow: hidden;
-      cursor: pointer;
-      text-align: center;
-      white-space: nowrap;
-      background: rgba(255, 255, 255, 0.01);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      transition: color 0.4s ease, border-color 0.4s ease, background 0.4s ease;
-    }
-
-    .nav-item::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(124, 100, 84, 0.75);
-      transform: translateX(-101%);
-      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-      border-radius: 15px;
-      z-index: 0;
-    }
-
-    .nav-item span {
-      position: relative;
-      z-index: 1;
-      font-family: 'Albert Sans', sans-serif;
-      font-weight: 400;
-      transition: font-weight 0.35s, color 0.35s;
-    }
-
-    .nav-item:hover::before {
-      transform: translateX(0);
-    }
-
-    .nav-item:hover span {
-      font-weight: 500;
-      color: var(--white);
-    }
-
-    /* ─── MENÚ ESCRITORIO ────────────────────────────────────────── */
-    .header-menu {
-      position: absolute;
-      top: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 30;
-      pointer-events: auto;
-    }
-
-    .nav-wrap {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 16px;
-    }
-
-    /* ─── MENÚ MÓVIL ─────────────────────────────────────────────── */
-    .mobile-menu-container {
-      display: none;
-    }
-
-    @media (max-width: 768px) {
       .header-menu {
         display: none;
       }
@@ -299,6 +198,129 @@
       .mobile-nav .nav-item:hover::before {
         transform: translateX(0);
       }
+
+      .demo-section {
+        flex-direction: column;
+        padding: 4rem 1.5rem;
+        gap: 1.5rem;
+      }
+
+      .section-title {
+        flex: none;
+        width: 100%;
+        padding-right: 0;
+      }
+
+      .section-title h2 {
+        font-size: clamp(1.2rem, 5vw, 1.6rem);
+      }
+
+      .section-body {
+        flex: none;
+        width: 100%;
+        padding-top: 0;
+      }
+
+      .section-body p {
+        max-width: 100%;
+      }
+    }
+
+    .layer-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(81, 73, 70, 0.08) 0%, rgba(81, 73, 70, 0.22) 100%);
+      pointer-events: none;
+    }
+
+    /* ─── LOGO ESQUINA ───────────────────────────────────────────── */
+    .site-logo {
+      position: absolute;
+      top: 13px;
+      left: 30px;
+      z-index: 31;
+      display: block;
+      line-height: 0;
+    }
+
+    .site-logo img {
+      height: 75px;
+      width: auto;
+      display: block;
+      filter: drop-shadow(0 1px 6px rgba(0, 0, 0, 0.2));
+    }
+
+    /* ─── NAV ITEMS ──────────────────────────────────────────────── */
+    .nav-item {
+      position: relative;
+      display: block;
+      padding: 10px 22px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      font-family: 'Albert Sans', sans-serif;
+      font-weight: 400;
+      font-size: 13px;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      overflow: hidden;
+      cursor: pointer;
+      text-align: center;
+      white-space: nowrap;
+      background: rgba(255, 255, 255, 0.01);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: color 0.4s ease, border-color 0.4s ease, background 0.4s ease;
+    }
+
+    .nav-item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(124, 100, 84, 0.75);
+      transform: translateX(-101%);
+      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 15px;
+      z-index: 0;
+    }
+
+    .nav-item span {
+      position: relative;
+      z-index: 1;
+      font-family: 'Albert Sans', sans-serif;
+      font-weight: 400;
+      transition: font-weight 0.35s, color 0.35s;
+    }
+
+    .nav-item:hover::before {
+      transform: translateX(0);
+    }
+
+    .nav-item:hover span {
+      font-weight: 500;
+      color: var(--white);
+    }
+
+    /* ─── MENÚ ESCRITORIO ────────────────────────────────────────── */
+    .header-menu {
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 30;
+      pointer-events: auto;
+    }
+
+    .nav-wrap {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 16px;
+    }
+
+    /* ─── MENÚ MÓVIL ─────────────────────────────────────────────── */
+    .mobile-menu-container {
+      display: none;
     }
 
     /* ─── SCROLL HINT ────────────────────────────────────────────── */
@@ -414,35 +436,6 @@
       font-weight: 300;
       text-align: left;
       max-width: 600px;
-    }
-
-    /* ─── RESPONSIVE MÓVIL: apilado ─────────────────────────────── */
-    @media (max-width: 768px) {
-      .demo-section {
-        flex-direction: column;
-        padding: 4rem 1.5rem;
-        gap: 1.5rem;
-      }
-
-      .section-title {
-        flex: none;
-        width: 100%;
-        padding-right: 0;
-      }
-
-      .section-title h2 {
-        font-size: clamp(1.2rem, 5vw, 1.6rem);
-      }
-
-      .section-body {
-        flex: none;
-        width: 100%;
-        padding-top: 0;
-      }
-
-      .section-body p {
-        max-width: 100%;
-      }
     }
   </style>
 </head>
@@ -613,4 +606,5 @@
     });
   </script>
 </body>
+
 </html>
