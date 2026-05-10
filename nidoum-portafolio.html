@@ -26,7 +26,7 @@
       --ink: #2a2520;
       --muted: #6b6259;
       --accent: #8b7355;
-      --card-r: 28px;
+      --card-r: 15px;
     }
 
     body {
@@ -60,7 +60,6 @@
       will-change: transform;
     }
 
-    /* ── Card ── */
     .card {
       position: relative;
       flex-shrink: 0;
@@ -71,7 +70,6 @@
       cursor: pointer;
     }
 
-    /* photo layer */
     .card-photo {
       position: absolute;
       inset: 0;
@@ -96,7 +94,6 @@
       pointer-events: none;
     }
 
-    /* Desktop hover */
     @media (hover: hover) {
       .card:hover .card-overlay {
         opacity: 1;
@@ -116,7 +113,6 @@
       }
     }
 
-    /* Mobile tap — toggled via JS */
     .card.tapped .card-overlay {
       opacity: 1;
       pointer-events: auto;
@@ -134,7 +130,6 @@
       opacity: 0;
     }
 
-    /* status pill */
     .card-status {
       position: absolute;
       bottom: 24px;
@@ -154,7 +149,6 @@
       z-index: 1;
     }
 
-    /* card title on photo state */
     .card-title-photo {
       position: absolute;
       bottom: 60px;
@@ -169,7 +163,6 @@
       z-index: 1;
     }
 
-    /* overlay content */
     .overlay-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: 22px;
@@ -214,7 +207,6 @@
       color: rgba(255, 255, 255, 0.9);
     }
 
-    /* ── Nav arrows ── */
     .nav-arrows {
       display: flex;
       justify-content: center;
@@ -247,7 +239,6 @@
       height: 16px;
     }
 
-    /* ── Placeholder images ── */
     .photo-1 {
       background-image: url('img/nidoum/casavinedossma.jpg');
       filter: brightness(0.7);
@@ -288,7 +279,6 @@
       filter: brightness(0.7);
     }
 
-    /* ── Mobile ── */
     @media (max-width: 768px) {
       body {
         padding: 40px 0;
@@ -299,13 +289,12 @@
       }
 
       .card {
-        width: calc(100vw - 48px);
-        height: 480px;
-      }
-      .nav-arrows {
-        display: none;
+        height: 380px;
       }
     }
+    @media (hover: hover) {
+  .nav-arrows { display: none; }
+}
   </style>
 </head>
 
