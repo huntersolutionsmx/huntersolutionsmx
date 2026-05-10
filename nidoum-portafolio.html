@@ -19,35 +19,22 @@
     }
 
     :root {
-      --cream: #f5f2ed;
-      --sand: #e8e2d9;
-      --taupe: #c8bfb0;
-      --warm: #9e9185;
-      --ink: #2a2520;
-      --muted: #6b6259;
-      --accent: #8b7355;
+      --sandlight: #e6d6c7;
+      --sandlight60: rgba(248, 243, 238, 0.6);
+      --sandlight30: rgba(248, 243, 238, 0.3);
+      --sanddark: #7c6454;
+      --sandob: #514946;
+      --white: #ffffff;
+      --black: #000000;
       --card-r: 15px;
     }
 
-    body {
-      background: var(--cream);
-      /* font-family: 'DM Sans', sans-serif; */
-      color: var(--ink);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 60px 0;
-    }
-
-    /* ── Section wrapper ── */
     .section {
       width: 100%;
       max-width: 1600px;
       padding: 0 56px;
     }
 
-    /* ── Track ── */
     .track-outer {
       overflow: hidden;
       position: relative;
@@ -78,11 +65,10 @@
       transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
-    /* overlay (hidden by default) */
     .card-overlay {
       position: absolute;
       inset: 0;
-      background: rgba(35, 30, 25, 0.70);
+      background: rgba(81, 73, 70, 0.70);
       backdrop-filter: blur(2px);
       -webkit-backdrop-filter: blur(2px);
       display: flex;
@@ -135,16 +121,16 @@
       bottom: 24px;
       right: 24px;
       padding: 6px 14px;
-      border-radius: 100px;
-      background: rgba(255, 255, 255, 0.18);
-      backdrop-filter: blur(6px);
+      border-radius: var(--card-r);
+      background: rgba(255, 255, 255, 0.10);
+      backdrop-filter: blur(1px);
       -webkit-backdrop-filter: blur(6px);
-      border: 1px solid rgba(255, 255, 255, 0.25);
+      /* border: 1px solid rgba(255, 255, 255, 0.25); */
       font-size: 10px;
       font-weight: 500;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--cream);
+      color: var(--white);
       transition: opacity 0.4s ease;
       z-index: 1;
     }
@@ -218,20 +204,20 @@
       width: 44px;
       height: 44px;
       border-radius: 50%;
-      border: 1.5px solid var(--taupe);
+      border: 1.5px solid var(---sanddark);
       background: transparent;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--ink);
+      color: var(--black);
       transition: background 0.25s, border-color 0.25s, color 0.25s;
     }
 
     .arrow-btn:hover {
-      background: var(--ink);
-      border-color: var(--ink);
-      color: var(--cream);
+      background: var(--black);
+      border-color: var(--black);
+      color: var(--sandlight30);
     }
 
     .arrow-btn svg {
