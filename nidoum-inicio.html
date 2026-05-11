@@ -131,8 +131,14 @@
       transition: font-weight 0.35s, color 0.35s;
     }
 
-    .nav-item:hover::before { transform: translateX(0); }
-    .nav-item:hover span { font-weight: 500; color: var(--white); }
+    .nav-item:hover::before {
+      transform: translateX(0);
+    }
+
+    .nav-item:hover span {
+      font-weight: 500;
+      color: var(--white);
+    }
 
     /* ─── MENÚ ESCRITORIO ─────────────────────────────────────────── */
     .header-menu {
@@ -152,7 +158,9 @@
     }
 
     /* ─── MENÚ MÓVIL ──────────────────────────────────────────────── */
-    .mobile-menu-container { display: none; }
+    .mobile-menu-container {
+      display: none;
+    }
 
     /* ─── SCROLL HINT ─────────────────────────────────────────────── */
     .scroll-hint {
@@ -187,12 +195,27 @@
       transform-origin: top;
     }
 
-    @keyframes fadeIn { to { opacity: 1; } }
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
 
     @keyframes scrollPulse {
-      0%   { transform: scaleY(1);   opacity: 0.7; }
-      50%  { transform: scaleY(0.4); opacity: 0.3; }
-      100% { transform: scaleY(1);   opacity: 0.7; }
+      0% {
+        transform: scaleY(1);
+        opacity: 0.7;
+      }
+
+      50% {
+        transform: scaleY(0.4);
+        opacity: 0.3;
+      }
+
+      100% {
+        transform: scaleY(1);
+        opacity: 0.7;
+      }
     }
 
     /* ─── SECTIONS WRAP ───────────────────────────────────────────── */
@@ -311,16 +334,40 @@
     }
 
     @media (hover: hover) {
-      .card:hover .card-overlay     { opacity: 1; pointer-events: auto; }
-      .card:hover .card-photo       { transform: scale(1.04); }
-      .card:hover .card-title-photo { opacity: 0; }
-      .card:hover .card-status      { opacity: 0; }
+      .card:hover .card-overlay {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .card:hover .card-photo {
+        transform: scale(1.04);
+      }
+
+      .card:hover .card-title-photo {
+        opacity: 0;
+      }
+
+      .card:hover .card-status {
+        opacity: 0;
+      }
     }
 
-    .card.tapped .card-overlay     { opacity: 1; pointer-events: auto; }
-    .card.tapped .card-photo       { transform: scale(1.04); }
-    .card.tapped .card-title-photo { opacity: 0; }
-    .card.tapped .card-status      { opacity: 0; }
+    .card.tapped .card-overlay {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .card.tapped .card-photo {
+      transform: scale(1.04);
+    }
+
+    .card.tapped .card-title-photo {
+      opacity: 0;
+    }
+
+    .card.tapped .card-status {
+      opacity: 0;
+    }
 
     .card-status {
       position: absolute;
@@ -345,17 +392,17 @@
       bottom: 60px;
       left: 24px;
       right: 24px;
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Roboto Serif', serif;
       font-size: 22px;
       font-weight: 400;
-      color: #fff;
+      color: var(--white);
       line-height: 1.25;
       transition: opacity 0.4s ease;
       z-index: 1;
     }
 
     .overlay-title {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Albert Sans', sans-serif;
       font-size: 22px;
       font-weight: 400;
       color: #fff;
@@ -398,6 +445,29 @@
       color: rgba(255, 255, 255, 0.9);
     }
 
+    .overlay-btn {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 7px 16px;
+      border-radius: var(--card-r);
+      background: rgba(255, 255, 255, 0.10);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      transition: background 0.25s;
+    }
+
+    .overlay-btn:hover {
+      background: rgba(255, 255, 255, 0.22);
+    }
+
     /* ─── NAV ARROWS (carousel) ───────────────────────────────────── */
     .nav-arrows {
       display: flex;
@@ -426,22 +496,58 @@
       color: var(--sandob);
     }
 
-    .arrow-btn svg { width: 16px; height: 16px; }
+    .arrow-btn svg {
+      width: 16px;
+      height: 16px;
+    }
 
     /* Ocultar flechas en escritorio */
     @media (hover: hover) {
-      .nav-arrows { display: none; }
+      .nav-arrows {
+        display: none;
+      }
     }
 
     /* ─── FOTOS CARDS ─────────────────────────────────────────────── */
-    .photo-1 { background-image: url('img/nidoum/casavinedossma.jpg');  filter: brightness(0.7); }
-    .photo-2 { background-image: url('img/nidoum/casabeckhartsma.jpg'); filter: brightness(0.7); }
-    .photo-3 { background-image: url('img/nidoum/casapasaret.jpg');     filter: brightness(0.7); }
-    .photo-4 { background-image: url('img/nidoum/foto.JPG');            filter: brightness(0.7); }
-    .photo-5 { background-image: url('img/nidoum/foto.JPG');            filter: brightness(0.7); }
-    .photo-6 { background-image: url('img/nidoum/foto.JPG');            filter: brightness(0.7); }
-    .photo-7 { background-image: url('img/nidoum/foto.JPG');            filter: brightness(0.7); }
-    .photo-8 { background-image: url('img/nidoum/foto.JPG');            filter: brightness(0.7); }
+    .photo-1 {
+      background-image: url('img/nidoum/casavinedossma.jpg');
+      filter: brightness(0.7);
+    }
+
+    .photo-2 {
+      background-image: url('img/nidoum/casabeckhartsma.jpg');
+      filter: brightness(0.7);
+    }
+
+    .photo-3 {
+      background-image: url('img/nidoum/casapasaret.jpg');
+      filter: brightness(0.7);
+    }
+
+    .photo-4 {
+      background-image: url('img/nidoum/foto.JPG');
+      filter: brightness(0.7);
+    }
+
+    .photo-5 {
+      background-image: url('img/nidoum/foto.JPG');
+      filter: brightness(0.7);
+    }
+
+    .photo-6 {
+      background-image: url('img/nidoum/foto.JPG');
+      filter: brightness(0.7);
+    }
+
+    .photo-7 {
+      background-image: url('img/nidoum/foto.JPG');
+      filter: brightness(0.7);
+    }
+
+    .photo-8 {
+      background-image: url('img/nidoum/foto.JPG');
+      filter: brightness(0.7);
+    }
 
     /* ─── MÓVIL ───────────────────────────────────────────────────── */
     @media (max-width: 768px) {
@@ -453,10 +559,18 @@
         background-image: url('https://nidoum.com/wp-content/uploads/2026/04/Nidoum-Headercasamovi.png');
       }
 
-      .site-logo { top: 20px; left: 20px; }
-      .site-logo img { height: 26px; }
+      .site-logo {
+        top: 20px;
+        left: 20px;
+      }
 
-      .header-menu { display: none; }
+      .site-logo img {
+        height: 48px;
+      }
+
+      .header-menu {
+        display: none;
+      }
 
       .mobile-menu-container {
         display: block;
@@ -510,9 +624,17 @@
         border-radius: 2px;
       }
 
-      .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-      .hamburger.active span:nth-child(2) { opacity: 0; }
-      .hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+      .hamburger.active span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
 
       .mobile-nav {
         position: fixed;
@@ -558,7 +680,9 @@
         transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
-      .mobile-nav .nav-item:hover::before { transform: translateX(0); }
+      .mobile-nav .nav-item:hover::before {
+        transform: translateX(0);
+      }
 
       .demo-section {
         flex-direction: column;
@@ -572,7 +696,9 @@
         padding-right: 0;
       }
 
-      .section-title h2 { font-size: clamp(1.2rem, 5vw, 1.6rem); }
+      .section-title h2 {
+        font-size: clamp(1.2rem, 5vw, 1.6rem);
+      }
 
       .section-body {
         flex: none;
@@ -580,11 +706,18 @@
         padding-top: 0;
       }
 
-      .section-body p { max-width: 100%; }
+      .section-body p {
+        max-width: 100%;
+      }
 
       /* Carousel en móvil */
-      .portafolio-wrap { padding: 0 24px 4rem; }
-      .card { height: 380px; }
+      .portafolio-wrap {
+        padding: 0 24px 4rem;
+      }
+
+      .card {
+        height: 480px;
+      }
     }
   </style>
 </head>
@@ -666,13 +799,18 @@
             <span class="card-status">En desarrollo</span>
             <div class="card-overlay">
               <div class="overlay-title">Casa Viñedos SMA</div>
-              <div class="overlay-desc">Conjunto habitacional concebido como sistema modular. Cada unidad preserva su identidad dentro de un todo armónico.</div>
+              <div class="overlay-desc">Conjunto habitacional concebido como sistema modular. Cada unidad preserva su
+                identidad dentro de un todo armónico.</div>
               <div class="overlay-meta">
-                <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Desarrollo residencial escalable</span></div>
+                <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Desarrollo residencial
+                    escalable</span></div>
                 <div class="meta-row"><span class="meta-key">Ubicación</span><span class="meta-val">México</span></div>
-                <div class="meta-row"><span class="meta-key">Sistema</span><span class="meta-val">Modular repetible</span></div>
-                <div class="meta-row"><span class="meta-key">Etapa</span><span class="meta-val">En desarrollo</span></div>
+                <div class="meta-row"><span class="meta-key">Sistema</span><span class="meta-val">Modular
+                    repetible</span></div>
+                <div class="meta-row"><span class="meta-key">Etapa</span><span class="meta-val">En desarrollo</span>
+                </div>
               </div>
+              <a class="overlay-btn" href="#">Ver más información</a>
             </div>
           </div>
 
@@ -683,13 +821,17 @@
             <span class="card-status">Ejecutado</span>
             <div class="card-overlay">
               <div class="overlay-title">Casa Beckhart SMA</div>
-              <div class="overlay-desc">Vivienda flexible y adaptable, con construcción eficiente y ordenada. La repetición genera identidad.</div>
+              <div class="overlay-desc">Vivienda flexible y adaptable, con construcción eficiente y ordenada. La
+                repetición genera identidad.</div>
               <div class="overlay-meta">
-                <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Residencial (Unifamiliar)</span></div>
+                <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Residencial
+                    (Unifamiliar)</span></div>
                 <div class="meta-row"><span class="meta-key">Ubicación</span><span class="meta-val">México</span></div>
-                <div class="meta-row"><span class="meta-key">Sistema</span><span class="meta-val">Modular repetible</span></div>
+                <div class="meta-row"><span class="meta-key">Sistema</span><span class="meta-val">Modular
+                    repetible</span></div>
                 <div class="meta-row"><span class="meta-key">Etapa</span><span class="meta-val">Ejecutado</span></div>
               </div>
+              <a class="overlay-btn" href="#">Ver más información</a>
             </div>
           </div>
 
@@ -700,13 +842,17 @@
             <span class="card-status">Ejecutado</span>
             <div class="card-overlay">
               <div class="overlay-title">Casa Pásaret Sangre de Cristo</div>
-              <div class="overlay-desc">Arquitectura contenida; precisión técnica y detalle artesanal donde el espacio es protagonista.</div>
+              <div class="overlay-desc">Arquitectura contenida; precisión técnica y detalle artesanal donde el espacio
+                es protagonista.</div>
               <div class="overlay-meta">
-                <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Residencial (Unifamiliar)</span></div>
+                <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Residencial
+                    (Unifamiliar)</span></div>
                 <div class="meta-row"><span class="meta-key">Ubicación</span><span class="meta-val">México</span></div>
-                <div class="meta-row"><span class="meta-key">Sistema</span><span class="meta-val">Modular + Artesanal Controlado</span></div>
+                <div class="meta-row"><span class="meta-key">Sistema</span><span class="meta-val">Modular + Artesanal
+                    Controlado</span></div>
                 <div class="meta-row"><span class="meta-key">Etapa</span><span class="meta-val">Ejecutado</span></div>
               </div>
+              <a class="overlay-btn" href="#">Ver más información</a>
             </div>
           </div>
 
@@ -721,6 +867,7 @@
               <div class="overlay-meta">
                 <div class="meta-row"><span class="meta-key">Ubicación</span><span class="meta-val">México</span></div>
               </div>
+              <a class="overlay-btn" href="#">Ver más información</a>
             </div>
           </div>
 
@@ -735,6 +882,7 @@
               <div class="overlay-meta">
                 <div class="meta-row"><span class="meta-key">Ubicación</span><span class="meta-val">México</span></div>
               </div>
+              <a class="overlay-btn" href="#">Ver más información</a>
             </div>
           </div>
 
@@ -745,13 +893,17 @@
             <span class="card-status">Ejecutado</span>
             <div class="card-overlay">
               <div class="overlay-title">Palo Blanco Villas Resort</div>
-              <div class="overlay-desc">Centro residencial enfocado en el bienestar. Arquitectura y paisaje convergen en una experiencia de calma y conexión.</div>
+              <div class="overlay-desc">Centro residencial enfocado en el bienestar. Arquitectura y paisaje convergen en
+                una experiencia de calma y conexión.</div>
               <div class="overlay-meta">
-                <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Wellness Residencial (Uso Mixto)</span></div>
+                <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Wellness Residencial (Uso
+                    Mixto)</span></div>
                 <div class="meta-row"><span class="meta-key">Ubicación</span><span class="meta-val">México</span></div>
-                <div class="meta-row"><span class="meta-key">Sistema</span><span class="meta-val">Racionalizado</span></div>
+                <div class="meta-row"><span class="meta-key">Sistema</span><span class="meta-val">Racionalizado</span>
+                </div>
                 <div class="meta-row"><span class="meta-key">Etapa</span><span class="meta-val">Ejecutado</span></div>
               </div>
+              <a class="overlay-btn" href="#">Ver más información</a>
             </div>
           </div>
 
@@ -762,13 +914,17 @@
             <span class="card-status">Ejecutado</span>
             <div class="card-overlay">
               <div class="overlay-title">Casa Manana</div>
-              <div class="overlay-desc">Vivienda contemporánea que sintetiza claridad arquitectónica, eficiencia y adaptabilidad. Diseñada para habitar el entorno.</div>
+              <div class="overlay-desc">Vivienda contemporánea que sintetiza claridad arquitectónica, eficiencia y
+                adaptabilidad. Diseñada para habitar el entorno.</div>
               <div class="overlay-meta">
-                <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Residencial (Unifamiliar)</span></div>
+                <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Residencial
+                    (Unifamiliar)</span></div>
                 <div class="meta-row"><span class="meta-key">Ubicación</span><span class="meta-val">México</span></div>
-                <div class="meta-row"><span class="meta-key">Sistema</span><span class="meta-val">Modular Híbrido</span></div>
+                <div class="meta-row"><span class="meta-key">Sistema</span><span class="meta-val">Modular Híbrido</span>
+                </div>
                 <div class="meta-row"><span class="meta-key">Etapa</span><span class="meta-val">Ejecutado</span></div>
               </div>
+              <a class="overlay-btn" href="#">Ver más información</a>
             </div>
           </div>
 
@@ -779,13 +935,17 @@
             <span class="card-status">Ejecutado</span>
             <div class="card-overlay">
               <div class="overlay-title">Casa Aurora</div>
-              <div class="overlay-desc">Arquitectura clara que privilegia luz, proporción y estructura. Cada elemento justifica su presencia.</div>
+              <div class="overlay-desc">Arquitectura clara que privilegia luz, proporción y estructura. Cada elemento
+                justifica su presencia.</div>
               <div class="overlay-meta">
-                <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Residencial (Unifamiliar)</span></div>
+                <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Residencial
+                    (Unifamiliar)</span></div>
                 <div class="meta-row"><span class="meta-key">Ubicación</span><span class="meta-val">México</span></div>
-                <div class="meta-row"><span class="meta-key">Sistema</span><span class="meta-val">Modular racionalizado</span></div>
+                <div class="meta-row"><span class="meta-key">Sistema</span><span class="meta-val">Modular
+                    racionalizado</span></div>
                 <div class="meta-row"><span class="meta-key">Etapa</span><span class="meta-val">Ejecutado</span></div>
               </div>
+              <a class="overlay-btn" href="#">Ver más información</a>
             </div>
           </div>
 
@@ -794,13 +954,15 @@
 
       <div class="nav-arrows">
         <button class="arrow-btn" id="prevBtn" aria-label="Anterior">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="15 18 9 12 15 6"/>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+            stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6" />
           </svg>
         </button>
         <button class="arrow-btn" id="nextBtn" aria-label="Siguiente">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="9 18 15 12 9 6"/>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+            stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6" />
           </svg>
         </button>
       </div>
@@ -832,15 +994,15 @@
   <script>
     /* ─── PARALLAX ────────────────────────────────────────────────── */
     const fondo = document.getElementById('layerFondo');
-    const casa  = document.getElementById('layerCasa');
+    const casa = document.getElementById('layerCasa');
     const SPEED_FONDO = 0.2;
-    const SPEED_CASA  = -0.05;
+    const SPEED_CASA = -0.05;
     let ticking = false;
 
     function updateParallax() {
       const scrollY = window.scrollY;
       fondo.style.transform = `translateY(${scrollY * SPEED_FONDO}px)`;
-      casa.style.transform  = `translateY(${scrollY * SPEED_CASA}px)`;
+      casa.style.transform = `translateY(${scrollY * SPEED_CASA}px)`;
       ticking = false;
     }
 
@@ -864,8 +1026,8 @@
     animTargets.forEach(el => observer.observe(el));
 
     /* ─── MENÚ MÓVIL ──────────────────────────────────────────────── */
-    const hamburger   = document.getElementById('hamburgerBtn');
-    const mobileNav   = document.getElementById('mobileNav');
+    const hamburger = document.getElementById('hamburgerBtn');
+    const mobileNav = document.getElementById('mobileNav');
     const menuOverlay = document.getElementById('menuOverlay');
 
     hamburger.addEventListener('click', (e) => {
@@ -896,18 +1058,18 @@
     });
 
     /* ─── CAROUSEL ────────────────────────────────────────────────── */
-    const track   = document.getElementById('track');
-    const outer   = document.getElementById('trackOuter');
+    const track = document.getElementById('track');
+    const outer = document.getElementById('trackOuter');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
-    const cards   = Array.from(track.querySelectorAll('.card'));
-    const GAP     = 20;
-    const CARD_D  = 320;
-    let current   = 0;
+    const cards = Array.from(track.querySelectorAll('.card'));
+    const GAP = 20;
+    const CARD_D = 320;
+    let current = 0;
 
     const isTouch = () => window.matchMedia('(hover: none) and (pointer: coarse)').matches;
 
-    function cardW()    { return isTouch() ? outer.offsetWidth : CARD_D; }
+    function cardW() { return isTouch() ? outer.offsetWidth : CARD_D; }
     function stepSize() { return cardW() + GAP; }
 
     function maxIdx() {
@@ -921,10 +1083,18 @@
       track.style.transform = `translateX(-${current * stepSize()}px)`;
     }
 
+    function sizeMobileCards() {
+      if (!isTouch()) return;
+      cards.forEach(c => c.style.width = outer.offsetWidth + 'px');
+    }
+    sizeMobileCards();
     prevBtn.addEventListener('click', () => goTo(current - 1));
     nextBtn.addEventListener('click', () => goTo(current + 1));
 
-    window.addEventListener('resize', () => goTo(Math.min(current, maxIdx())));
+    window.addEventListener('resize', () => {
+      sizeMobileCards();
+      goTo(Math.min(current, maxIdx()));
+    });
 
     /* Wheel / trackpad */
     let accumulated = 0;
@@ -932,8 +1102,8 @@
       e.preventDefault();
       const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
       accumulated += delta;
-      if (accumulated > 80)  { goTo(current + 1); accumulated = 0; }
-      else if (accumulated < -80) { goTo(current - 1); accumulated = 0; }
+      if (accumulated > 250) { goTo(current + 1); accumulated = 0; }
+      else if (accumulated < -150) { goTo(current - 1); accumulated = 0; }
     }, { passive: false });
 
     /* Desktop drag */
