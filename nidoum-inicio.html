@@ -814,7 +814,6 @@
 
   <!-- qué es nidoum -->
   <div class="sections-wrap">
-
     <section class="demo-section">
       <div class="section-title">
         <h2>Qué es NIDOUM</h2>
@@ -824,6 +823,7 @@
           <div class="track-outer" id="trackOuterAbout">
             <div class="track" id="trackAbout">
 
+              <!-- tarjeta de texto -->
               <div class="nidoum-tarjeta-text nidoum-tarjeta-text p tarjeta">
                 <div>
                   <p>Ecosistemas habitacionales conscientes que integran territorio, arquitectura, inversión y
@@ -879,7 +879,7 @@
     </section>
   </div>
 
-
+  <!-- nuestros desarrollos -->
   <section class="demo-section">
     <div class="section-title">
       <h2>Nuestros Desarrollos</h2>
@@ -890,7 +890,7 @@
     </div>
   </section>
 
-  <!-- desarrollos -->
+  <!-- tarjetas desarrollos -->
   <div class="portafolio-wrap">
 
     <div class="track-outer" id="trackOuter">
@@ -1073,6 +1073,7 @@
 
   </div><!-- /portafolio-wrap -->
 
+  <!-- etapas -->
   <section class="demo-section">
     <div class="section-title">
       <h2>Etapas</h2>
@@ -1082,6 +1083,112 @@
         proceso desde la visión hasta la entrega de un habitat completo y vivo.</p>
     </div>
   </section>
+
+  <!-- tarjetas etapas  -->
+  <div class="portafolio-wrap">
+
+    <div class="track-outer" id="trackOuterEtapas">
+      <div class="track" id="trackEtapas">
+
+        <!-- tarjeta de texto -->
+        <div class="nidoum-tarjeta-text nidoum-tarjeta-text p tarjeta">
+          <div>
+            <p>Ecosistemas habitacionales conscientes que integran territorio, arquitectura, inversión y
+              comunidad.
+              Un modelo de desarrollo que nace del respeto profundo por la tierra y por quienes la habitan.
+            </p>
+          </div>
+        </div>
+
+        <!-- tarjeta de texto -->
+        <div class="nidoum-tarjeta-text nidoum-tarjeta-text p tarjeta">
+          <div>
+            <p>Ecosistemas habitacionales conscientes que integran territorio, arquitectura, inversión y
+              comunidad.
+              Un modelo de desarrollo que nace del respeto profundo por la tierra y por quienes la habitan.
+            </p>
+          </div>
+        </div>
+
+        <!-- tarjeta de texto -->
+        <div class="nidoum-tarjeta-text nidoum-tarjeta-text p tarjeta">
+          <div>
+            <p>Ecosistemas habitacionales conscientes que integran territorio, arquitectura, inversión y
+              comunidad.
+              Un modelo de desarrollo que nace del respeto profundo por la tierra y por quienes la habitan.
+            </p>
+          </div>
+        </div>
+
+        <!-- tarjeta de texto -->
+        <div class="nidoum-tarjeta-text nidoum-tarjeta-text p tarjeta">
+          <div>
+            <p>Ecosistemas habitacionales conscientes que integran territorio, arquitectura, inversión y
+              comunidad.
+              Un modelo de desarrollo que nace del respeto profundo por la tierra y por quienes la habitan.
+            </p>
+          </div>
+        </div>
+
+        <!-- tarjeta de texto -->
+        <div class="nidoum-tarjeta-text nidoum-tarjeta-text p tarjeta">
+          <div>
+            <p>Ecosistemas habitacionales conscientes que integran territorio, arquitectura, inversión y
+              comunidad.
+              Un modelo de desarrollo que nace del respeto profundo por la tierra y por quienes la habitan.
+            </p>
+          </div>
+        </div>
+
+        <!-- tarjeta de texto -->
+        <div class="nidoum-tarjeta-text nidoum-tarjeta-text p tarjeta">
+          <div>
+            <p>Ecosistemas habitacionales conscientes que integran territorio, arquitectura, inversión y
+              comunidad.
+              Un modelo de desarrollo que nace del respeto profundo por la tierra y por quienes la habitan.
+            </p>
+          </div>
+        </div>
+
+        <!-- tarjeta de texto -->
+        <div class="nidoum-tarjeta-text nidoum-tarjeta-text p tarjeta">
+          <div>
+            <p>Ecosistemas habitacionales conscientes que integran territorio, arquitectura, inversión y
+              comunidad.
+              Un modelo de desarrollo que nace del respeto profundo por la tierra y por quienes la habitan.
+            </p>
+          </div>
+        </div>
+
+        <!-- tarjeta de texto -->
+        <div class="nidoum-tarjeta-text nidoum-tarjeta-text p tarjeta">
+          <div>
+            <p>Ecosistemas habitacionales conscientes que integran territorio, arquitectura, inversión y
+              comunidad.
+              Un modelo de desarrollo que nace del respeto profundo por la tierra y por quienes la habitan.
+            </p>
+          </div>
+        </div>
+
+      </div><!-- /track -->
+    </div><!-- /track-outer -->
+
+    <div class="nav-arrows">
+      <button class="arrow-btn" id="prevBtnEtapas" aria-label="Anterior">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+          stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6" />
+        </svg>
+      </button>
+      <button class="arrow-btn" id="nextBtnEtapas" aria-label="Siguiente">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+          stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6" />
+        </svg>
+      </button>
+    </div>
+
+  </div><!-- /portafolio-wrap -->
 
   <section class="demo-section">
     <div class="section-title">
@@ -1332,6 +1439,80 @@
       const dx = e.changedTouches[0].clientX - touchX0About;
       if (movedAbout && Math.abs(dx) > 40) {
         goToAbout(currentAbout + (dx < 0 ? 1 : -1));
+      }
+    });
+    /* ─── CAROUSEL ETAPAS ─────────────────────────────────────── */
+    const trackEtapas = document.getElementById('trackEtapas');
+    const outerEtapas = document.getElementById('trackOuterEtapas');
+    const prevBtnEtapas = document.getElementById('prevBtnEtapas');
+    const nextBtnEtapas = document.getElementById('nextBtnEtapas');
+    const tarjetasEtapas = Array.from(trackEtapas.querySelectorAll('.tarjeta'));
+    let currentEtapas = 0;
+
+    function stepSizeEtapas() { return (isTouch() ? outerEtapas.offsetWidth : tarjeta_D) + GAP; }
+
+    function maxIdxEtapas() {
+      if (isTouch()) return tarjetasEtapas.length - 1;
+      const visible = Math.floor((outerEtapas.offsetWidth + GAP) / stepSizeEtapas());
+      return Math.max(0, tarjetasEtapas.length - visible);
+    }
+
+    function goToEtapas(idx) {
+      currentEtapas = Math.max(0, Math.min(idx, maxIdxEtapas()));
+      trackEtapas.style.transform = `translateX(-${currentEtapas * stepSizeEtapas()}px)`;
+    }
+
+    function sizeMobiletarjetasEtapas() {
+      if (!isTouch()) return;
+      tarjetasEtapas.forEach(c => c.style.width = outerEtapas.offsetWidth + 'px');
+    }
+    sizeMobiletarjetasEtapas();
+
+    prevBtnEtapas.addEventListener('click', () => goToEtapas(currentEtapas - 1));
+    nextBtnEtapas.addEventListener('click', () => goToEtapas(currentEtapas + 1));
+
+    window.addEventListener('resize', () => {
+      sizeMobiletarjetasEtapas();
+      goToEtapas(Math.min(currentEtapas, maxIdxEtapas()));
+    });
+
+    let accumulatedEtapas = 0;
+    outerEtapas.addEventListener('wheel', e => {
+      if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+      e.preventDefault();
+      accumulatedEtapas += e.deltaX;
+      if (accumulatedEtapas > 250) { goToEtapas(currentEtapas + 1); accumulatedEtapas = 0; }
+      else if (accumulatedEtapas < -150) { goToEtapas(currentEtapas - 1); accumulatedEtapas = 0; }
+    }, { passive: false });
+
+    let dragXEtapas = 0, draggingEtapas = false;
+    trackEtapas.addEventListener('mousedown', e => {
+      if (isTouch()) return;
+      draggingEtapas = true;
+      dragXEtapas = e.clientX;
+      trackEtapas.style.transition = 'none';
+    });
+    document.addEventListener('mouseup', e => {
+      if (!draggingEtapas) return;
+      draggingEtapas = false;
+      trackEtapas.style.transition = '';
+      const dx = e.clientX - dragXEtapas;
+      goToEtapas(currentEtapas + (Math.abs(dx) > 40 ? (dx < 0 ? 1 : -1) : 0));
+    });
+
+    let touchX0Etapas = 0, movedEtapas = false;
+    trackEtapas.addEventListener('touchstart', e => {
+      touchX0Etapas = e.touches[0].clientX;
+      movedEtapas = false;
+    }, { passive: true });
+    trackEtapas.addEventListener('touchmove', e => {
+      if (Math.abs(e.touches[0].clientX - touchX0Etapas) > 6) movedEtapas = true;
+    }, { passive: true });
+    trackEtapas.addEventListener('touchend', e => {
+      if (!isTouch()) return;
+      const dx = e.changedTouches[0].clientX - touchX0Etapas;
+      if (movedEtapas && Math.abs(dx) > 40) {
+        goToEtapas(currentEtapas + (dx < 0 ? 1 : -1));
       }
     });
   </script>
