@@ -1311,11 +1311,11 @@
     let accumulated = 0;
     outer.addEventListener('wheel', e => {
       if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
-      e.preventDefault();
+      
       accumulated += e.deltaX;
       if (accumulated > 250) { goTo(current + 1); accumulated = 0; }
       else if (accumulated < -150) { goTo(current - 1); accumulated = 0; }
-    }, { passive: false });
+    }, { passive: true});
 
     /* Desktop drag */
     let dragX = 0, dragging = false;
@@ -1405,11 +1405,11 @@
     let accumulatedAbout = 0;
     outerAbout.addEventListener('wheel', e => {
       if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
-      e.preventDefault();
+      
       accumulatedAbout += e.deltaX;
       if (accumulatedAbout > 250) { goToAbout(currentAbout + 1); accumulatedAbout = 0; }
       else if (accumulatedAbout < -150) { goToAbout(currentAbout - 1); accumulatedAbout = 0; }
-    }, { passive: false });
+    }, { passive: true});
 
     let dragXAbout = 0, draggingAbout = false;
     trackAbout.addEventListener('mousedown', e => {
@@ -1479,11 +1479,11 @@
     let accumulatedEtapas = 0;
     outerEtapas.addEventListener('wheel', e => {
       if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
-      e.preventDefault();
+      
       accumulatedEtapas += e.deltaX;
       if (accumulatedEtapas > 250) { goToEtapas(currentEtapas + 1); accumulatedEtapas = 0; }
       else if (accumulatedEtapas < -150) { goToEtapas(currentEtapas - 1); accumulatedEtapas = 0; }
-    }, { passive: false });
+    }, { passive: true});
 
     let dragXEtapas = 0, draggingEtapas = false;
     trackEtapas.addEventListener('mousedown', e => {
