@@ -819,8 +819,8 @@
       </div>
       <div class="section-body">
         <div class="portafolio-wrap" style="padding: 0 0 0 0; max-width: 100%;">
-          <div class="track-outer" id="trackOuterAbout">
-            <div class="track" id="trackAbout">
+          <div class="track-outer" id="trackOuter">
+            <div class="track" id="track">
 
               <!-- tarjeta de texto -->
               <div class="nidoum-tarjeta-text tarjeta">
@@ -859,14 +859,14 @@
             </div>
           </div>
 
-          <div class="nav-arrows" id="navArrowsAbout">
-            <button class="arrow-btn" id="prevBtnAbout" aria-label="Anterior">
+          <div class="nav-arrows" id="navArrows">
+            <button class="arrow-btn" id="prevBtn" aria-label="Anterior">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
                 stroke-linejoin="round">
                 <polyline points="15 18 9 12 15 6" />
               </svg>
             </button>
-            <button class="arrow-btn" id="nextBtnAbout" aria-label="Siguiente">
+            <button class="arrow-btn" id="nextBtn" aria-label="Siguiente">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
                 stroke-linejoin="round">
                 <polyline points="9 18 15 12 9 6" />
@@ -1086,8 +1086,8 @@
   <!-- tarjetas etapas  -->
   <div class="portafolio-wrap">
 
-    <div class="track-outer" id="trackOuterEtapas">
-      <div class="track" id="trackEtapas">
+    <div class="track-outer" id="trackOuter">
+      <div class="track" id="track">
 
         <!-- tarjeta de texto -->
         <div class="nidoum-tarjeta-text tarjeta">
@@ -1173,13 +1173,13 @@
     </div><!-- /track-outer -->
 
     <div class="nav-arrows">
-      <button class="arrow-btn" id="prevBtnEtapas" aria-label="Anterior">
+      <button class="arrow-btn" id="prevBtn" aria-label="Anterior">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
           stroke-linejoin="round">
           <polyline points="15 18 9 12 15 6" />
         </svg>
       </button>
-      <button class="arrow-btn" id="nextBtnEtapas" aria-label="Siguiente">
+      <button class="arrow-btn" id="nextBtn" aria-label="Siguiente">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
           stroke-linejoin="round">
           <polyline points="9 18 15 12 9 6" />
@@ -1364,155 +1364,6 @@
         const alreadyOpen = tappedtarjeta.classList.contains('tapped');
         tarjetas.forEach(c => c.classList.remove('tapped'));
         if (!alreadyOpen) tappedtarjeta.classList.add('tapped');
-      }
-    });
-    /* ─── CAROUSEL ABOUT ──────────────────────────────────────────── */
-    const trackAbout = document.getElementById('trackAbout');
-    const outerAbout = document.getElementById('trackOuterAbout');
-    const prevBtnAbout = document.getElementById('prevBtnAbout');
-    const nextBtnAbout = document.getElementById('nextBtnAbout');
-    const tarjetasAbout = Array.from(trackAbout.querySelectorAll('.tarjeta'));
-    let currentAbout = 0;
-
-    function goToAbout(idx) {
-      currentAbout = Math.max(0, Math.min(idx, maxIdxAbout()));
-      trackAbout.style.transform = `translateX(-${currentAbout * stepSizeAbout()}px)`;
-    }
-
-    function stepSizeAbout() { return (isTouch() ? outerAbout.offsetWidth : tarjeta_D) + GAP; }
-
-    function maxIdxAbout() {
-      if (isTouch()) return tarjetasAbout.length - 1;
-      const visible = Math.floor((outerAbout.offsetWidth + GAP) / stepSizeAbout());
-      return Math.max(0, tarjetasAbout.length - visible);
-    }
-
-    function sizeMobiletarjetasAbout() {
-      if (!isTouch()) return;
-      tarjetasAbout.forEach(c => c.style.width = outerAbout.offsetWidth + 'px');
-    }
-    sizeMobiletarjetasAbout();
-
-    prevBtnAbout.addEventListener('click', () => goToAbout(currentAbout - 1));
-    nextBtnAbout.addEventListener('click', () => goToAbout(currentAbout + 1));
-
-    window.addEventListener('resize', () => {
-      sizeMobiletarjetasAbout();
-      goToAbout(Math.min(currentAbout, maxIdxAbout()));
-    });
-
-    let accumulatedAbout = 0;
-    outerAbout.addEventListener('wheel', e => {
-      if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) { accumulatedAbout = 0; return; }
-
-      accumulatedAbout += e.deltaX;
-      if (accumulatedAbout > 250) { goToAbout(currentAbout + 1); accumulatedAbout = 0; }
-      else if (accumulatedAbout < -150) { goToAbout(currentAbout - 1); accumulatedAbout = 0; }
-    }, { passive: true });
-
-    let dragXAbout = 0, draggingAbout = false;
-    trackAbout.addEventListener('mousedown', e => {
-      if (isTouch()) return;
-      draggingAbout = true;
-      dragXAbout = e.clientX;
-      trackAbout.style.transition = 'none';
-    });
-    document.addEventListener('mouseup', e => {
-      if (!draggingAbout) return;
-      draggingAbout = false;
-      trackAbout.style.transition = '';
-      const dx = e.clientX - dragXAbout;
-      goToAbout(currentAbout + (Math.abs(dx) > 40 ? (dx < 0 ? 1 : -1) : 0));
-    });
-
-    let touchX0About = 0, movedAbout = false;
-    trackAbout.addEventListener('touchstart', e => {
-      touchX0About = e.touches[0].clientX;
-      movedAbout = false;
-    }, { passive: true });
-
-    trackAbout.addEventListener('touchmove', e => {
-      if (Math.abs(e.touches[0].clientX - touchX0About) > 6) movedAbout = true;
-    }, { passive: true });
-    trackAbout.addEventListener('touchend', e => {
-      if (!isTouch()) return;
-      const dx = e.changedTouches[0].clientX - touchX0About;
-      if (movedAbout && Math.abs(dx) > 40) {
-        goToAbout(currentAbout + (dx < 0 ? 1 : -1));
-      }
-    });
-    /* ─── CAROUSEL ETAPAS ─────────────────────────────────────── */
-    const trackEtapas = document.getElementById('trackEtapas');
-    const outerEtapas = document.getElementById('trackOuterEtapas');
-    const prevBtnEtapas = document.getElementById('prevBtnEtapas');
-    const nextBtnEtapas = document.getElementById('nextBtnEtapas');
-    const tarjetasEtapas = Array.from(trackEtapas.querySelectorAll('.tarjeta'));
-    let currentEtapas = 0;
-
-    function stepSizeEtapas() { return (isTouch() ? outerEtapas.offsetWidth : tarjeta_D) + GAP; }
-
-    function maxIdxEtapas() {
-      if (isTouch()) return tarjetasEtapas.length - 1;
-      const visible = Math.floor((outerEtapas.offsetWidth + GAP) / stepSizeEtapas());
-      return Math.max(0, tarjetasEtapas.length - visible);
-    }
-
-    function goToEtapas(idx) {
-      currentEtapas = Math.max(0, Math.min(idx, maxIdxEtapas()));
-      trackEtapas.style.transform = `translateX(-${currentEtapas * stepSizeEtapas()}px)`;
-    }
-
-    function sizeMobiletarjetasEtapas() {
-      if (!isTouch()) return;
-      tarjetasEtapas.forEach(c => c.style.width = outerEtapas.offsetWidth + 'px');
-    }
-    sizeMobiletarjetasEtapas();
-
-    prevBtnEtapas.addEventListener('click', () => goToEtapas(currentEtapas - 1));
-    nextBtnEtapas.addEventListener('click', () => goToEtapas(currentEtapas + 1));
-
-    window.addEventListener('resize', () => {
-      sizeMobiletarjetasEtapas();
-      goToEtapas(Math.min(currentEtapas, maxIdxEtapas()));
-    });
-
-    let accumulatedEtapas = 0;
-    outerEtapas.addEventListener('wheel', e => {
-      if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) { accumulatedEtapas = 0; return; }
-
-      accumulatedEtapas += e.deltaX;
-      if (accumulatedEtapas > 250) { goToEtapas(currentEtapas + 1); accumulatedEtapas = 0; }
-      else if (accumulatedEtapas < -150) { goToEtapas(currentEtapas - 1); accumulatedEtapas = 0; }
-    }, { passive: true });
-
-    let dragXEtapas = 0, draggingEtapas = false;
-    trackEtapas.addEventListener('mousedown', e => {
-      if (isTouch()) return;
-      draggingEtapas = true;
-      dragXEtapas = e.clientX;
-      trackEtapas.style.transition = 'none';
-    });
-    document.addEventListener('mouseup', e => {
-      if (!draggingEtapas) return;
-      draggingEtapas = false;
-      trackEtapas.style.transition = '';
-      const dx = e.clientX - dragXEtapas;
-      goToEtapas(currentEtapas + (Math.abs(dx) > 40 ? (dx < 0 ? 1 : -1) : 0));
-    });
-
-    let touchX0Etapas = 0, movedEtapas = false;
-    trackEtapas.addEventListener('touchstart', e => {
-      touchX0Etapas = e.touches[0].clientX;
-      movedEtapas = false;
-    }, { passive: true });
-    trackEtapas.addEventListener('touchmove', e => {
-      if (Math.abs(e.touches[0].clientX - touchX0Etapas) > 6) movedEtapas = true;
-    }, { passive: true });
-    trackEtapas.addEventListener('touchend', e => {
-      if (!isTouch()) return;
-      const dx = e.changedTouches[0].clientX - touchX0Etapas;
-      if (movedEtapas && Math.abs(dx) > 40) {
-        goToEtapas(currentEtapas + (dx < 0 ? 1 : -1));
       }
     });
   </script>
