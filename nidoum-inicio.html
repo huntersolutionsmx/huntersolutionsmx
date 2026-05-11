@@ -295,8 +295,6 @@
       overflow: hidden;
       position: relative;
       width: 100%;
-      touch-action: pan-y;
-
     }
 
     .track {
@@ -482,7 +480,7 @@
       height: 550px;
       border-radius: var(--tarjeta-r);
       flex-shrink: 0;
-      
+
     }
 
     .nidoum-tarjeta-text p {
@@ -892,8 +890,8 @@
   <!-- tarjetas desarrollos -->
   <div class="portafolio-wrap">
 
-    <div class="track-outer" id="trackOuter">
-      <div class="track" id="track">
+    <div class="track-outer" id="trackOuterDesarrollos">
+      <div class="track" id="trackDesarrollos">
 
         <!-- 01 Casa Viñedos SMA -->
         <div class="tarjeta">
@@ -1056,13 +1054,13 @@
     </div><!-- /track-outer -->
 
     <div class="nav-arrows">
-      <button class="arrow-btn" id="prevBtn" aria-label="Anterior">
+      <button class="arrow-btn" id="prevBtnDesarrollos" aria-label="Anterior">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
           stroke-linejoin="round">
           <polyline points="15 18 9 12 15 6" />
         </svg>
       </button>
-      <button class="arrow-btn" id="nextBtn" aria-label="Siguiente">
+      <button class="arrow-btn" id="nextBtnDesarrollos" aria-label="Siguiente">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
           stroke-linejoin="round">
           <polyline points="9 18 15 12 9 6" />
@@ -1086,8 +1084,8 @@
   <!-- tarjetas etapas  -->
   <div class="portafolio-wrap">
 
-    <div class="track-outer" id="trackOuter">
-      <div class="track" id="track">
+    <div class="track-outer" id="trackOuterEtapas">
+      <div class="track" id="trackEtapas">
 
         <!-- tarjeta de texto -->
         <div class="nidoum-tarjeta-text tarjeta">
@@ -1173,13 +1171,13 @@
     </div><!-- /track-outer -->
 
     <div class="nav-arrows">
-      <button class="arrow-btn" id="prevBtn" aria-label="Anterior">
+      <button class="arrow-btn" id="prevBtnEtapas" aria-label="Anterior">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
           stroke-linejoin="round">
           <polyline points="15 18 9 12 15 6" />
         </svg>
       </button>
-      <button class="arrow-btn" id="nextBtn" aria-label="Siguiente">
+      <button class="arrow-btn" id="nextBtnEtapas" aria-label="Siguiente">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
           stroke-linejoin="round">
           <polyline points="9 18 15 12 9 6" />
@@ -1366,6 +1364,61 @@
         if (!alreadyOpen) tappedtarjeta.classList.add('tapped');
       }
     });
+    /* ─── CAROUSEL DESARROLLOS ───────────────────────────────────── */
+    function makeCarousel(trackId, outerId, prevId, nextId) {
+      const tr = document.getElementById(trackId);
+      const ou = document.getElementById(outerId);
+      const pv = document.getElementById(prevId);
+      const nx = document.getElementById(nextId);
+      if (!tr || !ou) return;
+      const items = Array.from(tr.querySelectorAll('.tarjeta'));
+      let cur = 0;
+      let acc = 0;
+
+      function step() { return (isTouch() ? ou.offsetWidth : tarjeta_D) + GAP; }
+      function maxI() {
+        if (isTouch()) return items.length - 1;
+        return Math.max(0, items.length - Math.floor((ou.offsetWidth + GAP) / step()));
+      }
+      function go(idx) {
+        cur = Math.max(0, Math.min(idx, maxI()));
+        tr.style.transform = `translateX(-${cur * step()}px)`;
+      }
+      function sizeM() {
+        if (!isTouch()) return;
+        items.forEach(c => c.style.width = ou.offsetWidth + 'px');
+      }
+      sizeM();
+      if (pv) pv.addEventListener('click', () => go(cur - 1));
+      if (nx) nx.addEventListener('click', () => go(cur + 1));
+      window.addEventListener('resize', () => { sizeM(); go(Math.min(cur, maxI())); });
+
+      ou.addEventListener('wheel', e => {
+        if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) { acc = 0; return; }
+        acc += e.deltaX;
+        if (acc > 250) { go(cur + 1); acc = 0; }
+        else if (acc < -150) { go(cur - 1); acc = 0; }
+      }, { passive: true });
+
+      let dx0 = 0, dg = false;
+      tr.addEventListener('mousedown', e => { if (isTouch()) return; dg = true; dx0 = e.clientX; tr.style.transition = 'none'; });
+      document.addEventListener('mouseup', e => {
+        if (!dg) return; dg = false; tr.style.transition = '';
+        go(cur + (Math.abs(e.clientX - dx0) > 40 ? (e.clientX < dx0 ? 1 : -1) : 0));
+      });
+
+      let tx0 = 0, mv = false;
+      tr.addEventListener('touchstart', e => { tx0 = e.touches[0].clientX; mv = false; }, { passive: true });
+      tr.addEventListener('touchmove', e => { if (Math.abs(e.touches[0].clientX - tx0) > 6) mv = true; }, { passive: true });
+      tr.addEventListener('touchend', e => {
+        if (!isTouch()) return;
+        const d = e.changedTouches[0].clientX - tx0;
+        if (mv && Math.abs(d) > 40) go(cur + (d < 0 ? 1 : -1));
+      });
+    }
+
+    makeCarousel('trackDesarrollos', 'trackOuterDesarrollos', 'prevBtnDesarrollos', 'nextBtnDesarrollos');
+    makeCarousel('trackEtapas', 'trackOuterEtapas', 'prevBtnEtapas', 'nextBtnEtapas');
   </script>
 </body>
 
