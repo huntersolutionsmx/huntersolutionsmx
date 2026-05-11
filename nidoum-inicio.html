@@ -295,6 +295,8 @@
       overflow: hidden;
       position: relative;
       width: 100%;
+      touch-action: pan-y;
+
     }
 
     .track {
@@ -338,9 +340,6 @@
     }
 
     @media (hover: hover) {
-      .track {
-        padding-right: 56px;
-      }
 
       .tarjeta:hover .tarjeta-overlay {
         opacity: 1;
@@ -483,7 +482,7 @@
       height: 550px;
       border-radius: var(--tarjeta-r);
       flex-shrink: 0;
-      scroll-snap-align: start;
+      
     }
 
     .nidoum-tarjeta-text p {
@@ -824,7 +823,7 @@
             <div class="track" id="trackAbout">
 
               <!-- tarjeta de texto -->
-              <div class="nidoum-tarjeta-text nidoum-tarjeta-text p tarjeta">
+              <div class="nidoum-tarjeta-text tarjeta">
                 <div>
                   <p>Ecosistemas habitacionales conscientes que integran territorio, arquitectura, inversión y
                     comunidad.
@@ -1091,7 +1090,7 @@
       <div class="track" id="trackEtapas">
 
         <!-- tarjeta de texto -->
-        <div class="nidoum-tarjeta-text nidoum-tarjeta-text p tarjeta">
+        <div class="nidoum-tarjeta-text tarjeta">
           <div>
             <p>Ecosistemas habitacionales conscientes que integran territorio, arquitectura, inversión y
               comunidad.
@@ -1101,7 +1100,7 @@
         </div>
 
         <!-- tarjeta de texto -->
-        <div class="nidoum-tarjeta-text nidoum-tarjeta-text p tarjeta">
+        <div class="nidoum-tarjeta-text tarjeta">
           <div>
             <p>Ecosistemas habitacionales conscientes que integran territorio, arquitectura, inversión y
               comunidad.
@@ -1111,7 +1110,7 @@
         </div>
 
         <!-- tarjeta de texto -->
-        <div class="nidoum-tarjeta-text nidoum-tarjeta-text p tarjeta">
+        <div class="nidoum-tarjeta-text tarjeta">
           <div>
             <p>Ecosistemas habitacionales conscientes que integran territorio, arquitectura, inversión y
               comunidad.
@@ -1121,7 +1120,7 @@
         </div>
 
         <!-- tarjeta de texto -->
-        <div class="nidoum-tarjeta-text nidoum-tarjeta-text p tarjeta">
+        <div class="nidoum-tarjeta-text tarjeta">
           <div>
             <p>Ecosistemas habitacionales conscientes que integran territorio, arquitectura, inversión y
               comunidad.
@@ -1131,7 +1130,7 @@
         </div>
 
         <!-- tarjeta de texto -->
-        <div class="nidoum-tarjeta-text nidoum-tarjeta-text p tarjeta">
+        <div class="nidoum-tarjeta-text tarjeta">
           <div>
             <p>Ecosistemas habitacionales conscientes que integran territorio, arquitectura, inversión y
               comunidad.
@@ -1141,7 +1140,7 @@
         </div>
 
         <!-- tarjeta de texto -->
-        <div class="nidoum-tarjeta-text nidoum-tarjeta-text p tarjeta">
+        <div class="nidoum-tarjeta-text tarjeta">
           <div>
             <p>Ecosistemas habitacionales conscientes que integran territorio, arquitectura, inversión y
               comunidad.
@@ -1151,7 +1150,7 @@
         </div>
 
         <!-- tarjeta de texto -->
-        <div class="nidoum-tarjeta-text nidoum-tarjeta-text p tarjeta">
+        <div class="nidoum-tarjeta-text tarjeta">
           <div>
             <p>Ecosistemas habitacionales conscientes que integran territorio, arquitectura, inversión y
               comunidad.
@@ -1161,7 +1160,7 @@
         </div>
 
         <!-- tarjeta de texto -->
-        <div class="nidoum-tarjeta-text nidoum-tarjeta-text p tarjeta">
+        <div class="nidoum-tarjeta-text tarjeta">
           <div>
             <p>Ecosistemas habitacionales conscientes que integran territorio, arquitectura, inversión y
               comunidad.
@@ -1268,7 +1267,7 @@
       }
     });
 
-    /* ─── CAROUSEL ────────────────────────────────────────────────── */
+    /* ─── CAROUSEL  */
     const track = document.getElementById('track');
     const outer = document.getElementById('trackOuter');
     const prevBtn = document.getElementById('prevBtn');
@@ -1310,12 +1309,12 @@
     /* Wheel / trackpad */
     let accumulated = 0;
     outer.addEventListener('wheel', e => {
-      if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
-      
+      if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) { accumulated = 0; return; }
+
       accumulated += e.deltaX;
       if (accumulated > 250) { goTo(current + 1); accumulated = 0; }
       else if (accumulated < -150) { goTo(current - 1); accumulated = 0; }
-    }, { passive: true});
+    }, { passive: true });
 
     /* Desktop drag */
     let dragX = 0, dragging = false;
@@ -1404,12 +1403,12 @@
 
     let accumulatedAbout = 0;
     outerAbout.addEventListener('wheel', e => {
-      if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
-      
+      if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) { accumulatedAbout = 0; return; }
+
       accumulatedAbout += e.deltaX;
       if (accumulatedAbout > 250) { goToAbout(currentAbout + 1); accumulatedAbout = 0; }
       else if (accumulatedAbout < -150) { goToAbout(currentAbout - 1); accumulatedAbout = 0; }
-    }, { passive: true});
+    }, { passive: true });
 
     let dragXAbout = 0, draggingAbout = false;
     trackAbout.addEventListener('mousedown', e => {
@@ -1431,6 +1430,7 @@
       touchX0About = e.touches[0].clientX;
       movedAbout = false;
     }, { passive: true });
+
     trackAbout.addEventListener('touchmove', e => {
       if (Math.abs(e.touches[0].clientX - touchX0About) > 6) movedAbout = true;
     }, { passive: true });
@@ -1478,12 +1478,12 @@
 
     let accumulatedEtapas = 0;
     outerEtapas.addEventListener('wheel', e => {
-      if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
-      
+      if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) { accumulatedEtapas = 0; return; }
+
       accumulatedEtapas += e.deltaX;
       if (accumulatedEtapas > 250) { goToEtapas(currentEtapas + 1); accumulatedEtapas = 0; }
       else if (accumulatedEtapas < -150) { goToEtapas(currentEtapas - 1); accumulatedEtapas = 0; }
-    }, { passive: true});
+    }, { passive: true });
 
     let dragXEtapas = 0, draggingEtapas = false;
     trackEtapas.addEventListener('mousedown', e => {
