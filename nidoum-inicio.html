@@ -31,12 +31,14 @@
 
     html {
       scroll-behavior: smooth;
+      overflow-x: hidden;
     }
 
     body {
       background: var(--sanddark);
       font-family: 'Albert Sans', sans-serif;
       color: var(--sandlight60);
+      overflow-x: hidden;
     }
 
     /* encabezado */
@@ -292,6 +294,7 @@
     .track-outer {
       overflow: hidden;
       position: relative;
+      width: 100%;
     }
 
     .track {
@@ -335,6 +338,10 @@
     }
 
     @media (hover: hover) {
+      .track {
+        padding-right: 56px;
+      }
+
       .tarjeta:hover .tarjeta-overlay {
         opacity: 1;
         pointer-events: auto;
@@ -485,9 +492,9 @@
       color: var(--sandob);
       font-weight: 300;
       max-width: 100%;
-      display:flex;
-      align-items:flex-end;
-      height:100%;
+      display: flex;
+      align-items: flex-end;
+      height: 100%;
       padding: 32px 28px;
     }
 
@@ -579,13 +586,16 @@
         width: 320px;
         height: 440px;
       }
-      .nidoum-tarjeta-text{
+
+      .nidoum-tarjeta-text {
         width: 320px;
         height: 440px;
       }
-      .nidoum-tarjeta-text p{
+
+      .nidoum-tarjeta-text p {
         font-size: 1rem;
       }
+
       .layer-fondo {
         background-image: url('https://nidoum.com/wp-content/uploads/2026/03/Nidoum-Header-fondo-scaled.jpg');
       }
@@ -816,7 +826,8 @@
 
               <div class="nidoum-tarjeta-text nidoum-tarjeta-text p tarjeta">
                 <div>
-                  <p>Ecosistemas habitacionales conscientes que integran territorio, arquitectura, inversión y comunidad.
+                  <p>Ecosistemas habitacionales conscientes que integran territorio, arquitectura, inversión y
+                    comunidad.
                     Un modelo de desarrollo que nace del respeto profundo por la tierra y por quienes la habitan.
                   </p>
                 </div>
@@ -1157,7 +1168,7 @@
     const nextBtn = document.getElementById('nextBtn');
     const tarjetas = Array.from(track.querySelectorAll('.tarjeta'));
     const GAP = 20;
-    const tarjeta_D = 320;
+    const tarjeta_D = 550;
     let current = 0;
 
     const isTouch = () => window.matchMedia('(hover: none) and (pointer: coarse)').matches;
@@ -1192,9 +1203,9 @@
     /* Wheel / trackpad */
     let accumulated = 0;
     outer.addEventListener('wheel', e => {
+      if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
       e.preventDefault();
-      const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
-      accumulated += delta;
+      accumulated += e.deltaX;
       if (accumulated > 250) { goTo(current + 1); accumulated = 0; }
       else if (accumulated < -150) { goTo(current - 1); accumulated = 0; }
     }, { passive: false });
@@ -1286,9 +1297,9 @@
 
     let accumulatedAbout = 0;
     outerAbout.addEventListener('wheel', e => {
+      if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
       e.preventDefault();
-      const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
-      accumulatedAbout += delta;
+      accumulatedAbout += e.deltaX;
       if (accumulatedAbout > 250) { goToAbout(currentAbout + 1); accumulatedAbout = 0; }
       else if (accumulatedAbout < -150) { goToAbout(currentAbout - 1); accumulatedAbout = 0; }
     }, { passive: false });
