@@ -1445,11 +1445,11 @@
                 cur = Math.max(0, Math.min(idx, maxI()));
                 tr.style.transform = `translateX(-${cur * step()}px)`;
             }
-            function sizeM() {
-                if (!isTouch()) return;
-                items.forEach(c => c.style.width = ou.offsetWidth + 'px');
-            }
-            sizeM();
+            // function sizeM() {
+            //     if (!isTouch()) return;
+            //     items.forEach(c => c.style.width = ou.offsetWidth + 'px');
+            // }
+            // sizeM();
 
             if (pv) pv.addEventListener('click', () => go(cur - 1));
             if (nx) nx.addEventListener('click', () => go(cur + 1));
