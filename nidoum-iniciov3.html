@@ -40,6 +40,201 @@
             color: var(--sandlight60);
         }
 
+        /* css añadido para tarjetas */
+        .portafolio-wrap {
+            width: 100%;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 56px 7rem;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .portafolio-wrap.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .track-outer {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+
+        .track {
+            display: flex;
+            gap: 20px;
+            transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform;
+        }
+
+        .tarjeta {
+            position: relative;
+            flex-shrink: 0;
+            width: 550px;
+            height: 550px;
+            border-radius: var(--tarjeta-r);
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .tarjeta-photo {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .tarjeta-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(81, 73, 70, 0.70);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 32px 28px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        @media (hover: hover) {
+            .tarjeta:hover .tarjeta-overlay {
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .tarjeta:hover .tarjeta-title-photo {
+                opacity: 0;
+            }
+
+            .tarjeta:hover .tarjeta-status {
+                opacity: 0;
+            }
+        }
+
+        .tarjeta.tapped .tarjeta-overlay {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .tarjeta.tapped .tarjeta-photo {
+            transform: scale(1.04);
+        }
+
+        .tarjeta.tapped .tarjeta-title-photo {
+            opacity: 0;
+        }
+
+        .tarjeta.tapped .tarjeta-status {
+            opacity: 0;
+        }
+
+        .tarjeta-status {
+            position: absolute;
+            bottom: 24px;
+            right: 24px;
+            padding: 6px 14px;
+            border-radius: var(--tarjeta-r);
+            background: rgba(255, 255, 255, 0.10);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(6px);
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--white);
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+
+        .tarjeta-title-photo {
+            position: absolute;
+            bottom: 60px;
+            left: 24px;
+            right: 24px;
+            font-family: 'Roboto Serif', serif;
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--white);
+            line-height: 1.25;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+
+        .overlay-title {
+            font-family: 'Roboto Serif', serif;
+            font-size: 22px;
+            font-weight: 400;
+            color: var(--white);
+            line-height: 1.25;
+            margin-bottom: 6px;
+        }
+
+        .overlay-desc {
+            font-size: 11.5px;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.72);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .overlay-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .meta-row {
+            display: flex;
+            gap: 8px;
+            align-items: baseline;
+        }
+
+        .meta-key {
+            font-size: 9.5px;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.45);
+            min-width: 68px;
+        }
+
+        .meta-val {
+            font-size: 11.5px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .overlay-btn {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 7px 16px;
+            border-radius: var(--tarjeta-r);
+            background: rgba(255, 255, 255, 0.10);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--white);
+            text-decoration: none;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            transition: background 0.25s;
+        }
+
+        .overlay-btn:hover {
+            background: rgba(255, 255, 255, 0.22);
+        }
+
+        /* fin css añadido */
+
         /* ─── ENCABEZADO ──────────────────────────────────────────── */
         .nidoum-encabezado {
             position: relative;
@@ -98,7 +293,7 @@
             border-radius: var(--tarjeta-r);
             font-family: 'Albert Sans', sans-serif;
             font-weight: 400;
-            font-size: 13px;
+            font-size: 0.75rem;
             color: var(--white);
             text-decoration: none;
             letter-spacing: 0.04em;
@@ -131,8 +326,14 @@
             transition: font-weight 0.35s, color 0.35s;
         }
 
-        .nav-elemento:hover::before { transform: translateX(0); }
-        .nav-elemento:hover span { font-weight: 500; color: var(--white); }
+        .nav-elemento:hover::before {
+            transform: translateX(0);
+        }
+
+        .nav-elemento:hover span {
+            font-weight: 500;
+            color: var(--white);
+        }
 
         .encabezado-menu {
             position: absolute;
@@ -150,7 +351,9 @@
             gap: 16px;
         }
 
-        .mobile-menu-container { display: none; }
+        .mobile-menu-container {
+            display: none;
+        }
 
         .scroll-hint {
             position: absolute;
@@ -169,7 +372,7 @@
 
         .scroll-hint span {
             font-family: 'Albert Sans', sans-serif;
-            font-size: 0.62rem;
+            font-size: 0.75rem;
             letter-spacing: 0.35em;
             color: var(--sandlight60);
             text-transform: uppercase;
@@ -184,16 +387,76 @@
             transform-origin: top;
         }
 
-        @keyframes fadeIn { to { opacity: 1; } }
+        /* ─── TAP HINT (solo móvil) ──────────────────────────────────── */
+        .tap-hint {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4rem;
+            opacity: 0;
+            animation: fadeIn 1s 1.8s ease forwards;
+            z-index: 15;
+            pointer-events: none;
+        }
+
+        .tap-hint span {
+            font-family: 'Albert Sans', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.35em;
+            color: var(--sandlight60);
+            text-transform: uppercase;
+        }
+
+        .tap-hint svg {
+            width: 22px;
+            height: 22px;
+            stroke: var(--sandlight60);
+        }
+
+        @media (hover: none) {
+            .tap-hint {
+                display: flex;
+            }
+        }
+
+        .tap-hint.oculto {
+            opacity: 0 !important;
+            transition: opacity 0.4s ease;
+            animation: none;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
 
         @keyframes scrollPulse {
-            0%   { transform: scaleY(1);   opacity: 0.7; }
-            50%  { transform: scaleY(0.4); opacity: 0.3; }
-            100% { transform: scaleY(1);   opacity: 0.7; }
+            0% {
+                transform: scaleY(1);
+                opacity: 0.7;
+            }
+
+            50% {
+                transform: scaleY(0.4);
+                opacity: 0.3;
+            }
+
+            100% {
+                transform: scaleY(1);
+                opacity: 0.7;
+            }
         }
 
         /* ─── SECTIONS WRAP ───────────────────────────────────────── */
-        .sections-wrap { position: relative; z-index: 1; }
+        .sections-wrap {
+            position: relative;
+            z-index: 1;
+        }
 
         /* ─── DEMO SECTION 1/3 | 2/3 ─────────────────────────────── */
         .demo-section {
@@ -294,16 +557,32 @@
         }
 
         @media (hover: hover) {
-            .tarjeta:hover .tarjeta-overlay  { opacity: 1; pointer-events: auto; }
-            .tarjeta:hover .tarjeta-photo    { transform: scale(1.04); }
-            .tarjeta:hover .tarjeta-title-photo { opacity: 0; }
-            .tarjeta:hover .tarjeta-status   { opacity: 0; }
+            .tarjeta:hover .tarjeta-overlay {
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .tarjeta:hover .tarjeta-title-photo {
+                opacity: 0;
+            }
+
+            .tarjeta:hover .tarjeta-status {
+                opacity: 0;
+            }
         }
 
-        .tarjeta.tapped .tarjeta-overlay     { opacity: 1; pointer-events: auto; }
-        .tarjeta.tapped .tarjeta-photo       { transform: scale(1.04); }
-        .tarjeta.tapped .tarjeta-title-photo { opacity: 0; }
-        .tarjeta.tapped .tarjeta-status      { opacity: 0; }
+        .tarjeta.tapped .tarjeta-overlay {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .tarjeta.tapped .tarjeta-title-photo {
+            opacity: 0;
+        }
+
+        .tarjeta.tapped .tarjeta-status {
+            opacity: 0;
+        }
 
         .tarjeta-status {
             position: absolute;
@@ -311,7 +590,7 @@
             right: 24px;
             padding: 6px 14px;
             border-radius: var(--tarjeta-r);
-            background: rgba(255,255,255,0.10);
+            background: rgba(255, 255, 255, 0.10);
             backdrop-filter: blur(2px);
             -webkit-backdrop-filter: blur(6px);
             font-size: 10px;
@@ -349,7 +628,7 @@
         .overlay-desc {
             font-size: 11.5px;
             font-weight: 300;
-            color: rgba(255,255,255,0.72);
+            color: rgba(255, 255, 255, 0.72);
             line-height: 1.6;
             margin-bottom: 20px;
         }
@@ -360,21 +639,25 @@
             gap: 7px;
         }
 
-        .meta-row { display: flex; gap: 8px; align-items: baseline; }
+        .meta-row {
+            display: flex;
+            gap: 8px;
+            align-items: baseline;
+        }
 
         .meta-key {
             font-size: 9.5px;
             font-weight: 500;
             letter-spacing: 0.14em;
             text-transform: uppercase;
-            color: rgba(255,255,255,0.45);
+            color: rgba(255, 255, 255, 0.45);
             min-width: 68px;
         }
 
         .meta-val {
             font-size: 11.5px;
             font-weight: 400;
-            color: rgba(255,255,255,0.9);
+            color: rgba(255, 255, 255, 0.9);
         }
 
         .overlay-btn {
@@ -382,7 +665,7 @@
             margin-top: 16px;
             padding: 7px 16px;
             border-radius: var(--tarjeta-r);
-            background: rgba(255,255,255,0.10);
+            background: rgba(255, 255, 255, 0.10);
             backdrop-filter: blur(6px);
             -webkit-backdrop-filter: blur(6px);
             font-size: 10px;
@@ -392,17 +675,19 @@
             color: var(--white);
             text-decoration: none;
             cursor: pointer;
-            border: 1px solid rgba(255,255,255,0.18);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             transition: background 0.25s;
         }
 
-        .overlay-btn:hover { background: rgba(255,255,255,0.22); }
+        .overlay-btn:hover {
+            background: rgba(255, 255, 255, 0.22);
+        }
 
         /* text card inside about carousel */
         .nidoum-tarjeta-text {
             position: relative;
             overflow: hidden;
-            background: var(--sandob);
+            background: var(--sandlight30);
             display: flex;
             align-items: flex-end;
             padding: 36px 32px;
@@ -416,9 +701,10 @@
             font-family: 'Roboto Serif', serif;
             font-size: 1.25rem;
             line-height: 1.75;
-            color: var(--sandlight60);
+            color: var(--sandob);
             font-weight: 300;
             max-width: 100%;
+            text-align: justify;
         }
 
         /* ─── MOBILE ARROWS (inside about) ───────────────────────── */
@@ -430,7 +716,9 @@
         }
 
         @media (hover: none) {
-            .nav-arrows-inline { display: flex; }
+            .nav-arrows-inline {
+                display: flex;
+            }
         }
 
         /* ─── CAROUSEL SECTION (full width layout) ───────────────── */
@@ -461,7 +749,7 @@
 
         .carousel-header-label {
             font-family: 'Albert Sans', sans-serif;
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             font-weight: 400;
             letter-spacing: 0.3em;
             text-transform: uppercase;
@@ -479,8 +767,9 @@
         }
 
         .carousel-header-desc {
-            max-width: 420px;
-            font-size: 0.9rem;
+            max-width: 600px;
+            text-align: justify;
+            font-size: 1.2rem;
             line-height: 1.8;
             color: var(--sandlight60);
             font-weight: 300;
@@ -516,7 +805,10 @@
             color: var(--sandlight);
         }
 
-        .arrow-btn svg { width: 15px; height: 15px; }
+        .arrow-btn svg {
+            width: 15px;
+            height: 15px;
+        }
 
         /* track area */
         .carousel-track-outer {
@@ -557,7 +849,7 @@
             transition: transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        .proyecto-card:hover .proyecto-card-photo { transform: scale(1.04); }
+        /* hover scale eliminado */
 
         .proyecto-card-badge {
             position: absolute;
@@ -620,8 +912,14 @@
             transition: transform 0.25s;
         }
 
-        .proyecto-card:hover .proyecto-card-link { color: var(--sandlight); gap: 12px; }
-        .proyecto-card:hover .proyecto-card-link svg { transform: translateX(2px); }
+        .proyecto-card:hover .proyecto-card-link {
+            color: var(--sandlight);
+            gap: 12px;
+        }
+
+        .proyecto-card:hover .proyecto-card-link svg {
+            transform: translateX(2px);
+        }
 
         /* fotografías */
         .casavinedossma {
@@ -639,7 +937,11 @@
             filter: brightness(0.75);
         }
 
-        .photo-4, .photo-5, .photo-6, .photo-7, .photo-8 {
+        .photo-4,
+        .photo-5,
+        .photo-6,
+        .photo-7,
+        .photo-8 {
             background-image: url('https://images.unsplash.com/photo-1448630360428-65456885c650?q=80&w=2067&auto=format&fit=crop');
             filter: brightness(0.75);
         }
@@ -666,7 +968,12 @@
             line-height: 1;
         }
 
-        .etapa-body { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; }
+        .etapa-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
 
         .etapa-titulo {
             font-family: 'Roboto Serif', serif;
@@ -678,7 +985,7 @@
         }
 
         .etapa-desc {
-            font-size: 0.85rem;
+            font-size: 1rem;
             line-height: 1.75;
             color: var(--sandlight60);
             font-weight: 300;
@@ -694,7 +1001,10 @@
             transition: opacity 0.7s ease, transform 0.7s ease;
         }
 
-        .habitat-section.visible { opacity: 1; transform: translateY(0); }
+        .habitat-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
         .habitat-inner {
             display: flex;
@@ -721,10 +1031,73 @@
         }
 
         .habitat-body p {
-            font-size: 0.95rem;
+            font-size: 1rem;
             line-height: 1.9;
             color: var(--sandlight60);
             font-weight: 300;
+        }
+
+        /* ─── QUÉ ES NIDOUM – LAYOUT REESTRUCTURADO ─────────────── */
+        .demo-section--quees {
+            align-items: stretch;
+        }
+
+        .section-title--quees {
+            display: flex;
+            flex-direction: column;
+            gap: 1.75rem;
+        }
+
+        .section-title--quees .nidoum-tarjeta-text {
+            width: 100%;
+            height: auto;
+            flex: 1;
+            min-height: 320px;
+        }
+
+        .demo-section--quees .section-body {
+            display: flex;
+            align-items: center;
+        }
+
+        /* ─── ETAPAS: colores individuales por ciclo ──────────────── */
+        /* Se elimina .etapa-num; se reemplaza por .etapa-imagotipo     */
+        .etapa-imagotipo {
+            width: 64px;
+            height: 64px;
+            border-radius: var(--tarjeta-r);
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* placeholder visual sutil */
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px dashed rgba(255, 255, 255, 0.12);
+        }
+
+        /* Ciclo 01 — Semilla */
+        .etapa-card--semilla {
+            background: #253326;
+        }
+
+        /* Ciclo 02 — Raíz */
+        .etapa-card--raiz {
+            background: #2e1e10;
+        }
+
+        /* Ciclo 03 — Brote */
+        .etapa-card--brote {
+            background: #3b2a14;
+        }
+
+        /* Ciclo 04 — Floración */
+        .etapa-card--floracion {
+            background: #3a2535;
+        }
+
+        /* Ciclo 05 — Cosecha */
+        .etapa-card--cosecha {
+            background: #3d3218;
         }
 
         /* ─── MÓVIL ───────────────────────────────────────────────── */
@@ -734,9 +1107,18 @@
                 background-image: url('https://nidoum.com/wp-content/uploads/2026/04/Nidoum-Headercasamovi.png');
             }
 
-            .site-logo { top: 20px; left: 20px; }
-            .site-logo img { height: 48px; }
-            .encabezado-menu { display: none; }
+            .site-logo {
+                top: 20px;
+                left: 20px;
+            }
+
+            .site-logo img {
+                height: 48px;
+            }
+
+            .encabezado-menu {
+                display: none;
+            }
 
             .mobile-menu-container {
                 display: block;
@@ -750,7 +1132,7 @@
             .menu-overlay {
                 position: fixed;
                 inset: 0;
-                background: rgba(0,0,0,0.1);
+                background: rgba(0, 0, 0, 0.1);
                 backdrop-filter: blur(16px);
                 -webkit-backdrop-filter: blur(16px);
                 z-index: 48;
@@ -760,7 +1142,11 @@
                 pointer-events: none;
             }
 
-            .menu-overlay.active { opacity: 1; visibility: visible; pointer-events: auto; }
+            .menu-overlay.active {
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+            }
 
             .hamburger {
                 position: relative;
@@ -786,9 +1172,17 @@
                 border-radius: var(--tarjeta-r);
             }
 
-            .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-            .hamburger.active span:nth-child(2) { opacity: 0; }
-            .hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+            .hamburger.active span:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
 
             .mobile-nav {
                 position: fixed;
@@ -806,10 +1200,13 @@
                 pointer-events: none;
             }
 
-            .mobile-nav.open { transform: translate(-50%, -50%) translateX(0); pointer-events: auto; }
+            .mobile-nav.open {
+                transform: translate(-50%, -50%) translateX(0);
+                pointer-events: auto;
+            }
 
             .mobile-nav .nav-elemento {
-                font-size: 15px;
+                font-size: 1rem;
                 padding: 13px 20px;
                 width: 100%;
                 border: none;
@@ -830,7 +1227,9 @@
                 transform: translateX(-101%);
             }
 
-            .mobile-nav .nav-elemento:hover::before { transform: translateX(0); }
+            .mobile-nav .nav-elemento:hover::before {
+                transform: translateX(0);
+            }
 
             /* about section */
             .demo-section {
@@ -839,15 +1238,45 @@
                 gap: 1.5rem;
             }
 
-            .section-title { flex: none; width: 100%; padding-right: 0; }
-            .section-body  { flex: 1; width: 100%; padding-top: 0; overflow: hidden; }
+            .demo-section--quees {
+                align-items: flex-start;
+            }
 
-            .tarjeta { width: 280px; height: 380px; }
-            .nidoum-tarjeta-text { width: 280px; height: 380px; }
-            .nidoum-tarjeta-text p { font-size: 1rem; }
+            .section-title--quees .nidoum-tarjeta-text {
+                min-height: 220px;
+            }
+
+            .section-title {
+                flex: none;
+                width: 100%;
+                padding-right: 0;
+            }
+
+            .section-body {
+                flex: 1;
+                width: 100%;
+                padding-top: 0;
+                overflow: hidden;
+            }
+
+            .tarjeta {
+                width: 280px;
+                height: 380px;
+            }
+
+            .nidoum-tarjeta-text {
+                width: 280px;
+                height: 380px;
+            }
+
+            .nidoum-tarjeta-text p {
+                font-size: 1rem;
+            }
 
             /* carousel sections */
-            .carousel-section { padding-bottom: 4rem; }
+            .carousel-section {
+                padding-bottom: 4rem;
+            }
 
             .carousel-header {
                 max-width: 100%;
@@ -855,22 +1284,53 @@
                 margin-bottom: 1.5rem;
             }
 
-            .carousel-header h2 { font-size: clamp(1.4rem, 5vw, 1.8rem); }
-            .carousel-header-desc { display: none; }
-            .carousel-arrows { display: flex; }
+            .carousel-header h2 {
+                font-size: clamp(1.4rem, 5vw, 1.8rem);
+            }
 
-            .carousel-track-outer { padding-left: 24px; }
+            .carousel-header-desc {
+                display: none;
+            }
 
-            .proyecto-card { width: 260px; }
-            .proyecto-card-img { height: 320px; }
+            .carousel-arrows {
+                display: flex;
+            }
 
-            .etapa-card { width: 260px; height: 340px; }
+            .carousel-track-outer {
+                padding-left: 24px;
+            }
+
+            .proyecto-card {
+                width: 260px;
+            }
+
+            .proyecto-card-img {
+                height: 320px;
+            }
+
+            .etapa-card {
+                width: 260px;
+                height: 340px;
+            }
 
             /* habitat */
-            .habitat-section { padding: 0 1.5rem 5rem; }
-            .habitat-inner { flex-direction: column; gap: 1.5rem; }
-            .habitat-title { flex: none; width: 100%; }
-            .habitat-title h2 { font-size: clamp(2rem, 8vw, 2.8rem); }
+            .habitat-section {
+                padding: 0 1.5rem 5rem;
+            }
+
+            .habitat-inner {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .habitat-title {
+                flex: none;
+                width: 100%;
+            }
+
+            .habitat-title h2 {
+                font-size: clamp(2rem, 8vw, 2.8rem);
+            }
         }
     </style>
 </head>
@@ -890,7 +1350,7 @@
         <div class="encabezado-menu">
             <div class="nav-wrap">
                 <a class="nav-elemento"><span>Nosotros</span></a>
-                <a class="nav-elemento"><span>Portafolio</span></a>
+                <a class="nav-elemento"><span>Desarrollos</span></a>
                 <a class="nav-elemento"><span>Construcción Modular</span></a>
                 <a class="nav-elemento"><span>Ciclos de Desarrollo</span></a>
             </div>
@@ -901,7 +1361,7 @@
             <div class="menu-overlay" id="menuOverlay"></div>
             <div class="mobile-nav" id="mobileNav">
                 <a class="nav-elemento"><span>Nosotros</span></a>
-                <a class="nav-elemento"><span>Portafolio</span></a>
+                <a class="nav-elemento"><span>Desarrollos</span></a>
                 <a class="nav-elemento"><span>Construcción Modular</span></a>
                 <a class="nav-elemento"><span>Ciclos de Desarrollo</span></a>
             </div>
@@ -915,33 +1375,43 @@
 
     <!-- ─── QUÉ ES NIDOUM ────────────────────────────────────────── -->
     <div class="sections-wrap">
-        <section class="demo-section">
-            <div class="section-title">
+        <section class="demo-section demo-section--quees">
+
+            <!-- Columna izquierda: título + tarjeta de texto -->
+            <div class="section-title section-title--quees">
                 <h2>Qué es NIDOUM</h2>
+                <div class="nidoum-tarjeta-text">
+                    <p>Ecosistemas habitacionales conscientes que integran territorio, arquitectura,
+                        inversión y comunidad. Un modelo de desarrollo que nace del respeto profundo
+                        por la tierra y por quienes la habitan.</p>
+                </div>
             </div>
-            
+
+            <!-- Columna derecha: solo tarjetas fotográficas -->
             <div class="section-body">
-                <div style="padding: 0; max-width: 100%;">
+                <div style="padding: 0; max-width: 100%; width: 100%;">
                     <div class="track-outer" id="trackOuterAbout">
                         <div class="track" id="trackAbout">
 
-                            <div class="nidoum-tarjeta-text tarjeta">
-                                <p>Ecosistemas habitacionales conscientes que integran territorio, arquitectura,
-                                    inversión y comunidad. Un modelo de desarrollo que nace del respeto profundo
-                                    por la tierra y por quienes la habitan.</p>
-                            </div>
-
                             <div class="tarjeta">
-                                <div class="tarjeta-photo" style="background-image: url('https://nidoum.com/wp-content/uploads/2026/05/14.webp'); filter: brightness(0.7);"></div>
+                                <div class="tarjeta-photo"
+                                    style="background-image: url('https://nidoum.com/wp-content/uploads/2026/05/14.webp'); filter: brightness(0.7);">
+                                </div>
                             </div>
                             <div class="tarjeta">
-                                <div class="tarjeta-photo" style="background-image: url('https://nidoum.com/wp-content/uploads/2026/05/10.webp'); filter: brightness(0.7);"></div>
+                                <div class="tarjeta-photo"
+                                    style="background-image: url('https://nidoum.com/wp-content/uploads/2026/05/10.webp'); filter: brightness(0.7);">
+                                </div>
                             </div>
                             <div class="tarjeta">
-                                <div class="tarjeta-photo" style="background-image: url('https://nidoum.com/wp-content/uploads/2026/05/01.webp'); filter: brightness(0.7);"></div>
+                                <div class="tarjeta-photo"
+                                    style="background-image: url('https://nidoum.com/wp-content/uploads/2026/05/01.webp'); filter: brightness(0.7);">
+                                </div>
                             </div>
                             <div class="tarjeta">
-                                <div class="tarjeta-photo" style="background-image: url('https://nidoum.com/wp-content/uploads/2026/05/08.webp'); filter: brightness(0.7);"></div>
+                                <div class="tarjeta-photo"
+                                    style="background-image: url('https://nidoum.com/wp-content/uploads/2026/05/08.webp'); filter: brightness(0.7);">
+                                </div>
                             </div>
 
                         </div>
@@ -949,32 +1419,47 @@
 
                     <div class="nav-arrows-inline">
                         <button class="arrow-btn" id="prevBtnAbout" aria-label="Anterior">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="15 18 9 12 15 6" />
+                            </svg>
                         </button>
                         <button class="arrow-btn" id="nextBtnAbout" aria-label="Siguiente">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 18 15 12 9 6" />
+                            </svg>
                         </button>
                     </div>
                 </div>
             </div>
+
         </section>
     </div>
+
+
 
     <!-- ─── NUESTROS DESARROLLOS ─────────────────────────────────── -->
     <div class="carousel-section" id="secDesarrollos">
         <div class="carousel-header">
             <div class="carousel-header-text">
-                <div class="carousel-header-label">Portafolio</div>
+                <div class="carousel-header-label">Desarrollos</div>
                 <h2>Nuestros Desarrollos</h2>
                 <p class="carousel-header-desc">Hábitats conscientes hechos realidad. Espacios donde la arquitectura
                     respira y la comunidad florece en armonía con el entorno natural.</p>
             </div>
             <div class="carousel-arrows">
                 <button class="arrow-btn" id="prevBtnDesarrollos" aria-label="Anterior">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6" />
+                    </svg>
                 </button>
                 <button class="arrow-btn" id="nextBtnDesarrollos" aria-label="Siguiente">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6" />
+                    </svg>
                 </button>
             </div>
         </div>
@@ -992,7 +1477,11 @@
                         <span class="proyecto-card-name">Casa Viñedos SMA</span>
                         <a href="#" class="proyecto-card-link">
                             Ver proyecto
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </svg>
                         </a>
                     </div>
                 </div>
@@ -1007,7 +1496,11 @@
                         <span class="proyecto-card-name">Casa Beckhart SMA</span>
                         <a href="#" class="proyecto-card-link">
                             Ver proyecto
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </svg>
                         </a>
                     </div>
                 </div>
@@ -1022,7 +1515,11 @@
                         <span class="proyecto-card-name">Casa Pásaret Sangre de Cristo</span>
                         <a href="#" class="proyecto-card-link">
                             Ver proyecto
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </svg>
                         </a>
                     </div>
                 </div>
@@ -1037,7 +1534,11 @@
                         <span class="proyecto-card-name">Mantarraya Todos Santos</span>
                         <a href="#" class="proyecto-card-link">
                             Ver proyecto
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </svg>
                         </a>
                     </div>
                 </div>
@@ -1052,7 +1553,11 @@
                         <span class="proyecto-card-name">Pabellón Mauricio Rocha</span>
                         <a href="#" class="proyecto-card-link">
                             Ver proyecto
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </svg>
                         </a>
                     </div>
                 </div>
@@ -1067,7 +1572,11 @@
                         <span class="proyecto-card-name">Palo Blanco Villas Resort</span>
                         <a href="#" class="proyecto-card-link">
                             Ver proyecto
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </svg>
                         </a>
                     </div>
                 </div>
@@ -1082,7 +1591,11 @@
                         <span class="proyecto-card-name">Casa Manana</span>
                         <a href="#" class="proyecto-card-link">
                             Ver proyecto
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </svg>
                         </a>
                     </div>
                 </div>
@@ -1097,7 +1610,11 @@
                         <span class="proyecto-card-name">Casa Aurora</span>
                         <a href="#" class="proyecto-card-link">
                             Ver proyecto
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </svg>
                         </a>
                     </div>
                 </div>
@@ -1105,6 +1622,8 @@
             </div>
         </div>
     </div>
+
+
 
     <!-- ─── ETAPAS ────────────────────────────────────────────────── -->
     <div class="carousel-section" id="secEtapas">
@@ -1117,10 +1636,16 @@
             </div>
             <div class="carousel-arrows">
                 <button class="arrow-btn" id="prevBtnEtapas" aria-label="Anterior">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6" />
+                    </svg>
                 </button>
                 <button class="arrow-btn" id="nextBtnEtapas" aria-label="Siguiente">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6" />
+                    </svg>
                 </button>
             </div>
         </div>
@@ -1128,43 +1653,58 @@
         <div class="carousel-track-outer" id="trackOuterEtapas">
             <div class="carousel-track" id="trackEtapas">
 
-                <div class="etapa-card">
-                    <div class="etapa-num">01</div>
+                <div class="etapa-card etapa-card--semilla">
+                    <div class="etapa-imagotipo">
+                        <!-- imagotipo Semilla -->
+                    </div>
                     <div class="etapa-body">
                         <div class="etapa-titulo">Semilla — Visión y Territorio</div>
-                        <p class="etapa-desc">Identificación del territorio, estudio de vocación del suelo y definición del concepto rector del ecosistema.</p>
+                        <p class="etapa-desc">Identificación del territorio, estudio de vocación del suelo y definición
+                            del concepto rector del ecosistema.</p>
                     </div>
                 </div>
 
-                <div class="etapa-card">
-                    <div class="etapa-num">02</div>
+                <div class="etapa-card etapa-card--raiz">
+                    <div class="etapa-imagotipo">
+                        <!-- imagotipo Raíz -->
+                    </div>
                     <div class="etapa-body">
                         <div class="etapa-titulo">Raíz — Planeación y Estructura</div>
-                        <p class="etapa-desc">Diseño del sistema modular, estructuración financiera e integración del equipo de desarrollo y arquitectura.</p>
+                        <p class="etapa-desc">Diseño del sistema modular, estructuración financiera e integración del
+                            equipo de desarrollo y arquitectura.</p>
                     </div>
                 </div>
 
-                <div class="etapa-card">
-                    <div class="etapa-num">03</div>
+                <div class="etapa-card etapa-card--brote">
+                    <div class="etapa-imagotipo">
+                        <!-- imagotipo Brote -->
+                    </div>
                     <div class="etapa-body">
                         <div class="etapa-titulo">Brote — Construcción Modular</div>
-                        <p class="etapa-desc">Ejecución precisa de la estructura. Cada módulo se construye con control técnico y detalle artesanal.</p>
+                        <p class="etapa-desc">Ejecución precisa de la estructura. Cada módulo se construye con control
+                            técnico y detalle artesanal.</p>
                     </div>
                 </div>
 
-                <div class="etapa-card">
-                    <div class="etapa-num">04</div>
+                <div class="etapa-card etapa-card--floracion">
+                    <div class="etapa-imagotipo">
+                        <!-- imagotipo Floración -->
+                    </div>
                     <div class="etapa-body">
                         <div class="etapa-titulo">Floración — Comunidad y Paisaje</div>
-                        <p class="etapa-desc">Integración del programa comunitario, paisajismo y los elementos que dan vida al entorno habitado.</p>
+                        <p class="etapa-desc">Integración del programa comunitario, paisajismo y los elementos que dan
+                            vida al entorno habitado.</p>
                     </div>
                 </div>
 
-                <div class="etapa-card">
-                    <div class="etapa-num">05</div>
+                <div class="etapa-card etapa-card--cosecha">
+                    <div class="etapa-imagotipo">
+                        <!-- imagotipo Cosecha -->
+                    </div>
                     <div class="etapa-body">
                         <div class="etapa-titulo">Cosecha — Entrega y Operación</div>
-                        <p class="etapa-desc">Transferencia del hábitat a sus habitantes. Acompañamiento en la operación para garantizar la continuidad del ecosistema.</p>
+                        <p class="etapa-desc">Transferencia del hábitat a sus habitantes. Acompañamiento en la operación
+                            para garantizar la continuidad del ecosistema.</p>
                     </div>
                 </div>
 
@@ -1190,15 +1730,15 @@
     <script>
         /* ─── PARALLAX ──────────────────────────────────────────────── */
         const fondo = document.getElementById('layerFondo');
-        const casa  = document.getElementById('layerCasa');
+        const casa = document.getElementById('layerCasa');
         const SPEED_FONDO = 0.2;
-        const SPEED_CASA  = -0.05;
+        const SPEED_CASA = -0.05;
         let ticking = false;
 
         function updateParallax() {
             const scrollY = window.scrollY;
             fondo.style.transform = `translateY(${scrollY * SPEED_FONDO}px)`;
-            casa.style.transform  = `translateY(${scrollY * SPEED_CASA}px)`;
+            casa.style.transform = `translateY(${scrollY * SPEED_CASA}px)`;
             ticking = false;
         }
 
@@ -1217,8 +1757,8 @@
         animTargets.forEach(el => observer.observe(el));
 
         /* ─── MENÚ MÓVIL ────────────────────────────────────────────── */
-        const hamburger   = document.getElementById('hamburgerBtn');
-        const mobileNav   = document.getElementById('mobileNav');
+        const hamburger = document.getElementById('hamburgerBtn');
+        const mobileNav = document.getElementById('mobileNav');
         const menuOverlay = document.getElementById('menuOverlay');
 
         hamburger.addEventListener('click', e => {
@@ -1251,14 +1791,14 @@
         const GAP = 16;
 
         function makeCarousel(cfg) {
-            const tr  = document.getElementById(cfg.trackId);
-            const ou  = document.getElementById(cfg.outerId);
-            const pv  = document.getElementById(cfg.prevId);
-            const nx  = document.getElementById(cfg.nextId);
+            const tr = document.getElementById(cfg.trackId);
+            const ou = document.getElementById(cfg.outerId);
+            const pv = document.getElementById(cfg.prevId);
+            const nx = document.getElementById(cfg.nextId);
             if (!tr || !ou) return;
 
-            const items   = Array.from(tr.querySelectorAll(cfg.itemSel));
-            const cardW   = cfg.cardW;
+            const items = Array.from(tr.querySelectorAll(cfg.itemSel));
+            const cardW = cfg.cardW;
             let cur = 0, acc = 0;
 
             function step() { return (isTouch() ? ou.offsetWidth : cardW) + GAP; }
@@ -1302,17 +1842,18 @@
 
             let tx0 = 0, mv = false;
             tr.addEventListener('touchstart', e => { tx0 = e.touches[0].clientX; mv = false; }, { passive: true });
-            tr.addEventListener('touchmove',  e => { if (Math.abs(e.touches[0].clientX - tx0) > 6) mv = true; }, { passive: true });
-            tr.addEventListener('touchend',   e => {
+            tr.addEventListener('touchmove', e => { if (Math.abs(e.touches[0].clientX - tx0) > 6) mv = true; }, { passive: true });
+            tr.addEventListener('touchend', e => {
                 if (!isTouch()) return;
                 const d = e.changedTouches[0].clientX - tx0;
                 if (mv && Math.abs(d) > 40) go(cur + (d < 0 ? 1 : -1));
             });
         }
 
-        makeCarousel({ trackId: 'trackAbout',        outerId: 'trackOuterAbout',        prevId: 'prevBtnAbout',        nextId: 'nextBtnAbout',        itemSel: '.tarjeta',        cardW: 550 });
-        makeCarousel({ trackId: 'trackDesarrollos',   outerId: 'trackOuterDesarrollos',   prevId: 'prevBtnDesarrollos',   nextId: 'nextBtnDesarrollos',   itemSel: '.proyecto-card',  cardW: 380 });
-        makeCarousel({ trackId: 'trackEtapas',        outerId: 'trackOuterEtapas',        prevId: 'prevBtnEtapas',        nextId: 'nextBtnEtapas',        itemSel: '.etapa-card',     cardW: 340 });
+        makeCarousel({ trackId: 'trackAbout', outerId: 'trackOuterAbout', prevId: 'prevBtnAbout', nextId: 'nextBtnAbout', itemSel: '.tarjeta', cardW: 550 });
+        makeCarousel({ trackId: 'trackDesarrollos', outerId: 'trackOuterDesarrollos', prevId: 'prevBtnDesarrollos', nextId: 'nextBtnDesarrollos', itemSel: '.proyecto-card', cardW: 380 });
+        makeCarousel({ trackId: 'trackEtapas', outerId: 'trackOuterEtapas', prevId: 'prevBtnEtapas', nextId: 'nextBtnEtapas', itemSel: '.etapa-card', cardW: 340 });
     </script>
 </body>
+
 </html>
