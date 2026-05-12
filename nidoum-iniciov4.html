@@ -104,14 +104,6 @@
 
         @media (hover: hover) {
 
-            .nav-arrows {
-                display: none;
-            }
-
-            .carousel-arrows {
-                display: none;
-            }
-
             .tarjeta:hover .tarjeta-overlay {
                 opacity: 1;
                 pointer-events: auto;
@@ -685,15 +677,13 @@
         /* ─── NAV ARROWS (portafolio bottom) ─────────────────────── */
         .nav-arrows {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             gap: 12px;
             margin-top: 32px;
         }
 
-        @media (hover: hover) {
-            /* .nav-arrows {
-                display: none;
-            } */
+        .carousel-section .nav-arrows {
+            padding-left: 56px;
         }
 
         /* text card inside about carousel */
@@ -1354,33 +1344,16 @@
         </section>
     </div>
 
-
-
-    <!-- ─── NUESTROS DESARROLLOS ─────────────────────────────────── -->
-    <!-- <div class="carousel-header">
-        <div class="carousel-header-text">
-            <div class="carousel-header-label">Proceso</div>
-            <h2>Ciclos de Desarrollo</h2>
-            <p class="carousel-header-desc">De la Tierra a la Cosecha: cinco ciclos que guían cada ecosistema
-                desde la visión inicial hasta la entrega de un hábitat completo y vivo.</p>
-        </div>
-        <div class="carousel-arrows">
-            <button class="arrow-btn" id="prevBtnEtapas" aria-label="Anterior">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <polyline points="15 18 9 12 15 6" />
-                </svg>
-            </button>
-            <button class="arrow-btn" id="nextBtnEtapas" aria-label="Siguiente">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <polyline points="9 18 15 12 9 6" />
-                </svg>
-            </button>
-        </div>
-    </div> -->
-
     <div class="portafolio-wrap" id="secDesarrollos">
+        <div class="carousel-header" style="max-width: 100%; padding: 0; margin-bottom: 2.5rem;">
+            <div class="carousel-header-text">
+                <div class="carousel-header-label">Desarrollos</div>
+                <h2>Nuestros Desarrollos</h2>
+                <p class="carousel-header-desc">Descubre cada proyecto — hábitats conscientes hechos realidad.
+                    Espacios donde la arquitectura respira y la comunidad florece en armonía
+                    con el entorno natural que los rodea.</p>
+            </div>
+        </div>
         <div class="track-outer" id="trackOuter">
             <div class="track" id="track">
 
@@ -1591,20 +1564,6 @@
                 <p class="carousel-header-desc">De la Tierra a la Cosecha: cinco ciclos que guían cada ecosistema
                     desde la visión inicial hasta la entrega de un hábitat completo y vivo.</p>
             </div>
-            <div class="carousel-arrows">
-                <button class="arrow-btn" aria-label="Anterior">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <polyline points="15 18 9 12 15 6" />
-                    </svg>
-                </button>
-                <button class="arrow-btn" aria-label="Siguiente">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <polyline points="9 18 15 12 9 6" />
-                    </svg>
-                </button>
-            </div>
         </div>
 
         <div class="carousel-track-outer" id="trackOuterEtapas">
@@ -1667,7 +1626,7 @@
 
             </div>
         </div>
-        <div class="nav-arrows-inline">
+        <div class="nav-arrows">
             <button class="arrow-btn" id="prevBtnEtapas" aria-label="Anterior">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
                     stroke-linejoin="round">
