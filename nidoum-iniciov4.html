@@ -103,6 +103,15 @@
         }
 
         @media (hover: hover) {
+
+            .nav-arrows {
+                display: none;
+            }
+
+            .carousel-arrows {
+                display: none;
+            }
+
             .tarjeta:hover .tarjeta-overlay {
                 opacity: 1;
                 pointer-events: auto;
@@ -681,11 +690,10 @@
             margin-top: 32px;
         }
 
-        /* Ocultar flechas en escritorio (se navega con drag/wheel) */
         @media (hover: hover) {
-            .nav-arrows {
+            /* .nav-arrows {
                 display: none;
-            }
+            } */
         }
 
         /* text card inside about carousel */
@@ -1011,6 +1019,14 @@
 
         /* ─── MÓVIL ───────────────────────────────────────────────── */
         @media (max-width: 768px) {
+            .portafolio-wrap {
+                padding: 0 1.5rem 4rem;
+            }
+
+            .etapa-card {
+                width: 280px;
+                height: 380px;
+            }
 
             .layer-casa {
                 background-image: url('https://nidoum.com/wp-content/uploads/2026/04/Nidoum-Headercasamovi.png');
@@ -1341,7 +1357,7 @@
 
 
     <!-- ─── NUESTROS DESARROLLOS ─────────────────────────────────── -->
-    <div class="carousel-header">
+    <!-- <div class="carousel-header">
         <div class="carousel-header-text">
             <div class="carousel-header-label">Proceso</div>
             <h2>Ciclos de Desarrollo</h2>
@@ -1362,7 +1378,7 @@
                 </svg>
             </button>
         </div>
-    </div>
+    </div> -->
 
     <div class="portafolio-wrap" id="secDesarrollos">
         <div class="track-outer" id="trackOuter">
@@ -1576,13 +1592,13 @@
                     desde la visión inicial hasta la entrega de un hábitat completo y vivo.</p>
             </div>
             <div class="carousel-arrows">
-                <button class="arrow-btn" id="prevBtnEtapas" aria-label="Anterior">
+                <button class="arrow-btn" aria-label="Anterior">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
                         stroke-linejoin="round">
                         <polyline points="15 18 9 12 15 6" />
                     </svg>
                 </button>
-                <button class="arrow-btn" id="nextBtnEtapas" aria-label="Siguiente">
+                <button class="arrow-btn" aria-label="Siguiente">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
                         stroke-linejoin="round">
                         <polyline points="9 18 15 12 9 6" />
@@ -1650,6 +1666,20 @@
                 </div>
 
             </div>
+        </div>
+        <div class="nav-arrows-inline">
+            <button class="arrow-btn" id="prevBtnEtapas" aria-label="Anterior">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6" />
+                </svg>
+            </button>
+            <button class="arrow-btn" id="nextBtnEtapas" aria-label="Siguiente">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6" />
+                </svg>
+            </button>
         </div>
     </div>
 
@@ -1759,7 +1789,8 @@
 
             if (pv) pv.addEventListener('click', () => go(cur - 1));
             if (nx) nx.addEventListener('click', () => go(cur + 1));
-            window.addEventListener('resize', () => { sizeM(); go(Math.min(cur, maxI())); });
+            // window.addEventListener('resize', () => { sizeM(); go(Math.min(cur, maxI())); });
+            window.addEventListener('resize', () => { go(Math.min(cur, maxI())); });
 
             ou.addEventListener('wheel', e => {
                 if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
@@ -1807,20 +1838,26 @@
             const tarjetas = Array.from(tr.querySelectorAll('.tarjeta'));
             let cur = 0, acc = 0;
 
-            function step() { return (isTouch() ? ou.offsetWidth : CARD_W) + GAP; }
+            const CARD_W_MOB = 280;
+            function step() { return (isTouch() ? CARD_W_MOB : CARD_W) + GAP_P; }
             function maxI() {
-                if (isTouch()) return tarjetas.length - 1;
-                return Math.max(0, tarjetas.length - Math.floor((ou.offsetWidth + GAP) / step()));
+                return Math.max(0, tarjetas.length - Math.floor((ou.offsetWidth + GAP_P) / step()));
             }
+
+            // function step() { return (isTouch() ? ou.offsetWidth : CARD_W) + GAP; }
+            // function maxI() {
+            //     if (isTouch()) return tarjetas.length - 1;
+            //     return Math.max(0, tarjetas.length - Math.floor((ou.offsetWidth + GAP) / step()));
+            // }
             function go(idx) {
                 cur = Math.max(0, Math.min(idx, maxI()));
                 tr.style.transform = `translateX(-${cur * step()}px)`;
             }
-            function sizeM() {
-                if (!isTouch()) return;
-                tarjetas.forEach(c => c.style.width = ou.offsetWidth + 'px');
-            }
-            sizeM();
+            // function sizeM() {
+            //     if (!isTouch()) return;
+            //     tarjetas.forEach(c => c.style.width = ou.offsetWidth + 'px');
+            // }
+            // sizeM();
 
             pv.addEventListener('click', () => go(cur - 1));
             nx.addEventListener('click', () => go(cur + 1));
