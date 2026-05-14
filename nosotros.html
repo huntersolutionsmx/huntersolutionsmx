@@ -1,0 +1,75 @@
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
+
+<style>
+    :root {
+        --sandlight: #e6d6c7;
+        --sandob:    #514946;
+        --white: #ffffff;
+        --tarjeta-r: 10px;
+    }
+
+    .nidoum-tarjetas-row {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 20px;
+        width: 100%;
+    }
+
+    .nidoum-tarjeta-text {
+        flex: 1;
+        min-width: 0;
+        background: var(--sandob);
+        display: flex;
+        align-items: flex-end;
+        padding: 36px 32px;
+        height: 550px;
+        border-radius: var(--tarjeta-r);
+        overflow: hidden;
+    }
+
+    .nidoum-tarjetas-row .nidoum-tarjeta-text:nth-child(2) { margin-top: 110px; }
+    .nidoum-tarjetas-row .nidoum-tarjeta-text:nth-child(3) { margin-top: 220px; }
+
+    .nidoum-tarjeta-text p {
+        font-family: 'Roboto Serif', serif;
+        font-size: 1.25rem;
+        line-height: 1.75;
+        color: var(--white);
+        font-weight: 300;
+        text-align: justify;
+    }
+
+    @media (max-width: 768px) {
+        .nidoum-tarjetas-row {
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .nidoum-tarjetas-row .nidoum-tarjeta-text:nth-child(2),
+        .nidoum-tarjetas-row .nidoum-tarjeta-text:nth-child(3) {
+            margin-top: 0;
+        }
+
+        .nidoum-tarjeta-text {
+            height: auto;
+            min-height: 180px;
+        }
+
+        .nidoum-tarjeta-text p {
+            font-size: 0.8rem;
+        }
+    }
+</style>
+
+<div class="nidoum-tarjetas-row">
+    <div class="nidoum-tarjeta-text">
+        <p>NIDOUM Conscious Habitat surge de una visión: el desarrollar entornos habitacionales que integren territorio, arquitectura, inversión y comunidad en un mismo ecosistema consciente.</p>
+    </div>
+    <div class="nidoum-tarjeta-text">
+        <p>A través de cinco ciclos — Tierra, Semilla, Nutrimiento, Siembra y Cosecha — estructuramos cada etapa del desarrollo, generando bienestar y valor real para quien habita, para quien invierte y para el entorno.</p>
+    </div>
+    <div class="nidoum-tarjeta-text">
+        <p>Para lograrlo, articulamos una red con aliados estratégicos como ARCOMPANY, que comparten el propósito de crear hábitats conscientes.</p>
+    </div>
+</div>
