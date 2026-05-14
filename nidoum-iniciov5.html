@@ -454,6 +454,11 @@
             height: 550px;
             border-radius: var(--tarjeta-r);
             flex-shrink: 0;
+            width: 300px !important;
+            height: 550px !important;
+            flex-shrink: 0;
+            z-index: 2;
+            align-self: flex-start;
         }
 
         .nidoum-tarjeta-text p {
@@ -693,17 +698,7 @@
             gap: 0;
             padding-left: 56px;
         }
-
-        .nidoum-tarjeta-sticky {
-            width: 300px !important;
-            height: 550px !important;
-            flex-shrink: 0;
-            position: sticky;
-            left: 56px;
-            z-index: 2;
-            align-self: flex-start;
-        }
-
+        
         .nidoum-track-area {
             flex: 1;
             min-width: 0;
@@ -849,9 +844,17 @@
         }
 
         .habitat-video-card {
+            position: relative;
+            flex-shrink: 0;
+            width: 550px;
+            height: 550px;
+            border-radius: var(--tarjeta-r);
+            overflow: hidden;
+            cursor: pointer;
             flex: 0 0 60%;
             height: 550px;
-            cursor: default;
+            width: 100%;
+            /* cursor: default; */
         }
 
         .habitat-video-el {
@@ -947,14 +950,51 @@
             }
 
             .nidoum-sticky-row {
+                flex-direction: column;
+                align-items: stretch;
                 padding-left: 24px;
-                gap: 0;
+                padding-right: 24px;
+                gap: 1.5rem;
             }
 
             .nidoum-tarjeta-sticky {
-                width: 220px !important;
-                height: 380px !important;
-                left: 24px;
+                width: 100% !important;
+                height: auto !important;
+                min-height: 180px;
+                position: sticky;
+                top: 16px;
+                left: auto;
+                z-index: 2;
+            }
+
+            .nidoum-track-area .carousel-track-outer {
+                padding-left: 0;
+                overflow: visible;
+            }
+
+            /* Las tarjetas se apilan verticalmente */
+            #trackNidoum {
+                flex-direction: column;
+                transform: none !important;
+                /* desactiva el translate del JS */
+                gap: 16px;
+            }
+
+            /* Las tarjetas individuales ocupan el ancho completo */
+            #trackNidoum .tarjeta {
+                width: 100%;
+                height: 320px;
+            }
+
+            /* Ocultar flechas solo en secNidoum en móvil */
+            #secNidoum .nav-arrows {
+                display: none;
+            }
+
+            #secNidoum .nidoum-track-area {
+                overflow: visible;
+                height: auto;
+                width: 100%;
             }
 
             /* --- Layout Global & Secciones --- */
@@ -1147,7 +1187,7 @@
             }
 
             .nidoum-tarjeta-text p {
-                font-size: 1rem;
+                font-size: 0.8rem;
             }
 
             /* --- Secciones Específicas Móvil --- */
@@ -1222,7 +1262,6 @@
         </div>
 
         <div class="nidoum-sticky-row">
-            <!-- Tarjeta de texto FIJA (no scrollea) -->
             <div class="nidoum-tarjeta-text nidoum-tarjeta-sticky">
                 <p>Ecosistemas habitacionales conscientes que integran territorio, arquitectura,
                     inversión y comunidad. Un modelo de desarrollo que nace del respeto profundo
@@ -1766,9 +1805,10 @@
             </div>
 
             <!-- Tarjeta de video (60%) -->
-            <div class="tarjeta habitat-video-card" id="habitatVideoCard">
-                <video id="habitatVideo" class="tarjeta-photo habitat-video-el" src="" loop muted playsinline
-                    poster="https://nidoum.com/wp-content/uploads/2026/05/Nidoum-video-Casa-Beckhart.mov">
+            <div class="habitat-video-card" id="habitatVideoCard">
+                <video id="habitatVideo" class="tarjeta-photo habitat-video-el"
+                    src="https://nidoum.com/wp-content/uploads/2026/05/Nidoum-video-Casa-Beckhart.mp4" loop muted
+                    playsinline poster="https://nidoum.com/wp-content/uploads/2026/05/casavinedossma.webp">
                 </video>
 
                 <!-- Play/Pause con estilo tarjeta-status -->
@@ -1911,7 +1951,9 @@
             });
         }
 
-        makeCarousel({ trackId: 'trackNidoum', outerId: 'trackOuterNidoum', prevId: 'prevBtnNidoum', nextId: 'nextBtnNidoum', itemSel: '.tarjeta', cardW: 550 });
+        if (!window.matchMedia('(max-width: 768px)').matches) {
+            makeCarousel({ trackId: 'trackNidoum', outerId: 'trackOuterNidoum', prevId: 'prevBtnNidoum', nextId: 'nextBtnNidoum', itemSel: '.tarjeta', cardW: 550 });
+        }
         makeCarousel({ trackId: 'trackEtapas', outerId: 'trackOuterEtapas', prevId: 'prevBtnEtapas', nextId: 'nextBtnEtapas', itemSel: '.etapa-card', cardW: 550 });
         makeCarousel({ trackId: 'trackDes', outerId: 'trackOuterDes', prevId: 'prevBtnDes', nextId: 'nextBtnDes', itemSel: '.tarjeta', cardW: 550 });
         makeCarousel({ trackId: 'trackHab', outerId: 'trackOuterHab', prevId: 'prevBtnHab', nextId: 'nextBtnHab', itemSel: '.tarjeta', cardW: 550 });
