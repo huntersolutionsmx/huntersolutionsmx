@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
@@ -61,13 +62,26 @@
            2. ANIMACIONES
            ========================================================================== */
         @keyframes fadeIn {
-            to { opacity: 1; }
+            to {
+                opacity: 1;
+            }
         }
 
         @keyframes scrollPulse {
-            0% { transform: scaleY(1); opacity: 0.7; }
-            50% { transform: scaleY(0.4); opacity: 0.3; }
-            100% { transform: scaleY(1); opacity: 0.7; }
+            0% {
+                transform: scaleY(1);
+                opacity: 0.7;
+            }
+
+            50% {
+                transform: scaleY(0.4);
+                opacity: 0.3;
+            }
+
+            100% {
+                transform: scaleY(1);
+                opacity: 0.7;
+            }
         }
 
         /* ==========================================================================
@@ -194,7 +208,7 @@
         /* ==========================================================================
            4. COMPONENTES UI (Tarjetas, Carruseles, Botones)
            ========================================================================== */
-        
+
         /* Contenedores de Pistas (Tracks) */
         .track-outer {
             overflow: hidden;
@@ -210,13 +224,14 @@
             padding-left: 24px;
         }
 
-        .track, .carousel-track {
+        .track,
+        .carousel-track {
             display: flex;
             gap: 20px;
             transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             will-change: transform;
         }
-        
+
         /* Carrusel Track específico */
         .carousel-track {
             gap: 20px;
@@ -289,7 +304,8 @@
             left: 24px;
             right: 24px;
             font-family: 'Roboto Serif', serif;
-            font-size: 22px; /* Unificado con el valor inferior previo */
+            font-size: 22px;
+            /* Unificado con el valor inferior previo */
             font-weight: 400;
             color: var(--white);
             line-height: 1.25;
@@ -306,7 +322,8 @@
             background: rgba(255, 255, 255, 0.10);
             backdrop-filter: blur(2px);
             -webkit-backdrop-filter: blur(6px);
-            font-size: 10px; /* Unificado con el valor inferior previo */
+            font-size: 10px;
+            /* Unificado con el valor inferior previo */
             font-weight: 500;
             letter-spacing: 0.1em;
             text-transform: uppercase;
@@ -404,6 +421,7 @@
                 opacity: 1;
                 pointer-events: auto;
             }
+
             .tarjeta:hover .tarjeta-title-photo,
             .tarjeta:hover .tarjeta-status {
                 opacity: 0;
@@ -414,9 +432,11 @@
             opacity: 1;
             pointer-events: auto;
         }
+
         .tarjeta.tapped .tarjeta-photo {
             transform: scale(1.04);
         }
+
         .tarjeta.tapped .tarjeta-title-photo,
         .tarjeta.tapped .tarjeta-status {
             opacity: 0;
@@ -638,7 +658,9 @@
         }
 
         @media (hover: none) {
-            .tap-hint { display: flex; }
+            .tap-hint {
+                display: flex;
+            }
         }
 
         /* --- 5.2. Qué es NIDOUM --- */
@@ -662,6 +684,34 @@
         .demo-section--quees .section-body {
             display: flex;
             align-items: center;
+        }
+
+        /* Fila sticky secNidoum */
+        .nidoum-sticky-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 0;
+            padding-left: 56px;
+        }
+
+        .nidoum-tarjeta-sticky {
+            width: 300px !important;
+            height: 550px !important;
+            flex-shrink: 0;
+            position: sticky;
+            left: 56px;
+            z-index: 2;
+            align-self: flex-start;
+        }
+
+        .nidoum-track-area {
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+        }
+
+        .nidoum-track-area .carousel-track-outer {
+            padding-left: 20px;
         }
 
         /* --- 5.3. Desarrollos (Imágenes) --- */
@@ -746,13 +796,96 @@
             border: 1px dashed rgba(255, 255, 255, 0.12);
         }
 
-        .etapa-card--semilla { background: #253326; }
-        .etapa-card--raiz { background: #2e1e10; }
-        .etapa-card--brote { background: #3b2a14; }
-        .etapa-card--floracion { background: #3a2535; }
-        .etapa-card--cosecha { background: #3d3218; }
+        .etapa-card--semilla {
+            background: #253326;
+        }
+
+        .etapa-card--raiz {
+            background: #2e1e10;
+        }
+
+        .etapa-card--brote {
+            background: #3b2a14;
+        }
+
+        .etapa-card--floracion {
+            background: #3a2535;
+        }
+
+        .etapa-card--cosecha {
+            background: #3d3218;
+        }
 
         /* --- 5.5. Hábitat Consciente --- */
+
+        /* --- (Video) --- */
+        .habitat-video-section {
+            padding: 0 0 7rem;
+        }
+
+        .habitat-video-inner {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            padding: 0 56px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .habitat-video-title {
+            flex: 0 0 28%;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .habitat-video-title h2 {
+            font-family: 'Roboto Serif', serif;
+            font-weight: 300;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            color: var(--sandlight);
+            letter-spacing: 0.02em;
+            line-height: 1.15;
+        }
+
+        .habitat-video-card {
+            flex: 0 0 60%;
+            height: 550px;
+            cursor: default;
+        }
+
+        .habitat-video-el {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Play/Pause: extiende tarjeta-status como botón circular */
+        .habitat-play-btn {
+            position: absolute;
+            bottom: 24px;
+            right: 24px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+            /* hereda fondo/blur de tarjeta-status via clase combinada */
+            z-index: 2;
+            transition: background 0.25s, transform 0.2s;
+        }
+
+        .habitat-play-btn:hover {
+            background: rgba(255, 255, 255, 0.22);
+            transform: scale(1.08);
+        }
+
         .habitat-section {
             max-width: 1200px;
             margin: 0 auto;
@@ -794,22 +927,61 @@
            6. ESTILOS RESPONSIVOS (Móvil <= 768px)
            ========================================================================== */
         @media (max-width: 768px) {
-            
+
+            .habitat-video-inner {
+                flex-direction: column;
+                padding: 0 24px;
+                gap: 1.5rem;
+                align-items: flex-start;
+            }
+
+            .habitat-video-title {
+                flex: none;
+                width: 100%;
+            }
+
+            .habitat-video-card {
+                flex: none;
+                width: 100%;
+                height: 320px;
+            }
+
+            .nidoum-sticky-row {
+                padding-left: 24px;
+                gap: 0;
+            }
+
+            .nidoum-tarjeta-sticky {
+                width: 220px !important;
+                height: 380px !important;
+                left: 24px;
+            }
+
             /* --- Layout Global & Secciones --- */
-            .portafolio-wrap { padding: 0 0 4rem; }
-            .carousel-section { padding-bottom: 4rem; }
+            .portafolio-wrap {
+                padding: 0 0 4rem;
+            }
+
+            .carousel-section {
+                padding-bottom: 4rem;
+            }
+
             .demo-section {
                 flex-direction: column;
                 padding: 4rem 1.5rem;
                 gap: 1.5rem;
             }
-            .habitat-section { padding: 0 1.5rem 5rem; }
+
+            .habitat-section {
+                padding: 0 1.5rem 5rem;
+            }
 
             .section-title {
                 flex: none;
                 width: 100%;
                 padding-right: 0;
             }
+
             .section-body {
                 flex: 1;
                 width: 100%;
@@ -822,10 +994,18 @@
                 background-image: url('https://nidoum.com/wp-content/uploads/2026/04/Nidoum-Headercasamovi.png');
             }
 
-            .site-logo { top: 20px; left: 20px; }
-            .site-logo img { height: 48px; }
+            .site-logo {
+                top: 20px;
+                left: 20px;
+            }
 
-            .encabezado-menu { display: none; }
+            .site-logo img {
+                height: 48px;
+            }
+
+            .encabezado-menu {
+                display: none;
+            }
 
             .mobile-menu-container {
                 display: block;
@@ -879,9 +1059,17 @@
                 border-radius: var(--tarjeta-r);
             }
 
-            .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-            .hamburger.active span:nth-child(2) { opacity: 0; }
-            .hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+            .hamburger.active span:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
 
             .mobile-nav {
                 position: fixed;
@@ -926,7 +1114,9 @@
                 transform: translateX(-101%);
             }
 
-            .mobile-nav .nav-elemento:hover::before { transform: translateX(0); }
+            .mobile-nav .nav-elemento:hover::before {
+                transform: translateX(0);
+            }
 
             /* --- Tipografía Móvil & Encabezados --- */
             .carousel-header {
@@ -934,14 +1124,21 @@
                 padding: 0 24px;
                 margin-bottom: 1.5rem;
             }
-            .carousel-header h2, .section-title h2 {
+
+            .carousel-header h2,
+            .section-title h2 {
                 font-size: clamp(1.4rem, 5vw, 1.8rem);
             }
-            .carousel-arrows { display: flex; }
+
+            .carousel-arrows {
+                display: flex;
+            }
 
             /* --- Tarjetas & Carruseles Móvil --- */
-            .carousel-track-outer { padding-left: 24px; }
-            
+            .carousel-track-outer {
+                padding-left: 24px;
+            }
+
             .tarjeta,
             .nidoum-tarjeta-text,
             .etapa-card {
@@ -949,21 +1146,32 @@
                 height: 380px;
             }
 
-            .nidoum-tarjeta-text p { font-size: 1rem; }
+            .nidoum-tarjeta-text p {
+                font-size: 1rem;
+            }
 
             /* --- Secciones Específicas Móvil --- */
-            .demo-section--quees { align-items: flex-start; }
-            .section-title--quees .nidoum-tarjeta-text { min-height: 220px; }
+            .demo-section--quees {
+                align-items: flex-start;
+            }
+
+            .section-title--quees .nidoum-tarjeta-text {
+                min-height: 220px;
+            }
 
             .habitat-inner {
                 flex-direction: column;
                 gap: 1.5rem;
             }
+
             .habitat-title {
                 flex: none;
                 width: 100%;
             }
-            .habitat-title h2 { font-size: clamp(2rem, 8vw, 2.8rem); }
+
+            .habitat-title h2 {
+                font-size: clamp(2rem, 8vw, 2.8rem);
+            }
         }
     </style>
 </head>
@@ -1005,72 +1213,67 @@
         </div>
     </header>
 
-    <div class="sections-wrap">
+    <div class="carousel-section" id="secNidoum">
         <div class="carousel-header" style="padding-top: 7rem;">
             <div class="carousel-header-text">
+                <div class="carousel-header-label">Nuestra esencia</div>
                 <h2>Qué es NIDOUM</h2>
             </div>
         </div>
-        <section class="demo-section demo-section--quees">
-            <div class="section-title section-title--quees">
 
-                <div class="nidoum-tarjeta-text">
-                    <p>Ecosistemas habitacionales conscientes que integran territorio, arquitectura,
-                        inversión y comunidad. Un modelo de desarrollo que nace del respeto profundo
-                        por la tierra y por quienes la habitan.</p>
-                </div>
+        <div class="nidoum-sticky-row">
+            <!-- Tarjeta de texto FIJA (no scrollea) -->
+            <div class="nidoum-tarjeta-text nidoum-tarjeta-sticky">
+                <p>Ecosistemas habitacionales conscientes que integran territorio, arquitectura,
+                    inversión y comunidad. Un modelo de desarrollo que nace del respeto profundo
+                    por la tierra y por quienes la habitan.</p>
             </div>
 
-            <div class="section-body">
-                <div style="padding: 0; max-width: 100%; width: 100%;">
-                    <div class="track-outer" id="trackOuterAbout">
-                        <div class="track" id="trackAbout">
-
-                            <div class="tarjeta">
-                                <div class="tarjeta-photo"
-                                    style="background-image: url('https://nidoum.com/wp-content/uploads/2026/05/14.webp'); filter: brightness(0.7);">
-                                </div>
+            <!-- Track de imágenes scrolleable -->
+            <div class="nidoum-track-area">
+                <div class="carousel-track-outer" id="trackOuterNidoum">
+                    <div class="carousel-track" id="trackNidoum">
+                        <div class="tarjeta">
+                            <div class="tarjeta-photo"
+                                style="background-image: url('https://nidoum.com/wp-content/uploads/2026/05/14.webp'); filter: brightness(0.7);">
                             </div>
-                            <div class="tarjeta">
-                                <div class="tarjeta-photo"
-                                    style="background-image: url('https://nidoum.com/wp-content/uploads/2026/05/10.webp'); filter: brightness(0.7);">
-                                </div>
+                        </div>
+                        <div class="tarjeta">
+                            <div class="tarjeta-photo"
+                                style="background-image: url('https://nidoum.com/wp-content/uploads/2026/05/10.webp'); filter: brightness(0.7);">
                             </div>
-                            <div class="tarjeta">
-                                <div class="tarjeta-photo"
-                                    style="background-image: url('https://nidoum.com/wp-content/uploads/2026/05/01.webp'); filter: brightness(0.7);">
-                                </div>
+                        </div>
+                        <div class="tarjeta">
+                            <div class="tarjeta-photo"
+                                style="background-image: url('https://nidoum.com/wp-content/uploads/2026/05/01.webp'); filter: brightness(0.7);">
                             </div>
-                            <div class="tarjeta">
-                                <div class="tarjeta-photo"
-                                    style="background-image: url('https://nidoum.com/wp-content/uploads/2026/05/08.webp'); filter: brightness(0.7);">
-                                </div>
+                        </div>
+                        <div class="tarjeta">
+                            <div class="tarjeta-photo"
+                                style="background-image: url('https://nidoum.com/wp-content/uploads/2026/05/08.webp'); filter: brightness(0.7);">
                             </div>
-
                         </div>
                     </div>
-
-                    <div class="nav-arrows">
-                        <button class="arrow-btn" id="prevBtnAbout" aria-label="Anterior">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="15 18 9 12 15 6" />
-                            </svg>
-                        </button>
-                        <button class="arrow-btn" id="nextBtnAbout" aria-label="Siguiente">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="9 18 15 12 9 6" />
-                            </svg>
-                        </button>
-                    </div>
+                </div>
+                <div class="nav-arrows">
+                    <button class="arrow-btn" id="prevBtnNidoum" aria-label="Anterior">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6" />
+                        </svg>
+                    </button>
+                    <button class="arrow-btn" id="nextBtnNidoum" aria-label="Siguiente">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6" />
+                        </svg>
+                    </button>
                 </div>
             </div>
-
-        </section>
+        </div>
     </div>
 
-    <div class="portafolio-wrap" id="secDesarrollos">
+    <div class="carousel-section" id="secDesarrollos">
         <div class="carousel-header">
             <div class="carousel-header-text">
                 <div class="carousel-header-label">QUÉ ESTAMOS SEMBRANDO</div>
@@ -1080,8 +1283,8 @@
                     con el entorno natural que los rodea.</p>
             </div>
         </div>
-        <div class="track-outer" id="trackOuter">
-            <div class="track" id="track">
+        <div class="track-outer" id="trackOuterDes">
+            <div class="track" id="trackDes">
 
                 <div class="tarjeta">
                     <div class="tarjeta-photo casavinedossma"></div>
@@ -1253,14 +1456,16 @@
                     </div>
                 </div>
 
-            </div></div><div class="nav-arrows">
-            <button class="arrow-btn" id="prevBtn" aria-label="Anterior">
+            </div>
+        </div>
+        <div class="nav-arrows">
+            <button class="arrow-btn" id="prevBtnDes" aria-label="Anterior">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
                     stroke-linejoin="round">
                     <polyline points="15 18 9 12 15 6" />
                 </svg>
             </button>
-            <button class="arrow-btn" id="nextBtn" aria-label="Siguiente">
+            <button class="arrow-btn" id="nextBtnDes" aria-label="Siguiente">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
                     stroke-linejoin="round">
                     <polyline points="9 18 15 12 9 6" />
@@ -1268,7 +1473,9 @@
             </button>
         </div>
 
-    </div><div class="carousel-section" id="secEtapas">
+    </div>
+
+    <div class="carousel-section" id="secEtapas">
         <div class="carousel-header">
             <div class="carousel-header-text">
                 <div class="carousel-header-label">Proceso</div>
@@ -1277,13 +1484,12 @@
                     desde la visión inicial hasta la entrega de un hábitat completo y vivo.</p>
             </div>
         </div>
-
         <div class="carousel-track-outer" id="trackOuterEtapas">
             <div class="carousel-track" id="trackEtapas">
 
                 <div class="etapa-card etapa-card--semilla">
                     <div class="etapa-imagotipo">
-                        </div>
+                    </div>
                     <div class="etapa-body">
                         <div class="etapa-titulo">Semilla — Visión y Territorio</div>
                         <p class="etapa-desc">Identificación del territorio, estudio de vocación del suelo y definición
@@ -1293,7 +1499,7 @@
 
                 <div class="etapa-card etapa-card--raiz">
                     <div class="etapa-imagotipo">
-                        </div>
+                    </div>
                     <div class="etapa-body">
                         <div class="etapa-titulo">Raíz — Planeación y Estructura</div>
                         <p class="etapa-desc">Diseño del sistema modular, estructuración financiera e integración del
@@ -1303,7 +1509,7 @@
 
                 <div class="etapa-card etapa-card--brote">
                     <div class="etapa-imagotipo">
-                        </div>
+                    </div>
                     <div class="etapa-body">
                         <div class="etapa-titulo">Brote — Construcción Modular</div>
                         <p class="etapa-desc">Ejecución precisa de la estructura. Cada módulo se construye con control
@@ -1313,7 +1519,7 @@
 
                 <div class="etapa-card etapa-card--floracion">
                     <div class="etapa-imagotipo">
-                        </div>
+                    </div>
                     <div class="etapa-body">
                         <div class="etapa-titulo">Floración — Comunidad y Paisaje</div>
                         <p class="etapa-desc">Integración del programa comunitario, paisajismo y los elementos que dan
@@ -1323,7 +1529,7 @@
 
                 <div class="etapa-card etapa-card--cosecha">
                     <div class="etapa-imagotipo">
-                        </div>
+                    </div>
                     <div class="etapa-body">
                         <div class="etapa-titulo">Cosecha — Entrega y Operación</div>
                         <p class="etapa-desc">Transferencia del hábitat a sus habitantes. Acompañamiento en la operación
@@ -1349,19 +1555,240 @@
         </div>
     </div>
 
-    <div class="habitat-section demo-section" id="secHabitat">
-        <div class="habitat-inner">
-            <div class="habitat-title">
+    <!-- <div class="carousel-section" id="secHabitat">
+        <div class="carousel-header">
+            <div class="carousel-header-text">
+                <div class="carousel-header-label">QUÉ ESTAMOS SEMBRANDO</div>
+                <h2>Desarrollos NIDOUM</h2>
+                <p class="carousel-header-desc">Descubre cada proyecto — hábitats conscientes hechos realidad.
+                    Espacios donde la arquitectura respira y la comunidad florece en armonía
+                    con el entorno natural que los rodea.</p>
+            </div>
+        </div>
+        <div class="track-outer" id="trackOuterHab">
+            <div class="track" id="trackHab">
+
+                <div class="tarjeta">
+                    <div class="tarjeta-photo casavinedossma"></div>
+                    <span class="tarjeta-title-photo">Casa Viñedos SMA</span>
+                    <span class="tarjeta-status">En desarrollo</span>
+                    <div class="tarjeta-overlay">
+                        <div class="overlay-title">Casa Viñedos SMA</div>
+                        <div class="overlay-desc">Conjunto habitacional concebido como sistema modular. Cada unidad
+                            preserva su identidad dentro de un todo armónico.</div>
+                        <div class="overlay-meta">
+                            <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Desarrollo
+                                    residencial escalable</span></div>
+                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
+                                    class="meta-val">México</span></div>
+                            <div class="meta-row"><span class="meta-key">Sistema</span><span class="meta-val">Modular
+                                    repetible</span></div>
+                            <div class="meta-row"><span class="meta-key">Etapa</span><span class="meta-val">En
+                                    desarrollo</span></div>
+                        </div>
+                        <a class="overlay-btn" href="#">Ver más información</a>
+                    </div>
+                    <div class="tap-hint" id="tapHint">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M9 11V6a2 2 0 0 1 4 0v5" />
+                            <path d="M13 11V9a2 2 0 0 1 4 0v6a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6v-3a2 2 0 0 1 4 0" />
+                        </svg>
+                        <span>Toca para ver info</span>
+                    </div>
+                </div>
+
+                <div class="tarjeta">
+                    <div class="tarjeta-photo casabeckhartsma"></div>
+                    <span class="tarjeta-title-photo">Casa Beckhart SMA</span>
+                    <span class="tarjeta-status">Ejecutado</span>
+                    <div class="tarjeta-overlay">
+                        <div class="overlay-title">Casa Beckhart SMA</div>
+                        <div class="overlay-desc">Vivienda flexible y adaptable, con construcción eficiente y ordenada.
+                            La repetición genera identidad.</div>
+                        <div class="overlay-meta">
+                            <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Residencial
+                                    (Unifamiliar)</span></div>
+                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
+                                    class="meta-val">México</span></div>
+                            <div class="meta-row"><span class="meta-key">Sistema</span><span class="meta-val">Modular
+                                    repetible</span></div>
+                            <div class="meta-row"><span class="meta-key">Etapa</span><span
+                                    class="meta-val">Ejecutado</span></div>
+                        </div>
+                        <a class="overlay-btn" href="#">Ver más información</a>
+                    </div>
+                </div>
+
+                <div class="tarjeta">
+                    <div class="tarjeta-photo casapasaret"></div>
+                    <span class="tarjeta-title-photo">Casa Pásaret Sangre de Cristo</span>
+                    <span class="tarjeta-status">Ejecutado</span>
+                    <div class="tarjeta-overlay">
+                        <div class="overlay-title">Casa Pásaret Sangre de Cristo</div>
+                        <div class="overlay-desc">Arquitectura contenida; precisión técnica y detalle artesanal donde el
+                            espacio es protagonista.</div>
+                        <div class="overlay-meta">
+                            <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Residencial
+                                    (Unifamiliar)</span></div>
+                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
+                                    class="meta-val">México</span></div>
+                            <div class="meta-row"><span class="meta-key">Sistema</span><span class="meta-val">Modular +
+                                    Artesanal Controlado</span></div>
+                            <div class="meta-row"><span class="meta-key">Etapa</span><span
+                                    class="meta-val">Ejecutado</span></div>
+                        </div>
+                        <a class="overlay-btn" href="#">Ver más información</a>
+                    </div>
+                </div>
+
+                <div class="tarjeta">
+                    <div class="tarjeta-photo photo-4"></div>
+                    <span class="tarjeta-title-photo">Mantarraya Todos Santos</span>
+                    <span class="tarjeta-status">Próximamente</span>
+                    <div class="tarjeta-overlay">
+                        <div class="overlay-title">Mantarraya Todos Santos</div>
+                        <div class="overlay-desc">Información próximamente disponible.</div>
+                        <div class="overlay-meta">
+                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
+                                    class="meta-val">México</span></div>
+                        </div>
+                        <a class="overlay-btn" href="#">Ver más información</a>
+                    </div>
+                </div>
+
+                <div class="tarjeta">
+                    <div class="tarjeta-photo photo-5"></div>
+                    <span class="tarjeta-title-photo">Pabellón Mauricio Rocha</span>
+                    <span class="tarjeta-status">Próximamente</span>
+                    <div class="tarjeta-overlay">
+                        <div class="overlay-title">Pabellón Mauricio Rocha</div>
+                        <div class="overlay-desc">Información próximamente disponible.</div>
+                        <div class="overlay-meta">
+                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
+                                    class="meta-val">México</span></div>
+                        </div>
+                        <a class="overlay-btn" href="#">Ver más información</a>
+                    </div>
+                </div>
+
+                <div class="tarjeta">
+                    <div class="tarjeta-photo photo-6"></div>
+                    <span class="tarjeta-title-photo">Palo Blanco Villas Resort</span>
+                    <span class="tarjeta-status">Ejecutado</span>
+                    <div class="tarjeta-overlay">
+                        <div class="overlay-title">Palo Blanco Villas Resort</div>
+                        <div class="overlay-desc">Centro residencial enfocado en el bienestar. Arquitectura y paisaje
+                            convergen en una experiencia de calma y conexión.</div>
+                        <div class="overlay-meta">
+                            <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Wellness
+                                    Residencial (Uso Mixto)</span></div>
+                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
+                                    class="meta-val">México</span></div>
+                            <div class="meta-row"><span class="meta-key">Sistema</span><span
+                                    class="meta-val">Racionalizado</span></div>
+                            <div class="meta-row"><span class="meta-key">Etapa</span><span
+                                    class="meta-val">Ejecutado</span></div>
+                        </div>
+                        <a class="overlay-btn" href="#">Ver más información</a>
+                    </div>
+                </div>
+
+                <div class="tarjeta">
+                    <div class="tarjeta-photo photo-7"></div>
+                    <span class="tarjeta-title-photo">Casa Manana</span>
+                    <span class="tarjeta-status">Ejecutado</span>
+                    <div class="tarjeta-overlay">
+                        <div class="overlay-title">Casa Manana</div>
+                        <div class="overlay-desc">Vivienda contemporánea que sintetiza claridad arquitectónica,
+                            eficiencia y adaptabilidad. Diseñada para habitar el entorno.</div>
+                        <div class="overlay-meta">
+                            <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Residencial
+                                    (Unifamiliar)</span></div>
+                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
+                                    class="meta-val">México</span></div>
+                            <div class="meta-row"><span class="meta-key">Sistema</span><span class="meta-val">Modular
+                                    Híbrido</span></div>
+                            <div class="meta-row"><span class="meta-key">Etapa</span><span
+                                    class="meta-val">Ejecutado</span></div>
+                        </div>
+                        <a class="overlay-btn" href="#">Ver más información</a>
+                    </div>
+                </div>
+
+                <div class="tarjeta">
+                    <div class="tarjeta-photo photo-8"></div>
+                    <span class="tarjeta-title-photo">Casa Aurora</span>
+                    <span class="tarjeta-status">Ejecutado</span>
+                    <div class="tarjeta-overlay">
+                        <div class="overlay-title">Casa Aurora</div>
+                        <div class="overlay-desc">Arquitectura clara que privilegia luz, proporción y estructura. Cada
+                            elemento justifica su presencia.</div>
+                        <div class="overlay-meta">
+                            <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Residencial
+                                    (Unifamiliar)</span></div>
+                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
+                                    class="meta-val">México</span></div>
+                            <div class="meta-row"><span class="meta-key">Sistema</span><span class="meta-val">Modular
+                                    racionalizado</span></div>
+                            <div class="meta-row"><span class="meta-key">Etapa</span><span
+                                    class="meta-val">Ejecutado</span></div>
+                        </div>
+                        <a class="overlay-btn" href="#">Ver más información</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="nav-arrows">
+            <button class="arrow-btn" id="prevBtnHab" aria-label="Anterior">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6" />
+                </svg>
+            </button>
+            <button class="arrow-btn" id="nextBtnHab" aria-label="Siguiente">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6" />
+                </svg>
+            </button>
+        </div>
+    </div> -->
+
+    <div class="carousel-section habitat-video-section" id="secHabitat">
+        <div class="habitat-video-inner">
+
+            <!-- Título izquierdo (30%) -->
+            <div class="habitat-video-title">
+                <div class="carousel-header-label">Filosofía</div>
                 <h2>Hábitat<br>Consciente</h2>
             </div>
-            <div class="habitat-body">
-                <p>Espacios diseñados con intención, donde cada detalle convive en armonía con el entorno natural.
-                    Nidoum nace de la convicción de que vivir bien es vivir consciente, conectado con lo esencial.</p>
+
+            <!-- Tarjeta de video (60%) -->
+            <div class="tarjeta habitat-video-card" id="habitatVideoCard">
+                <video id="habitatVideo" class="tarjeta-photo habitat-video-el" src="" loop muted playsinline
+                    poster="https://nidoum.com/wp-content/uploads/2026/05/Nidoum-video-Casa-Beckhart.mov">
+                </video>
+
+                <!-- Play/Pause con estilo tarjeta-status -->
+                <button class="tarjeta-status habitat-play-btn" id="habitatPlayBtn" aria-label="Play / Pause">
+                    <svg id="habitatPlayIcon" viewBox="0 0 24 24" fill="currentColor" width="14" height="14">
+                        <polygon points="5,3 19,12 5,21" />
+                    </svg>
+                    <svg id="habitatPauseIcon" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"
+                        style="display:none;">
+                        <rect x="5" y="3" width="4" height="18" rx="1" />
+                        <rect x="15" y="3" width="4" height="18" rx="1" />
+                    </svg>
+                </button>
             </div>
+
         </div>
     </div>
 
-    </div><script>
+    </div>
+    <script>
         /* ─── PARALLAX ──────────────────────────────────────────────── */
         const fondo = document.getElementById('layerFondo');
         const casa = document.getElementById('layerCasa');
@@ -1484,8 +1911,10 @@
             });
         }
 
-        makeCarousel({ trackId: 'trackAbout', outerId: 'trackOuterAbout', prevId: 'prevBtnAbout', nextId: 'nextBtnAbout', itemSel: '.tarjeta', cardW: 550 });
+        makeCarousel({ trackId: 'trackNidoum', outerId: 'trackOuterNidoum', prevId: 'prevBtnNidoum', nextId: 'nextBtnNidoum', itemSel: '.tarjeta', cardW: 550 });
         makeCarousel({ trackId: 'trackEtapas', outerId: 'trackOuterEtapas', prevId: 'prevBtnEtapas', nextId: 'nextBtnEtapas', itemSel: '.etapa-card', cardW: 550 });
+        makeCarousel({ trackId: 'trackDes', outerId: 'trackOuterDes', prevId: 'prevBtnDes', nextId: 'nextBtnDes', itemSel: '.tarjeta', cardW: 550 });
+        makeCarousel({ trackId: 'trackHab', outerId: 'trackOuterHab', prevId: 'prevBtnHab', nextId: 'nextBtnHab', itemSel: '.tarjeta', cardW: 550 });
 
         /* ─── PORTAFOLIO DESARROLLOS (carousel clásico + tap overlay) ── */
         (function () {
@@ -1572,6 +2001,26 @@
                 }, { once: true });
             }
         })();
+        /* ─── VIDEO HABITAT ─────────────────────────────────────────── */
+        (function () {
+            const btn = document.getElementById('habitatPlayBtn');
+            const vid = document.getElementById('habitatVideo');
+            const iconPlay = document.getElementById('habitatPlayIcon');
+            const iconPause = document.getElementById('habitatPauseIcon');
+            if (!btn || !vid) return;
+            btn.addEventListener('click', () => {
+                if (vid.paused) {
+                    vid.play();
+                    iconPlay.style.display = 'none';
+                    iconPause.style.display = '';
+                } else {
+                    vid.pause();
+                    iconPlay.style.display = '';
+                    iconPause.style.display = 'none';
+                }
+            });
+        })();
     </script>
 </body>
+
 </html>
