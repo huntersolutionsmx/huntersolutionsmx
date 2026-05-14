@@ -1,0 +1,350 @@
+<!-- <style>
+    /* --- (Video) --- */
+    .habitat-video-section {
+        padding: 0 0 7rem;
+    }
+
+    .habitat-video-inner {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+        padding: 0 56px;
+        max-width: 1600px;
+        margin: 0 auto;
+    }
+
+    .habitat-video-title {
+        flex: 0 0 28%;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .habitat-video-title h2 {
+        font-family: 'Roboto Serif', serif;
+        font-weight: 300;
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        color: var(--sandlight);
+        letter-spacing: 0.02em;
+        line-height: 1.15;
+    }
+
+    .habitat-video-card {
+        position: relative;
+        flex-shrink: 0;
+        width: 550px;
+        height: 550px;
+        border-radius: var(--tarjeta-r);
+        overflow: hidden;
+        cursor: pointer;
+        flex: 0 0 60%;
+        height: 550px;
+        width: 100%;
+        /* cursor: default; */
+    }
+
+    .habitat-video-el {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Play/Pause: extiende tarjeta-status como botón circular */
+    .habitat-play-btn {
+        position: absolute;
+        bottom: 24px;
+        right: 24px;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border: none;
+        /* hereda fondo/blur de tarjeta-status via clase combinada */
+        z-index: 2;
+        transition: background 0.25s, transform 0.2s;
+    }
+
+    .habitat-play-btn:hover {
+        background: rgba(255, 255, 255, 0.22);
+        transform: scale(1.08);
+    }
+
+    .tarjeta-status {
+        position: absolute;
+        bottom: 24px;
+        right: 24px;
+        padding: 6px 14px;
+        border-radius: var(--tarjeta-r);
+        background: rgba(255, 255, 255, 0.10);
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(6px);
+        font-size: 10px;
+        /* Unificado con el valor inferior previo */
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--white);
+        transition: opacity 0.4s ease;
+        z-index: 1;
+    }
+
+    @media (max-width: 768px) {
+
+        .habitat-video-inner {
+            flex-direction: column;
+            padding: 0 24px;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .habitat-video-title {
+            flex: none;
+            width: 100%;
+        }
+
+        .habitat-video-card {
+            flex: none;
+            width: 100%;
+            height: 320px;
+        }
+    }
+</style>
+
+<div class="carousel-section habitat-video-section" id="secHabitat">
+    <div class="habitat-video-inner">
+
+        <div class="habitat-video-title">
+            <div class="carousel-header-label">Filosofía</div>
+            <h2>Hábitat<br>Consciente</h2>
+            <p class="carousel-header-desc">De la Tierra a la Cosecha: cinco ciclos que guían cada ecosistema
+                desde la visión inicial hasta la entrega de un hábitat completo y vivo.</p>
+        </div>
+
+        <div class="habitat-video-card" id="habitatVideoCard">
+            <video id="habitatVideo" class="tarjeta-photo habitat-video-el"
+                src="https://nidoum.com/wp-content/uploads/2026/05/Nidoum-video-Casa-Beckhart.mp4" loop muted
+                playsinline poster="https://nidoum.com/wp-content/uploads/2026/05/casavinedossma.webp">
+            </video>
+
+            <button class="tarjeta-status habitat-play-btn" id="habitatPlayBtn" aria-label="Play / Pause">
+                <svg id="habitatPlayIcon" viewBox="0 0 24 24" fill="currentColor" width="14" height="14">
+                    <polygon points="5,3 19,12 5,21" />
+                </svg>
+                <svg id="habitatPauseIcon" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"
+                    style="display:none;">
+                    <rect x="5" y="3" width="4" height="18" rx="1" />
+                    <rect x="15" y="3" width="4" height="18" rx="1" />
+                </svg>
+            </button>
+        </div>
+
+    </div>
+</div> -->
+
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500&family=Roboto+Serif:ital,wght@0,300;0,400;1,300&display=swap"
+  rel="stylesheet"
+/>
+
+<style>
+  :root {
+    --sandlight:   #e6d6c7;
+    --sandlight60: rgba(248, 243, 238, 0.6);
+    --sandlight30: rgba(248, 243, 238, 0.3);
+    --sandob:      #514946;
+    --white:       #ffffff;
+    --tarjeta-r:   10px;
+  }
+
+  /* Fade-in al hacer scroll */
+  .habitat-video-section {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+    padding: 0 0 7rem;
+  }
+  .habitat-video-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Layout interior */
+  .habitat-video-inner {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    padding: 0 56px;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+
+  /* Columna izquierda: título */
+  .habitat-video-title {
+    flex: 0 0 28%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .habitat-video-title h2 {
+    font-family: 'Roboto Serif', serif;
+    font-weight: 300;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    color: var(--sandob);
+    letter-spacing: 0.02em;
+    line-height: 1.15;
+  }
+
+  /* Etiqueta superior */
+  .carousel-header-label {
+    font-family: 'Albert Sans', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--sandob);
+    margin-bottom: 0.5rem;
+  }
+
+  /* Descripción */
+  .carousel-header-desc {
+    max-width: 600px;
+    text-align: justify;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--sandob);
+    font-weight: 300;
+    margin-top: 0.75rem;
+  }
+
+  /* Tarjeta de video */
+  .habitat-video-card {
+    position: relative;
+    flex: 0 0 60%;
+    width: 100%;
+    height: 550px;
+    border-radius: var(--tarjeta-r);
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .habitat-video-el {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Botón play/pause */
+  .habitat-play-btn {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    background: rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(6px);
+    color: var(--white);
+    z-index: 2;
+    transition: background 0.25s, transform 0.2s;
+  }
+  .habitat-play-btn:hover {
+    background: rgba(255, 255, 255, 0.22);
+    transform: scale(1.08);
+  }
+
+  /* Móvil */
+  @media (max-width: 768px) {
+    .habitat-video-inner {
+      flex-direction: column;
+      padding: 0 24px;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+    .habitat-video-title {
+      flex: none;
+      width: 100%;
+    }
+    .habitat-video-card {
+      flex: none;
+      width: 100%;
+      height: 320px;
+    }
+  }
+</style>
+
+<!-- HTML -->
+<div class="habitat-video-section" id="secHabitat">
+  <div class="habitat-video-inner">
+
+    <div class="habitat-video-title">
+      <div class="carousel-header-label">Filosofía</div>
+      <h2>Hábitat<br>Consciente</h2>
+      <p class="carousel-header-desc">De la Tierra a la Cosecha: cinco ciclos que guían cada ecosistema
+        desde la visión inicial hasta la entrega de un hábitat completo y vivo.</p>
+    </div>
+
+    <div class="habitat-video-card" id="habitatVideoCard">
+      <video id="habitatVideo" class="habitat-video-el"
+        src="https://nidoum.com/wp-content/uploads/2026/05/Nidoum-video-Casa-Beckhart.mp4"
+        loop muted playsinline
+        poster="https://nidoum.com/wp-content/uploads/2026/05/casavinedossma.webp">
+      </video>
+      <button class="habitat-play-btn" id="habitatPlayBtn" aria-label="Play / Pause">
+        <svg id="habitatPlayIcon" viewBox="0 0 24 24" fill="currentColor" width="14" height="14">
+          <polygon points="5,3 19,12 5,21" />
+        </svg>
+        <svg id="habitatPauseIcon" viewBox="0 0 24 24" fill="currentColor" width="14" height="14" style="display:none;">
+          <rect x="5" y="3" width="4" height="18" rx="1" />
+          <rect x="15" y="3" width="4" height="18" rx="1" />
+        </svg>
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  /* Fade-in al scroll */
+  const _habObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+      else e.target.classList.remove('visible');
+    });
+  }, { threshold: 0.08 });
+  _habObs.observe(document.getElementById('secHabitat'));
+
+  /* Play / Pause */
+  (function () {
+    const btn      = document.getElementById('habitatPlayBtn');
+    const vid      = document.getElementById('habitatVideo');
+    const iconPlay  = document.getElementById('habitatPlayIcon');
+    const iconPause = document.getElementById('habitatPauseIcon');
+    if (!btn || !vid) return;
+    btn.addEventListener('click', () => {
+      if (vid.paused) {
+        vid.play();
+        iconPlay.style.display  = 'none';
+        iconPause.style.display = '';
+      } else {
+        vid.pause();
+        iconPlay.style.display  = '';
+        iconPause.style.display = 'none';
+      }
+    });
+  })();
+</script>
