@@ -2076,6 +2076,74 @@
                 }
             });
         })();
+        /* ─── CICLOS DE DESARROLLO (mismo comportamiento que Desarrollos) ── */
+        (function () {
+            const tr = document.getElementById('trackEtapas');
+            const ou = document.getElementById('trackOuterEtapas');
+            const pv = document.getElementById('prevBtnEtapas');
+            const nx = document.getElementById('nextBtnEtapas');
+            if (!tr || !ou) return;
+
+            const CARD_W = 550;
+            const GAP_P = 20;
+            const tarjetas = Array.from(tr.querySelectorAll('.etapa-card'));
+            let cur = 0, acc = 0;
+
+            const CARD_W_MOB = 280;
+            function step() { return (isTouch() ? CARD_W_MOB : CARD_W) + GAP_P; }
+            function maxI() {
+                return Math.max(0, tarjetas.length - Math.floor((ou.offsetWidth + GAP_P) / step()));
+            }
+
+            function go(idx) {
+                cur = Math.max(0, Math.min(idx, maxI()));
+                tr.style.transform = `translateX(-${cur * step()}px)`;
+            }
+
+            pv.addEventListener('click', () => go(cur - 1));
+            nx.addEventListener('click', () => go(cur + 1));
+            window.addEventListener('resize', () => { go(Math.min(cur, maxI())); });
+
+            ou.addEventListener('wheel', e => {
+                if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+                e.preventDefault();
+                acc += e.deltaX;
+                if (acc > 220) { go(cur + 1); acc = 0; }
+                else if (acc < -140) { go(cur - 1); acc = 0; }
+            }, { passive: false });
+
+            let dx0 = 0, dg = false;
+            tr.addEventListener('mousedown', e => {
+                if (isTouch()) return;
+                dg = true; dx0 = e.clientX;
+                tr.style.transition = 'none';
+            });
+            document.addEventListener('mouseup', e => {
+                if (!dg) return; dg = false;
+                tr.style.transition = '';
+                go(cur + (Math.abs(e.clientX - dx0) > 40 ? (e.clientX < dx0 ? 1 : -1) : 0));
+            });
+
+            let tx0 = 0, ty0 = 0, mv = false;
+            tr.addEventListener('touchstart', e => {
+                tx0 = e.touches[0].clientX;
+                ty0 = e.touches[0].clientY;
+                mv = false;
+            }, { passive: true });
+            tr.addEventListener('touchmove', e => {
+                const dx = Math.abs(e.touches[0].clientX - tx0);
+                const dy = Math.abs(e.touches[0].clientY - ty0);
+                if (dx > 6 || dy > 6) mv = true;
+            }, { passive: true });
+            tr.addEventListener('touchend', e => {
+                if (!isTouch()) return;
+                const d = e.changedTouches[0].clientX - tx0;
+                if (mv && Math.abs(d) > 40) {
+                    go(cur + (d < 0 ? 1 : -1));
+                }
+            });
+        })();
     </script>
 </body>
+
 </html>
