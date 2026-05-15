@@ -36,15 +36,53 @@
         }
 
         :root {
+            /* core brand colors */
             --sandlight: #e6d6c7;
             --sandlight60: rgba(248, 243, 238, 0.6);
             --sandlight30: rgba(248, 243, 238, 0.3);
             --sanddark: #7c6454;
             --sandob: #514946;
+
+            /* tierra brand colors */
+            --terracotalight: rgb(223, 165, 132);
+            --terracotalight60: rgba(223, 165, 132, 0.6);
+            --terracotalight30: rgba(223, 165, 132, 0.3);
+            --terracotadark: rgb(179, 92, 73);
+            --terractaob: rgb(126, 62, 41);
+
+            /* semilla brand colors */
+            --ochrelight: rgb(244, 204, 122);
+            --ochrelight60: rgba(244, 204, 122, 0.6);
+            --ochrelight30: rgba(244, 204, 122, 0.3);
+            --ochrehaze: rgb(222, 181, 93);
+            --ochredusk: rgb(190, 136, 28);
+
+            /* nutrimento brand colors */
+            --nightskylight: rgb(148, 153, 157);
+            --nightskylight60: rgba(148, 153, 157, 0.6);
+            --nightskylight30: rgba(148, 153, 157, 0.3);
+            --nightskydark: rgb(89, 98, 106);
+            --nightskyob: rgb(60, 66, 75);
+
+            /* siembra brand colors */
+            --burgundylight: rgb(224, 159, 171);
+            --burgundylight60: rgba(224, 159, 171, 0.6);
+            --burgundylight30: rgba(224, 159, 171, 0.3);
+            --burgundydark: rgb(156, 46, 80);  
+            --burgundyob: rgb(86, 53, 63);
+
+            /* cosecha brand colors */
+            --forestlight: rgb(181, 178, 117);
+            --forestlight60: rgba(181, 178, 117, 0.6);
+            --forestlight30: rgba(181, 178, 117, 0.3);
+            --forestdark: rgb(133, 145, 84);
+            --forestob: rgb(84, 87, 74);
+
             --white: #ffffff;
             --black: #000000;
             --encabezado-h: 100vh;
             --tarjeta-r: 10px;
+
         }
 
         html {
@@ -798,24 +836,29 @@
             display: block;
         }
 
-        .etapa-card--semilla {
-            background: #253326;
+        .tarjetatierra {
+            background: var(--terractaob);
+            color: var(--terracotalight30);
         }
 
-        .etapa-card--raiz {
-            background: #2e1e10;
+        .tarjetasemilla {
+            background: var(--ochredusk);
+            color: var(--ochrelight30);
         }
 
-        .etapa-card--brote {
-            background: #3b2a14;
+        .tarjetanutrimento {
+            background: var(--nightskyob);
+            color: var(--nightskylight30);
         }
 
-        .etapa-card--floracion {
-            background: #3a2535;
+        .tarjetasiembra {
+            background: var(--burgundyob);
+            color: var(--burgundylight30);
         }
 
-        .etapa-card--cosecha {
-            background: #3d3218;
+        .tarjetacosecha {
+            background: var(--forestob);
+            color: var(--forestlight30);
         }
 
         /* --- 5.5. Hábitat Consciente --- */
@@ -1533,7 +1576,7 @@
         <div class="carousel-track-outer" id="trackOuterEtapas">
             <div class="carousel-track" id="trackEtapas">
 
-                <div class="etapa-card etapa-card--semilla">
+                <div class="etapa-card tarjetatierra">
                     <div class="etapa-imagotipo">
                         <img src="https://nidoum.com/wp-content/uploads/2026/03/03.2B_6-Logo-Sub_Inv-Trra.png">
                     </div>
@@ -1544,7 +1587,7 @@
                     </div>
                 </div>
 
-                <div class="etapa-card etapa-card--raiz">
+                <div class="etapa-card tarjetasemilla">
                     <div class="etapa-imagotipo">
                         <img src="https://nidoum.com/wp-content/uploads/2026/03/03.3B_6-Logo-Sub_Inv-Slla-1.png">
                     </div>
@@ -1555,7 +1598,7 @@
                     </div>
                 </div>
 
-                <div class="etapa-card etapa-card--brote">
+                <div class="etapa-card tarjetanutrimento">
                     <div class="etapa-imagotipo">
                         <img src="https://nidoum.com/wp-content/uploads/2026/03/03.4B_6-Logo-Sub_Inv-Ntr-1.png">
                     </div>
@@ -1566,7 +1609,7 @@
                     </div>
                 </div>
 
-                <div class="etapa-card etapa-card--floracion">
+                <div class="etapa-card tarjetasiembra">
                     <div class="etapa-imagotipo">
                         <img src="https://nidoum.com/wp-content/uploads/2026/03/03.5B_6-Logo-Sub_Inv-Smb-1.png">
                     </div>
@@ -1577,7 +1620,7 @@
                     </div>
                 </div>
 
-                <div class="etapa-card etapa-card--cosecha">
+                <div class="etapa-card tarjetacosecha">
                     <div class="etapa-imagotipo">
                         <img src="https://nidoum.com/wp-content/uploads/2026/03/03.6B_6-Logo-Sub_Inv-Cha-1.png">
                     </div>
