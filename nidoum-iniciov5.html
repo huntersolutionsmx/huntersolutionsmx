@@ -68,7 +68,7 @@
             --burgundylight: rgb(224, 159, 171);
             --burgundylight60: rgba(224, 159, 171, 0.6);
             --burgundylight30: rgba(224, 159, 171, 0.3);
-            --burgundydark: rgb(156, 46, 80);  
+            --burgundydark: rgb(156, 46, 80);
             --burgundyob: rgb(86, 53, 63);
 
             /* cosecha brand colors */
@@ -799,15 +799,17 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
+            overflow: hidden;
         }
 
         .etapa-titulo {
             font-family: 'Roboto Serif', serif;
-            font-size: 1.1rem;
+            font-size: 1.5rem;
             font-weight: 400;
             color: var(--sandlight);
             line-height: 1.3;
             margin-bottom: 12px;
+            text-align: center;
         }
 
         .etapa-desc {
@@ -817,9 +819,14 @@
             font-weight: 300;
         }
 
+        .etapa-desc--mobile {
+            display: none;
+        }
+
         .etapa-imagotipo {
             width: 15rem;
-            height: 100%;
+            height: 210px;
+            flex-shrink: 0;
             border-radius: var(--tarjeta-r);
             margin: 0 auto;
             display: flex;
@@ -830,8 +837,8 @@
         }
 
         .etapa-imagotipo img {
-            width: 100%;
-            height: 100%;
+            width: 65%;
+            height: auto;
             object-fit: contain;
             display: block;
         }
@@ -980,6 +987,14 @@
            6. ESTILOS RESPONSIVOS (Móvil <= 768px)
            ========================================================================== */
         @media (max-width: 768px) {
+            .etapa-desc--mobile {
+                display: block;
+                font-size: 0.9rem;
+            }
+
+            .etapa-desc--desktop {
+                display: none;
+            }
 
             .habitat-video-inner {
                 flex-direction: column;
@@ -1012,7 +1027,7 @@
                 height: auto !important;
                 min-height: 180px;
                 position: sticky;
-                top: 16px;
+                top: 80px;
                 left: auto;
                 z-index: 2;
             }
@@ -1262,6 +1277,10 @@
             .habitat-title h2 {
                 font-size: clamp(2rem, 8vw, 2.8rem);
             }
+
+            .etapa-titulo {
+                font-size: 1.1rem;
+            }
         }
     </style>
 </head>
@@ -1313,6 +1332,8 @@
 
         <div class="nidoum-sticky-row">
             <div class="nidoum-tarjeta-text nidoum-tarjeta-sticky">
+                <img src="https://nidoum.com/wp-content/uploads/2026/03/03.1B_1-Logo-Main_V-Core@2x-1.png" alt="Nidoum"
+                    style="width: 110px; height: auto; display: block; margin-bottom: 1.5rem; opacity: 0.9;" />
                 <p>Ecosistemas habitacionales conscientes que integran territorio, arquitectura,
                     inversión y comunidad. Un modelo de desarrollo que nace del respeto profundo
                     por la tierra y por quienes la habitan.</p>
@@ -1582,52 +1603,72 @@
                     </div>
                     <div class="etapa-body">
                         <div class="etapa-titulo">Tierra</div>
-                        <p class="etapa-desc">Evaluamos el territorio para crear un proyecto sostenible vía adquisición,
-                            aportación o asociación local.</p>
+                        <p class="etapa-desc etapa-desc--mobile">Evaluamos el territorio para crear un proyecto
+                            sostenible vía adquisición, aportación o asociación local.</p>
+                        <p class="etapa-desc etapa-desc--desktop">Identificamos y evaluamos de manera estratégica el
+                            territorio para asegurar el desarrollo de un proyecto sostenible. Es ahora cuando definimos
+                            la manera en la que el territorio formará parte del ecosistema: adquisición directa,
+                            aportación de capital o asociación con propietarios locales.</p>
                     </div>
                 </div>
 
                 <div class="etapa-card tarjetasemilla">
                     <div class="etapa-imagotipo">
-                        <img src="https://nidoum.com/wp-content/uploads/2026/03/03.3B_6-Logo-Sub_Inv-Slla-1.png">
+                        <img src="https://nidoum.com/wp-content/uploads/2026/03/03.3A_18-MG-IconSub_InvB-Slla.png">
                     </div>
                     <div class="etapa-body">
                         <div class="etapa-titulo">Semilla</div>
-                        <p class="etapa-desc">Diseñamos la estructura, forjamos alianzas estratégicas y definimos la
-                            identidad del ecosistema.</p>
+                        <p class="etapa-desc etapa-desc--mobile">Diseñamos la estructura, forjamos alianzas estratégicas
+                            y definimos la identidad del ecosistema.</p>
+                        <p class="etapa-desc etapa-desc--desktop">Detallamos la estructura del desarrollo, además, se
+                            articula nuestra red inicial de aliados estratégicos que participaran en el desarrollo del
+                            proyecto. Es en esta etapa donde se concibe la conceptualización de la identidad del
+                            desarrollo y narrativa del ecosistema como un solo sistema.</p>
                     </div>
                 </div>
 
                 <div class="etapa-card tarjetanutrimento">
                     <div class="etapa-imagotipo">
-                        <img src="https://nidoum.com/wp-content/uploads/2026/03/03.4B_6-Logo-Sub_Inv-Ntr-1.png">
+                        <img src="https://nidoum.com/wp-content/uploads/2026/03/03.4A_18-MG-IconSub_InvB-Ntr.png">
                     </div>
                     <div class="etapa-body">
                         <div class="etapa-titulo">Nutrimiento</div>
-                        <p class="etapa-desc">Estructuramos el capital. Participa mediante inversión, co-ownership o
-                            uniéndote al Club Nidoum..</p>
+                        <p class="etapa-desc etapa-desc--mobile">Estructuramos el capital. Participa mediante inversión,
+                            co-ownership o uniéndote al Club Nidoum.</p>
+                        <p class="etapa-desc etapa-desc--desktop">Estructuramos el capital vital para desarrollar
+                            ecosistemas sostenibles, un actor puede participar desde la inversión directa, la
+                            coinversión, participación patrimonial, un esquema de co-ownership o vehículos de inversión.
+                            Así mismo puedes ser parte del Club Nidoum.</p>
                     </div>
                 </div>
 
                 <div class="etapa-card tarjetasiembra">
                     <div class="etapa-imagotipo">
-                        <img src="https://nidoum.com/wp-content/uploads/2026/03/03.5B_6-Logo-Sub_Inv-Smb-1.png">
+                        <img src="https://nidoum.com/wp-content/uploads/2026/03/03.5A_18-MG-IconSub_InvB-Smb.png">
                     </div>
                     <div class="etapa-body">
                         <div class="etapa-titulo">Siembra (Cuidado)</div>
-                        <p class="etapa-desc">Materializamos el proyecto con nuestro partner ARCOMPANY (arquitectura,
-                            ingeniería y construcción)..</p>
+                        <p class="etapa-desc etapa-desc--mobile">Materializamos el proyecto con nuestro partner
+                            ARCOMPANY (arquitectura, ingeniería y construcción).</p>
+                        <p class="etapa-desc etapa-desc--desktop">Materializamos los ecosistemas a través de nuestro
+                            partner técnico: ARCOMPANY, quienes son los responsables de integrar e implementar
+                            arquitectura, ingeniería, construcción modular y diseño interior.</p>
                     </div>
                 </div>
 
                 <div class="etapa-card tarjetacosecha">
                     <div class="etapa-imagotipo">
-                        <img src="https://nidoum.com/wp-content/uploads/2026/03/03.6B_6-Logo-Sub_Inv-Cha-1.png">
+                        <img src="https://nidoum.com/wp-content/uploads/2026/03/03.6A_17-MG-IconSub_Inv-Cha_1.png">
                     </div>
                     <div class="etapa-body">
                         <div class="etapa-titulo">Cosecha</div>
-                        <p class="etapa-desc">Capturamos el valor generado mediante comercialización directa y operación
-                            de espacios.</p>
+                        <p class="etapa-desc etapa-desc--mobile">Capturamos el valor generado mediante comercialización
+                            directa y operación de espacios.</p>
+                        <p class="etapa-desc etapa-desc--desktop">Obtenemos el valor agregado generado por el
+                            ecosistema. Esta etapa se manifiesta a través de dos dimensiones: la Cosecha Comercial, que
+                            incluye la comercialización directa o mediante intermediarios, así como el licenciamiento de
+                            concepto o marca; y la Cosecha Operativa, que refiere a la activación de espacios, servicios
+                            o flujos económicos recurrentes.</p>
                     </div>
                 </div>
 
@@ -1864,8 +1905,8 @@
             <!-- Tarjeta de video (60%) -->
             <div class="habitat-video-card" id="habitatVideoCard">
                 <video id="habitatVideo" class="tarjeta-photo habitat-video-el"
-                    src="https://nidoum.com/wp-content/uploads/2026/05/Nidoum-video-Casa-Beckhart.mp4" loop muted
-                    playsinline poster="https://nidoum.com/wp-content/uploads/2026/05/casavinedossma.webp">
+                    src="https://nidoum.com/wp-content/uploads/2026/05/Nidoum-video-Casa-Beckhart.mp4" loop playsinline
+                    poster="https://nidoum.com/wp-content/uploads/2026/05/poster-video-arriba-banner.jpeg">
                 </video>
 
                 <!-- Play/Pause con estilo tarjeta-status -->
