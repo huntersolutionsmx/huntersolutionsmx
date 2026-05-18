@@ -1,0 +1,132 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500&family=Roboto+Serif:ital,wght@0,300;0,400;1,300&display=swap');
+  :root {
+    --sandlight: #e6d6c7;
+    --sandob: #514946;
+    --white: #ffffff;
+    --tarjeta-r: 12px;
+  }
+  .habitat-video-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+    padding: 2rem 0 4rem;
+  }
+  .habitat-video-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .habitat-video-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0;
+  }
+  .habitat-video-card {
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    height: 560px;
+    border-radius: var(--tarjeta-r);
+    overflow: hidden;
+    cursor: pointer;
+    margin: 0 auto;
+  }
+  .habitat-video-el {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .habitat-play-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    color: var(--white);
+    z-index: 2;
+    transition: background 0.25s, transform 0.2s;
+  }
+  .habitat-play-btn:hover {
+    background: rgba(255,255,255,0.24);
+    transform: scale(1.08);
+  }
+  @media (max-width: 768px) {
+    .habitat-video-card {
+      height: 300px;
+      border-radius: 8px;
+    }
+  }
+</style>
+
+<div class="habitat-video-section" id="secHabitat">
+  <div class="habitat-video-inner">
+    <div class="habitat-video-card" id="habitatVideoCard">
+      <video id="habitatVideo" class="habitat-video-el"
+        src="https://nidoum.com/wp-content/uploads/2026/05/Nidoum-video-Casa-Beckhart.mp4"
+        loop muted autoplay playsinline
+        poster="https://nidoum.com/wp-content/uploads/2026/05/casavinedossma.webp">
+      </video>
+      <button class="habitat-play-btn" id="habitatPlayBtn" aria-label="Play / Pause">
+        <svg id="habitatPlayIcon" viewBox="0 0 24 24" fill="currentColor" width="13" height="13" style="display:none;">
+          <polygon points="5,3 19,12 5,21" />
+        </svg>
+        <svg id="habitatPauseIcon" viewBox="0 0 24 24" fill="currentColor" width="13" height="13">
+          <rect x="5" y="3" width="4" height="18" rx="1" />
+          <rect x="15" y="3" width="4" height="18" rx="1" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const _habObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+      else e.target.classList.remove('visible');
+    });
+  }, { threshold: 0.05 });
+  _habObs.observe(document.getElementById('secHabitat'));
+
+  (function () {
+    const btn = document.getElementById('habitatPlayBtn');
+    const vid = document.getElementById('habitatVideo');
+    const iconPlay = document.getElementById('habitatPlayIcon');
+    const iconPause = document.getElementById('habitatPauseIcon');
+    if (!btn || !vid) return;
+
+    vid.play().catch(() => {});
+
+    function syncIcons() {
+      if (vid.paused) {
+        iconPlay.style.display = '';
+        iconPause.style.display = 'none';
+      } else {
+        iconPlay.style.display = 'none';
+        iconPause.style.display = '';
+      }
+    }
+
+    vid.addEventListener('play', syncIcons);
+    vid.addEventListener('pause', syncIcons);
+
+    btn.addEventListener('click', () => {
+      if (vid.paused) { vid.play(); } else { vid.pause(); }
+    });
+  })();
+</script>

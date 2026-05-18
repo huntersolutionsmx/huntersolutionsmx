@@ -1,0 +1,921 @@
+<style>
+    /* Reseteamos márgenes/paddings del contenedor padre directo (por si acaso) */
+    .nd-heading-wrapper {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nd-heading {
+
+        /* Relativo para el overlay */
+        position: relative;
+        font-family: 'Albert Sans', sans-serif;
+
+
+
+        /* Espaciado interno (sigue igual) */
+        padding: 5rem 3.5rem 3.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        /* Forzamos que no herede restricciones de ancho */
+        box-sizing: border-box;
+    }
+
+    /* Contenido por encima del overlay */
+    .nd-heading__label,
+    .nd-heading__line,
+    .nd-heading__title {
+        position: relative;
+        z-index: 2;
+    }
+
+    .nd-heading__label {
+        font-family: 'Albert Sans', sans-serif;
+        font-size: 10px;
+        font-weight: 400;
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+        color: #514946;
+    }
+
+    .nd-heading__line {
+        width: 40px;
+        height: 0.5px;
+        background: #ffffff;
+    }
+
+    .nd-heading__title {
+        font-family: 'Albert Sans', sans-serif;
+        font-size: clamp(38px, 6vw, 72px);
+        font-weight: 200;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #514946;
+        line-height: 1;
+    }
+
+    /* Ajustes para móviles */
+    @media (max-width: 640px) {
+        .nd-heading {
+            padding: 3.5rem 1.5rem 2.5rem;
+            background-position: center 30%;
+        }
+    }
+</style>
+
+<!-- Envolvemos en un div sin márgenes para asegurar el full width -->
+<div class="nd-heading-wrapper">
+    <header class="nd-heading">
+        <span class="nd-heading__label">Nidoum Conscious Habitat</span>
+        <h1 class="nd-heading__title">Nosotros</h1>
+    </header>
+</div>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500&family=Roboto+Serif:ital,wght@0,300;0,400;1,300&display=swap');
+
+    :root {
+        --sandlight: #e6d6c7;
+        --sandob: #514946;
+        --white: #ffffff;
+        --tarjeta-r: 12px;
+    }
+
+    .habitat-video-section {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+        padding: 2rem 0 4rem;
+    }
+
+    .habitat-video-section.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .habitat-video-inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .habitat-video-card {
+        position: relative;
+        width: 100%;
+        max-width: 1400px;
+        height: 560px;
+        border-radius: var(--tarjeta-r);
+        overflow: hidden;
+        cursor: pointer;
+        margin: 0 auto;
+    }
+
+    .habitat-video-el {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .habitat-play-btn {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border: none;
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        color: var(--white);
+        z-index: 2;
+        transition: background 0.25s, transform 0.2s;
+    }
+
+    .habitat-play-btn:hover {
+        background: rgba(255, 255, 255, 0.24);
+        transform: scale(1.08);
+    }
+
+    @media (max-width: 768px) {
+        .habitat-video-card {
+            height: 300px;
+            border-radius: 8px;
+        }
+    }
+</style>
+
+<div class="habitat-video-section" id="secHabitat">
+    <div class="habitat-video-inner">
+        <div class="habitat-video-card" id="habitatVideoCard">
+            <video id="habitatVideo" class="habitat-video-el"
+                src="https://nidoum.com/wp-content/uploads/2026/05/Nidoum-video-Casa-Beckhart.mp4" loop muted autoplay
+                playsinline poster="https://nidoum.com/wp-content/uploads/2026/05/casavinedossma.webp">
+            </video>
+            <button class="habitat-play-btn" id="habitatPlayBtn" aria-label="Play / Pause">
+                <svg id="habitatPlayIcon" viewBox="0 0 24 24" fill="currentColor" width="13" height="13"
+                    style="display:none;">
+                    <polygon points="5,3 19,12 5,21" />
+                </svg>
+                <svg id="habitatPauseIcon" viewBox="0 0 24 24" fill="currentColor" width="13" height="13">
+                    <rect x="5" y="3" width="4" height="18" rx="1" />
+                    <rect x="15" y="3" width="4" height="18" rx="1" />
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const _habObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) e.target.classList.add('visible');
+            else e.target.classList.remove('visible');
+        });
+    }, { threshold: 0.05 });
+    _habObs.observe(document.getElementById('secHabitat'));
+
+    (function () {
+        const btn = document.getElementById('habitatPlayBtn');
+        const vid = document.getElementById('habitatVideo');
+        const iconPlay = document.getElementById('habitatPlayIcon');
+        const iconPause = document.getElementById('habitatPauseIcon');
+        if (!btn || !vid) return;
+
+        vid.play().catch(() => { });
+
+        function syncIcons() {
+            if (vid.paused) {
+                iconPlay.style.display = '';
+                iconPause.style.display = 'none';
+            } else {
+                iconPlay.style.display = 'none';
+                iconPause.style.display = '';
+            }
+        }
+
+        vid.addEventListener('play', syncIcons);
+        vid.addEventListener('pause', syncIcons);
+
+        btn.addEventListener('click', () => {
+            if (vid.paused) { vid.play(); } else { vid.pause(); }
+        });
+    })();
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,wght@0,300;0,400;1,300&display=swap"
+    rel="stylesheet" />
+
+<style>
+    :root {
+        --sandlight: #e6d6c7;
+        --sandob: #514946;
+        --white: #ffffff;
+        --tarjeta-r: 10px;
+    }
+
+    .nidoum-tarjetas-row {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 20px;
+        width: 100%;
+    }
+
+    .nidoum-tarjeta-text {
+        flex: 1;
+        min-width: 0;
+        background: var(--sandob);
+        display: flex;
+        align-items: flex-end;
+        padding: 36px 32px;
+        height: 550px;
+        border-radius: var(--tarjeta-r);
+        overflow: hidden;
+    }
+
+    .nidoum-tarjetas-row .nidoum-tarjeta-text:nth-child(2) {
+        margin-top: 110px;
+    }
+
+    .nidoum-tarjetas-row .nidoum-tarjeta-text:nth-child(3) {
+        margin-top: 220px;
+    }
+
+    .nidoum-tarjeta-text p {
+        font-family: 'Roboto Serif', serif;
+        font-size: 1.25rem;
+        line-height: 1.75;
+        color: var(--white);
+        font-weight: 300;
+        text-align: justify;
+    }
+
+    @media (max-width: 768px) {
+        .nidoum-tarjetas-row {
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .nidoum-tarjetas-row .nidoum-tarjeta-text:nth-child(2),
+        .nidoum-tarjetas-row .nidoum-tarjeta-text:nth-child(3) {
+            margin-top: 0;
+        }
+
+        .nidoum-tarjeta-text {
+            height: auto;
+            min-height: 180px;
+        }
+
+        .nidoum-tarjeta-text p {
+            font-size: 0.8rem;
+        }
+    }
+</style>
+
+<div class="nidoum-tarjetas-row">
+    <div class="nidoum-tarjeta-text">
+        <p>NIDOUM Conscious Habitat surge de una visión: el desarrollar entornos habitacionales que integren territorio,
+            arquitectura, inversión y comunidad en un mismo ecosistema consciente.</p>
+    </div>
+    <div class="nidoum-tarjeta-text">
+        <p>A través de cinco ciclos — Tierra, Semilla, Nutrimiento, Siembra y Cosecha — estructuramos cada etapa del
+            desarrollo, generando bienestar y valor real para quien habita, para quien invierte y para el entorno.</p>
+    </div>
+    <div class="nidoum-tarjeta-text">
+        <p>Para lograrlo, articulamos una red con aliados estratégicos como ARCOMPANY, que comparten el propósito de
+            crear hábitats conscientes.</p>
+    </div>
+</div>
+
+<!-- BLOQUE 2: A través de cinco ciclos... (con el formato del HTML adjunto: texto + iconos circulares) -->
+<style>
+    .nd-block-2-ciclos {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 3rem 5rem;
+        background: transparent;
+    }
+
+    /* Texto introductorio protegido contra la capitalización forzada de Astra */
+    .nd-block-2-ciclos .intro-text,
+    .nd-block-2-ciclos .intro-text * {
+        font-family: 'Roboto Serif', serif !important;
+        font-size: 18px !important;
+        font-weight: 300 !important;
+        line-height: 1.6 !important;
+        color: #514946 !important;
+        max-width: 100% !important;
+        margin-bottom: 2rem !important;
+        text-transform: none !important;
+        /* Anula el capitalize del tema */
+        font-variant: normal !important;
+        /* Por si usa small-caps */
+        letter-spacing: normal !important;
+        word-spacing: normal !important;
+    }
+
+    /* Contenedor de los ciclos */
+    .nd-block-2-ciclos .ciclos-inline {
+        display: flex;
+        gap: 0;
+        border-top: 0.5px solid rgba(81, 73, 70, 0.15);
+        border-bottom: 0.5px solid rgba(81, 73, 70, 0.15);
+        max-width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .nd-block-2-ciclos .ciclo-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        padding: 1.2rem 0;
+        flex: 1;
+        border-right: 0.5px solid rgba(81, 73, 70, 0.12);
+    }
+
+    .nd-block-2-ciclos .ciclo-item:last-child {
+        border-right: none;
+    }
+
+    .nd-block-2-ciclos .icon-wrap {
+        width: 86px;
+        height: 86px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        border: 0.5px solid rgba(81, 73, 70, 0.2);
+    }
+
+    .nd-block-2-ciclos .icon-wrap img {
+        width: 85px;
+        height: 85px;
+        object-fit: contain;
+    }
+
+    /* Nombres de los ciclos: se mantienen en mayúsculas intencionalmente */
+    .nd-block-2-ciclos .ciclo-name {
+        font-family: 'Albert Sans', sans-serif;
+        font-size: 9px;
+        font-weight: 400;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: #7c6454;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+        .nd-block-2-ciclos {
+            padding: 3rem !important;
+        }
+
+        .nd-block-2-ciclos .intro-text {
+            font-size: 18px !important;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .nd-block-2-ciclos {
+            padding: 2rem 1.5rem !important;
+        }
+
+        .nd-block-2-ciclos .intro-text {
+            font-size: 16px !important;
+        }
+
+        .nd-block-2-ciclos .ciclos-inline {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-right: none;
+        }
+
+        .nd-block-2-ciclos .ciclo-item {
+            padding: 1.2rem 0.5rem;
+            border-right: 0.5px solid rgba(81, 73, 70, 0.12);
+            border-bottom: 0.5px solid rgba(81, 73, 70, 0.12);
+        }
+
+        .nd-block-2-ciclos .ciclo-item:nth-child(2n) {
+            border-right: none;
+        }
+
+        .nd-block-2-ciclos .ciclo-item:last-child {
+            grid-column: 1 / -1;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .nd-block-2-ciclos .icon-wrap {
+            width: 70px;
+            height: 70px;
+        }
+
+        .nd-block-2-ciclos .icon-wrap img {
+            width: 44px;
+            height: 44px;
+        }
+
+        .nd-block-2-ciclos .ciclo-name {
+            font-size: 10px;
+            letter-spacing: 0.15em;
+        }
+    }
+</style>
+
+<div class="nd-block-2-ciclos">
+    <!-- Capa inline: text-transform none asegurado directamente en el elemento -->
+    <div class="intro-text" style="text-transform: none !important; font-variant: normal !important;">
+        A través de cinco ciclos — Tierra, Semilla, Nutrimiento, Siembra y Cosecha — estructuramos cada etapa del
+        desarrollo, generando bienestar y valor real para quien habita, para quien invierte y para el entorno.
+    </div>
+
+    <div class="ciclos-inline">
+        <div class="ciclo-item">
+            <div class="icon-wrap">
+                <img src="https://nidoum.com/wp-content/uploads/2026/03/03.2A_17-MG-IconSub_Inv-Trra-1.png"
+                    alt="Tierra" />
+            </div>
+            <span class="ciclo-name">Tierra</span>
+        </div>
+        <div class="ciclo-item">
+            <div class="icon-wrap">
+                <img src="https://nidoum.com/wp-content/uploads/2026/03/03.3A_17-MG-IconSub_Inv-Slla-1.png"
+                    alt="Semilla" />
+            </div>
+            <span class="ciclo-name">Semilla</span>
+        </div>
+        <div class="ciclo-item">
+            <div class="icon-wrap">
+                <img src="https://nidoum.com/wp-content/uploads/2026/03/03.4A_17-MG-IconSub_Inv-Ntr-1.png"
+                    alt="Nutrimiento" />
+            </div>
+            <span class="ciclo-name">Nutrimiento</span>
+        </div>
+        <div class="ciclo-item">
+            <div class="icon-wrap">
+                <img src="https://nidoum.com/wp-content/uploads/2026/03/03.5A_17-MG-IconSub_Inv-Smb-1.png"
+                    alt="Siembra" />
+            </div>
+            <span class="ciclo-name">Siembra</span>
+        </div>
+        <div class="ciclo-item">
+            <div class="icon-wrap">
+                <img src="https://nidoum.com/wp-content/uploads/2026/03/03.6A_17-MG-IconSub_Inv-Cha-1.png"
+                    alt="Cosecha" />
+            </div>
+            <span class="ciclo-name">Cosecha</span>
+        </div>
+    </div>
+</div>
+
+<!-- Capa de seguridad JavaScript: restaura el texto introductorio original si el tema lo modifica -->
+<script>
+    (function () {
+        var intro = document.querySelector('.nd-block-2-ciclos .intro-text');
+        if (intro) {
+            intro.style.textTransform = 'none';
+            intro.style.fontVariant = 'normal';
+            intro.style.letterSpacing = 'normal';
+            intro.style.wordSpacing = 'normal';
+            // Reasigna el texto para eliminar cualquier transformación que Astra haya aplicado vía JS
+            var original = intro.textContent || intro.innerText;
+            intro.textContent = original;
+        }
+    })();
+</script>
+<link
+    href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500&family=Roboto+Serif:ital,wght@0,300;0,400;1,300&display=swap"
+    rel="stylesheet" />
+
+<style>
+    :root {
+        --sandlight: #e6d6c7;
+        --sandlight60: rgba(248, 243, 238, 0.6);
+        --sandlight30: rgba(248, 243, 238, 0.3);
+        --sandob: #514946;
+        --white: #ffffff;
+        --tarjeta-r: 10px;
+    }
+
+    /* Fade-in al hacer scroll */
+    .habitat-video-section {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+        padding: 0 0 7rem;
+    }
+
+    .habitat-video-section.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Layout interior */
+    .habitat-video-inner {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+        padding: 0 56px;
+        max-width: 1600px;
+        margin: 0 auto;
+    }
+
+    /* Columna izquierda: título */
+    .habitat-video-title {
+        flex: 0 0 28%;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .habitat-video-title h2 {
+        font-family: 'Roboto Serif', serif;
+        font-weight: 300;
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        color: var(--sandob);
+        letter-spacing: 0.02em;
+        line-height: 1.15;
+    }
+
+    /* Etiqueta superior */
+    .carousel-header-label {
+        font-family: 'Albert Sans', sans-serif;
+        font-size: 0.6rem;
+        font-weight: 400;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--sandob);
+        margin-bottom: 0.5rem;
+    }
+
+    /* Descripción */
+    .carousel-header-desc {
+        max-width: 600px;
+        text-align: justify;
+        font-size: 1.2rem;
+        line-height: 1.8;
+        color: var(--sandob);
+        font-weight: 300;
+        margin-top: 0.75rem;
+    }
+
+    /* Tarjeta de video */
+    .habitat-video-card {
+        position: relative;
+        flex: 0 0 60%;
+        width: 100%;
+        height: 550px;
+        border-radius: var(--tarjeta-r);
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .habitat-video-el {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Botón play/pause */
+    .habitat-play-btn {
+        position: absolute;
+        bottom: 24px;
+        right: 24px;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border: none;
+        background: rgba(255, 255, 255, 0.10);
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(6px);
+        color: var(--white);
+        z-index: 2;
+        transition: background 0.25s, transform 0.2s;
+    }
+
+    .habitat-play-btn:hover {
+        background: rgba(255, 255, 255, 0.22);
+        transform: scale(1.08);
+    }
+
+    /* Móvil */
+    @media (max-width: 768px) {
+        .habitat-video-inner {
+            flex-direction: column;
+            padding: 0 24px;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .habitat-video-title {
+            flex: none;
+            width: 100%;
+        }
+
+        .habitat-video-card {
+            flex: none;
+            width: 100%;
+            height: 320px;
+        }
+    }
+</style>
+
+<!-- HTML -->
+<div class="habitat-video-section" id="secHabitat">
+    <div class="habitat-video-inner">
+
+        <div class="habitat-video-title">
+            <div class="carousel-header-label">Filosofía</div>
+            <h2>Hábitat<br>Consciente</h2>
+            <p class="carousel-header-desc">De la Tierra a la Cosecha: cinco ciclos que guían cada ecosistema
+                desde la visión inicial hasta la entrega de un hábitat completo y vivo.</p>
+        </div>
+
+        <div class="habitat-video-card" id="habitatVideoCard">
+            <video id="habitatVideo" class="habitat-video-el"
+                src="https://nidoum.com/wp-content/uploads/2026/05/Nidoum-video-Casa-Beckhart.mp4" loop muted
+                playsinline poster="https://nidoum.com/wp-content/uploads/2026/05/casavinedossma.webp">
+            </video>
+            <button class="habitat-play-btn" id="habitatPlayBtn" aria-label="Play / Pause">
+                <svg id="habitatPlayIcon" viewBox="0 0 24 24" fill="currentColor" width="14" height="14">
+                    <polygon points="5,3 19,12 5,21" />
+                </svg>
+                <svg id="habitatPauseIcon" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"
+                    style="display:none;">
+                    <rect x="5" y="3" width="4" height="18" rx="1" />
+                    <rect x="15" y="3" width="4" height="18" rx="1" />
+                </svg>
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    /* Fade-in al scroll */
+    const _habObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) e.target.classList.add('visible');
+            else e.target.classList.remove('visible');
+        });
+    }, { threshold: 0.08 });
+    _habObs.observe(document.getElementById('secHabitat'));
+
+    /* Play / Pause */
+    (function () {
+        const btn = document.getElementById('habitatPlayBtn');
+        const vid = document.getElementById('habitatVideo');
+        const iconPlay = document.getElementById('habitatPlayIcon');
+        const iconPause = document.getElementById('habitatPauseIcon');
+        if (!btn || !vid) return;
+        btn.addEventListener('click', () => {
+            if (vid.paused) {
+                vid.play();
+                iconPlay.style.display = 'none';
+                iconPause.style.display = '';
+            } else {
+                vid.pause();
+                iconPlay.style.display = '';
+                iconPause.style.display = 'none';
+            }
+        });
+    })();
+</script>
+<!-- BLOQUE 3: Para lograrlo, articulamos una red... -->
+<style>
+    .nd-block-3 {
+        padding: 3rem 5rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Máxima especificidad para anular el text-transform de Astra */
+    html body .ast-container .nd-block-3 .nd-body,
+    html body .entry-content .nd-block-3 .nd-body,
+    .nd-block-3 .nd-body {
+        font-family: 'Roboto Serif', serif !important;
+        font-size: 18px !important;
+        font-weight: 300 !important;
+        line-height: 1.6 !important;
+        color: #514946 !important;
+        margin-bottom: 0 !important;
+        max-width: 100% !important;
+        text-transform: none !important;
+        /* 👈 Fuerza a que NO se capitalice */
+        font-variant: normal !important;
+        /* Previene small-caps */
+        letter-spacing: normal !important;
+        word-spacing: normal !important;
+    }
+
+    @media (max-width: 1024px) {
+        .nd-block-3 {
+            padding: 3rem;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .nd-block-3 {
+            padding: 2rem 1.5rem;
+        }
+
+        .nd-block-3 .nd-body {
+            font-size: 16px !important;
+        }
+    }
+</style>
+
+<div class="nd-block-3">
+    <div class="nd-body" style="text-transform: none !important; font-variant: normal !important;">
+        Para lograrlo, articulamos una red con aliados estratégicos como ARCOMPANY, que comparten el propósito de crear
+        hábitats conscientes.
+    </div>
+</div>
+<!-- SECCIÓN REDES SOCIALES NIDOUM – sin fondo ni borde -->
+<style>
+    .nd-social-custom {
+        /* sin background, sin border-top */
+        padding: 3rem 5rem;
+    }
+
+    .nd-social-custom .nd-icons-label {
+        font-family: 'Albert Sans', sans-serif;
+        font-size: 10px;
+        font-weight: 400;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: #7c6454;
+        margin-bottom: 0.8rem;
+    }
+
+    .nd-social-custom .nd-icons-text {
+        font-family: 'Roboto Serif', serif;
+        font-size: 17px;
+        font-weight: 300;
+        color: #514946;
+        margin-bottom: 1.8rem;
+        max-width: 360px;
+    }
+
+    .nd-social-custom .nd-social-row {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .nd-social-custom .nd-social-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        padding: 9px 20px;
+        border: 0.5px solid rgba(81, 73, 70, 0.3);
+        border-radius: 2px;
+        font-family: 'Albert Sans', sans-serif;
+        font-size: 10px;
+        font-weight: 400;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: #514946;
+        cursor: pointer;
+        background: transparent;
+        transition: background 0.2s, border-color 0.2s;
+        text-decoration: none;
+    }
+
+    .nd-social-custom .nd-social-pill:hover {
+        background: rgba(81, 73, 70, 0.07);
+        border-color: rgba(81, 73, 70, 0.45);
+    }
+
+    .nd-social-custom .nd-social-pill svg {
+        width: 13px;
+        height: 13px;
+        opacity: 0.65;
+        flex-shrink: 0;
+    }
+
+    @media (max-width: 1024px) {
+        .nd-social-custom {
+            padding: 3rem;
+        }
+
+        .nd-social-custom .nd-icons-text {
+            max-width: 100%;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .nd-social-custom {
+            padding: 2rem 1.5rem;
+        }
+
+        .nd-social-custom .nd-social-row {
+            flex-direction: column;
+        }
+
+        .nd-social-custom .nd-social-pill {
+            justify-content: center;
+            padding: 12px 20px;
+        }
+    }
+</style>
+
+<div class="nd-social-custom">
+    <p class="nd-icons-label">Síguenos</p>
+    <p class="nd-icons-text">De la tierra a la cosecha, síguenos y mantente al tanto.</p>
+    <div class="nd-social-row">
+        <a href="#" class="nd-social-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <circle cx="12" cy="12" r="5" />
+                <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none" />
+            </svg>
+            Instagram
+        </a>
+        <a href="#" class="nd-social-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+            </svg>
+            Facebook
+        </a>
+        <a href="#" class="nd-social-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7H10V9h4v2a6 6 0 016-3z" />
+                <rect x="2" y="9" width="4" height="12" />
+                <circle cx="4" cy="4" r="2" />
+            </svg>
+            LinkedIn
+        </a>
+    </div>
+</div>
+
+<!-- SECCIÓN DE CONTACTO – solo título y texto (sin formulario) -->
+<style>
+    .nd-contact-simple {
+        padding: 3rem 5rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .nd-contact-simple .contact-title {
+        font-family: 'Albert Sans', sans-serif;
+        font-size: 10px;
+        font-weight: 400;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: #7c6454;
+        margin-bottom: 0.8rem;
+    }
+
+    .nd-contact-simple .contact-description {
+        font-family: 'Roboto Serif', serif;
+        font-size: 17px;
+        font-weight: 300;
+        color: #514946;
+        margin-bottom: 0;
+        max-width: 480px;
+    }
+
+    @media (max-width: 1024px) {
+        .nd-contact-simple {
+            padding: 3rem;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .nd-contact-simple {
+            padding: 2rem 1.5rem;
+        }
+
+        .nd-contact-simple .contact-description {
+            font-size: 16px;
+        }
+    }
+</style>
+
+<div class="nd-contact-simple">
+    <div class="contact-title">Contacto</div>
+    <div class="contact-description">Sé parte del ecosistema NIDOUM, compártenos tus datos.</div>
+</div>
