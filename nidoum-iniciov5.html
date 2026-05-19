@@ -486,7 +486,9 @@
             overflow: hidden;
             background: var(--sandlight);
             display: flex;
-            align-items: flex-end;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
             padding: 36px 32px;
             width: 450px;
             height: 550px;
@@ -983,6 +985,10 @@
             font-weight: 300;
         }
 
+        #secNidoum .carousel-header {
+            padding-top: 7rem;
+        }
+
         /* ==========================================================================
            6. ESTILOS RESPONSIVOS (Móvil <= 768px)
            ========================================================================== */
@@ -1027,7 +1033,7 @@
                 height: auto !important;
                 min-height: 180px;
                 position: sticky;
-                top: 80px;
+                top: 100px;
                 left: auto;
                 z-index: 2;
             }
@@ -1041,17 +1047,14 @@
             #trackNidoum {
                 flex-direction: column;
                 transform: none !important;
-                /* desactiva el translate del JS */
                 gap: 16px;
             }
 
-            /* Las tarjetas individuales ocupan el ancho completo */
             #trackNidoum .tarjeta {
                 width: 100%;
                 height: 320px;
             }
 
-            /* Ocultar flechas solo en secNidoum en móvil */
             #secNidoum .nav-arrows {
                 display: none;
             }
@@ -1060,6 +1063,15 @@
                 overflow: visible;
                 height: auto;
                 width: 100%;
+            }
+
+            #secNidoum .carousel-header {
+                position: sticky;
+                top: 0;
+                z-index: 6;
+                background: var(--sanddark);
+                padding-top: 1.5rem !important;
+                padding-bottom: 0.75rem;
             }
 
             /* --- Layout Global & Secciones --- */
@@ -1281,6 +1293,15 @@
             .etapa-titulo {
                 font-size: 1.1rem;
             }
+
+            .etapa-imagotipo {
+                width: 100%;
+                height: 140px;
+            }
+
+            .etapa-imagotipo img {
+                width: 45%;
+            }
         }
     </style>
 </head>
@@ -1323,7 +1344,7 @@
     </header>
 
     <div class="carousel-section" id="secNidoum">
-        <div class="carousel-header" style="padding-top: 7rem;">
+        <div class="carousel-header">
             <div class="carousel-header-text">
                 <div class="carousel-header-label">Nuestra esencia</div>
                 <h2>Qué es NIDOUM</h2>
@@ -1332,8 +1353,8 @@
 
         <div class="nidoum-sticky-row">
             <div class="nidoum-tarjeta-text nidoum-tarjeta-sticky">
-                <img src="https://nidoum.com/wp-content/uploads/2026/03/03.1B_1-Logo-Main_V-Core@2x-1.png" alt="Nidoum"
-                    style="width: 110px; height: auto; display: block; margin-bottom: 1.5rem; opacity: 0.9;" />
+                <img src="https://nidoum.com/wp-content/uploads/2026/03/03.1_1-MG-Main@2x.png" alt="Nidoum"
+                    style="width: 10rem; height: auto; display: block; align-self: center;" />
                 <p>Ecosistemas habitacionales conscientes que integran territorio, arquitectura,
                     inversión y comunidad. Un modelo de desarrollo que nace del respeto profundo
                     por la tierra y por quienes la habitan.</p>
@@ -1690,207 +1711,6 @@
         </div>
     </div>
 
-    <!-- <div class="carousel-section" id="secHabitat">
-        <div class="carousel-header">
-            <div class="carousel-header-text">
-                <div class="carousel-header-label">QUÉ ESTAMOS SEMBRANDO</div>
-                <h2>Desarrollos NIDOUM</h2>
-                <p class="carousel-header-desc">Descubre cada proyecto — hábitats conscientes hechos realidad.
-                    Espacios donde la arquitectura respira y la comunidad florece en armonía
-                    con el entorno natural que los rodea.</p>
-            </div>
-        </div>
-        <div class="track-outer" id="trackOuterHab">
-            <div class="track" id="trackHab">
-
-                <div class="tarjeta">
-                    <div class="tarjeta-photo casavinedossma"></div>
-                    <span class="tarjeta-title-photo">Casa Viñedos SMA</span>
-                    <span class="tarjeta-status">En desarrollo</span>
-                    <div class="tarjeta-overlay">
-                        <div class="overlay-title">Casa Viñedos SMA</div>
-                        <div class="overlay-desc">Conjunto habitacional concebido como sistema modular. Cada unidad
-                            preserva su identidad dentro de un todo armónico.</div>
-                        <div class="overlay-meta">
-                            <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Desarrollo
-                                    residencial escalable</span></div>
-                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
-                                    class="meta-val">México</span></div>
-                            <div class="meta-row"><span class="meta-key">Sistema</span><span class="meta-val">Modular
-                                    repetible</span></div>
-                            <div class="meta-row"><span class="meta-key">Etapa</span><span class="meta-val">En
-                                    desarrollo</span></div>
-                        </div>
-                        <a class="overlay-btn" href="#">Ver más información</a>
-                    </div>
-                    <div class="tap-hint" id="tapHint">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path d="M9 11V6a2 2 0 0 1 4 0v5" />
-                            <path d="M13 11V9a2 2 0 0 1 4 0v6a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6v-3a2 2 0 0 1 4 0" />
-                        </svg>
-                        <span>Toca para ver info</span>
-                    </div>
-                </div>
-
-                <div class="tarjeta">
-                    <div class="tarjeta-photo casabeckhartsma"></div>
-                    <span class="tarjeta-title-photo">Casa Beckhart SMA</span>
-                    <span class="tarjeta-status">Ejecutado</span>
-                    <div class="tarjeta-overlay">
-                        <div class="overlay-title">Casa Beckhart SMA</div>
-                        <div class="overlay-desc">Vivienda flexible y adaptable, con construcción eficiente y ordenada.
-                            La repetición genera identidad.</div>
-                        <div class="overlay-meta">
-                            <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Residencial
-                                    (Unifamiliar)</span></div>
-                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
-                                    class="meta-val">México</span></div>
-                            <div class="meta-row"><span class="meta-key">Sistema</span><span class="meta-val">Modular
-                                    repetible</span></div>
-                            <div class="meta-row"><span class="meta-key">Etapa</span><span
-                                    class="meta-val">Ejecutado</span></div>
-                        </div>
-                        <a class="overlay-btn" href="#">Ver más información</a>
-                    </div>
-                </div>
-
-                <div class="tarjeta">
-                    <div class="tarjeta-photo casapasaret"></div>
-                    <span class="tarjeta-title-photo">Casa Pásaret Sangre de Cristo</span>
-                    <span class="tarjeta-status">Ejecutado</span>
-                    <div class="tarjeta-overlay">
-                        <div class="overlay-title">Casa Pásaret Sangre de Cristo</div>
-                        <div class="overlay-desc">Arquitectura contenida; precisión técnica y detalle artesanal donde el
-                            espacio es protagonista.</div>
-                        <div class="overlay-meta">
-                            <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Residencial
-                                    (Unifamiliar)</span></div>
-                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
-                                    class="meta-val">México</span></div>
-                            <div class="meta-row"><span class="meta-key">Sistema</span><span class="meta-val">Modular +
-                                    Artesanal Controlado</span></div>
-                            <div class="meta-row"><span class="meta-key">Etapa</span><span
-                                    class="meta-val">Ejecutado</span></div>
-                        </div>
-                        <a class="overlay-btn" href="#">Ver más información</a>
-                    </div>
-                </div>
-
-                <div class="tarjeta">
-                    <div class="tarjeta-photo photo-4"></div>
-                    <span class="tarjeta-title-photo">Mantarraya Todos Santos</span>
-                    <span class="tarjeta-status">Próximamente</span>
-                    <div class="tarjeta-overlay">
-                        <div class="overlay-title">Mantarraya Todos Santos</div>
-                        <div class="overlay-desc">Información próximamente disponible.</div>
-                        <div class="overlay-meta">
-                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
-                                    class="meta-val">México</span></div>
-                        </div>
-                        <a class="overlay-btn" href="#">Ver más información</a>
-                    </div>
-                </div>
-
-                <div class="tarjeta">
-                    <div class="tarjeta-photo photo-5"></div>
-                    <span class="tarjeta-title-photo">Pabellón Mauricio Rocha</span>
-                    <span class="tarjeta-status">Próximamente</span>
-                    <div class="tarjeta-overlay">
-                        <div class="overlay-title">Pabellón Mauricio Rocha</div>
-                        <div class="overlay-desc">Información próximamente disponible.</div>
-                        <div class="overlay-meta">
-                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
-                                    class="meta-val">México</span></div>
-                        </div>
-                        <a class="overlay-btn" href="#">Ver más información</a>
-                    </div>
-                </div>
-
-                <div class="tarjeta">
-                    <div class="tarjeta-photo photo-6"></div>
-                    <span class="tarjeta-title-photo">Palo Blanco Villas Resort</span>
-                    <span class="tarjeta-status">Ejecutado</span>
-                    <div class="tarjeta-overlay">
-                        <div class="overlay-title">Palo Blanco Villas Resort</div>
-                        <div class="overlay-desc">Centro residencial enfocado en el bienestar. Arquitectura y paisaje
-                            convergen en una experiencia de calma y conexión.</div>
-                        <div class="overlay-meta">
-                            <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Wellness
-                                    Residencial (Uso Mixto)</span></div>
-                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
-                                    class="meta-val">México</span></div>
-                            <div class="meta-row"><span class="meta-key">Sistema</span><span
-                                    class="meta-val">Racionalizado</span></div>
-                            <div class="meta-row"><span class="meta-key">Etapa</span><span
-                                    class="meta-val">Ejecutado</span></div>
-                        </div>
-                        <a class="overlay-btn" href="#">Ver más información</a>
-                    </div>
-                </div>
-
-                <div class="tarjeta">
-                    <div class="tarjeta-photo photo-7"></div>
-                    <span class="tarjeta-title-photo">Casa Manana</span>
-                    <span class="tarjeta-status">Ejecutado</span>
-                    <div class="tarjeta-overlay">
-                        <div class="overlay-title">Casa Manana</div>
-                        <div class="overlay-desc">Vivienda contemporánea que sintetiza claridad arquitectónica,
-                            eficiencia y adaptabilidad. Diseñada para habitar el entorno.</div>
-                        <div class="overlay-meta">
-                            <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Residencial
-                                    (Unifamiliar)</span></div>
-                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
-                                    class="meta-val">México</span></div>
-                            <div class="meta-row"><span class="meta-key">Sistema</span><span class="meta-val">Modular
-                                    Híbrido</span></div>
-                            <div class="meta-row"><span class="meta-key">Etapa</span><span
-                                    class="meta-val">Ejecutado</span></div>
-                        </div>
-                        <a class="overlay-btn" href="#">Ver más información</a>
-                    </div>
-                </div>
-
-                <div class="tarjeta">
-                    <div class="tarjeta-photo photo-8"></div>
-                    <span class="tarjeta-title-photo">Casa Aurora</span>
-                    <span class="tarjeta-status">Ejecutado</span>
-                    <div class="tarjeta-overlay">
-                        <div class="overlay-title">Casa Aurora</div>
-                        <div class="overlay-desc">Arquitectura clara que privilegia luz, proporción y estructura. Cada
-                            elemento justifica su presencia.</div>
-                        <div class="overlay-meta">
-                            <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Residencial
-                                    (Unifamiliar)</span></div>
-                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
-                                    class="meta-val">México</span></div>
-                            <div class="meta-row"><span class="meta-key">Sistema</span><span class="meta-val">Modular
-                                    racionalizado</span></div>
-                            <div class="meta-row"><span class="meta-key">Etapa</span><span
-                                    class="meta-val">Ejecutado</span></div>
-                        </div>
-                        <a class="overlay-btn" href="#">Ver más información</a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <div class="nav-arrows">
-            <button class="arrow-btn" id="prevBtnHab" aria-label="Anterior">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <polyline points="15 18 9 12 15 6" />
-                </svg>
-            </button>
-            <button class="arrow-btn" id="nextBtnHab" aria-label="Siguiente">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <polyline points="9 18 15 12 9 6" />
-                </svg>
-            </button>
-        </div>
-    </div> -->
-
     <div class="carousel-section habitat-video-section" id="secHabitat">
         <div class="habitat-video-inner">
 
@@ -2009,11 +1829,6 @@
                 cur = Math.max(0, Math.min(idx, maxI()));
                 tr.style.transform = `translateX(-${cur * step()}px)`;
             }
-            // function sizeM() {
-            //     if (!isTouch()) return;
-            //     items.forEach(c => c.style.width = ou.offsetWidth + 'px');
-            // }
-            // sizeM();
 
             if (pv) pv.addEventListener('click', () => go(cur - 1));
             if (nx) nx.addEventListener('click', () => go(cur + 1));
