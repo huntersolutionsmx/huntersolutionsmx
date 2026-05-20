@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ciclos</title>
@@ -16,6 +17,7 @@
       margin: 0;
       padding: 0;
     }
+
     :root {
       /* core brand colors */
       --sandlight: #e6d6c7;
@@ -23,6 +25,7 @@
       --sandlight30: rgba(248, 243, 238, 0.3);
       --sanddark: #7c6454;
       --sandob: #514946;
+      --btn-fill: rgba(124, 100, 84, 0.85);
 
       /* tierra brand colors */
       --terracotalight: rgb(223, 165, 132);
@@ -76,20 +79,21 @@
     }
 
     .th-tierra {
-      --bg: var(--sandlight);
+      --bg: var(--terracotalight30);
       --text: var(--terractaob);
       --subtitulos: var(--terracotadark);
       --accent: var(--terracotadark);
       --line: var(--terracotalight30);
+      --btn-fill: var(--terracotadark);
     }
 
     .th-semilla {
-      --bg: rgba(244, 204, 122, 0.05);
+      --bg: var(--ochrelight30);
       --text: var(--ochredusk);
       --subtitulos: var(--ochredusk);
       --accent: var(--ochrehaze);
       --line: rgba(190, 136, 28, 0.15);
-      /* ochredusk @ 15% opacity */
+      --btn-fill: var(--ochredusk);
     }
 
     .th-nutrimiento {
@@ -98,6 +102,7 @@
       --subtitulos: var(--nightskydark);
       --accent: var(--nightskydark);
       --line: var(--nightskydark);
+      --btn-fill: var(--nightskydark);
     }
 
     .th-siembra {
@@ -106,6 +111,7 @@
       --subtitulos: var(--burgundydark);
       --accent: var(--burgundyob);
       --line: var(--burgundylight30);
+      --btn-fill: var(--burgundydark);
     }
 
     .th-cosecha {
@@ -114,6 +120,55 @@
       --subtitulos: var(--forestdark);
       --accent: var(--forestlight);
       --line: var(--forestlight30);
+      --btn-fill: var(--forestdark);
+    }
+
+    .nav-elemento {
+      position: relative;
+      display: inline-block;
+      padding: 10px 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--tarjeta-r);
+      font-family: 'Albert Sans', sans-serif;
+      font-weight: 400;
+      font-size: 0.75rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      overflow: hidden;
+      cursor: pointer;
+      text-align: center;
+      white-space: nowrap;
+      background: transparent;
+      transition: color 0.4s ease, border-color 0.4s ease, background 0.4s ease;
+    }
+
+    .nav-elemento::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--btn-fill);
+      transform: translateX(-101%);
+      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: var(--tarjeta-r);
+      z-index: 0;
+    }
+
+    .nav-elemento span {
+      position: relative;
+      z-index: 1;
+      font-family: 'Albert Sans', sans-serif;
+      font-weight: 400;
+      /* transition: font-weight 0.35s, color 0.35s; */
+    }
+
+    .nav-elemento:hover::before {
+      transform: translateX(0);
+    }
+
+    .nav-elemento:hover span {
+      font-weight: 500;
+      color: var(--white);
     }
 
     html,
@@ -214,9 +269,10 @@
       margin-bottom: 32px;
       transition: color 0.85s;
     }
+
     .th-nutrimiento .stage-title {
-  font-size: clamp(30px, 4.7vw, 66px);
-}
+      font-size: clamp(30px, 4.7vw, 66px);
+    }
 
     .stage-body {
       font-family: 'Albert Sans', sans-serif;
@@ -394,6 +450,11 @@
     /* ── Mobile ── */
     @media (max-width: 768px) {
 
+      .nav-elemento {
+        padding: 8px 16px;
+        font-size: 0.7rem;
+      }
+
       .topbar,
       .bottombar {
         padding: 28px 24px 0;
@@ -483,6 +544,7 @@
           <span class="meta-key">Resultado clave</span>
           <span class="meta-val" id="metaRes">—</span>
         </div>
+        <a class="nav-elemento" href="#"><span>Quiero participar</span></a>
       </div>
 
     </div>
@@ -639,4 +701,5 @@
     applyContent(0);
   </script>
 </body>
+
 </html>
