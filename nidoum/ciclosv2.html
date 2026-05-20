@@ -188,7 +188,6 @@
       grid-template-columns: 1fr;
       background: var(--bg);
       transition: var(--T);
-      overflow: hidden;
     }
 
     .topbar {
@@ -447,6 +446,10 @@
 
     /* ── Mobile ── */
     @media (max-width: 768px) {
+      .stage-page {
+        height: auto;
+    overflow: visible;
+      }
 
       .stage-title {
         font-size: clamp(40px, 5.5vw, 80px);
