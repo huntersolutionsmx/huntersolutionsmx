@@ -181,7 +181,7 @@
     }
 
     .stage-page {
-      min-height: 100vh;
+      height: 100vh;
       width: 100%;
       display: grid;
       grid-template-rows: auto 1fr auto;
@@ -234,7 +234,7 @@
     .main {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      align-items: center;
+      align-items: stretch;
       padding: 0 64px;
       gap: 0;
       height: 100%;
@@ -262,7 +262,7 @@
 
     .stage-title {
       font-family: 'Roboto Serif', serif;
-      font-size: clamp(40px, 5.5vw, 80px);
+      font-size: 100px;
       font-weight: 200;
       color: var(--text);
       line-height: 1.05;
@@ -271,12 +271,12 @@
     }
 
     .th-nutrimiento .stage-title {
-      font-size: clamp(30px, 4.7vw, 66px);
+      font-size: 105px;
     }
 
     .stage-body {
       font-family: 'Albert Sans', sans-serif;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 300;
       line-height: 1.9;
       color: var(--subtitulos);
@@ -327,8 +327,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 200px;
-      height: 200px;
+      width: 300px;
+      height: 300px;
     }
 
     .stage-icon-wrap img {
@@ -340,12 +340,10 @@
 
     .col-right {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding-left: 48px;
-      border-left: 0.5px solid var(--line);
-      height: 60%;
-      transition: border-color 0.85s;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 48px;
+  transition: border-color 0.85s;
     }
 
     .meta-title {
@@ -450,6 +448,14 @@
     /* ── Mobile ── */
     @media (max-width: 768px) {
 
+      .stage-title {
+        font-size: clamp(40px, 5.5vw, 80px);
+      }
+
+      .th-nutrimiento .stage-title {
+        font-size: clamp(30px, 4.7vw, 66px);
+      }
+
       .nav-elemento {
         padding: 8px 16px;
         font-size: 0.7rem;
@@ -497,7 +503,6 @@
 
       .col-right {
         padding-left: 0;
-        border-left: none;
         border-top: 0.5px solid var(--line);
         padding-top: 32px;
         height: auto;
@@ -550,7 +555,7 @@
     </div>
 
     <div class="bottombar">
-      <span class="stage-num-large" id="stageNumLarge">01 / 05</span>
+      <span class="stage-num-large" id="stageNumLarge"></span>
       <div class="nav-arrows">
         <button class="arrow-btn" id="prevBtn" aria-label="Anterior">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
@@ -642,7 +647,7 @@
     const metaDim = document.getElementById('metaDim');
     const metaRol = document.getElementById('metaRol');
     const metaRes = document.getElementById('metaRes');
-    const stageNumLarge = document.getElementById('stageNumLarge');
+    // const stageNumLarge = document.getElementById('stageNumLarge');
     const stageHint = document.getElementById('stageHint');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
@@ -659,7 +664,7 @@
       metaDim.textContent = s.dim;
       metaRol.textContent = s.rol;
       metaRes.textContent = s.res;
-      stageNumLarge.textContent = `${String(idx + 1).padStart(2, '0')} · ${String(TOTAL).padStart(2, '0')}`;
+      // stageNumLarge.textContent = `${String(idx + 1).padStart(2, '0')} · ${String(TOTAL).padStart(2, '0')}`;
     }
 
     function goTo(idx) {
