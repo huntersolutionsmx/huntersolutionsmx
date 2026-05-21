@@ -133,7 +133,7 @@
             left: 24px;
             right: 24px;
             font-family: 'Roboto Serif', serif;
-            font-size: 22px;
+            font-size: 30px;
             font-weight: 400;
             color: var(--white);
             line-height: 1.25;
@@ -184,7 +184,7 @@
         }
 
         .overlay-desc {
-            font-size: 11.5px;
+            font-size: 13px;
             font-weight: 300;
             color: rgba(255, 255, 255, 0.72);
             line-height: 1.6;
@@ -314,8 +314,13 @@
             }
         }
 
-        .casavinedossma {
+        .casavinedossmavs1 {
             background-image: url('https://nidoum.com/wp-content/uploads/2026/05/vinedosvs1-scaled.webp');
+            filter: brightness(0.75);
+        }
+
+        .casavinedossmavs2 {
+            background-image: url('https://nidoum.com/wp-content/uploads/2026/05/vinedosvs2-scaled.webp');
             filter: brightness(0.75);
         }
 
@@ -345,6 +350,12 @@
         }
 
         @media (max-width: 768px) {
+            .tarjeta-title-photo {
+                font-size: 22px;
+            }
+            .overlay-desc {
+                font-size: 11.5px;
+            }
             .carousel-section {
                 padding-bottom: 4rem;
             }
@@ -392,13 +403,14 @@
             <div class="track" id="trackDes">
 
                 <div class="tarjeta">
-                    <div class="tarjeta-photo casavinedossma"></div>
-                    <span class="tarjeta-title-photo">VIÑEDO DE LOS SENDEROS</span>
+                    <div class="tarjeta-photo casavinedossmavs1"></div>
+                    <span class="tarjeta-title-photo">VIÑEDO DE LOS SENDEROS<br>CASA VS1</span>
                     <span class="tarjeta-status">En desarrollo</span>
                     <div class="tarjeta-overlay">
-                        <div class="overlay-title">Casa Viñedo de los Senderos VS1</div>
-                        <div class="overlay-desc">Conjunto habitacional concebido como sistema modular. Cada unidad
-                            preserva su identidad dentro de un todo armónico.</div>
+                        <div class="overlay-title">Viñedo de los Senderos Casa VS1</div>
+                        <div class="overlay-desc">Una de las implementaciones habitacionales dentro de Viñedo de los
+                            Senderos.<br>Su estructura permite observar cómo una unidad habitacional puede integrarse a un
+                            desarrollo mayor sin perder autonomía espacial ni coherencia con el paisaje.</div>
                         <div class="overlay-meta">
                             <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Desarrollo
                                     residencial escalable</span></div>
@@ -422,12 +434,38 @@
                 </div>
 
                 <div class="tarjeta">
+                    <div class="tarjeta-photo casavinedossmavs2"></div>
+                    <span class="tarjeta-title-photo">VIÑEDO DE LOS SENDEROS<br>Casa VS2</span>
+                    <span class="tarjeta-status">En desarrollo</span>
+                    <div class="tarjeta-overlay">
+                        <div class="overlay-title">Viñedo de los Senderos Casa VS2</div>
+                        <div class="overlay-desc">Una evolución de la tipología habitacional implementada dentro de
+                            Viñedo de los Senderos.<br>La vivienda se organiza en torno a una relación directa con el
+                            viñedo, integrando visuales abiertas y generando continuidad entre interior y exterior.
+                        </div>
+                        <div class="overlay-meta">
+                            <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Desarrollo
+                                    residencial escalable</span></div>
+                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
+                                    class="meta-val">México</span></div>
+                            <div class="meta-row"><span class="meta-key">Sistema</span><span class="meta-val">Modular
+                                    repetible</span></div>
+                            <div class="meta-row"><span class="meta-key">Etapa</span><span
+                                    class="meta-val">[STATUS]</span></div>
+                        </div>
+                        <a class="overlay-btn" href="#">Descarga nuestro Brochure</a>
+                    </div>
+                </div>
+
+                <div class="tarjeta">
                     <div class="tarjeta-photo casabeckhartsma"></div>
-                    <span class="tarjeta-title-photo">TITULO</span>
+                    <span class="tarjeta-title-photo">RANCHITOS<br>Casa Beckhart</span>
                     <span class="tarjeta-status">Ejecutado</span>
                     <div class="tarjeta-overlay">
-                        <div class="overlay-title">TITULO</div>
-                        <div class="overlay-desc">DESCRIPCIÓN</div>
+                        <div class="overlay-title">Casa Beckhart</div>
+                        <div class="overlay-desc">Una vivienda flexible y adaptable, con construcción eficiente y
+                            ordenada.<br>Explora cómo la repetición genera identidad. Un modelo eficiente que preserva
+                            espacialidad y carácter. </div>
                         <div class="overlay-meta">
                             <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Residencial
                                     (Unifamiliar)</span></div>
@@ -445,19 +483,20 @@
 
                 <div class="tarjeta">
                     <div class="tarjeta-photo casamantarraya"></div>
-                    <span class="tarjeta-title-photo">Casa Mantarraya Todos Santos</span>
+                    <span class="tarjeta-title-photo">CASA MANTARRAYA</span>
                     <span class="tarjeta-status">Ejecutado</span>
                     <div class="tarjeta-overlay">
-                        <div class="overlay-title">Casa Mantarraya Todos Santos</div>
-                        <div class="overlay-desc">Arquitectura contenida; precisión técnica y detalle artesanal donde el
-                            espacio es protagonista.</div>
+                        <div class="overlay-title">Casa Mantarraya — Jeffrey & Laurie Dodge</div>
+                        <div class="overlay-desc">Vivienda contemporánea que sintetiza claridad arquitectónica,
+                            eficiencia y adaptabilidad.<br>Sobriedad arquitectónica y funcionalidad, respaldadas por
+                            materiales durables y térmicamente eficientes.</div>
                         <div class="overlay-meta">
                             <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Residencial
                                     (Unifamiliar)</span></div>
                             <div class="meta-row"><span class="meta-key">Ubicación</span><span
                                     class="meta-val">México</span></div>
-                            <div class="meta-row"><span class="meta-key">Sistema</span><span class="meta-val">Modular +
-                                    Artesanal Controlado</span></div>
+                            <div class="meta-row"><span class="meta-key">Sistema</span><span class="meta-val">Modular
+                                    Híbrido</span></div>
                             <div class="meta-row"><span class="meta-key">Etapa</span><span
                                     class="meta-val">Ejecutado</span></div>
                         </div>
@@ -467,14 +506,23 @@
 
                 <div class="tarjeta">
                     <div class="tarjeta-photo casapasaret"></div>
-                    <span class="tarjeta-title-photo">Casa Pásaret Sangre de Cristo</span>
-                    <span class="tarjeta-status">Próximamente</span>
+                    <span class="tarjeta-title-photo">SANGRE DE CRISTO<br>Casa Pásaret</span>
+                    <span class="tarjeta-status">Ejecutado</span>
                     <div class="tarjeta-overlay">
-                        <div class="overlay-title">Casa Pásaret Sangre de Cristo</div>
-                        <div class="overlay-desc">Información próximamente disponible.</div>
+                        <div class="overlay-title">Casa Pásaret — Gerard Pásaret</div>
+                        <div class="overlay-desc">Vivienda sólida y elegante, donde cada elemento estructural refleja
+                            precisión y cuidado.<br>Arquitectura contenida; precisión técnica y detalle artesanal donde
+                            el espacio es protagonista.</div>
                         <div class="overlay-meta">
+                            <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Residencial
+                                    (Unifamiliar)</span></div>
                             <div class="meta-row"><span class="meta-key">Ubicación</span><span
                                     class="meta-val">México</span></div>
+                            <div class="meta-row"><span class="meta-key">Sistema</span>
+                                <span class="meta-val">Modular + Artesanal Controlado</span>
+                            </div>
+                            <div class="meta-row"><span class="meta-key">Etapa</span><span
+                                    class="meta-val">Ejecutado</span></div>
                         </div>
                         <a class="overlay-btn" href="#">Descarga nuestro Brochure</a>
                     </div>
@@ -482,14 +530,20 @@
 
                 <div class="tarjeta">
                     <div class="tarjeta-photo duna"></div>
-                    <span class="tarjeta-title-photo">Pabellón Mauricio Rocha</span>
-                    <span class="tarjeta-status">Próximamente</span>
+                    <span class="tarjeta-title-photo">DUNA VILLA LAS ÁNIMAS</span>
+                    <span class="tarjeta-status">En Desarrollo</span>
                     <div class="tarjeta-overlay">
-                        <div class="overlay-title">Pabellón Mauricio Rocha</div>
-                        <div class="overlay-desc">Información próximamente disponible.</div>
+                        <div class="overlay-title">Duna Villa las Ánimas</div>
+                        <div class="overlay-desc">Desarrollo multifamiliar estructurado a partir de condiciones que el ecosistema nos brinda.<br>La relación con el entorno, eficiencia y la capacidad de ejecución adquieren la mayor relevancia.</div>
                         <div class="overlay-meta">
+                            <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Residencial
+                                    (Multifamiliar)</span></div>
                             <div class="meta-row"><span class="meta-key">Ubicación</span><span
                                     class="meta-val">México</span></div>
+                            <div class="meta-row"><span class="meta-key">Sistema</span><span
+                                    class="meta-val">Modular sustentable</span></div>
+                            <div class="meta-row"><span class="meta-key">Etapa</span><span
+                                    class="meta-val">En Desarrollo</span></div>
                         </div>
                         <a class="overlay-btn" href="#">Descarga nuestro Brochure</a>
                     </div>
@@ -497,12 +551,11 @@
 
                 <div class="tarjeta">
                     <div class="tarjeta-photo paloblanco"></div>
-                    <span class="tarjeta-title-photo">Palo Blanco Villas Resort</span>
-                    <span class="tarjeta-status">Ejecutado</span>
+                    <span class="tarjeta-title-photo">PALO BLANCO WELLNESS LIVING</span>
+                    <span class="tarjeta-status">En Desarrollo</span>
                     <div class="tarjeta-overlay">
-                        <div class="overlay-title">Palo Blanco Villas Resort</div>
-                        <div class="overlay-desc">Centro residencial enfocado en el bienestar. Arquitectura y paisaje
-                            convergen en una experiencia de calma y conexión.</div>
+                        <div class="overlay-title">Palo Blanco Wellness Living</div>
+                        <div class="overlay-desc">Un activo residencial de baja densidad y alto valor habitable.<br>Centro residencial enfocado en el bienestar. Donde arquitectura y paisaje convergen en una experiencia de calma y conexión. </div>
                         <div class="overlay-meta">
                             <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Wellness
                                     Residencial (Uso Mixto)</span></div>
@@ -511,7 +564,7 @@
                             <div class="meta-row"><span class="meta-key">Sistema</span><span
                                     class="meta-val">Racionalizado</span></div>
                             <div class="meta-row"><span class="meta-key">Etapa</span><span
-                                    class="meta-val">Ejecutado</span></div>
+                                    class="meta-val">En Desarrollo</span></div>
                         </div>
                         <a class="overlay-btn" href="#">Descarga nuestro Brochure</a>
                     </div>
