@@ -1,0 +1,228 @@
+
+/**
+ * Snippet: Menú personalizado NIDOUM con icono del sitio (65px) en todas las páginas.
+ * - En móvil, icono fijo grande del mismo tamaño que escritorio, sin duplicados.
+ * - En la página de inicio usa un icono especial; en el resto, el icono de WordPress.
+ */
+add_action('wp', function() {
+    remove_action('astra_primary_navigation', 'astra_primary_navigation_markup');
+    remove_action('astra_header', 'astra_primary_navigation', 30);
+}, 15);
+
+add_action('astra_header', function() {
+    if (is_customize_preview()) return;
+
+    // Icono de WordPress por defecto
+    $site_icon_url = function_exists('get_site_icon_url') ? get_site_icon_url(74) : '';
+
+    // Icono especial SOLO para la página de inicio
+    $custom_home_icon = 'https://nidoum.com/wp-content/uploads/2026/03/03.1_5-MG-Icon_Inv@2x-1.png';
+    $is_home = is_front_page() || is_home();
+
+    $desktop_icon = $is_home ? $custom_home_icon : $site_icon_url;
+    $mobile_icon  = $is_home ? $custom_home_icon : $site_icon_url;
+    ?>
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        .nidoum-menu-custom *,
+        .nidoum-menu-custom *::before,
+        .nidoum-menu-custom *::after { margin:0; padding:0; box-sizing:border-box; }
+        .nidoum-menu-custom { position:relative; font-family:'Albert Sans',sans-serif; z-index:1000; }
+
+        /* Ocultar cualquier logo/imagen de Astra que cause duplicados (incluye header normal y móvil) */
+        .site-header .custom-logo-link,
+        .site-header .site-branding,
+        .site-header .site-logo-img,
+        .site-header .site-title,
+        .site-header .ast-site-identity,
+        .site-header img:not(.site-icon-custom img):not(.mobile-site-icon-custom img) {
+            display: none !important;
+        }
+
+        /* Ocultar completamente el header móvil de Astra en todas las páginas */
+        @media (max-width: 768px) {
+            .ast-mobile-header-wrap {
+                display: none !important;
+            }
+        }
+
+        .encabezado-menu-custom {
+            position:fixed; top:42px; left:50%; transform:translateX(-50%);
+            z-index:30; pointer-events:auto;
+        }
+        .nav-wrap-custom {
+            display:flex; flex-direction:row; align-items:center; gap:16px;
+        }
+        .nav-elemento-custom {
+            position:relative; display:block; padding:10px 22px;
+            border:1px solid rgba(255,255,255,0.1); border-radius:10px;
+            font-family:'Albert Sans',sans-serif; font-weight:400; font-size:0.75rem;
+            color:#514946; text-decoration:none; letter-spacing:0.04em;
+            overflow:hidden; cursor:pointer; text-align:center; white-space:nowrap;
+            background:rgba(255,255,255,0.40);
+            backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+            transition:color 0.4s ease, border-color 0.4s ease, background 0.4s ease;
+        }
+        .nav-elemento-custom::before {
+            content:''; position:absolute; inset:0;
+            transform:translateX(-101%);
+            transition:transform 0.45s cubic-bezier(0.4,0,0.2,1);
+            border-radius:10px; z-index:0;
+            background: #7c6454; /* Cortina */
+        }
+        .nav-elemento-custom span { position:relative; z-index:1; font-weight:400; transition:font-weight 0.35s, color 0.35s; }
+        .nav-elemento-custom:hover::before { transform:translateX(0); }
+        .nav-elemento-custom:hover span { font-weight:500; color:#e6d6c7; }
+
+        /* Icono escritorio (65px) */
+        .site-icon-custom {
+            display:inline-flex; align-items:center; margin-right:12px;
+            transition:opacity 0.3s;
+        }
+        .site-icon-custom img {
+            display:block;
+            width:65px;
+            height:65px;
+            border-radius:6px;
+            object-fit:contain;
+        }
+        .site-icon-custom:hover { opacity:0.8; }
+
+        /* Icono móvil fijo (65px) */
+        .mobile-site-icon-custom {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 55;
+            width: 65px !important;
+            height: 65px !important;
+            pointer-events: auto;
+            transition: opacity 0.3s;
+        }
+        .mobile-site-icon-custom img {
+            width: 100% !important;
+            height: 100% !important;
+            border-radius: 6px;
+            display: block;
+            object-fit: contain;
+        }
+        .mobile-site-icon-custom:hover {
+            opacity: 0.8;
+        }
+
+        .mobile-menu-container-custom { display:none; position:fixed; top:20px; right:20px; z-index:50; pointer-events:auto; }
+        .menu-overlay-custom { position:fixed; inset:0; background:rgba(0,0,0,0.1); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); z-index:48; opacity:0; visibility:hidden; transition:opacity 0.35s ease, visibility 0.35s ease; pointer-events:none; }
+        .menu-overlay-custom.active { opacity:1; visibility:visible; pointer-events:auto; }
+        .hamburger-custom { position:relative; z-index:51; width:48px; height:48px; border-radius:10px; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:6px; cursor:pointer; transition:all 0.3s ease; background:rgba(255,255,255,0.10); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); }
+        .hamburger-custom span { display:block; width:24px; height:2px; background:#fff; transition:0.3s; border-radius:10px; }
+        .hamburger-custom.active span:nth-child(1) { transform:translateY(8px) rotate(45deg); }
+        .hamburger-custom.active span:nth-child(2) { opacity:0; }
+        .hamburger-custom.active span:nth-child(3) { transform:translateY(-8px) rotate(-45deg); }
+        
+        /* Menú móvil: contenedor invisible, solo posicionamiento y enlaces */
+        .mobile-nav-custom {
+            position:fixed; left:50%; top:42%;
+            transform:translate(-50%,-50%) translateX(120vw);
+            transition:transform 0.35s cubic-bezier(0.2,0.9,0.4,1.1);
+            border-radius:10px;
+            padding:24px 20px;
+            display:flex;
+            flex-direction:column;
+            gap:14px;
+            width:260px;
+            z-index:49;
+            pointer-events:none;
+            /* Se eliminó la tarjeta contenedora */
+            background: transparent;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            border: none;
+        }
+        .mobile-nav-custom.open { transform:translate(-50%,-50%) translateX(0); pointer-events:auto; }
+        .mobile-nav-custom .nav-elemento-custom {
+            font-size:1rem; padding:13px 20px; width:100%;
+            border:none;
+            background:transparent;
+            backdrop-filter:none;
+            -webkit-backdrop-filter:none;
+            color:#e6d6c7;
+        }
+        .mobile-nav-custom .nav-elemento-custom::before {
+            inset:auto; top:auto; bottom:0; left:0;
+            width:100%; height:2px; background:#fff;
+            border-radius:0; transform:translateX(-101%);
+        }
+        .mobile-nav-custom .nav-elemento-custom:hover::before { transform:translateX(0); }
+
+        @media (max-width:768px) {
+            .encabezado-menu-custom { display:none; }
+            .mobile-menu-container-custom { display:block; }
+            .mobile-site-icon-custom { display:block; }
+        }
+    </style>
+
+    <div class="nidoum-menu-custom">
+        <!-- Icono fijo móvil (65px, visible en todas las páginas en móvil) -->
+        <?php if ( $mobile_icon ) : ?>
+            <a href="<?php echo esc_url( home_url('/') ); ?>" class="mobile-site-icon-custom" aria-label="Inicio">
+                <img src="<?php echo esc_url( $mobile_icon ); ?>" alt="Icono del sitio" width="74" height="74">
+            </a>
+        <?php endif; ?>
+
+        <!-- Menú de escritorio -->
+        <div class="encabezado-menu-custom">
+            <div class="nav-wrap-custom">
+                <?php if ( $desktop_icon ) : ?>
+                    <a href="<?php echo esc_url( home_url('/') ); ?>" class="site-icon-custom" aria-label="Inicio">
+                        <img src="<?php echo esc_url( $desktop_icon ); ?>" alt="Icono del sitio" width="74" height="74">
+                    </a>
+                <?php endif; ?>
+                <a class="nav-elemento-custom" href="https://nidoum.com/nosotros/"><span>Nosotros</span></a>
+                <a class="nav-elemento-custom" href="https://nidoum.com/desarrollos/"><span>Desarrollos</span></a>
+                <a class="nav-elemento-custom" href="https://nidoum.com/construccion-modular/"><span>Construcción Modular</span></a>
+                <a class="nav-elemento-custom" href="https://nidoum.com/ciclos-de-desarrollo/"><span>Ciclos de Desarrollo</span></a>
+            </div>
+        </div>
+
+        <!-- Menú hamburguesa móvil -->
+        <div class="mobile-menu-container-custom">
+            <div class="hamburger-custom" id="hamburgerBtnCustom"><span></span><span></span><span></span></div>
+            <div class="menu-overlay-custom" id="menuOverlayCustom"></div>
+            <div class="mobile-nav-custom" id="mobileNavCustom">
+                <a class="nav-elemento-custom" href="https://nidoum.com/nosotros/"><span>Nosotros</span></a>
+                <a class="nav-elemento-custom" href="https://nidoum.com/desarrollos/"><span>Desarrollos</span></a>
+                <a class="nav-elemento-custom" href="https://nidoum.com/construccion-modular/"><span>Construcción Modular</span></a>
+                <a class="nav-elemento-custom" href="https://nidoum.com/ciclos-de-desarrollo/"><span>Ciclos de Desarrollo</span></a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            var hamburger = document.getElementById('hamburgerBtnCustom');
+            var mobileNav = document.getElementById('mobileNavCustom');
+            var overlay = document.getElementById('menuOverlayCustom');
+            if (!hamburger || !mobileNav || !overlay) return;
+            hamburger.addEventListener('click', function(e) {
+                e.stopPropagation();
+                hamburger.classList.toggle('active');
+                mobileNav.classList.toggle('open');
+                overlay.classList.toggle('active');
+            });
+            mobileNav.querySelectorAll('.nav-elemento-custom').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    mobileNav.classList.remove('open');
+                    overlay.classList.remove('active');
+                });
+            });
+            overlay.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                mobileNav.classList.remove('open');
+                overlay.classList.remove('active');
+            });
+        })();
+    </script>
+    <?php
+}, 30);
