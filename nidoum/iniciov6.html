@@ -259,6 +259,14 @@
         background-position: center center;
     }
 
+    .tarjeta-unica video {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
     .tarjeta-photo {
         position: absolute;
         inset: 0;
@@ -722,17 +730,17 @@
     }
 
     .escalaunidad {
-        background-image: url('https://nidoum.com/wp-content/uploads/2026/05/escala-unidad.png');
+        background-image: url('https://nidoum.com/wp-content/uploads/2026/05/escala-unidad.webp');
         filter: brightness(0.75);
     }
 
     .escalanodo {
-        background-image: url('https://nidoum.com/wp-content/uploads/2026/05/escala-nodo.png');
+        background-image: url('https://nidoum.com/wp-content/uploads/2026/05/escala-nodos.webp');
         filter: brightness(0.75);
     }
 
     .escalaterritorio {
-        background-image: url('https://nidoum.com/wp-content/uploads/2026/05/escala-territorial.png');
+        background-image: url('https://nidoum.com/wp-content/uploads/2026/05/escala-territorio.webp');
         filter: brightness(0.75);
     }
 
@@ -786,10 +794,45 @@
         filter: brightness(0.75);
     }
 
-    /* .imagen {
+    .cmodular1 {
+        background-image: url('https://images.unsplash.com/photo-1616224952327-6240f31e5bdc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+        filter: brightness(0.75);
+    }
+
+    .cmodular2 {
+        background-image: url('https://images.unsplash.com/photo-1597476885328-ce9c89859503?q=80&w=1035&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+        filter: brightness(0.75);
+    }
+
+    .cmodular3 {
+        background-image: url('https://images.unsplash.com/photo-1741916540995-f9ea8ba16253?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+        filter: brightness(0.75);
+    }
+
+    .cmodular4 {
+        background-image: url('https://images.unsplash.com/photo-1576577610667-c9ea0ac983fd?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+        filter: brightness(0.75);
+    }
+
+    .cmodular5 {
+        background-image: url('https://images.unsplash.com/photo-1615461475394-4fe1a18c7111?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+        filter: brightness(0.75);
+    }
+
+    .videoNIDOUM {
+        background-image: url('');
+
+    }
+
+    .imagen {
         background-image: url('');
         filter: brightness(0.75);
-    } */
+    }
+
+    .imagen {
+        background-image: url('');
+        filter: brightness(0.75);
+    }
 
     /* --- 5.4. Etapas (Ciclos de Desarrollo) --- */
     .etapa-card {
@@ -1016,6 +1059,37 @@
     .tarjetas-triada .track-outer {
         flex: 1;
         padding-left: 0;
+    }
+
+    .video-play-btn {
+        position: absolute;
+        bottom: 24px;
+        right: 24px;
+        z-index: 2;
+        width: 44px;
+        height: 44px;
+        border-radius: var(--tarjeta-r);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        background: rgba(255, 255, 255, 0.10);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        transition: background 0.25s, border-color 0.25s;
+    }
+
+    .video-play-btn:hover {
+        background: rgba(255, 255, 255, 0.22);
+        border-color: rgba(255, 255, 255, 0.35);
+    }
+
+    .video-play-btn svg {
+        width: 16px;
+        height: 16px;
+        pointer-events: none;
     }
 
     /* ==========================================================================
@@ -1418,31 +1492,24 @@
         <div class="track-outer" id="trackOuterEscencia">
             <div class="track" id="trackEscencia">
                 <div class="tarjeta-unica">
-                    <div class="tarjeta-photo casavinedossmavs1"></div>
-                    <div class="tarjeta-overlay">
-                        <div class="overlay-meta">
-                            <div class="meta-row"></div>
-                            <div class="meta-row"></div>
-                        </div>
-                    </div>
+                    <video autoplay loop playsinline>
+                        <source src="https://nidoum.com/wp-content/uploads/2026/05/video-que-es-nidoum.mp4"
+                            type="video/mp4">
+                    </video>
+                    <button class="video-play-btn" id="btnPlayEscencia" aria-label="Reproducir / Pausar">
+                        <svg class="icon-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="6" y="4" width="4" height="16" />
+                            <rect x="14" y="4" width="4" height="16" />
+                        </svg>
+                        <svg class="icon-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+                            <polygon points="5 3 19 12 5 21 5 3" />
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
-        <div style="padding-top: 20px;"></div>
-        <div class="track-outer" id="trackOuterEscencia2">
-            <div class="track" id="trackEscencia2">
-                <div class="tarjeta-unica">
-                    <div class="tarjeta-photo casavinedossmavs1"></div>
-                    <div class="tarjeta-overlay">
-                        <div class="overlay-meta">
-                            <div class="meta-row"></div>
-                            <div class="meta-row"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </div>
 
     <!-- PRODCUTOS, MODELOS o SOLUCIONES OFRECE (MODELOS - LAMINAS) -->
@@ -1579,189 +1646,32 @@
                 <p class="carousel-header-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Cras luctus est a purus interdum venenatis. Curabitur cursus ornare turpis vitae mollis.
                     Aliquam eu rutrum nisi, ut mattis lectus. Aenean tristique nec neque id commodo.</p>
+                <!-- boton -->
             </div>
+
         </div>
         <div class="track-outer" id="trackOuterModular">
             <div class="track" id="trackModular">
 
                 <div class="tarjeta">
-                    <div class="tarjeta-photo casavinedossmavs1"></div>
-                    <span class="tarjeta-title-photo">VIÑEDO DE LOS SENDEROS<br>CASA VS1</span>
-                    <span class="tarjeta-status">Ejecutado</span>
-                    <div class="tarjeta-overlay">
-                        <div class="overlay-title">Viñedo de los Senderos Casa VS1</div>
-                        <div class="overlay-desc"><span class="hidden">Una de las implementaciones habitacionales dentro
-                                de Viñedo de los
-                                Senderos.</span><br>Su estructura permite observar cómo una unidad habitacional puede
-                            integrarse a
-                            un desarrollo mayor sin perder autonomía espacial ni coherencia con el paisaje.</div>
-                        <div class="overlay-meta">
-                            <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Desarrollo
-                                    residencial escalable</span></div>
-                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
-                                    class="meta-val">México</span></div>
-                            <div class="meta-row"><span class="meta-key">Sistema</span><span class="meta-val">Modular
-                                    repetible</span></div>
-                            <div class="meta-row"><span class="meta-key">Etapa</span><span
-                                    class="meta-val">Ejecutado</span></div>
-                        </div>
-                        <a class="overlay-btn" href="#">Descarga nuestro Brochure</a>
-                    </div>
-                    <div class="tap-hint" id="tapHint">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path d="M9 11V6a2 2 0 0 1 4 0v5" />
-                            <path d="M13 11V9a2 2 0 0 1 4 0v6a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6v-3a2 2 0 0 1 4 0" />
-                        </svg>
-                        <span>Toca para ver info</span>
-                    </div>
+                    <div class="tarjeta-photo cmodular1"></div>
                 </div>
 
                 <div class="tarjeta">
-                    <div class="tarjeta-photo casavinedossmavs2"></div>
-                    <span class="tarjeta-title-photo">VIÑEDO DE LOS SENDEROS<br>Casa VS2</span>
-                    <span class="tarjeta-status">Ejecutado</span>
-                    <div class="tarjeta-overlay">
-                        <div class="overlay-title">Viñedo de los Senderos Casa VS2</div>
-                        <div class="overlay-desc"><span class="hidden">Una evolución de la tipología habitacional
-                                implementada dentro de
-                                Viñedo de los Senderos.</span><br>La vivienda se organiza en torno a una relación
-                            directa con el
-                            viñedo, integrando visuales abiertas y generando continuidad entre interior y exterior.
-                        </div>
-                        <div class="overlay-meta">
-                            <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Desarrollo
-                                    residencial escalable</span></div>
-                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
-                                    class="meta-val">México</span></div>
-                            <div class="meta-row"><span class="meta-key">Sistema</span><span class="meta-val">Modular
-                                    repetible</span></div>
-                            <div class="meta-row"><span class="meta-key">Etapa</span><span
-                                    class="meta-val">Ejecutado</span></div>
-                        </div>
-                        <a class="overlay-btn" href="#">Descarga nuestro Brochure</a>
-                    </div>
+                    <div class="tarjeta-photo cmodular2"></div>
                 </div>
 
                 <div class="tarjeta">
-                    <div class="tarjeta-photo casabeckhartsma"></div>
-                    <span class="tarjeta-title-photo">RANCHITOS<br>Casa Beckhart</span>
-                    <span class="tarjeta-status">Ejecutado</span>
-                    <div class="tarjeta-overlay">
-                        <div class="overlay-title">Casa Beckhart</div>
-                        <div class="overlay-desc">Una vivienda flexible y adaptable, con construcción eficiente y
-                            ordenada.<br>Explora cómo la repetición genera identidad. Un modelo eficiente que preserva
-                            espacialidad y carácter. </div>
-                        <div class="overlay-meta">
-                            <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Residencial
-                                    (Unifamiliar)</span></div>
-                            <div class="meta-row"><span class="meta-key">Ubicación</span>
-                                <span class="meta-val">México</span>
-                            </div>
-                            <div class="meta-row"><span class="meta-key">Sistema</span><span class="meta-val">Modular
-                                    repetible</span></div>
-                            <div class="meta-row"><span class="meta-key">Etapa</span><span
-                                    class="meta-val">Ejecutado</span></div>
-                        </div>
-                        <a class="overlay-btn" href="#">Descarga nuestro Brochure</a>
-                    </div>
+                    <div class="tarjeta-photo cmodular3"></div>
                 </div>
 
                 <div class="tarjeta">
-                    <div class="tarjeta-photo casamantarraya"></div>
-                    <span class="tarjeta-title-photo">CASA MANTARRAYA</span>
-                    <span class="tarjeta-status">Ejecutado</span>
-                    <div class="tarjeta-overlay">
-                        <div class="overlay-title">Casa Mantarraya — Jeffrey & Laurie Dodge</div>
-                        <div class="overlay-desc"><span class="hidden">Una vivienda contemporánea que sintetiza claridad
-                                arquitectónica,
-                                eficiencia y adaptabilidad.</span><br>Sobriedad arquitectónica y funcionalidad,
-                            respaldadas por
-                            materiales durables y térmicamente eficientes.</div>
-                        <div class="overlay-meta">
-                            <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Residencial
-                                    (Unifamiliar)</span></div>
-                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
-                                    class="meta-val">México</span></div>
-                            <div class="meta-row"><span class="meta-key">Sistema</span><span class="meta-val">Modular
-                                    Híbrido</span></div>
-                            <div class="meta-row"><span class="meta-key">Etapa</span><span
-                                    class="meta-val">Ejecutado</span></div>
-                        </div>
-                        <a class="overlay-btn" href="#">Descarga nuestro Brochure</a>
-                    </div>
+                    <div class="tarjeta-photo cmodular4"></div>
                 </div>
 
                 <div class="tarjeta">
-                    <div class="tarjeta-photo casapasaret"></div>
-                    <span class="tarjeta-title-photo">SANGRE DE CRISTO<br>Casa Pásaret</span>
-                    <span class="tarjeta-status">Ejecutado</span>
-                    <div class="tarjeta-overlay">
-                        <div class="overlay-title">Casa Pásaret — Gerard Pásaret</div>
-                        <div class="overlay-desc">Vivienda sólida y elegante, donde cada elemento estructural refleja
-                            precisión y cuidado. Arquitectura contenida; precisión técnica y detalle artesanal donde
-                            el espacio es protagonista.</div>
-                        <div class="overlay-meta">
-                            <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Residencial
-                                    (Unifamiliar)</span></div>
-                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
-                                    class="meta-val">México</span></div>
-                            <div class="meta-row"><span class="meta-key">Sistema</span>
-                                <span class="meta-val">Modular + Artesanal Controlado</span>
-                            </div>
-                            <div class="meta-row"><span class="meta-key">Etapa</span><span
-                                    class="meta-val">Ejecutado</span></div>
-                        </div>
-                        <a class="overlay-btn" href="#">Descarga nuestro Brochure</a>
-                    </div>
+                    <div class="tarjeta-photo cmodular5"></div>
                 </div>
-
-                <div class="tarjeta">
-                    <div class="tarjeta-photo duna"></div>
-                    <span class="tarjeta-title-photo">DUNA VILLA LAS ÁNIMAS</span>
-                    <span class="tarjeta-status">En Desarrollo</span>
-                    <div class="tarjeta-overlay">
-                        <div class="overlay-title">Duna Villa las Ánimas</div>
-                        <div class="overlay-desc">Desarrollo multifamiliar estructurado a partir de condiciones que el
-                            ecosistema nos brinda.<br>La relación con el entorno, eficiencia y la capacidad de ejecución
-                            adquieren la mayor relevancia.</div>
-                        <div class="overlay-meta">
-                            <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Residencial
-                                    (Multifamiliar)</span></div>
-                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
-                                    class="meta-val">México</span></div>
-                            <div class="meta-row"><span class="meta-key">Sistema</span><span class="meta-val">Modular
-                                    sustentable</span></div>
-                            <div class="meta-row"><span class="meta-key">Etapa</span><span class="meta-val">En
-                                    Desarrollo</span></div>
-                        </div>
-                        <a class="overlay-btn" href="#">Descarga nuestro Brochure</a>
-                    </div>
-                </div>
-
-                <div class="tarjeta">
-                    <div class="tarjeta-photo paloblanco"></div>
-                    <span class="tarjeta-title-photo">PALO BLANCO WELLNESS LIVING</span>
-                    <span class="tarjeta-status">En Desarrollo</span>
-                    <div class="tarjeta-overlay">
-                        <div class="overlay-title">Palo Blanco Wellness Living</div>
-                        <div class="overlay-desc">Un activo residencial de baja densidad y alto valor
-                            habitable.<br>Centro residencial enfocado en el bienestar. Donde arquitectura y paisaje
-                            convergen en una experiencia de calma y conexión. </div>
-                        <div class="overlay-meta">
-                            <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Wellness
-                                    Residencial (Uso Mixto)</span></div>
-                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
-                                    class="meta-val">México</span></div>
-                            <div class="meta-row"><span class="meta-key">Sistema</span><span
-                                    class="meta-val">Racionalizado</span></div>
-                            <div class="meta-row"><span class="meta-key">Etapa</span><span class="meta-val">En
-                                    Desarrollo</span></div>
-                        </div>
-                        <a class="overlay-btn" href="#">Descarga nuestro Brochure</a>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
@@ -2017,7 +1927,7 @@
             <div class="track-outer" id="trackOuterEscalas">
                 <div class="track" id="trackEscalas">
                     <div class="tarjeta-unica">
-                        <div class="tarjeta-photo casavinedossmavs1"></div>
+                        <div class="tarjeta-photo escalaunidad"></div>
                         <div class="tarjeta-overlay">
                             <div class="overlay-meta">
                                 <div class="meta-row"></div>
@@ -2030,7 +1940,7 @@
             <div class="track-outer" id="trackOuterEscalas2">
                 <div class="track" id="trackEscalas2">
                     <div class="tarjeta-unica">
-                        <div class="tarjeta-photo casavinedossmavs1"></div>
+                        <div class="tarjeta-photo escalanodo"></div>
                         <div class="tarjeta-overlay">
                             <div class="overlay-meta">
                                 <div class="meta-row"></div>
@@ -2043,7 +1953,7 @@
             <div class="track-outer" id="trackOuterEscalas3">
                 <div class="track" id="trackEscalas3">
                     <div class="tarjeta-unica">
-                        <div class="tarjeta-photo casavinedossmavs1"></div>
+                        <div class="tarjeta-photo escalaterritorio"></div>
                         <div class="tarjeta-overlay">
                             <div class="overlay-meta">
                                 <div class="meta-row"></div>
@@ -2054,8 +1964,6 @@
                 </div>
             </div>
         </div>
-        <!-- <div style="padding-top: 20px;"></div> -->
-
     </div>
 
     <script>
@@ -2246,6 +2154,31 @@
                 document.getElementById('trackDes')
             );
 
+        })();
+
+        /* ─── PLAY / PAUSE VIDEO ESCENCIA ───────────────────────────── */
+        (function () {
+            const btn = document.getElementById('btnPlayEscencia');
+            const video = btn && btn.closest('.tarjeta-unica').querySelector('video');
+            if (!btn || !video) return;
+
+            btn.addEventListener('click', () => {
+                if (video.paused) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            });
+
+            video.addEventListener('play', () => {
+                btn.querySelector('.icon-pause').style.display = '';
+                btn.querySelector('.icon-play').style.display = 'none';
+            });
+
+            video.addEventListener('pause', () => {
+                btn.querySelector('.icon-pause').style.display = 'none';
+                btn.querySelector('.icon-play').style.display = '';
+            });
         })();
     </script>
 </body>
