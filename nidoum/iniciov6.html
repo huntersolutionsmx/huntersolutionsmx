@@ -393,19 +393,24 @@
 
     /* Interacciones de Tarjeta (Hover y Tap) */
     @media (hover: hover) {
-        .tarjeta:hover .tarjeta-overlay {
+
+        .tarjeta:hover .tarjeta-overlay,
+        .tarjeta-unica:hover .tarjeta-overlay {
             opacity: 1;
             pointer-events: auto;
         }
 
         .tarjeta:hover .tarjeta-title-photo,
         .tarjeta:hover .tarjeta-status,
-        .tarjeta:hover .tap-hint {
+        .tarjeta:hover .tap-hint,
+        .tarjeta-unica:hover .tarjeta-title-photo,
+        .tarjeta-unica:hover .tarjeta-status {
             opacity: 0;
         }
     }
 
-    .tarjeta.tapped .tarjeta-overlay {
+    .tarjeta.tapped .tarjeta-overlay,
+    .tarjeta-unica.tapped .tarjeta-overlay {
         opacity: 1;
         pointer-events: auto;
     }
@@ -780,17 +785,17 @@
     }
 
     .studioflat {
-        background-image: url('https://nidoum.com/wp-content/uploads/2026/05/Studio-Flat-.webp');
+        background-image: url('https://nidoum.com/wp-content/uploads/2026/05/studio-flat.webp');
         filter: brightness(0.75);
     }
 
     .onebedroomvilla {
-        background-image: url('https://nidoum.com/wp-content/uploads/2026/05/One-Bedroom-Villa.webp');
+        background-image: url('https://nidoum.com/wp-content/uploads/2026/05/one-bedroom-villa-1.webp');
         filter: brightness(0.75);
     }
 
     .twobedroomfamilyvilla {
-        background-image: url('https://nidoum.com/wp-content/uploads/2026/05/Two-Bedroom-Family-Villa.webp');
+        background-image: url('https://nidoum.com/wp-content/uploads/2026/05/two-bedroom-familly-villa.webp');
         filter: brightness(0.75);
     }
 
@@ -1526,27 +1531,31 @@
         <div class="track-outer" id="trackOuterModelos">
             <div class="track" id="trackModelos">
                 <div class="tarjeta">
-                    <div class="tarjeta-photo casavinedossmavs1"></div>
-                    <span class="tarjeta-title-photo">MODELO 1<br>MODELO 1</span>
-                    <span class="tarjeta-status">Ejecutado</span>
+                    <div class="tarjeta-photo studioflat"></div>
+                    <span class="tarjeta-title-photo">MODELO 1<br>STUDIO FLAT</span>
                     <div class="tarjeta-overlay">
-                        <div class="overlay-title">Viñedo de los Senderos Casa VS1</div>
-                        <div class="overlay-desc"><span class="hidden">Una de las implementaciones habitacionales dentro
-                                de Viñedo de los
-                                Senderos.</span><br>Su estructura permite observar cómo una unidad habitacional puede
-                            integrarse a
-                            un desarrollo mayor sin perder autonomía espacial ni coherencia con el paisaje.</div>
+                        <div class="overlay-title">MODELO 1<br>STUDIO FLAT</div>
+                        <div class="overlay-desc">Unidad compacta y autónoma, con acceso independiente, ideal para
+                            estancias medias o largas, tiempos compartidos y nómadas digitales.</div>
                         <div class="overlay-meta">
-                            <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Desarrollo
-                                    residencial escalable</span></div>
-                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
-                                    class="meta-val">México</span></div>
-                            <div class="meta-row"><span class="meta-key">Sistema</span><span class="meta-val">Modular
-                                    repetible</span></div>
-                            <div class="meta-row"><span class="meta-key">Etapa</span><span
-                                    class="meta-val">Ejecutado</span></div>
+                            <div class="meta-row">
+                                <!-- <span class="meta-key">Tipo</span>
+                                <span class="meta-val">Desarrollo residencial escalable</span> -->
+                            </div>
+                            <div class="meta-row">
+                                <!-- <span class="meta-key">Ubicación</span>
+                                <span class="meta-val">México</span> -->
+                            </div>
+                            <div class="meta-row">
+                                <!-- <span class="meta-key">Sistema</span>
+                                <span class="meta-val">Modular repetible</span> -->
+                            </div>
+                            <div class="meta-row">
+                                <!-- <span class="meta-key">Etapa</span>
+                                <span class="meta-val">Ejecutado</span> -->
+                            </div>
                         </div>
-                        <a class="overlay-btn" href="#">Descarga nuestro Brochure</a>
+                        <!-- <a class="overlay-btn" href="#">Descarga nuestro Brochure</a> -->
                     </div>
                     <div class="tap-hint" id="tapHint">
                         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"
@@ -1558,78 +1567,60 @@
                     </div>
                 </div>
                 <div class="tarjeta">
-                    <div class="tarjeta-photo casavinedossmavs2"></div>
-                    <span class="tarjeta-title-photo">MODELO 2<br>MODELO 2</span>
-                    <span class="tarjeta-status">Ejecutado</span>
+                    <div class="tarjeta-photo onebedroomvilla"></div>
+                    <span class="tarjeta-title-photo">MODELO 2<br>ONE-BEDROOM VILLA</span>
                     <div class="tarjeta-overlay">
-                        <div class="overlay-title">Viñedo de los Senderos Casa VS2</div>
-                        <div class="overlay-desc"><span class="hidden">Una evolución de la tipología habitacional
-                                implementada dentro de
-                                Viñedo de los Senderos.</span><br>La vivienda se organiza en torno a una relación
-                            directa con el
-                            viñedo, integrando visuales abiertas y generando continuidad entre interior y exterior.
-                        </div>
+                        <div class="overlay-title">MODELO 2<br>ONE-BEDROOM VILLA</div>
+                        <div class="overlay-desc">Villa de una habitación para pareja o huésped exclusivo, con cocina
+                            completa, terraza privada y baño experiencial, ideal para estancias largas o como residencia
+                            secundaria.</div>
                         <div class="overlay-meta">
-                            <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Desarrollo
-                                    residencial escalable</span></div>
-                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
-                                    class="meta-val">México</span></div>
-                            <div class="meta-row"><span class="meta-key">Sistema</span><span class="meta-val">Modular
-                                    repetible</span></div>
-                            <div class="meta-row"><span class="meta-key">Etapa</span><span
-                                    class="meta-val">Ejecutado</span></div>
+                            <div class="meta-row">
+                                <!-- <span class="meta-key">C</span><span class="meta-val">Desarrollo residencial escalable</span> -->
+                            </div>
+                            <div class="meta-row">
+                                <!-- <span class="meta-key">Ubicación</span>
+                                <span class="meta-val">México</span> -->
+                            </div>
+                            <div class="meta-row">
+                                <!-- <span class="meta-key">Sistema</span>
+                                <span class="meta-val">Modular repetible</span> -->
+                            </div>
+                            <div class="meta-row">
+                                <!-- <span class="meta-key">Etapa</span>
+                                <span class="meta-val">Ejecutado</span> -->
+                            </div>
                         </div>
-                        <a class="overlay-btn" href="#">Descarga nuestro Brochure</a>
+                        <!-- <a class="overlay-btn" href="#">Descarga nuestro Brochure</a> -->
                     </div>
                 </div>
                 <div class="tarjeta">
-                    <div class="tarjeta-photo casavinedossmavs2"></div>
-                    <span class="tarjeta-title-photo">MODELO 3<br>MODELO 3</span>
-                    <span class="tarjeta-status">Ejecutado</span>
+                    <div class="tarjeta-photo twobedroomfamilyvilla"></div>
+                    <span class="tarjeta-title-photo">MODELO 3<br>TWO-BEDROOM FAMILY VILLA</span>
                     <div class="tarjeta-overlay">
-                        <div class="overlay-title">Viñedo de los Senderos Casa VS2</div>
-                        <div class="overlay-desc"><span class="hidden">Una evolución de la tipología habitacional
-                                implementada dentro de
-                                Viñedo de los Senderos.</span><br>La vivienda se organiza en torno a una relación
-                            directa con el
-                            viñedo, integrando visuales abiertas y generando continuidad entre interior y exterior.
-                        </div>
+                        <div class="overlay-title">MODELO 3<br>TWO-BEDROOM FAMILY VILLA</div>
+                        <div class="overlay-desc">Villa familiar de dos habitaciones con cuarto de lavado completamente
+                            equipado, barra especializada, dos baños completos privados, ideal para familias o retiro
+                            ejecutivo.</div>
                         <div class="overlay-meta">
-                            <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Desarrollo
-                                    residencial escalable</span></div>
-                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
-                                    class="meta-val">México</span></div>
-                            <div class="meta-row"><span class="meta-key">Sistema</span><span class="meta-val">Modular
-                                    repetible</span></div>
-                            <div class="meta-row"><span class="meta-key">Etapa</span><span
-                                    class="meta-val">Ejecutado</span></div>
+                            <div class="meta-row">
+                                <!-- <span class="meta-key">Tipo</span>
+                                <span class="meta-val">Desarrollo residencial escalable</span> -->
+                            </div>
+                            <div class="meta-row">
+                                <!-- <span class="meta-key">Ubicación</span>
+                                <span class="meta-val">México</span> -->
+                            </div>
+                            <div class="meta-row">
+                                <!-- <span class="meta-key">Sistema</span>
+                                <span class="meta-val">Modular repetible</span> -->
+                            </div>
+                            <div class="meta-row">
+                                <!-- <span class="meta-key">Etapa</span>
+                                <span class="meta-val">Ejecutado</span> -->
+                            </div>
                         </div>
-                        <a class="overlay-btn" href="#">Descarga nuestro Brochure</a>
-                    </div>
-                </div>
-                <div class="tarjeta">
-                    <div class="tarjeta-photo casavinedossmavs2"></div>
-                    <span class="tarjeta-title-photo">MODELO 4<br>MODELO 4</span>
-                    <span class="tarjeta-status">Ejecutado</span>
-                    <div class="tarjeta-overlay">
-                        <div class="overlay-title">Viñedo de los Senderos Casa VS2</div>
-                        <div class="overlay-desc"><span class="hidden">Una evolución de la tipología habitacional
-                                implementada dentro de
-                                Viñedo de los Senderos.</span><br>La vivienda se organiza en torno a una relación
-                            directa con el
-                            viñedo, integrando visuales abiertas y generando continuidad entre interior y exterior.
-                        </div>
-                        <div class="overlay-meta">
-                            <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Desarrollo
-                                    residencial escalable</span></div>
-                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
-                                    class="meta-val">México</span></div>
-                            <div class="meta-row"><span class="meta-key">Sistema</span><span class="meta-val">Modular
-                                    repetible</span></div>
-                            <div class="meta-row"><span class="meta-key">Etapa</span><span
-                                    class="meta-val">Ejecutado</span></div>
-                        </div>
-                        <a class="overlay-btn" href="#">Descarga nuestro Brochure</a>
+                        <!-- <a class="overlay-btn" href="#">Descarga nuestro Brochure</a> -->
                     </div>
                 </div>
             </div>
@@ -1687,7 +1678,6 @@
                     Aliquam eu rutrum nisi, ut mattis lectus. Aenean tristique nec neque id commodo.</p>
             </div>
         </div>
-        <h2>insertar acá logo arcompany</h2>
         <div class="track-outer" id="trackOuterFilosofia">
             <div class="track" id="trackFilosofia">
                 <div class="tarjeta-unica">
@@ -1701,8 +1691,8 @@
                 </div>
             </div>
         </div>
-        <div style="padding-top: 20px;"></div>
-        <div class="track-outer" id="trackOuterFilosofia2">
+        <!-- <div style="padding-top: 20px;"></div> -->
+        <!-- <div class="track-outer" id="trackOuterFilosofia2">
             <div class="track" id="trackFilosofia2">
                 <div class="tarjeta-unica">
                     <div class="tarjeta-photo casavinedossmavs1"></div>
@@ -1714,7 +1704,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 
     <!-- DESARROLLOS -->
@@ -1928,11 +1918,14 @@
                 <div class="track" id="trackEscalas">
                     <div class="tarjeta-unica">
                         <div class="tarjeta-photo escalaunidad"></div>
+                        <span class="tarjeta-title-photo">ESCALA UNIDAD</span>
                         <div class="tarjeta-overlay">
-                            <div class="overlay-meta">
-                                <div class="meta-row"></div>
-                                <div class="meta-row"></div>
-                            </div>
+                            <div class="overlay-desc">Cada residencia funciona de forma independiente, con terraza
+                                privada y sistema de bienestar integrado.</div>
+                        </div>
+                        <div class="overlay-meta">
+                            <div class="meta-row"></div>
+                            <div class="meta-row"></div>
                         </div>
                     </div>
                 </div>
@@ -1941,7 +1934,9 @@
                 <div class="track" id="trackEscalas2">
                     <div class="tarjeta-unica">
                         <div class="tarjeta-photo escalanodo"></div>
+                        <span class="tarjeta-title-photo">ESCALA NODO</span>
                         <div class="tarjeta-overlay">
+                            <div class="overlay-desc">Tres o cuatro unidades comparten infraestructura para crear ecosistemas de hospitalidad familiar y experiencias gastronómicas privadas.</div>
                             <div class="overlay-meta">
                                 <div class="meta-row"></div>
                                 <div class="meta-row"></div>
@@ -1954,7 +1949,9 @@
                 <div class="track" id="trackEscalas3">
                     <div class="tarjeta-unica">
                         <div class="tarjeta-photo escalaterritorio"></div>
+                        <span class="tarjeta-title-photo">ESCALA TERRITORIO</span>
                         <div class="tarjeta-overlay">
+                            <div class="overlay-desc">El sistema se extiende mediante terrazas remotas y microinfraestructura, abriendo la experiencia directamente hacia el territorio natural.</div>
                             <div class="overlay-meta">
                                 <div class="meta-row"></div>
                                 <div class="meta-row"></div>
@@ -2030,6 +2027,7 @@
         }, { threshold: 0.08 });
 
         fadeEls.forEach(el => observer.observe(el));
+
         /* ─── CARRUSELES HORIZONTALES (MODELOS, MODULAR, DESARROLLOS) ───────── */
         (function () {
 
@@ -2153,6 +2151,20 @@
                 document.getElementById('trackOuterDes'),
                 document.getElementById('trackDes')
             );
+
+            // /* ── ESCALAS ── */
+            // initCarousel(
+            //     document.getElementById('trackOuterEscalas'),
+            //     document.getElementById('trackEscalas')
+            // );
+            // initCarousel(
+            //     document.getElementById('trackOuterEscalas2'),
+            //     document.getElementById('trackEscalas2')
+            // );
+            // initCarousel(
+            //     document.getElementById('trackOuterEscalas3'),
+            //     document.getElementById('trackEscalas3')
+            // );
 
         })();
 
