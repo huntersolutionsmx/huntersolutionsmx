@@ -1309,6 +1309,45 @@
             transform: translateY(-8px) rotate(-45deg);
         }
 
+        /* Reemplaza ícono por botón tipo nav-elemento */
+        .hamburger {
+            width: auto;
+            height: auto;
+            padding: 10px 22px;
+            flex-direction: row;
+            gap: 0;
+            font-family: 'Albert Sans', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 0.04em;
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--tarjeta-r);
+            background: rgba(255, 255, 255, 0.10);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .hamburger span {
+            display: none;
+        }
+
+        .hamburger::after {
+            content: 'Menú';
+        }
+
+        .hamburger.active::after {
+            content: 'Cerrar';
+        }
+
+        /* Cancela las transformaciones del estado active sobre los spans */
+        .hamburger.active span:nth-child(1),
+        .hamburger.active span:nth-child(2),
+        .hamburger.active span:nth-child(3) {
+            transform: none;
+            opacity: 1;
+        }
+
         .mobile-nav {
             position: fixed;
             left: 50%;
