@@ -420,7 +420,8 @@
     }
 
     .tarjeta.tapped .tarjeta-title-photo,
-    .tarjeta.tapped .tarjeta-status {
+    .tarjeta.tapped .tarjeta-status,
+    .tarjeta-unica.tapped .tarjeta-title-photo {
         opacity: 0;
     }
 
@@ -1102,14 +1103,6 @@
            ========================================================================== */
     @media (max-width: 768px) {
 
-        .tarjeta:hover .tarjeta-title-photo,
-        .tarjeta:hover .tarjeta-status,
-        .tarjeta:hover .tap-hint,
-        .tarjeta-unica:hover .tarjeta-title-photo,
-        .tarjeta-unica:hover .tarjeta-status {
-            opacity: 0;
-        }
-
         .etapa-desc--mobile {
             display: block;
             font-size: 0.9rem;
@@ -1691,17 +1684,17 @@
             <div class="track" id="trackFilosofia">
                 <div class="tarjeta-unica">
                     <div class="tarjeta-photo casavinedossmavs1"></div>
-                    <div class="tarjeta-overlay">
-                        <div class="overlay-meta">
-                            <div class="meta-row"></div>
-                            <div class="meta-row"></div>
-                        </div>
+                    <!-- <div class="tarjeta-overlay"> -->
+                    <div class="overlay-meta">
+                        <div class="meta-row"></div>
+                        <div class="meta-row"></div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- <div style="padding-top: 20px;"></div> -->
-        <!-- <div class="track-outer" id="trackOuterFilosofia2">
+    </div>
+    <!-- <div style="padding-top: 20px;"></div> -->
+    <!-- <div class="track-outer" id="trackOuterFilosofia2">
             <div class="track" id="trackFilosofia2">
                 <div class="tarjeta-unica">
                     <div class="tarjeta-photo casavinedossmavs1"></div>
@@ -1931,10 +1924,10 @@
                         <div class="tarjeta-overlay">
                             <div class="overlay-desc">Cada residencia funciona de forma independiente, con terraza
                                 privada y sistema de bienestar integrado.</div>
-                        </div>
-                        <div class="overlay-meta">
-                            <div class="meta-row"></div>
-                            <div class="meta-row"></div>
+                            <div class="overlay-meta">
+                                <div class="meta-row"></div>
+                                <div class="meta-row"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -2165,18 +2158,23 @@
             );
 
             // /* ── ESCALAS ── */
-            // initCarousel(
-            //     document.getElementById('trackOuterEscalas'),
-            //     document.getElementById('trackEscalas')
-            // );
-            // initCarousel(
-            //     document.getElementById('trackOuterEscalas2'),
-            //     document.getElementById('trackEscalas2')
-            // );
-            // initCarousel(
-            //     document.getElementById('trackOuterEscalas3'),
-            //     document.getElementById('trackEscalas3')
-            // );
+            document.querySelectorAll('#secEscalas .tarjeta-unica').forEach(card => {
+                let moved = false;
+                card.addEventListener('pointerdown', () => { moved = false; });
+                card.addEventListener('pointermove', () => { moved = true; });
+                card.addEventListener('pointerup', () => {
+                    if (moved) return;
+                    const open = card.classList.contains('tapped');
+                    document.querySelectorAll('#secEscalas .tarjeta-unica.tapped')
+                        .forEach(c => c.classList.remove('tapped'));
+                    if (!open) card.classList.add('tapped');
+                });
+            });
+            document.addEventListener('pointerdown', e => {
+                if (!e.target.closest('#secEscalas'))
+                    document.querySelectorAll('#secEscalas .tarjeta-unica.tapped')
+                        .forEach(c => c.classList.remove('tapped'));
+            });
 
         })();
 
