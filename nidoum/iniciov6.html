@@ -1318,7 +1318,7 @@
     <div style="padding-top: 5rem;"></div>
 
     <!-- ESCENCIA DE NIDOUM (QUIÉN ES NIDOUM) -->
-    <div class="carousel-section">
+    <div class="carousel-section" id="secEscencia">
         <div class="carousel-header">
             <div class="carousel-header-text">
                 <div class="carousel-header-label">ESCENCIA DE NIDOUM (QUÉ ES NIDOUM)</div>
@@ -1328,8 +1328,8 @@
                     Aliquam eu rutrum nisi, ut mattis lectus. Aenean tristique nec neque id commodo.</p>
             </div>
         </div>
-        <div class="track-outer" >
-            <div class="track">
+        <div class="track-outer" id="trackOuterEscencia">
+            <div class="track" id="trackEscencia">
                 <div class="tarjeta-unica">
                     <div class="tarjeta-photo casavinedossmavs1"></div>
                     <div class="tarjeta-overlay">
@@ -1342,8 +1342,8 @@
             </div>
         </div>
         <div style="padding-top: 20px;"></div>
-        <div class="track-outer">
-            <div class="track">
+        <div class="track-outer" id="trackOuterEscencia2">
+            <div class="track" id="trackEscencia2">
                 <div class="tarjeta-unica">
                     <div class="tarjeta-photo casavinedossmavs1"></div>
                     <div class="tarjeta-overlay">
@@ -1680,7 +1680,7 @@
     </div>
 
     <!-- FILOSOFÍA, TRAYECTORIA NIDOUM -->
-    <div class="carousel-section">
+    <div class="carousel-section" id="secFilosofia">
         <div class="carousel-header">
             <div class="carousel-header-text">
                 <div class="carousel-header-label">FILOSOFÍA, TRAYECTORIA NIDOUM</div>
@@ -1691,8 +1691,8 @@
             </div>
         </div>
         <h2>insertar acá logo arcompany</h2>
-        <div class="track-outer">
-            <div class="track">
+        <div class="track-outer" id="trackOuterFilosofia">
+            <div class="track" id="trackFilosofia">
                 <div class="tarjeta-unica">
                     <div class="tarjeta-photo casavinedossmavs1"></div>
                     <div class="tarjeta-overlay">
@@ -1705,8 +1705,8 @@
             </div>
         </div>
         <div style="padding-top: 20px;"></div>
-        <div class="track-outer">
-            <div class="track">
+        <div class="track-outer" id="trackOuterFilosofia2">
+            <div class="track" id="trackFilosofia2">
                 <div class="tarjeta-unica">
                     <div class="tarjeta-photo casavinedossmavs1"></div>
                     <div class="tarjeta-overlay">
@@ -1964,85 +1964,101 @@
                 menuOverlay.classList.remove('active');
             }
         });
+
+        /* ─── FADE-IN SECCIONES AL HACER SCROLL ─────────────────────────── */
+        const fadeEls = document.querySelectorAll(
+            '.carousel-section, .demo-section, .portafolio-wrap, .habitat-section'
+        );
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); /* una sola vez */
+                }
+            });
+        }, { threshold: 0.08 });
+
+        fadeEls.forEach(el => observer.observe(el));
         /* ─── CARRUSELES HORIZONTALES (MODELOS, MODULAR, DESARROLLOS) ───────── */
-    (function () {
+        (function () {
 
-        function initCarousel(outerEl, trackEl) {
-            if (!outerEl || !trackEl) return;
+            function initCarousel(outerEl, trackEl) {
+                if (!outerEl || !trackEl) return;
 
-            let isDragging  = false;
-            let startX      = 0;
-            let currentX    = 0;
-            let originX     = 0;
-            let hasMoved    = false;
+                let isDragging = false;
+                let startX = 0;
+                let currentX = 0;
+                let originX = 0;
+                let hasMoved = false;
 
-            outerEl.style.cursor = 'grab';
-
-            /* Límite derecho: no pasar del final del track */
-            function clamp(val) {
-                const max = -(trackEl.scrollWidth - outerEl.clientWidth + 24);
-                return Math.max(max, Math.min(0, val));
-            }
-
-            function move(px, animate) {
-                trackEl.style.transition = animate
-                    ? 'transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
-                    : 'none';
-                trackEl.style.transform = `translateX(${px}px)`;
-            }
-
-            /* ── Drag (Pointer API: cubre mouse y touch) ── */
-            outerEl.addEventListener('pointerdown', e => {
-                isDragging = true;
-                hasMoved   = false;
-                startX     = e.clientX;
-                originX    = currentX;
-                outerEl.style.cursor = 'grabbing';
-                outerEl.setPointerCapture(e.pointerId);
-            });
-
-            outerEl.addEventListener('pointermove', e => {
-                if (!isDragging) return;
-                const diff = e.clientX - startX;
-                if (Math.abs(diff) > 4) hasMoved = true;
-                currentX = clamp(originX + diff);
-                move(currentX, false);
-            });
-
-            function stopDrag() {
-                if (!isDragging) return;
-                isDragging = false;
                 outerEl.style.cursor = 'grab';
-                move(currentX, true);
-            }
-            outerEl.addEventListener('pointerup',     stopDrag);
-            outerEl.addEventListener('pointercancel', stopDrag);
 
-            /* Evita que un arrastre dispare el click del overlay */
-            outerEl.addEventListener('click', e => {
-                if (hasMoved) e.stopPropagation();
-            }, true);
+                /* Límite derecho: no pasar del final del track */
+                function clamp(val) {
+                    const max = -(trackEl.scrollWidth - outerEl.clientWidth + 24);
+                    return Math.max(max, Math.min(0, val));
+                }
 
-            /* ── Tap-overlay en móvil (clase .tapped) ── */
-            outerEl.querySelectorAll('.tarjeta').forEach(card => {
-                card.addEventListener('pointerup', () => {
-                    if (hasMoved) return;
-                    const open = card.classList.contains('tapped');
-                    outerEl.querySelectorAll('.tarjeta.tapped')
-                            .forEach(c => c.classList.remove('tapped'));
-                    if (!open) card.classList.add('tapped');
+                function move(px, animate) {
+                    trackEl.style.transition = animate
+                        ? 'transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                        : 'none';
+                    trackEl.style.transform = `translateX(${px}px)`;
+                }
+
+                /* ── Drag (Pointer API: cubre mouse y touch) ── */
+                outerEl.addEventListener('pointerdown', e => {
+                    isDragging = true;
+                    hasMoved = false;
+                    startX = e.clientX;
+                    originX = currentX;
+                    outerEl.style.cursor = 'grabbing';
+                    outerEl.setPointerCapture(e.pointerId);
                 });
-            });
-            document.addEventListener('pointerdown', e => {
-                if (!outerEl.contains(e.target))
-                    outerEl.querySelectorAll('.tarjeta.tapped')
-                            .forEach(c => c.classList.remove('tapped'));
-            });
 
-            /* ── Flechas (se crean e insertan dinámicamente) ── */
-            const arrows = document.createElement('div');
-            arrows.className = 'nav-arrows';
-            arrows.innerHTML = `
+                outerEl.addEventListener('pointermove', e => {
+                    if (!isDragging) return;
+                    const diff = e.clientX - startX;
+                    if (Math.abs(diff) > 4) hasMoved = true;
+                    currentX = clamp(originX + diff);
+                    move(currentX, false);
+                });
+
+                function stopDrag() {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    outerEl.style.cursor = 'grab';
+                    move(currentX, true);
+                }
+                outerEl.addEventListener('pointerup', stopDrag);
+                outerEl.addEventListener('pointercancel', stopDrag);
+
+                /* Evita que un arrastre dispare el click del overlay */
+                outerEl.addEventListener('click', e => {
+                    if (hasMoved) e.stopPropagation();
+                }, true);
+
+                /* ── Tap-overlay en móvil (clase .tapped) ── */
+                outerEl.querySelectorAll('.tarjeta').forEach(card => {
+                    card.addEventListener('pointerup', () => {
+                        if (hasMoved) return;
+                        const open = card.classList.contains('tapped');
+                        outerEl.querySelectorAll('.tarjeta.tapped')
+                            .forEach(c => c.classList.remove('tapped'));
+                        if (!open) card.classList.add('tapped');
+                    });
+                });
+                document.addEventListener('pointerdown', e => {
+                    if (!outerEl.contains(e.target))
+                        outerEl.querySelectorAll('.tarjeta.tapped')
+                            .forEach(c => c.classList.remove('tapped'));
+                });
+
+                /* ── Flechas (se crean e insertan dinámicamente) ── */
+                const arrows = document.createElement('div');
+                arrows.className = 'nav-arrows';
+                arrows.innerHTML = `
                 <button class="arrow-btn" aria-label="Anterior">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
                          stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -2055,40 +2071,41 @@
                         <path d="M9 18l6-6-6-6"/>
                     </svg>
                 </button>`;
-            outerEl.insertAdjacentElement('afterend', arrows);
+                outerEl.insertAdjacentElement('afterend', arrows);
 
-            const STEP = 570; /* 550px tarjeta + 20px gap */
-            const [prev, next] = arrows.querySelectorAll('.arrow-btn');
+                const STEP = 570; /* 550px tarjeta + 20px gap */
+                const [prev, next] = arrows.querySelectorAll('.arrow-btn');
 
-            prev.addEventListener('click', () => {
-                currentX = clamp(currentX + STEP);
-                move(currentX, true);
-            });
-            next.addEventListener('click', () => {
-                currentX = clamp(currentX - STEP);
-                move(currentX, true);
-            });
-        }
+                prev.addEventListener('click', () => {
+                    currentX = clamp(currentX + STEP);
+                    move(currentX, true);
+                });
+                next.addEventListener('click', () => {
+                    currentX = clamp(currentX - STEP);
+                    move(currentX, true);
+                });
+            }
 
-        /* ── PRODUCTOS / MODELOS / LÁMINAS ── */
-        initCarousel(
-            document.getElementById('trackOuterModelos'),
-            document.getElementById('trackModelos')
-        );
+            /* ── PRODUCTOS / MODELOS / LÁMINAS ── */
+            initCarousel(
+                document.getElementById('trackOuterModelos'),
+                document.getElementById('trackModelos')
+            );
 
-        /* ── CÓMO SE PRODUCE — CONSTRUCCIÓN MODULAR ── */
-        initCarousel(
-            document.getElementById('trackOuterModular'),
-            document.getElementById('trackModular')
-        );
+            /* ── CÓMO SE PRODUCE — CONSTRUCCIÓN MODULAR ── */
+            initCarousel(
+                document.getElementById('trackOuterModular'),
+                document.getElementById('trackModular')
+            );
 
-        /* ── DESARROLLOS ── */
-        initCarousel(
-            document.getElementById('trackOuterDes'),
-            document.getElementById('trackDes')
-        );
+            /* ── DESARROLLOS ── */
+            initCarousel(
+                document.getElementById('trackOuterDes'),
+                document.getElementById('trackDes')
+            );
 
-    })();
+        })();
     </script>
 </body>
+
 </html>
