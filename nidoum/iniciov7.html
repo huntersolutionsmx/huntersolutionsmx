@@ -40,10 +40,7 @@
     /* ==========================================================================
            3. LAYOUT GENERAL & SECCIONES BASE
            ========================================================================== */
-    html {
-        scroll-behavior: smooth;
-    }
-    
+
     .sections-wrap {
         position: relative;
         z-index: 1;
@@ -98,6 +95,18 @@
         max-width: calc(100% - 112px);
         margin: 0 auto 2.5rem;
         padding: 0 56px;
+    }
+
+    .carousel-header-text {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .carousel-header-text-row {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        margin-top: 0.75rem;
     }
 
     .carousel-header-label {
@@ -320,7 +329,7 @@
         /* -webkit-backdrop-filter: blur(2px); */
         display: flex;
         flex-direction: column;
-        justify-content:center;
+        justify-content: center;
         padding: 28px 28px;
         padding-bottom: 1px;
         opacity: 1;
@@ -328,9 +337,7 @@
         pointer-events: none;
     }
 
-    .tarjeta-texto img {
-
-    }
+    .tarjeta-texto img {}
 
     .cmodular-textos {
         font-family: 'Roboto Serif', serif;
@@ -413,7 +420,9 @@
     .overlay-btn {
         display: inline-block;
         margin-top: 16px;
-        padding: 7px 16px;
+        text-align: center;
+        padding: 10px 16px;
+        max-width: 600px;
         border-radius: var(--tarjeta-r);
         background: rgba(255, 255, 255, 0.10);
         backdrop-filter: blur(6px);
@@ -422,7 +431,7 @@
         font-weight: 500;
         letter-spacing: 0.1em;
         text-transform: uppercase;
-        color: var(--white);
+        color: var(--sandob);
         text-decoration: none;
         cursor: pointer;
         border: 1px solid rgba(255, 255, 255, 0.18);
@@ -587,7 +596,7 @@
         font-family: 'Albert Sans', sans-serif;
         font-weight: 400;
         font-size: 0.75rem;
-        color: var(--white);
+        color: var(--sandob);
         text-decoration: none;
         letter-spacing: 0.04em;
         overflow: hidden;
@@ -1571,6 +1580,8 @@
                 <p class="carousel-header-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Cras luctus est a purus interdum venenatis. Curabitur cursus ornare turpis vitae mollis.
                     Aliquam eu rutrum nisi, ut mattis lectus. Aenean tristique nec neque id commodo.</p>
+                <div style="padding-top: 10px;"></div>
+                <a class="nav-elemento" style="max-width: 600px;" href="#"><span>Descarga nuestro brochure</span></a>
             </div>
         </div>
         <div class="track-outer" id="trackOuterEscencia">
@@ -1605,6 +1616,9 @@
                 <p class="carousel-header-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Cras luctus est a purus interdum venenatis. Curabitur cursus ornare turpis vitae mollis.
                     Aliquam eu rutrum nisi, ut mattis lectus. Aenean tristique nec neque id commodo.</p>
+                <div style="padding-top: 10px;"></div>
+                <a class="nav-elemento" style="max-width: 600px;" href="#"><span>Conoce más de nuestros
+                        modelos</span></a>
             </div>
         </div>
         <div class="track-outer" id="trackOuterModelos">
@@ -1726,7 +1740,7 @@
                                 <span class="meta-val">Ejecutado</span> -->
                             </div>
                         </div>
-                        <a class="overlay-btn" href="#secDeck">Ver información de Terrazas</a>
+                        <!-- <a class="overlay-btn" href="#secDeck">Ver información de Terrazas</a> -->
                     </div>
                     <div class="tap-hint" id="tapHint">
                         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"
@@ -1751,7 +1765,8 @@
                 <p class="carousel-header-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Cras luctus est a purus interdum venenatis. Curabitur cursus ornare turpis vitae mollis.
                     Aliquam eu rutrum nisi, ut mattis lectus. Aenean tristique nec neque id commodo.</p>
-                <!-- boton -->
+                <div style="padding-top: 10px;"></div>
+                <a class="nav-elemento" style="max-width: 600px;" href="#"><span>Explora el sisema constructivo</span></a>
             </div>
 
         </div>
@@ -1766,9 +1781,12 @@
                     <div class="tarjeta-texto">
                         <!-- <img src="https://nidoum.com/wp-content/uploads/2026/03/03.2B_10-Arco-Icon_InvB-Trra-1.png" alt="ARCOMPANYLOGO" /> -->
                         <div class="cmodular-textos">SISTEMA ARCODI</div>
-                        <div class="cmodular-desc">El método constructivo de ARCODI hace uso de 3 <span class="hidden">principales</span> tecnologías, el Sistema de
-                            Cimientación Prefabricada<span class="hidden"> con base en Zapatas Aisladas</span>. Nuestro Sistema Estructural Prefabricado en acero y
-                            el Sistema de Paneles Prefabricados de concreto aligerado,<span class="hidden">tanto de losa de entrepiso y muros,</span> como de paneles
+                        <div class="cmodular-desc">El método constructivo de ARCODI hace uso de 3 <span
+                                class="hidden">principales</span> tecnologías, el Sistema de
+                            Cimientación Prefabricada<span class="hidden"> con base en Zapatas Aisladas</span>. Nuestro
+                            Sistema Estructural Prefabricado en acero y
+                            el Sistema de Paneles Prefabricados de concreto aligerado,<span class="hidden">tanto de losa
+                                de entrepiso y muros,</span> como de paneles
                             multicapa isotérmicos.</div>
                         <div class="overlay-meta">
                             <div class="meta-row">
@@ -1800,10 +1818,11 @@
                         <div class="cmodular-textos">EFICIENCIA ENERGÉTICA</div>
                         <div class="cmodular-desc">La eficiencia de nuestros sistemas de producción nos permite
                             optimizar cada obra y reducir recursos en sitio. Logrando más del 70% de eficiencia
-                            energética. <span class="hidden">La tecnología de nuestros paneles de fibrocemento otorga una resistencia
-                            alta a la intemperie de larga vida. Además de brindar control térmico a interiores
-                            gracias a su bajo coeficiente de conductividad térmica 3 veces mas eficiente
-                            energéticamente que muros de construcción tradicional.</span></div>
+                            energética. <span class="hidden">La tecnología de nuestros paneles de fibrocemento otorga
+                                una resistencia
+                                alta a la intemperie de larga vida. Además de brindar control térmico a interiores
+                                gracias a su bajo coeficiente de conductividad térmica 3 veces mas eficiente
+                                energéticamente que muros de construcción tradicional.</span></div>
                         <div class="overlay-meta">
                             <div class="meta-row">
                                 <!-- <span class="meta-key">C</span><span class="meta-val">Desarrollo residencial escalable</span> -->
@@ -1833,8 +1852,8 @@
                         <!-- <img src="https://nidoum.com/wp-content/uploads/2026/03/03.2B_10-Arco-Icon_InvB-Trra-1.png" alt="ARCOMPANYLOGO" /> -->
                         <div class="cmodular-textos">SUSTENTABILIDAD</div>
                         <div class="cmodular-desc">Con nuestro método el desperdicio de materiales y
-                            contaminación se reduce en un 90% a diferencia de la construcción tradicional. 
-                            Todas nuestras maderas cuentan con Certificación FSC. 
+                            contaminación se reduce en un 90% a diferencia de la construcción tradicional.
+                            Todas nuestras maderas cuentan con Certificación FSC.
                             Un porcentaje de nuestros ingresos es destinado al program Billion Tres.</div>
                         <div class="overlay-meta">
                             <div class="meta-row">
@@ -1873,6 +1892,8 @@
                 <p class="carousel-header-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Cras luctus est a purus interdum venenatis. Curabitur cursus ornare turpis vitae mollis.
                     Aliquam eu rutrum nisi, ut mattis lectus. Aenean tristique nec neque id commodo.</p>
+                    <!-- <div style="padding-top: 10px;"></div>
+                <a class="nav-elemento" style="max-width: 600px;" href="#"><span>Conoce más de nuestros modelos</span></a> -->
             </div>
         </div>
         <div class="track-outer" id="trackOuterFilosofia">
@@ -2253,6 +2274,8 @@
                 <p class="carousel-header-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Cras luctus est a purus interdum venenatis. Curabitur cursus ornare turpis vitae mollis.
                     Aliquam eu rutrum nisi, ut mattis lectus. Aenean tristique nec neque id commodo.</p>
+                <div style="padding-top: 10px;"></div>
+                <a class="nav-elemento" style="max-width: 600px;" href="#"><span>Ver proyectos</span></a>
             </div>
         </div>
         <div class="track-outer" id="trackOuterDes">
@@ -2346,7 +2369,8 @@
                     <span class="tarjeta-title-photo">CASA MANTARRAYA</span>
                     <span class="tarjeta-status">Ejecutado</span>
                     <div class="tarjeta-overlay">
-                        <div class="overlay-title"><span class="hidden">Casa Mantarraya — Jeffrey & Laurie Dodge</span></div>
+                        <div class="overlay-title"><span class="hidden">Casa Mantarraya — Jeffrey & Laurie Dodge</span>
+                        </div>
                         <div class="overlay-desc"><span class="hidden">Una vivienda contemporánea que sintetiza claridad
                                 arquitectónica,
                                 eficiencia y adaptabilidad.</span><br>Sobriedad arquitectónica y funcionalidad,
@@ -2372,8 +2396,10 @@
                     <span class="tarjeta-status">Ejecutado</span>
                     <div class="tarjeta-overlay">
                         <div class="overlay-title"><span class="hidden">Casa Pásaret — Gerard Pásaret</span></div>
-                        <div class="overlay-desc"><span class="">Vivienda sólida y elegante. Cada elemento estructural refleja
-                            precisión y cuidado.</span>Arquitectura contenida; precisión técnica y detalle artesanal: el espacio es protagonista.</div>
+                        <div class="overlay-desc"><span class="">Vivienda sólida y elegante. Cada elemento estructural
+                                refleja
+                                precisión y cuidado.</span>Arquitectura contenida; precisión técnica y detalle
+                            artesanal: el espacio es protagonista.</div>
                         <div class="overlay-meta">
                             <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Residencial
                                     (Unifamiliar)</span></div>
@@ -2419,7 +2445,7 @@
                     <div class="tarjeta-overlay">
                         <div class="overlay-title"><span class="hidden">Palo Blanco Wellness Living</span></div>
                         <div class="overlay-desc"><span class="hidden">Activo residencial de baja densidad y alto valor
-                            habitable.</span>Residencial enfocado en bienestar. Arquitectura y paisaje
+                                habitable.</span>Residencial enfocado en bienestar. Arquitectura y paisaje
                             convergen en una experiencia de calma y conexión. </div>
                         <div class="overlay-meta">
                             <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Wellness
