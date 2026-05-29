@@ -98,7 +98,7 @@
 
     .carousel-header-label {
         font-family: 'Albert Sans', sans-serif;
-        font-size: 0.6rem;
+        font-size: 0.8rem;
         font-weight: 400;
         letter-spacing: 0.3em;
         text-transform: uppercase;
@@ -306,6 +306,43 @@
         color: var(--white);
         transition: opacity 0.4s ease;
         z-index: 1;
+    }
+
+    .tarjeta-texto {
+        position: absolute;
+        inset: 0;
+        background: var(--sanddark);
+        /* backdrop-filter: blur(2px); */
+        /* -webkit-backdrop-filter: blur(2px); */
+        display: flex;
+        flex-direction: column;
+        justify-content:center;
+        padding: 28px 28px;
+        padding-bottom: 1px;
+        opacity: 1;
+        /* transition: opacity 0.4s ease; */
+        pointer-events: none;
+    }
+
+    .tarjeta-texto img {
+
+    }
+
+    .cmodular-textos {
+        font-family: 'Roboto Serif', serif;
+        font-size: 22px;
+        font-weight: 400;
+        color: var(--white);
+        line-height: 1.25;
+        margin-bottom: 6px;
+    }
+
+    .cmodular-desc {
+        font-size: 13px;
+        font-weight: 300;
+        color: rgba(255, 255, 255, 0.72);
+        line-height: 1.6;
+        margin-bottom: 20px;
     }
 
     /* Overlay de Tarjeta (Información adicional) */
@@ -807,27 +844,27 @@
     }
 
     .cmodular1 {
-        background-image: url('https://images.unsplash.com/photo-1616224952327-6240f31e5bdc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+        background-image: url('https://nidoum.com/wp-content/uploads/2026/05/cmodular1.webp');
         filter: brightness(0.75);
     }
 
     .cmodular2 {
-        background-image: url('https://images.unsplash.com/photo-1597476885328-ce9c89859503?q=80&w=1035&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+        background-image: url('');
         filter: brightness(0.75);
     }
 
     .cmodular3 {
-        background-image: url('https://images.unsplash.com/photo-1741916540995-f9ea8ba16253?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+        background-image: url('https://nidoum.com/wp-content/uploads/2026/05/cmodular3.webp');
         filter: brightness(0.75);
     }
 
     .cmodular4 {
-        background-image: url('https://images.unsplash.com/photo-1576577610667-c9ea0ac983fd?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+        background-image: url('');
         filter: brightness(0.75);
     }
 
     .cmodular5 {
-        background-image: url('https://images.unsplash.com/photo-1615461475394-4fe1a18c7111?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+        background-image: url('https://nidoum.com/wp-content/uploads/2026/05/cmodular4.webp');
         filter: brightness(0.75);
     }
 
@@ -1686,7 +1723,32 @@
                 </div>
 
                 <div class="tarjeta">
-                    <div class="tarjeta-photo cmodular2"></div>
+                    <div class="tarjeta-texto">
+                        <img src="https://nidoum.com/wp-content/uploads/2026/03/03.2B_10-Arco-Icon_InvB-Trra-1.png" alt="ARCOMPANYLOGO" />
+                        <div class="cmodular-textos">SISTEMA ARCODI</div>
+                        <div class="cmodular-desc">El método constructivo de ARCODI hace uso de 3 principales tecnologías, el Sistema de
+                            Cimientación Prefabricada con base en Zapatas Aisladas. Nuestro Sistema Estructural Prefabricado en acero y
+                            el Sistema de Paneles Prefabricados de concreto aligerado, tanto de losa de entrepiso y muros, como de paneles
+                            multicapa isotérmicos.</div>
+                        <div class="overlay-meta">
+                            <div class="meta-row">
+                                <!-- <span class="meta-key">C</span><span class="meta-val">Desarrollo residencial escalable</span> -->
+                            </div>
+                            <div class="meta-row">
+                                <!-- <span class="meta-key">Ubicación</span>
+                                <span class="meta-val">México</span> -->
+                            </div>
+                            <div class="meta-row">
+                                <!-- <span class="meta-key">Sistema</span>
+                                <span class="meta-val">Modular repetible</span> -->
+                            </div>
+                            <div class="meta-row">
+                                <!-- <span class="meta-key">Etapa</span>
+                                <span class="meta-val">Ejecutado</span> -->
+                            </div>
+                        </div>
+                        <!-- <a class="overlay-btn" href="#">Descarga nuestro Brochure</a> -->
+                    </div>
                 </div>
 
                 <div class="tarjeta">
