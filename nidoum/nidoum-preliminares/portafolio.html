@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <title>/portafolio</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500&family=Roboto+Serif:ital,wght@0,300;0,400;1,300&display=swap"
+        rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --sandlight: #e6d6c7;
+            --sandlight60: rgba(248, 243, 238, 0.6);
+            --sandlight30: rgba(248, 243, 238, 0.3);
+            --sanddark: #7c6454;
+            --sandob: #514946;
+            --white: #ffffff;
+            --tarjeta-r: 10px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            background: var(--sandlight);
+            font-family: 'Albert Sans', sans-serif;
+            color: var(--sandob);
+        }
+
+        .carousel-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .carousel-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .carousel-section {
+            width: 100%;
+            padding: 5rem 0 7rem;
+        }
+
+        .carousel-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            max-width: calc(100% - 112px);
+            margin: 0 auto 2.5rem;
+            padding: 0 56px;
+        }
+
+        .carousel-header-label {
+            font-family: 'Albert Sans', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 400;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--sandob);
+            margin-bottom: 0.5rem;
+        }
+
+        .carousel-header h2 {
+            font-family: 'Roboto Serif', serif;
+            font-weight: 300;
+            font-size: clamp(1.6rem, 3vw, 2.6rem);
+            color: var(--sandob);
+            letter-spacing: 0.02em;
+            line-height: 1.15;
+        }
+
+        .carousel-header-desc {
+            max-width: 600px;
+            text-align: justify;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--sandob);
+            font-weight: 300;
+            margin-top: 0.75rem;
+        }
+
+        .track-outer {
+            overflow: visible;
+            position: relative;
+            width: 100%;
+            padding: 0 24px;
+        }
+
+        .track {
+            flex-direction: column;
+            display: flex;
+            gap: 20px;
+        }
+
+        .arrow-btn svg {
+            width: 15px;
+            height: 15px;
+        }
+
+        .tarjeta {
+            position: relative;
+            width: 98%;
+            height: auto;
+            aspect-ratio: 16/9;
+            border-radius: var(--tarjeta-r);
+            overflow: hidden;
+            cursor: pointer;
+             background-position: center center;
+        }
+
+        .tarjeta-photo {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .tarjeta-title-photo {
+            position: absolute;
+            bottom: 60px;
+            left: 24px;
+            right: 24px;
+            font-family: 'Roboto Serif', serif;
+            font-size: 25px;
+            font-weight: 400;
+            color: var(--white);
+            line-height: 1.25;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+
+        .tarjeta-status {
+            position: absolute;
+            bottom: 24px;
+            left: 24px;
+            padding: 6px 14px;
+            border-radius: var(--tarjeta-r);
+            background: rgba(255, 255, 255, 0.10);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(6px);
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--white);
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+
+        .tarjeta-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(81, 73, 70, 0.70);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 32px 28px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .overlay-title {
+            font-family: 'Roboto Serif', serif;
+            font-size: 18px;
+            font-weight: 400;
+            color: var(--white);
+            line-height: 1.25;
+            margin-bottom: 6px;
+        }
+
+        .overlay-desc {
+            font-size: 13px;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.72);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .overlay-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .meta-row {
+            display: flex;
+            gap: 8px;
+            align-items: baseline;
+        }
+
+        .meta-key {
+            font-size: 9.5px;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.45);
+            min-width: 68px;
+        }
+
+        .meta-val {
+            font-size: 11.5px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .overlay-btn {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 7px 16px;
+            border-radius: var(--tarjeta-r);
+            background: rgba(255, 255, 255, 0.10);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--white);
+            text-decoration: none;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            transition: background 0.25s;
+        }
+
+        .overlay-btn:hover {
+            background: rgba(255, 255, 255, 0.22);
+        }
+
+        @media (hover: hover) {
+            .tarjeta:hover .tarjeta-overlay {
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .tarjeta:hover .tarjeta-title-photo,
+            .tarjeta:hover .tarjeta-status {
+                opacity: 0;
+            }
+        }
+
+        .tarjeta.tapped .tarjeta-overlay {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .tarjeta.tapped .tarjeta-photo {
+            transform: scale(1.04);
+        }
+
+        .tarjeta.tapped .tarjeta-title-photo,
+        .tarjeta.tapped .tarjeta-status {
+            opacity: 0;
+        }
+
+        .tap-hint {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4rem;
+            opacity: 0;
+            animation: fadeIn 1s 1.8s ease forwards;
+            z-index: 15;
+            pointer-events: none;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .tap-hint span {
+            font-family: 'Albert Sans', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.35em;
+            color: var(--sandlight60);
+            text-transform: uppercase;
+        }
+
+        .tap-hint svg {
+            width: 22px;
+            height: 22px;
+            stroke: var(--sandlight60);
+        }
+
+        .tap-hint.oculto {
+            opacity: 0 !important;
+            transition: opacity 0.4s ease;
+            animation: none;
+        }
+
+        @media (hover: none) {
+            .tap-hint {
+                display: flex;
+            }
+        }
+
+        .casavinedossmavs1 {
+            background-image: url('https://nidoum.com/wp-content/uploads/2026/05/vinedosvs1-scaled.webp');
+            filter: brightness(0.75);
+        }
+
+        .casavinedossmavs2 {
+            background-image: url('https://nidoum.com/wp-content/uploads/2026/05/vinedosvs2-scaled.webp');
+            filter: brightness(0.75);
+        }
+
+        .casabeckhartsma {
+            background-image: url('https://nidoum.com/wp-content/uploads/2026/05/beckhart-scaled.webp');
+            filter: brightness(0.75);
+        }
+
+        .casamantarraya {
+            background-image: url('https://nidoum.com/wp-content/uploads/2026/05/mantarraya-scaled.webp');
+            filter: brightness(0.75);
+        }
+
+        .casapasaret {
+            background-image: url('https://nidoum.com/wp-content/uploads/2026/05/pasaret-scaled.webp');
+            filter: brightness(0.75);
+        }
+
+        .duna {
+            background-image: url('https://nidoum.com/wp-content/uploads/2026/05/duna-scaled.webp');
+            filter: brightness(0.75);
+        }
+
+        .paloblanco {
+            background-image: url('https://nidoum.com/wp-content/uploads/2026/05/paloblancov2.webp');
+            filter: brightness(0.75);
+        }
+
+        @media (max-width: 768px) {
+            .tarjeta-title-photo {
+                font-size: 22px;
+            }
+
+            .overlay-desc {
+                /* font-size: 11.5px; */
+                display: none !important;
+            }
+
+            }
+
+            .carousel-section {
+                padding-bottom: 4rem;
+            }
+
+            .carousel-header {
+                max-width: 100%;
+                padding: 0 24px;
+                margin-bottom: 1.5rem;
+            }
+
+            .carousel-header h2 {
+                font-size: clamp(1.4rem, 5vw, 1.8rem);
+            }
+
+            .carousel-header-desc {
+                font-size: 1rem;
+            }
+
+            .track-outer {
+                padding-left: 24px;
+            }
+
+            .tarjeta {
+                width: 98%;
+                height: auto;
+                aspect-ratio: 16/9;
+            }
+    </style>
+</head>
+
+<body>
+
+    <div class="carousel-section" id="secDesarrollos">
+        <div class="carousel-header">
+            <div class="carousel-header-text">
+                <div class="carousel-header-label">QUÉ ESTAMOS SEMBRANDO</div>
+                <h2>Desarrollos NIDOUM</h2>
+                <p class="carousel-header-desc">Explora los ecosistemas ya ejecutados que combinan planificación, diseño
+                    arquitectónico, desarrollo constructivo y estrategia comercial para crear hábitats funcionales,
+                    sustentables y de alto valor.</p>
+            </div>
+        </div>
+
+        <div class="track-outer" id="trackOuterDes">
+            <div class="track" id="trackDes">
+
+                <div class="tarjeta">
+                    <div class="tarjeta-photo casavinedossmavs1"></div>
+                    <span class="tarjeta-title-photo">VIÑEDO DE LOS SENDEROS<br>CASA VS1</span>
+                    <span class="tarjeta-status">Ejecutado</span>
+                    <div class="tarjeta-overlay">
+                        <div class="overlay-title">Viñedo de los Senderos Casa VS1</div>
+                        <div class="overlay-desc">Una de las implementaciones habitacionales dentro de Viñedo de los
+                            Senderos. Su estructura permite observar cómo una unidad habitacional puede integrarse a
+                            un
+                            desarrollo mayor sin perder autonomía espacial ni coherencia con el paisaje.</div>
+                        <div class="overlay-meta">
+                            <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Desarrollo
+                                    residencial escalable</span></div>
+                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
+                                    class="meta-val">México</span></div>
+                            <div class="meta-row"><span class="meta-key">Sistema</span><span class="meta-val">Modular
+                                    repetible</span></div>
+                            <div class="meta-row"><span class="meta-key">Etapa</span><span
+                                    class="meta-val">Ejecutado</span></div>
+                        </div>
+                        <a class="overlay-btn" href="#">Descarga nuestro Brochure</a>
+                    </div>
+                    <div class="tap-hint" id="tapHint">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M9 11V6a2 2 0 0 1 4 0v5" />
+                            <path d="M13 11V9a2 2 0 0 1 4 0v6a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6v-3a2 2 0 0 1 4 0" />
+                        </svg>
+                        <span>Toca para ver info</span>
+                    </div>
+                </div>
+
+                <div class="tarjeta">
+                    <div class="tarjeta-photo casavinedossmavs2"></div>
+                    <span class="tarjeta-title-photo">VIÑEDO DE LOS SENDEROS<br>Casa VS2</span>
+                    <span class="tarjeta-status">Ejecutado</span>
+                    <div class="tarjeta-overlay">
+                        <div class="overlay-title">Viñedo de los Senderos Casa VS2</div>
+                        <div class="overlay-desc">Una evolución de la tipología habitacional implementada dentro de
+                            Viñedo de los Senderos. La vivienda se organiza en torno a una relación directa con el
+                            viñedo, integrando visuales abiertas y generando continuidad entre interior y exterior.
+                        </div>
+                        <div class="overlay-meta">
+                            <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Desarrollo
+                                    residencial escalable</span></div>
+                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
+                                    class="meta-val">México</span></div>
+                            <div class="meta-row"><span class="meta-key">Sistema</span><span class="meta-val">Modular
+                                    repetible</span></div>
+                            <div class="meta-row"><span class="meta-key">Etapa</span><span
+                                    class="meta-val">Ejecutado</span></div>
+                        </div>
+                        <a class="overlay-btn" href="#">Descarga nuestro Brochure</a>
+                    </div>
+                </div>
+
+                <div class="tarjeta">
+                    <div class="tarjeta-photo casabeckhartsma"></div>
+                    <span class="tarjeta-title-photo">RANCHITOS<br>Casa Beckhart</span>
+                    <span class="tarjeta-status">Ejecutado</span>
+                    <div class="tarjeta-overlay">
+                        <div class="overlay-title">Casa Beckhart</div>
+                        <div class="overlay-desc">Una vivienda flexible y adaptable, con construcción eficiente y
+                            ordenada. Explora cómo la repetición genera identidad. Un modelo eficiente que preserva
+                            espacialidad y carácter. </div>
+                        <div class="overlay-meta">
+                            <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Residencial
+                                    (Unifamiliar)</span></div>
+                            <div class="meta-row"><span class="meta-key">Ubicación</span>
+                                <span class="meta-val">México</span>
+                            </div>
+                            <div class="meta-row"><span class="meta-key">Sistema</span><span class="meta-val">Modular
+                                    repetible</span></div>
+                            <div class="meta-row"><span class="meta-key">Etapa</span><span
+                                    class="meta-val">Ejecutado</span></div>
+                        </div>
+                        <a class="overlay-btn" href="#">Descarga nuestro Brochure</a>
+                    </div>
+                </div>
+
+                <div class="tarjeta">
+                    <div class="tarjeta-photo casamantarraya"></div>
+                    <span class="tarjeta-title-photo">CASA MANTARRAYA</span>
+                    <span class="tarjeta-status">Ejecutado</span>
+                    <div class="tarjeta-overlay">
+                        <div class="overlay-title">Casa Mantarraya — Jeffrey & Laurie Dodge</div>
+                        <div class="overlay-desc">Vivienda contemporánea que sintetiza claridad arquitectónica,
+                            eficiencia y adaptabilidad. Sobriedad arquitectónica y funcionalidad, respaldadas por
+                            materiales durables y térmicamente eficientes.</div>
+                        <div class="overlay-meta">
+                            <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Residencial
+                                    (Unifamiliar)</span></div>
+                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
+                                    class="meta-val">México</span></div>
+                            <div class="meta-row"><span class="meta-key">Sistema</span><span class="meta-val">Modular
+                                    Híbrido</span></div>
+                            <div class="meta-row"><span class="meta-key">Etapa</span><span
+                                    class="meta-val">Ejecutado</span></div>
+                        </div>
+                        <a class="overlay-btn" href="#">Descarga nuestro Brochure</a>
+                    </div>
+                </div>
+
+                <div class="tarjeta">
+                    <div class="tarjeta-photo casapasaret"></div>
+                    <span class="tarjeta-title-photo">SANGRE DE CRISTO<br>Casa Pásaret</span>
+                    <span class="tarjeta-status">Ejecutado</span>
+                    <div class="tarjeta-overlay">
+                        <div class="overlay-title">Casa Pásaret — Gerard Pásaret</div>
+                        <div class="overlay-desc">Vivienda sólida y elegante, donde cada elemento estructural refleja
+                            precisión y cuidado. Arquitectura contenida; precisión técnica y detalle artesanal donde
+                            el espacio es protagonista.</div>
+                        <div class="overlay-meta">
+                            <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Residencial
+                                    (Unifamiliar)</span></div>
+                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
+                                    class="meta-val">México</span></div>
+                            <div class="meta-row"><span class="meta-key">Sistema</span>
+                                <span class="meta-val">Modular + Artesanal Controlado</span>
+                            </div>
+                            <div class="meta-row"><span class="meta-key">Etapa</span><span
+                                    class="meta-val">Ejecutado</span></div>
+                        </div>
+                        <a class="overlay-btn" href="#">Descarga nuestro Brochure</a>
+                    </div>
+                </div>
+
+                <div class="tarjeta">
+                    <div class="tarjeta-photo duna"></div>
+                    <span class="tarjeta-title-photo">DUNA VILLA LAS ÁNIMAS</span>
+                    <span class="tarjeta-status">En Desarrollo</span>
+                    <div class="tarjeta-overlay">
+                        <div class="overlay-title">Duna Villa las Ánimas</div>
+                        <div class="overlay-desc">Desarrollo multifamiliar estructurado a partir de condiciones que el
+                            ecosistema nos brinda. La relación con el entorno, eficiencia y la capacidad de ejecución
+                            adquieren la mayor relevancia.</div>
+                        <div class="overlay-meta">
+                            <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Residencial
+                                    (Multifamiliar)</span></div>
+                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
+                                    class="meta-val">México</span></div>
+                            <div class="meta-row"><span class="meta-key">Sistema</span><span class="meta-val">Modular
+                                    sustentable</span></div>
+                            <div class="meta-row"><span class="meta-key">Etapa</span><span class="meta-val">En
+                                    Desarrollo</span></div>
+                        </div>
+                        <a class="overlay-btn" href="#">Descarga nuestro Brochure</a>
+                    </div>
+                </div>
+
+                <div class="tarjeta">
+                    <div class="tarjeta-photo paloblanco"></div>
+                    <span class="tarjeta-title-photo">PALO BLANCO WELLNESS LIVING</span>
+                    <span class="tarjeta-status">En Desarrollo</span>
+                    <div class="tarjeta-overlay">
+                        <div class="overlay-title">Palo Blanco Wellness Living</div>
+                        <div class="overlay-desc">Un activo residencial de baja densidad y alto valor
+                            habitable. Centro residencial enfocado en el bienestar. Donde arquitectura y paisaje
+                            convergen en una experiencia de calma y conexión. </div>
+                        <div class="overlay-meta">
+                            <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Wellness
+                                    Residencial (Uso Mixto)</span></div>
+                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
+                                    class="meta-val">México</span></div>
+                            <div class="meta-row"><span class="meta-key">Sistema</span><span
+                                    class="meta-val">Racionalizado</span></div>
+                            <div class="meta-row"><span class="meta-key">Etapa</span><span class="meta-val">En
+                                    Desarrollo</span></div>
+                        </div>
+                        <a class="overlay-btn" href="#">Descarga nuestro Brochure</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+                else entry.target.classList.remove('visible');
+            });
+        }, { threshold: 0.08 });
+        document.querySelectorAll('.carousel-section').forEach(el => observer.observe(el));
+
+        // Tap para móvil
+        const isTouch = () => window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+
+        const tr = document.getElementById('trackDes');
+        if (tr) {
+            const tarjetas = Array.from(tr.querySelectorAll('.tarjeta'));
+            let tx0 = 0, mv = false;
+
+            tr.addEventListener('touchstart', e => {
+                tx0 = e.touches[0].clientX;
+                mv = false;
+            }, { passive: true });
+            tr.addEventListener('touchmove', e => {
+                if (Math.abs(e.touches[0].clientX - tx0) > 6) mv = true;
+            }, { passive: true });
+            tr.addEventListener('touchend', e => {
+                if (mv) return;
+                const tapped = e.target.closest('.tarjeta');
+                if (!tapped) return;
+                const alreadyOpen = tapped.classList.contains('tapped');
+                tarjetas.forEach(c => c.classList.remove('tapped'));
+                if (!alreadyOpen) tapped.classList.add('tapped');
+            });
+
+            const tapHint = document.getElementById('tapHint');
+            if (tapHint) {
+                tr.addEventListener('touchend', () => tapHint.classList.add('oculto'), { once: true });
+            }
+        }
+    </script>
+
+</body>
+
+</html>

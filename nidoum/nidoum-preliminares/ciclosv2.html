@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ciclos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@200;300;400;500&family=Roboto+Serif:ital,wght@0,200;0,300;1,200;1,300&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      /* core brand colors */
+      --sandlight: #e6d6c7;
+      --sandlight60: rgba(248, 243, 238, 0.6);
+      --sandlight30: rgba(248, 243, 238, 0.3);
+      --sanddark: #7c6454;
+      --sandob: #514946;
+      --btn-fill: rgba(124, 100, 84, 0.85);
+
+      /* tierra brand colors */
+      --terracotalight: rgb(223, 165, 132);
+      --terracotalight60: rgba(223, 165, 132, 0.6);
+      --terracotalight30: rgba(223, 165, 132, 0.3);
+      --terracotadark: rgb(179, 92, 73);
+      --terractaob: rgb(126, 62, 41);
+
+      /* semilla brand colors */
+      --ochrelight: rgb(244, 204, 122);
+      --ochrelight60: rgba(244, 204, 122, 0.6);
+      --ochrelight30: rgba(244, 204, 122, 0.3);
+      --ochrehaze: rgb(222, 181, 93);
+      --ochredusk: rgb(190, 136, 28);
+
+      /* nutrimento brand colors */
+      --nightskylight: rgb(148, 153, 157);
+      --nightskylight60: rgba(148, 153, 157, 0.6);
+      --nightskylight30: rgba(148, 153, 157, 0.3);
+      --nightskydark: rgb(89, 98, 106);
+      --nightskyob: rgb(60, 66, 75);
+
+      /* siembra brand colors */
+      --burgundylight: rgb(224, 159, 171);
+      --burgundylight60: rgba(224, 159, 171, 0.6);
+      --burgundylight30: rgba(224, 159, 171, 0.3);
+      --burgundydark: rgb(156, 46, 80);
+      --burgundyob: rgb(86, 53, 63);
+
+      /* cosecha brand colors */
+      --forestlight: rgb(181, 178, 117);
+      --forestlight60: rgba(181, 178, 117, 0.6);
+      --forestlight30: rgba(181, 178, 117, 0.3);
+      --forestdark: rgb(133, 145, 84);
+      --forestob: rgb(84, 87, 74);
+
+      --white: #ffffff;
+      --black: #000000;
+      --encabezado-h: 100vh;
+      --tarjeta-r: 10px;
+
+      --bg: var(--sandlight);
+      --text: var(--sandob);
+      --subtitulos: var(--sanddark);
+      --accent: var(--sanddark);
+      --line: rgba(81, 73, 70, 0.15);
+      --T: background 0.85s cubic-bezier(.4, 0, .2, 1),
+        color 0.85s cubic-bezier(.4, 0, .2, 1),
+        border-color 0.85s cubic-bezier(.4, 0, .2, 1),
+        stroke 0.85s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    /* variables de color que cambian por ciclo */
+    .th-tierra {
+      --bg: var(--terracotalight30);
+      --text: var(--terractaob);
+      --subtitulos: var(--terracotadark);
+      --accent: var(--terracotadark);
+      --line: var(--terracotalight30);
+      --btn-fill: var(--terracotadark);
+    }
+
+    .th-semilla {
+      --bg: var(--ochrelight30);
+      --text: var(--ochredusk);
+      --subtitulos: var(--ochredusk);
+      --accent: var(--ochredusk);
+      --line: rgba(190, 136, 28, 0.15);
+      --btn-fill: var(--ochredusk);
+    }
+
+    .th-nutrimiento {
+      --bg: var(--nightskylight30);
+      --text: var(--nightskyob);
+      --subtitulos: var(--nightskydark);
+      --accent: var(--nightskydark);
+      --line: var(--nightskydark);
+      --btn-fill: var(--nightskydark);
+    }
+
+    .th-siembra {
+      --bg: var(--burgundylight30);
+      --text: var(--burgundyob);
+      --subtitulos: var(--burgundydark);
+      --accent: var(--burgundyob);
+      --line: var(--burgundylight30);
+      --btn-fill: var(--burgundydark);
+    }
+
+    .th-cosecha {
+      --bg: var(--forestlight30);
+      --text: var(--forestob);
+      --subtitulos: var(--forestdark);
+      --accent: var(--forestdark);
+      --line: var(--forestlight30);
+      --btn-fill: var(--forestdark);
+    }
+
+    .nav-elemento {
+      position: relative;
+      display: inline-block;
+      padding: 10px 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--tarjeta-r);
+      font-family: 'Albert Sans', sans-serif;
+      font-weight: 400;
+      font-size: 0.75rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      overflow: hidden;
+      cursor: pointer;
+      text-align: center;
+      white-space: nowrap;
+      background: transparent;
+      transition: color 0.4s ease, border-color 0.4s ease, background 0.4s ease;
+    }
+
+    .nav-elemento::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--btn-fill);
+      transform: translateX(-101%);
+      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: var(--tarjeta-r);
+      z-index: 0;
+    }
+
+    .nav-elemento span {
+      position: relative;
+      z-index: 1;
+      font-family: 'Albert Sans', sans-serif;
+      font-weight: 400;
+      /* transition: font-weight 0.35s, color 0.35s; */
+    }
+
+    .nav-elemento:hover::before {
+      transform: translateX(0);
+    }
+
+    .nav-elemento:hover span {
+      font-weight: 500;
+      color: var(--white);
+    }
+
+    html,
+    body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Albert Sans', sans-serif;
+      transition: var(--T);
+    }
+
+    .stage-page {
+      height: 100vh;
+      width: 100%;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      grid-template-columns: 1fr;
+      background: var(--bg);
+      transition: var(--T);
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 36px 64px 0;
+    }
+
+    .brand-mark {
+      font-family: 'Albert Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--subtitulos);
+      transition: color 0.85s;
+    }
+
+    .stage-counter {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0.25;
+      transition: opacity 0.5s, transform 0.5s, background 0.85s;
+      cursor: pointer;
+      border: none;
+      padding: 0;
+    }
+
+    .dot.active {
+      opacity: 1;
+      transform: scale(1.6);
+    }
+
+    .main {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items: stretch;
+      padding: 0 64px;
+      gap: 0;
+      height: 100%;
+    }
+
+    .col-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-right: 48px;
+    }
+
+    .stage-tag {
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: color 0.85s;
+    }
+
+    .stage-title {
+      font-family: 'Roboto Serif', serif;
+      font-size: 100px;
+      font-weight: 200;
+      color: var(--text);
+      line-height: 1.05;
+      margin-bottom: 32px;
+      transition: color 0.85s;
+    }
+
+    .th-nutrimiento .stage-title {
+      font-size: 105px;
+    }
+
+    .stage-body {
+      font-family: 'Albert Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--subtitulos);
+      max-width: 380px;
+      transition: color 0.85s;
+    }
+
+    .col-center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 0;
+      position: relative;
+    }
+
+    /* .icon-ring {
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      border: 0.5px solid var(--line);
+      transition: border-color 0.85s;
+    } */
+
+    /* .icon-ring-outer {
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      border: 0.5px dashed var(--line);
+      transition: border-color 0.85s;
+      animation: rotateRing 60s linear infinite;
+    } */
+
+    /* @keyframes rotateRing {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    } */
+
+    .stage-icon-wrap {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 300px;
+      height: 300px;
+    }
+
+    .stage-icon-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .col-right {
+      display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 48px;
+  transition: border-color 0.85s;
+    }
+
+    .meta-title {
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 32px;
+      transition: color 0.85s;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 28px;
+    }
+
+    .meta-key {
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--subtitulos);
+    }
+
+    .meta-val {
+      font-family: 'Roboto Serif', serif;
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text);
+      transition: color 0.85s;
+      line-height: 1.4;
+    }
+
+    .bottombar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 64px 40px;
+    }
+
+    .stage-num-large {
+      font-family: 'Roboto Serif', serif;
+      font-size: 11px;
+      font-weight: 300;
+      color: var(--subtitulos);
+      letter-spacing: 0.1em;
+      transition: color 0.85s;
+    }
+
+    .nav-arrows {
+      display: flex;
+      gap: 10px;
+    }
+
+    .arrow-btn {
+      width: 48px;
+      height: 48px;
+      border: 0.5px solid var(--accent);
+      background: transparent;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+      transition: background 0.3s, color 0.3s, border-color 0.85s;
+      border-radius: 0;
+    }
+
+    .arrow-btn:hover {
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    .arrow-btn svg {
+      width: 15px;
+      height: 15px;
+    }
+
+    .stage-hint {
+      font-size: 9px;
+      font-weight: 300;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--subtitulos);
+      transition: color 0.85s;
+    }
+
+    .content-fade {
+      transition: opacity 0.3s ease, transform 0.35s ease;
+    }
+
+    .content-fade.out {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 768px) {
+      .stage-page {
+        height: auto;
+    overflow: visible;
+      }
+
+      .stage-title {
+        font-size: clamp(40px, 5.5vw, 80px);
+      }
+
+      .th-nutrimiento .stage-title {
+        font-size: clamp(30px, 4.7vw, 66px);
+      }
+
+      .nav-elemento {
+        padding: 8px 16px;
+        font-size: 0.7rem;
+      }
+
+      .topbar,
+      .bottombar {
+        padding: 28px 24px 0;
+      }
+
+      .bottombar {
+        padding: 0 24px 32px;
+      }
+
+      .main {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        padding: 32px 24px;
+        gap: 40px;
+      }
+
+      .col-left {
+        padding-right: 0;
+      }
+
+      .col-center {
+        order: -1;
+        padding: 0;
+      }
+
+      /* .icon-ring {
+        width: 200px;
+        height: 200px;
+      } */
+
+      /* .icon-ring-outer {
+        width: 260px;
+        height: 260px;
+      } */
+
+      .stage-icon-wrap {
+        width: 130px;
+        height: 130px;
+      }
+
+      .col-right {
+        padding-left: 0;
+        border-top: 0.5px solid var(--line);
+        padding-top: 32px;
+        height: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="stage-page th-tierra" id="stagePage">
+
+    <div class="topbar">
+      <span class="brand-mark">.</span>
+    </div>
+
+    <div class="main">
+
+      <div class="col-left content-fade" id="colLeft">
+        <h1 class="stage-title" id="stageTitle">Tierra</h1>
+        <div class="stage-divider"></div>
+        <p class="stage-body" id="stageBody"></p>
+      </div>
+
+      <div class="col-center">
+        <div class="icon-ring"></div>
+        <div class="icon-ring-outer"></div>
+        <div class="stage-icon-wrap content-fade" id="iconWrap">
+        </div>
+      </div>
+
+      <div class="col-right content-fade" id="colRight">
+        <p class="meta-title">Detalles de la etapa</p>
+
+        <div class="meta-item">
+          <span class="meta-key">Dimensión</span>
+          <span class="meta-val" id="metaDim">—</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-key">Rol del participante</span>
+          <span class="meta-val" id="metaRol">—</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-key">Resultado clave</span>
+          <span class="meta-val" id="metaRes">—</span>
+        </div>
+        <a class="nav-elemento" href="#"><span>Quiero participar</span></a>
+      </div>
+
+    </div>
+
+    <div class="bottombar">
+      <span class="stage-num-large" id="stageNumLarge"></span>
+      <div class="nav-arrows">
+        <button class="arrow-btn" id="prevBtn" aria-label="Anterior">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6" />
+          </svg>
+        </button>
+        <button class="arrow-btn" id="nextBtn" aria-label="Siguiente">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const icons = {
+      tierra: `<img src="https://nidoum.com/wp-content/uploads/2026/03/03.2A_5-MG-MainMix-Trra-1.png" alt="Tierra" />`,
+      semilla: `<img src="https://nidoum.com/wp-content/uploads/2026/03/03.3A_5-MG-MainMix-Slla-1.png" alt="Semilla" />`,
+      nutrimiento: `<img src="https://nidoum.com/wp-content/uploads/2026/03/03.4A_5-MG-MainMix-Ntr-1.png" alt="Nutrimiento" />`,
+      siembra: `<img src="https://nidoum.com/wp-content/uploads/2026/03/03.5A_5-MG-MainMix-Smb-1.png" alt="Siembra" />`,
+      cosecha: `<img src="https://nidoum.com/wp-content/uploads/2026/03/03.6A_5-MG-MainMix-Cha-1.png" alt="Cosecha" />`,
+    };
+
+    /* ── Stage data ── */
+    const stages = [
+      {
+        theme: 'th-tierra',
+        tag: 'Etapa 01',
+        title: 'Tierra',
+        body: 'Identificamos y evaluamos de manera estratégica el territorio para asegurar el desarrollo de un proyecto sostenible. Definimos la manera en que el territorio formará parte del ecosistema: adquisición directa, aportación de capital o asociación con propietarios locales.',
+        icon: 'tierra',
+        dim: 'Estrategia territorial',
+        rol: 'Socio fundador · Propietario · Inversionista de tierra',
+        res: 'Territorio integrado al ecosistema',
+      },
+      {
+        theme: 'th-semilla',
+        tag: 'Etapa 02',
+        title: 'Semilla',
+        body: 'Detallamos la estructura del desarrollo y articulamos nuestra red inicial de aliados estratégicos. Se concibe la identidad del desarrollo y la narrativa del ecosistema como un solo sistema orgánico.',
+        icon: 'semilla',
+        dim: 'Estructuración y concepto',
+        rol: 'Aliado estratégico · Creador de identidad',
+        res: 'Concepto e identidad del ecosistema',
+      },
+      {
+        theme: 'th-nutrimiento',
+        tag: 'Etapa 03',
+        title: 'Nutrimiento',
+        body: 'Estructuramos el capital vital para desarrollar ecosistemas sostenibles. Un actor puede participar desde inversión directa, coinversión, participación patrimonial, co-ownership o vehículos de inversión. Así mismo puedes ser parte del Club Nidoum.',
+        icon: 'nutrimiento',
+        dim: 'Capital e inversión',
+        rol: 'Inversionista directo · Club Nidoum · Co-owner',
+        res: 'Capital estructurado y aliado',
+      },
+      {
+        theme: 'th-siembra',
+        tag: 'Etapa 04',
+        title: 'Siembra',
+        body: 'Materializamos los ecosistemas a través de nuestro partner técnico ARCOMPANY, responsables de integrar e implementar arquitectura, ingeniería, construcción modular y diseño interior.',
+        icon: 'siembra',
+        dim: 'Construcción y ejecución',
+        rol: 'Partner técnico · Proveedor · Constructor',
+        res: 'Ecosistema físicamente materializado',
+      },
+      {
+        theme: 'th-cosecha',
+        tag: 'Etapa 05',
+        title: 'Cosecha',
+        body: 'Obtenemos el valor agregado generado por el ecosistema en dos dimensiones: Cosecha Comercial, que incluye comercialización y licenciamiento de concepto o marca; y Cosecha Operativa, que activa espacios, servicios y flujos económicos recurrentes.',
+        icon: 'cosecha',
+        dim: 'Valor y retorno',
+        rol: 'Operador · Licenciatario · Inversionista',
+        res: 'Flujos económicos y valor de marca',
+      },
+    ];
+
+    const page = document.getElementById('stagePage');
+    const colLeft = document.getElementById('colLeft');
+    const iconWrap = document.getElementById('iconWrap');
+    const colRight = document.getElementById('colRight');
+    const stageTag = document.getElementById('stageTag');
+    const stageTitle = document.getElementById('stageTitle');
+    const stageBody = document.getElementById('stageBody');
+    const metaDim = document.getElementById('metaDim');
+    const metaRol = document.getElementById('metaRol');
+    const metaRes = document.getElementById('metaRes');
+    // const stageNumLarge = document.getElementById('stageNumLarge');
+    const stageHint = document.getElementById('stageHint');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    let current = 0;
+    let animating = false;
+    const TOTAL = stages.length;
+
+    function applyContent(idx) {
+      const s = stages[idx];
+      stageTitle.textContent = s.title;
+      stageBody.textContent = s.body;
+      iconWrap.innerHTML = icons[s.icon];
+      metaDim.textContent = s.dim;
+      metaRol.textContent = s.rol;
+      metaRes.textContent = s.res;
+      // stageNumLarge.textContent = `${String(idx + 1).padStart(2, '0')} · ${String(TOTAL).padStart(2, '0')}`;
+    }
+
+    function goTo(idx) {
+      if (animating) return;
+      animating = true;
+
+      const fadeEls = [colLeft, iconWrap, colRight];
+
+      fadeEls.forEach(el => el.classList.add('out'));
+
+      setTimeout(() => {
+        page.className = 'stage-page ' + stages[idx].theme;
+        current = idx;
+        applyContent(idx);
+
+        fadeEls.forEach(el => el.classList.remove('out'));
+
+        setTimeout(() => { animating = false; }, 380);
+      }, 300);
+    }
+
+    nextBtn.addEventListener('click', () => goTo((current + 1) % TOTAL));
+    prevBtn.addEventListener('click', () => goTo((current - 1 + TOTAL) % TOTAL));
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') goTo((current + 1) % TOTAL);
+      if (e.key === 'ArrowLeft') goTo((current - 1 + TOTAL) % TOTAL);
+    });
+
+    let tx0 = 0, tMoved = false;
+    document.addEventListener('touchstart', e => { tx0 = e.touches[0].clientX; tMoved = false; }, { passive: true });
+    document.addEventListener('touchmove', e => { if (Math.abs(e.touches[0].clientX - tx0) > 8) tMoved = true; }, { passive: true });
+    document.addEventListener('touchend', e => {
+      if (!tMoved) return;
+      const dx = e.changedTouches[0].clientX - tx0;
+      if (Math.abs(dx) > 50) goTo(dx < 0 ? (current + 1) % TOTAL : (current - 1 + TOTAL) % TOTAL);
+    });
+
+    applyContent(0);
+  </script>
+</body>
+
+</html>
