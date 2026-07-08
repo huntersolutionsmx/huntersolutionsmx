@@ -1,0 +1,389 @@
+<style>
+  /* ===== ESTILOS COMPLETOS (incluye lightbox) ===== */
+  .nd-escalas-wrapper {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nd-escalas {
+    position: relative;
+    font-family: 'Albert Sans', sans-serif;
+    background-color: #e6d6c7;
+    padding: 5rem 3.5rem 3.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    box-sizing: border-box;
+  }
+
+  .nd-escalas__label {
+    font-family: 'Albert Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: #514946;
+    position: relative;
+    z-index: 2;
+  }
+
+  .nd-escalas__title {
+    font-family: 'Roboto Serif', serif;
+    font-size: clamp(27px, 4.2vw, 50px);
+    font-weight: 200;
+    letter-spacing: 0.08em;
+    color: #514946;
+    line-height: 1.2;
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    text-transform: none;
+  }
+
+  .nd-escalas__intro {
+    font-family: 'Albert Sans', sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    color: #7c6454;
+    line-height: 1.6;
+    max-width: 700px;
+    position: relative;
+    z-index: 2;
+    margin: 0;
+  }
+
+  .nd-escalas__cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    position: relative;
+    z-index: 2;
+    margin-top: 1rem;
+  }
+
+  /* ===== TARJETA CON HOVER (estilo iniciov8) ===== */
+  .nd-escala-card {
+    position: relative;
+    background: rgba(248, 243, 238, 0.6);
+    padding: 1.8rem 1.5rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    overflow: hidden;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .nd-escala-card__title {
+    font-family: 'Roboto Serif', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #514946;
+    letter-spacing: 0.04em;
+    transition: opacity 0.4s ease;
+    position: relative;
+    z-index: 1;
+    margin: 0;
+  }
+
+  .nd-escala-card__text {
+    display: none;
+  }
+
+  .nd-escala-card__image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    margin: 0.3rem 0;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    position: relative;
+    z-index: 0;
+  }
+  .nd-escala-card__image:hover {
+    opacity: 0.9;
+  }
+
+  /* Overlay interno */
+  .nd-escala-card__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(81, 73, 70, 0.75);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 32px 28px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    border-radius: 10px;
+    z-index: 2;
+  }
+
+  .nd-escala-card__overlay-title {
+    font-family: 'Roboto Serif', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: #fff;
+    line-height: 1.25;
+    margin-bottom: 6px;
+  }
+
+  .nd-escala-card__overlay-desc {
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.72);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  /* Hover: mostrar overlay, ocultar título original */
+  @media (hover: hover) {
+    .nd-escala-card:hover .nd-escala-card__overlay {
+      opacity: 1;
+    }
+    .nd-escala-card:hover .nd-escala-card__title {
+      opacity: 0;
+    }
+  }
+
+  /* ===== CONTENEDOR DE HUELLAS ===== */
+  .nd-escala-card__footprints {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 6px;
+    margin-top: 0.2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .nd-escala-card__footprints img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    display: block;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+  }
+
+  .nd-escala-card:hover .nd-escala-card__footprints img {
+    opacity: 1;
+  }
+
+  /* ========== LIGHTBOX ========== */
+  .nd-lightbox {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .nd-lightbox--active {
+    display: flex;
+  }
+
+  .nd-lightbox__close {
+    position: absolute;
+    top: 1.5rem; right: 2rem;
+    font-size: 2.5rem;
+    color: #fff;
+    cursor: pointer;
+    background: none;
+    border: none;
+    line-height: 1;
+    z-index: 10000;
+    font-family: 'Albert Sans', sans-serif;
+    font-weight: 200;
+    transition: color 0.2s;
+  }
+  .nd-lightbox__close:hover {
+    color: #e6d6c7;
+  }
+
+  .nd-lightbox__img {
+    max-width: calc(100vw - 2rem);
+    max-height: calc(100vh - 2rem);
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+  }
+
+  /* ========== MÓVIL ========== */
+  @media (max-width: 768px) {
+    .nd-escalas {
+      padding: 3.5rem 1.5rem 2.5rem;
+    }
+    .nd-escalas__cards {
+      grid-template-columns: 1fr;
+    }
+    .nd-lightbox__close {
+      top: 1rem; right: 1.2rem;
+      font-size: 2rem;
+    }
+    .nd-lightbox__img {
+      max-width: calc(50vw - 1rem);
+      max-height: calc(50vh - 1rem);
+    }
+
+    .nd-escala-card.tapped .nd-escala-card__overlay {
+      opacity: 1;
+    }
+    .nd-escala-card.tapped .nd-escala-card__title {
+      opacity: 0;
+    }
+  }
+</style>
+
+<div class="nd-escalas-wrapper">
+  <section class="nd-escalas">
+    <div class="nd-escalas__line"></div>
+    <h2 class="nd-escalas__title">Hábitat Evolutivo</h2>
+    <p class="nd-escalas__intro">
+      Los modelos de hábitat NIDOUM evolucionan desde una unidad individual hasta una configuración
+      Nodo, integrando Extensiones NIDOUM, nuevas posibilidades de habitar y una relación progresiva con
+      el entorno.
+    </p>
+
+    <div class="nd-escalas__cards">
+
+      <!-- Escala 1: Modelo (1 huella) -->
+      <div class="nd-escala-card">
+        <h3 class="nd-escala-card__title">Modelo</h3>
+        <img class="nd-escala-card__image" src="https://nidoum.com/wp-content/uploads/2026/05/escala-unidad.webp" alt="Escala Unidad">
+        <div class="nd-escala-card__overlay">
+          <div class="nd-escala-card__overlay-title">Modelo</div>
+          <div class="nd-escala-card__overlay-desc">Representa la unidad base del sistema, expresada mediante NID-EAGLE, NID-CONDOR o NID-AETERUM.</div>
+        </div>
+        <div class="nd-escala-card__footprints">
+          <img src="https://nidoum.com/wp-content/uploads/2026/07/huellas-nidoum.png" alt="Huella NIDOUM">
+        </div>
+      </div>
+
+      <!-- Escala 2: Modelo Integral (2 huellas) -->
+      <div class="nd-escala-card">
+        <h3 class="nd-escala-card__title">Modelo Integral</h3>
+        <img class="nd-escala-card__image" src="https://nidoum.com/wp-content/uploads/2026/05/escala-nodos.webp" alt="Escala Nodo">
+        <div class="nd-escala-card__overlay">
+          <div class="nd-escala-card__overlay-title">Modelo Integral</div>
+          <div class="nd-escala-card__overlay-desc">Integra un modelo de hábitat con Extensiones NIDOUM que amplían las posibilidades de bienestar, creación, trabajo, encuentro y relación con el entorno.</div>
+        </div>
+        <div class="nd-escala-card__footprints">
+          <img src="https://nidoum.com/wp-content/uploads/2026/07/huellas-nidoum.png" alt="Huella NIDOUM">
+          <img src="https://nidoum.com/wp-content/uploads/2026/07/huellas-nidoum.png" alt="Huella NIDOUM">
+        </div>
+      </div>
+
+      <!-- Escala 3: Modelo Nodo (3 huellas) -->
+      <div class="nd-escala-card">
+        <h3 class="nd-escala-card__title">Modelo Nodo</h3>
+        <img class="nd-escala-card__image" src="https://nidoum.com/wp-content/uploads/2026/05/escala-territorio.webp" alt="Escala Territorial">
+        <div class="nd-escala-card__overlay">
+          <div class="nd-escala-card__overlay-title">Modelo Nodo</div>
+          <div class="nd-escala-card__overlay-desc">Articula distintas combinaciones de modelos de hábitat y Extensiones NIDOUM dentro de una estructura compartida, capaz de activar comunidad, territorio y continuidad.</div>
+        </div>
+        <div class="nd-escala-card__footprints">
+          <img src="https://nidoum.com/wp-content/uploads/2026/07/huellas-nidoum.png" alt="Huella NIDOUM">
+          <img src="https://nidoum.com/wp-content/uploads/2026/07/huellas-nidoum.png" alt="Huella NIDOUM">
+          <img src="https://nidoum.com/wp-content/uploads/2026/07/huellas-nidoum.png" alt="Huella NIDOUM">
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<script>
+  (function() {
+    // Lightbox (compartido, se crea si no existe)
+    let lightbox = document.getElementById('nd-lightbox');
+    if (!lightbox) {
+      lightbox = document.createElement('div');
+      lightbox.id = 'nd-lightbox';
+      lightbox.className = 'nd-lightbox';
+      lightbox.setAttribute('aria-hidden', 'true');
+      lightbox.innerHTML = `
+        <button class="nd-lightbox__close" id="nd-lightbox-close" aria-label="Cerrar imagen">×</button>
+        <img class="nd-lightbox__img" id="nd-lightbox-img" src="" alt="Imagen ampliada">
+      `;
+      document.body.appendChild(lightbox);
+    }
+
+    const images = document.querySelectorAll('.nd-escala-card__image');
+    const lightboxImg = document.getElementById('nd-lightbox-img');
+    const closeBtn = document.getElementById('nd-lightbox-close');
+
+    function openLightbox(imgElement) {
+      if (!imgElement || !imgElement.src) return;
+      lightboxImg.src = imgElement.src;
+      lightboxImg.alt = imgElement.alt || 'Imagen ampliada';
+      lightbox.classList.add('nd-lightbox--active');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('nd-lightbox--active');
+      lightbox.setAttribute('aria-hidden', 'true');
+      lightboxImg.src = '';
+      document.body.style.overflow = '';
+    }
+
+    images.forEach(img => {
+      img.addEventListener('click', function(e) {
+        e.preventDefault();
+        openLightbox(this);
+      });
+      img.setAttribute('tabindex', '0');
+      img.setAttribute('role', 'button');
+      img.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openLightbox(this);
+        }
+      });
+    });
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeLightbox);
+    }
+    lightbox.addEventListener('click', function(e) {
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && lightbox.classList.contains('nd-lightbox--active')) {
+        closeLightbox();
+      }
+    });
+
+    // Móvil: toque para mostrar overlay (tapped)
+    if (window.innerWidth <= 768) {
+      const cards = document.querySelectorAll('.nd-escala-card');
+      cards.forEach(card => {
+        card.addEventListener('click', function(e) {
+          if (e.target.tagName === 'IMG') return;
+          const wasTapped = this.classList.contains('tapped');
+          cards.forEach(c => c.classList.remove('tapped'));
+          if (!wasTapped) this.classList.add('tapped');
+        });
+      });
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('.nd-escala-card')) {
+          cards.forEach(c => c.classList.remove('tapped'));
+        }
+      });
+    }
+  })();
+</script>
