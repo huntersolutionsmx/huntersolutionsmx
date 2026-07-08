@@ -1139,6 +1139,10 @@
         pointer-events: none;
     }
 
+    .video-mute-btn {
+        right: 80px;
+    }
+
     /* ==========================================================================
            6. ESTILOS RESPONSIVOS (Móvil <= 768px)
            ========================================================================== */
@@ -1258,6 +1262,7 @@
             font-size: 11.5px;
 
         }
+
         .desc {
             font-size: 11.5px;
 
@@ -1575,8 +1580,10 @@
             <div class="carousel-header-text">
                 <div class="carousel-header-label">QUÉ ES NIDOUM</div>
                 <h2>NUESTRA ESCENCIA</h2>
-                <p class="carousel-header-desc">NIDOUM es un nido incubador de ecosistemas donde territorio, arquitectura, 
-                    inversión,materialización, operación y comunidad se integran en una estructura viva que transforma la 
+                <p class="carousel-header-desc">NIDOUM es un nido incubador de ecosistemas donde territorio,
+                    arquitectura,
+                    inversión,materialización, operación y comunidad se integran en una estructura viva que transforma
+                    la
                     manera de habitar, pertenecer y relacionarnos con la tierra con consciencia.</p>
                 <div style="padding-top: 10px;"></div>
                 <!-- <a class="nav-elemento" style="max-width: 600px;" href="https://nidoum.com/wp-content/uploads/2026/05/NIDOUMTEST.pdf" download><span>Descarga nuestro brochure</span></a> -->
@@ -1589,7 +1596,20 @@
                         <source src="https://nidoum.com/wp-content/uploads/2026/05/video-que-es-nidoum.mp4"
                             type="video/mp4">
                     </video>
+
                     <button class="video-play-btn" id="btnPlayEscencia" aria-label="Reproducir / Pausar">
+                        <svg class="icon-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+                            <polygon points="5 3 19 12 5 21 5 3" />
+                        </svg>
+                        <svg class="icon-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="6" y="4" width="4" height="16" />
+                            <rect x="14" y="4" width="4" height="16" />
+                        </svg>
+                    </button>
+
+                    <!-- <button class="video-play-btn" id="btnPlayEscencia" aria-label="Reproducir / Pausar">
                         <svg class="icon-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
                             stroke-linecap="round" stroke-linejoin="round">
                             <rect x="6" y="4" width="4" height="16" />
@@ -1598,6 +1618,22 @@
                         <svg class="icon-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
                             stroke-linecap="round" stroke-linejoin="round" style="display:none;">
                             <polygon points="5 3 19 12 5 21 5 3" />
+                        </svg>
+                    </button> -->
+
+                    <button class="video-play-btn video-mute-btn" id="btnMuteEscencia"
+                        aria-label="Silenciar / Activar sonido">
+                        <svg class="icon-unmuted" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="3 9 3 15 8 15 13 20 13 4 8 9 3 9" />
+                            <path d="M16 8a5 5 0 0 1 0 8" />
+                            <path d="M18.5 5.5a9 9 0 0 1 0 13" />
+                        </svg>
+                        <svg class="icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+                            <polygon points="3 9 3 15 8 15 13 20 13 4 8 9 3 9" />
+                            <line x1="16" y1="9" x2="21" y2="14" />
+                            <line x1="21" y1="9" x2="16" y2="14" />
                         </svg>
                     </button>
                 </div>
@@ -1615,8 +1651,7 @@
                     Cras luctus est a purus interdum venenatis. Curabitur cursus ornare turpis vitae mollis.
                     Aliquam eu rutrum nisi, ut mattis lectus. Aenean tristique nec neque id commodo.</p> -->
                 <div style="padding-top: 10px;"></div>
-                <a class="nav-elemento" style="max-width: 600px;" href="https://nidoum.com/construccion-modular/"><span>Conoce más de nuestros
-                        modelos</span></a>
+                <!-- <a class="nav-elemento" style="max-width: 600px;" href="https://nidoum.com/construccion-modular/"><span>Conoce más de nuestros modelos</span></a> -->
             </div>
         </div>
         <div class="track-outer" id="trackOuterModelos">
@@ -1624,7 +1659,7 @@
                 <div class="tarjeta">
                     <div class="tarjeta-photo studioflat"></div>
                     <span class="tarjeta-title-photo">MODELO 1<br>STUDIO FLAT</span>
-                    
+
 
                     <div class="tarjeta-overlay">
                         <div class="overlay-title">MODELO 1<br>STUDIO FLAT</div>
@@ -1766,7 +1801,8 @@
                     Cras luctus est a purus interdum venenatis. Curabitur cursus ornare turpis vitae mollis.
                     Aliquam eu rutrum nisi, ut mattis lectus. Aenean tristique nec neque id commodo.</p>
                 <div style="padding-top: 10px;"></div>
-                <a class="nav-elemento" style="max-width: 600px;" href="https://nidoum.com/construccion-modular/"><span>Explora el sisema constructivo</span></a>
+                <a class="nav-elemento" style="max-width: 600px;"
+                    href="https://nidoum.com/construccion-modular/"><span>Explora el sisema constructivo</span></a>
             </div>
 
         </div>
@@ -1892,7 +1928,7 @@
                 <p class="carousel-header-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Cras luctus est a purus interdum venenatis. Curabitur cursus ornare turpis vitae mollis.
                     Aliquam eu rutrum nisi, ut mattis lectus. Aenean tristique nec neque id commodo.</p>
-                    <!-- <div style="padding-top: 10px;"></div>
+                <!-- <div style="padding-top: 10px;"></div>
                 <a class="nav-elemento" style="max-width: 600px;" href="#"><span>Conoce más de nuestros modelos</span></a> -->
             </div>
         </div>
@@ -2275,7 +2311,8 @@
                     Cras luctus est a purus interdum venenatis. Curabitur cursus ornare turpis vitae mollis.
                     Aliquam eu rutrum nisi, ut mattis lectus. Aenean tristique nec neque id commodo.</p>
                 <div style="padding-top: 10px;"></div>
-                <a class="nav-elemento" style="max-width: 600px;" href="https://nidoum.com/desarrollos/"><span>Ver proyectos</span></a>
+                <a class="nav-elemento" style="max-width: 600px;" href="https://nidoum.com/desarrollos/"><span>Ver
+                        proyectos</span></a>
             </div>
         </div>
         <div class="track-outer" id="trackOuterDes">
@@ -2681,7 +2718,7 @@
 
         })();
 
-        /* ─── PLAY / PAUSE VIDEO ESCENCIA ───────────────────────────── */
+        /* ─── PLAY / PAUSE / MUTE VIDEO ───────────────────────────── */
         (function () {
             const btn = document.getElementById('btnPlayEscencia');
             const video = btn && btn.closest('.tarjeta-unica').querySelector('video');
@@ -2704,6 +2741,23 @@
                 btn.querySelector('.icon-pause').style.display = 'none';
                 btn.querySelector('.icon-play').style.display = '';
             });
+        })();
+        (function () {
+            const btn = document.getElementById('btnMuteEscencia');
+            const video = btn && btn.closest('.tarjeta-unica').querySelector('video');
+            if (!btn || !video) return;
+
+            btn.addEventListener('click', () => {
+                video.muted = !video.muted;
+            });
+
+            function updateMuteIcon() {
+                btn.querySelector('.icon-unmuted').style.display = video.muted ? 'none' : '';
+                btn.querySelector('.icon-muted').style.display = video.muted ? '' : 'none';
+            }
+
+            video.addEventListener('volumechange', updateMuteIcon);
+            updateMuteIcon();
         })();
     </script>
 </body>
