@@ -312,7 +312,6 @@
         backdrop-filter: blur(2px);
         -webkit-backdrop-filter: blur(6px);
         font-size: 10px;
-        /* Unificado con el valor inferior previo */
         font-weight: 500;
         letter-spacing: 0.1em;
         text-transform: uppercase;
@@ -325,19 +324,14 @@
         position: absolute;
         inset: 0;
         background: var(--sanddark);
-        /* backdrop-filter: blur(2px); */
-        /* -webkit-backdrop-filter: blur(2px); */
         display: flex;
         flex-direction: column;
         justify-content: center;
         padding: 28px 28px;
         padding-bottom: 1px;
         opacity: 1;
-        /* transition: opacity 0.4s ease; */
         pointer-events: none;
     }
-
-    .tarjeta-texto img {}
 
     .cmodular-textos {
         font-family: 'Roboto Serif', serif;
@@ -1264,6 +1258,10 @@
             font-size: 11.5px;
 
         }
+        .desc {
+            font-size: 11.5px;
+
+        }
 
         .hidden {
             display: none !important;
@@ -1543,11 +1541,11 @@
 
         <div class="encabezado-menu">
             <div class="nav-wrap">
-                <a class="nav-elemento" href="#"><span>Nosotros</span></a>
+                <a class="nav-elemento" href="#"><span>Inicio</span></a>
+                <a class="nav-elemento" href="#"><span>Nidoum Tiny Homes</span></a>
                 <a class="nav-elemento" href="#"><span>Desarrollos</span></a>
-                <a class="nav-elemento" href="#"><span>Construcción
-                        Modular</span></a>
-                <a class="nav-elemento" href="#"><span>Ciclos de Desarrollo</span></a>
+                <a class="nav-elemento" href="#"><span>Nosotros</span></a>
+                <a class="nav-elemento" href="#"><span>Desarrollo de ecosistemas</span></a>
             </div>
         </div>
 
@@ -1555,11 +1553,11 @@
             <div class="hamburger" id="hamburgerBtn"><span></span><span></span><span></span></div>
             <div class="menu-overlay" id="menuOverlay"></div>
             <div class="mobile-nav" id="mobileNav">
-                <a class="nav-elemento" href="#"><span>Nosotros</span></a>
+                <a class="nav-elemento" href="#"><span>Inicio</span></a>
+                <a class="nav-elemento" href="#"><span>Nidoum Tiny Homes</span></a>
                 <a class="nav-elemento" href="#"><span>Desarrollos</span></a>
-                <a class="nav-elemento" href="#"><span>Construcción
-                        Modular</span></a>
-                <a class="nav-elemento" href="#"><span>Ciclos de Desarrollo</span></a>
+                <a class="nav-elemento" href="#"><span>Nosotros</span></a>
+                <a class="nav-elemento" href="#"><span>Desarrollo de ecosistemas</span></a>
             </div>
         </div>
 
@@ -1571,17 +1569,17 @@
 
     <div style="padding-top: 5rem;"></div>
 
-    <!-- ESCENCIA DE NIDOUM (QUIÉN ES NIDOUM) -->
+    <!-- QUÉ ES NIDOUM -->
     <div class="carousel-section" id="secEscencia">
         <div class="carousel-header">
             <div class="carousel-header-text">
-                <div class="carousel-header-label">ESCENCIA DE NIDOUM (QUÉ ES NIDOUM)</div>
-                <h2>ESCENCIA DE NIDOUM (QUÉ ES NIDOUM)</h2>
-                <p class="carousel-header-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Cras luctus est a purus interdum venenatis. Curabitur cursus ornare turpis vitae mollis.
-                    Aliquam eu rutrum nisi, ut mattis lectus. Aenean tristique nec neque id commodo.</p>
+                <div class="carousel-header-label">QUÉ ES NIDOUM</div>
+                <h2>NUESTRA ESCENCIA</h2>
+                <p class="carousel-header-desc">NIDOUM es un nido incubador de ecosistemas donde territorio, arquitectura, 
+                    inversión,materialización, operación y comunidad se integran en una estructura viva que transforma la 
+                    manera de habitar, pertenecer y relacionarnos con la tierra con consciencia.</p>
                 <div style="padding-top: 10px;"></div>
-                <a class="nav-elemento" style="max-width: 600px;" href="https://nidoum.com/wp-content/uploads/2026/05/NIDOUMTEST.pdf" download><span>Descarga nuestro brochure</span></a>
+                <!-- <a class="nav-elemento" style="max-width: 600px;" href="https://nidoum.com/wp-content/uploads/2026/05/NIDOUMTEST.pdf" download><span>Descarga nuestro brochure</span></a> -->
             </div>
         </div>
         <div class="track-outer" id="trackOuterEscencia">
@@ -1607,15 +1605,15 @@
         </div>
     </div>
 
-    <!-- PRODCUTOS, MODELOS o SOLUCIONES OFRECE (MODELOS - LAMINAS) -->
+    <!-- MODELOS -->
     <div class="carousel-section" id="secModelos">
         <div class="carousel-header">
             <div class="carousel-header-text">
-                <div class="carousel-header-label">PRODCUTOS, MODELOS o SOLUCIONES OFRECE (MODELOS - LAMINAS)</div>
-                <h2>PRODCUTOS, MODELOS o SOLUCIONES OFRECE (MODELOS - LAMINAS)</h2>
-                <p class="carousel-header-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                <div class="carousel-header-label">MODELOS DE HABITAR</div>
+                <h2>MODELOS DE HABITAR</h2>
+                <!-- <p class="carousel-header-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Cras luctus est a purus interdum venenatis. Curabitur cursus ornare turpis vitae mollis.
-                    Aliquam eu rutrum nisi, ut mattis lectus. Aenean tristique nec neque id commodo.</p>
+                    Aliquam eu rutrum nisi, ut mattis lectus. Aenean tristique nec neque id commodo.</p> -->
                 <div style="padding-top: 10px;"></div>
                 <a class="nav-elemento" style="max-width: 600px;" href="https://nidoum.com/construccion-modular/"><span>Conoce más de nuestros
                         modelos</span></a>
@@ -1626,6 +1624,8 @@
                 <div class="tarjeta">
                     <div class="tarjeta-photo studioflat"></div>
                     <span class="tarjeta-title-photo">MODELO 1<br>STUDIO FLAT</span>
+                    
+
                     <div class="tarjeta-overlay">
                         <div class="overlay-title">MODELO 1<br>STUDIO FLAT</div>
                         <div class="overlay-desc">Unidad compacta y autónoma, con acceso independiente, ideal para
@@ -2032,7 +2032,7 @@
                     <!-- <span class="tarjeta-status">Ejecutado</span> -->
                     <div class="tarjeta-overlay">
                         <div class="overlay-title">TERRAZA 1<br>BIENESTAR Y MEDITACIÓN</div>
-                        <div class="overlay-desc">[DESCRIPCIÓN]</div>
+                        C
                         <div class="overlay-meta">
                             <div class="meta-row">
                                 <!-- <span class="meta-key">Tipo</span>
