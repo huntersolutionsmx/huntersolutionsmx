@@ -312,7 +312,6 @@
         backdrop-filter: blur(2px);
         -webkit-backdrop-filter: blur(6px);
         font-size: 10px;
-        /* Unificado con el valor inferior previo */
         font-weight: 500;
         letter-spacing: 0.1em;
         text-transform: uppercase;
@@ -325,19 +324,14 @@
         position: absolute;
         inset: 0;
         background: var(--sanddark);
-        /* backdrop-filter: blur(2px); */
-        /* -webkit-backdrop-filter: blur(2px); */
         display: flex;
         flex-direction: column;
         justify-content: center;
         padding: 28px 28px;
         padding-bottom: 1px;
         opacity: 1;
-        /* transition: opacity 0.4s ease; */
         pointer-events: none;
     }
-
-    .tarjeta-texto img {}
 
     .cmodular-textos {
         font-family: 'Roboto Serif', serif;
@@ -1145,6 +1139,10 @@
         pointer-events: none;
     }
 
+    .video-mute-btn {
+        right: 80px;
+    }
+
     /* ==========================================================================
            6. ESTILOS RESPONSIVOS (Móvil <= 768px)
            ========================================================================== */
@@ -1195,7 +1193,7 @@
         }
 
         .tarjeta {
-            width: 98%;
+            width: 100%;
             height: auto;
             aspect-ratio: 1/1;
         }
@@ -1261,6 +1259,11 @@
         }
 
         .overlay-desc {
+            font-size: 11.5px;
+
+        }
+
+        .desc {
             font-size: 11.5px;
 
         }
@@ -1471,7 +1474,8 @@
         .nidoum-tarjeta-text,
         .etapa-card {
             aspect-ratio: 1/1;
-            width: 72vw;
+            /* width: 72vw; */
+            width: 450px;
             height: auto;
         }
 
@@ -1543,11 +1547,11 @@
 
         <div class="encabezado-menu">
             <div class="nav-wrap">
-                <a class="nav-elemento" href="#"><span>Nosotros</span></a>
+                <a class="nav-elemento" href="#"><span>Inicio</span></a>
+                <a class="nav-elemento" href="#"><span>Nidoum Tiny Homes</span></a>
                 <a class="nav-elemento" href="#"><span>Desarrollos</span></a>
-                <a class="nav-elemento" href="#"><span>Construcción
-                        Modular</span></a>
-                <a class="nav-elemento" href="#"><span>Ciclos de Desarrollo</span></a>
+                <a class="nav-elemento" href="#"><span>Nosotros</span></a>
+                <a class="nav-elemento" href="#"><span>Desarrollo de ecosistemas</span></a>
             </div>
         </div>
 
@@ -1555,11 +1559,11 @@
             <div class="hamburger" id="hamburgerBtn"><span></span><span></span><span></span></div>
             <div class="menu-overlay" id="menuOverlay"></div>
             <div class="mobile-nav" id="mobileNav">
-                <a class="nav-elemento" href="#"><span>Nosotros</span></a>
+                <a class="nav-elemento" href="#"><span>Inicio</span></a>
+                <a class="nav-elemento" href="#"><span>Nidoum Tiny Homes</span></a>
                 <a class="nav-elemento" href="#"><span>Desarrollos</span></a>
-                <a class="nav-elemento" href="#"><span>Construcción
-                        Modular</span></a>
-                <a class="nav-elemento" href="#"><span>Ciclos de Desarrollo</span></a>
+                <a class="nav-elemento" href="#"><span>Nosotros</span></a>
+                <a class="nav-elemento" href="#"><span>Desarrollo de ecosistemas</span></a>
             </div>
         </div>
 
@@ -1571,17 +1575,19 @@
 
     <div style="padding-top: 5rem;"></div>
 
-    <!-- ESCENCIA DE NIDOUM (QUIÉN ES NIDOUM) -->
+    <!-- QUÉ ES NIDOUM -->
     <div class="carousel-section" id="secEscencia">
         <div class="carousel-header">
             <div class="carousel-header-text">
-                <div class="carousel-header-label">ESCENCIA DE NIDOUM (QUÉ ES NIDOUM)</div>
-                <h2>ESCENCIA DE NIDOUM (QUÉ ES NIDOUM)</h2>
-                <p class="carousel-header-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Cras luctus est a purus interdum venenatis. Curabitur cursus ornare turpis vitae mollis.
-                    Aliquam eu rutrum nisi, ut mattis lectus. Aenean tristique nec neque id commodo.</p>
+                <div class="carousel-header-label">QUÉ ES NIDOUM</div>
+                <h2>NUESTRA ESCENCIA</h2>
+                <p class="carousel-header-desc">NIDOUM es un nido incubador de ecosistemas donde territorio,
+                    arquitectura,
+                    inversión,materialización, operación y comunidad se integran en una estructura viva que transforma
+                    la
+                    manera de habitar, pertenecer y relacionarnos con la tierra con consciencia.</p>
                 <div style="padding-top: 10px;"></div>
-                <a class="nav-elemento" style="max-width: 600px;" href="https://nidoum.com/wp-content/uploads/2026/05/NIDOUMTEST.pdf" download><span>Descarga nuestro brochure</span></a>
+                <!-- <a class="nav-elemento" style="max-width: 600px;" href="https://nidoum.com/wp-content/uploads/2026/05/NIDOUMTEST.pdf" download><span>Descarga nuestro brochure</span></a> -->
             </div>
         </div>
         <div class="track-outer" id="trackOuterEscencia">
@@ -1591,7 +1597,20 @@
                         <source src="https://nidoum.com/wp-content/uploads/2026/05/video-que-es-nidoum.mp4"
                             type="video/mp4">
                     </video>
+
                     <button class="video-play-btn" id="btnPlayEscencia" aria-label="Reproducir / Pausar">
+                        <svg class="icon-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+                            <polygon points="5 3 19 12 5 21 5 3" />
+                        </svg>
+                        <svg class="icon-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="6" y="4" width="4" height="16" />
+                            <rect x="14" y="4" width="4" height="16" />
+                        </svg>
+                    </button>
+
+                    <!-- <button class="video-play-btn" id="btnPlayEscencia" aria-label="Reproducir / Pausar">
                         <svg class="icon-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
                             stroke-linecap="round" stroke-linejoin="round">
                             <rect x="6" y="4" width="4" height="16" />
@@ -1601,51 +1620,101 @@
                             stroke-linecap="round" stroke-linejoin="round" style="display:none;">
                             <polygon points="5 3 19 12 5 21 5 3" />
                         </svg>
+                    </button> -->
+
+                    <button class="video-play-btn video-mute-btn" id="btnMuteEscencia"
+                        aria-label="Silenciar / Activar sonido">
+                        <svg class="icon-unmuted" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="3 9 3 15 8 15 13 20 13 4 8 9 3 9" />
+                            <path d="M16 8a5 5 0 0 1 0 8" />
+                            <path d="M18.5 5.5a9 9 0 0 1 0 13" />
+                        </svg>
+                        <svg class="icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+                            <polygon points="3 9 3 15 8 15 13 20 13 4 8 9 3 9" />
+                            <line x1="16" y1="9" x2="21" y2="14" />
+                            <line x1="21" y1="9" x2="16" y2="14" />
+                        </svg>
                     </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- PRODCUTOS, MODELOS o SOLUCIONES OFRECE (MODELOS - LAMINAS) -->
+    <!-- MODELOS -->
     <div class="carousel-section" id="secModelos">
         <div class="carousel-header">
             <div class="carousel-header-text">
-                <div class="carousel-header-label">PRODCUTOS, MODELOS o SOLUCIONES OFRECE (MODELOS - LAMINAS)</div>
-                <h2>PRODCUTOS, MODELOS o SOLUCIONES OFRECE (MODELOS - LAMINAS)</h2>
-                <p class="carousel-header-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Cras luctus est a purus interdum venenatis. Curabitur cursus ornare turpis vitae mollis.
-                    Aliquam eu rutrum nisi, ut mattis lectus. Aenean tristique nec neque id commodo.</p>
+                <div class="carousel-header-label">MODELOS DE HABITAR</div>
+                <h2>MODELOS DE HABITAR</h2>
+                <!-- <p class="carousel-header-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus est a purus interdum venenatis. Curabitur cursus ornare turpis vitae mollis. Aliquam eu rutrum nisi, ut mattis lectus. Aenean tristique nec neque id commodo.</p> -->
                 <div style="padding-top: 10px;"></div>
-                <a class="nav-elemento" style="max-width: 600px;" href="https://nidoum.com/construccion-modular/"><span>Conoce más de nuestros
-                        modelos</span></a>
+                <!-- <a class="nav-elemento" style="max-width: 600px;" href="https://nidoum.com/construccion-modular/"><span>Conoce más de nuestros modelos</span></a> -->
             </div>
         </div>
         <div class="track-outer" id="trackOuterModelos">
             <div class="track" id="trackModelos">
+                
+                <!-- NID-AQUILA -->
                 <div class="tarjeta">
                     <div class="tarjeta-photo studioflat"></div>
-                    <span class="tarjeta-title-photo">MODELO 1<br>STUDIO FLAT</span>
+                    <span class="tarjeta-title-photo">NID-AQUILA</span>
                     <div class="tarjeta-overlay">
-                        <div class="overlay-title">MODELO 1<br>STUDIO FLAT</div>
-                        <div class="overlay-desc">Unidad compacta y autónoma, con acceso independiente, ideal para
-                            estancias medias o largas, tiempos compartidos y nómadas digitales.</div>
+                        <div class="overlay-title">NID-AQUILA</div>
+                        <div class="overlay-desc"><span class="hidden">Espacios abiertos, ligeros y precisos que extienden la vida hacia el paisaje. Su arquitectura conecta interior y entorno con naturalidad, creando una experiencia clara, flexible y profundamente vinculada con la forma de habitar cada territorio.</span></div>
                         <div class="overlay-meta">
                             <div class="meta-row">
-                                <!-- <span class="meta-key">Tipo</span>
-                                <span class="meta-val">Desarrollo residencial escalable</span> -->
+                                <span class="meta-key">Nombre del modelo</span>
+                                <span class="meta-val">Lorem ipsum dolor</span>
                             </div>
                             <div class="meta-row">
-                                <!-- <span class="meta-key">Ubicación</span>
-                                <span class="meta-val">México</span> -->
+                                <span class="meta-key">Código del modelo</span>
+                                <span class="meta-val">México</span>
                             </div>
                             <div class="meta-row">
-                                <!-- <span class="meta-key">Sistema</span>
-                                <span class="meta-val">Modular repetible</span> -->
+                                <span class="meta-key">Superficie total de implantación</span>
+                                <span class="meta-val">Modular repetible</span>
                             </div>
                             <div class="meta-row">
-                                <!-- <span class="meta-key">Etapa</span>
-                                <span class="meta-val">Ejecutado</span> -->
+                                <span class="meta-key">Superficie interior</span>
+                                <span class="meta-val">Ejecutado</span>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-key">Superficie exterior</span>
+                                <span class="meta-val">Ejecutado</span>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-key">Espacio abierto integral</span>
+                                <span class="meta-val">Ejecutado</span>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-key">Inversión estimada</span>
+                                <span class="meta-val">Ejecutado</span>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-key">Costo de transportación</span>
+                                <span class="meta-val">Ejecutado</span>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-key">Eficiencia térmica</span>
+                                <span class="meta-val">Ejecutado</span>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-key">Eficiencia energética</span>
+                                <span class="meta-val">Ejecutado</span>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-key">Tiempo de fabricación y entrega</span>
+                                <span class="meta-val">Ejecutado</span>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-key">Acabado arquitectónico</span>
+                                <span class="meta-val">Ejecutado</span>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-key">Entrega llave en puerta</span>
+                                <span class="meta-val">Ejecutado</span>
                             </div>
                         </div>
                         <!-- <a class="overlay-btn" href="#">Descarga nuestro Brochure</a> -->
@@ -1656,104 +1725,139 @@
                             <path d="M9 11V6a2 2 0 0 1 4 0v5" />
                             <path d="M13 11V9a2 2 0 0 1 4 0v6a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6v-3a2 2 0 0 1 4 0" />
                         </svg>
-                        <span>Click</span>
+                        <span>Click para conocer más</span>
                     </div>
                 </div>
+
+                <!-- NID-CONDOR -->
                 <div class="tarjeta">
                     <div class="tarjeta-photo onebedroomvilla"></div>
-                    <span class="tarjeta-title-photo">MODELO 2<br>ONE-BEDROOM VILLA</span>
+                    <span class="tarjeta-title-photo">NID-CONDOR</span>
                     <div class="tarjeta-overlay">
-                        <div class="overlay-title">MODELO 2<br>ONE-BEDROOM VILLA</div>
-                        <div class="overlay-desc">Villa de una habitación para pareja o huésped exclusivo, con cocina
-                            completa, terraza privada y baño experiencial, ideal para estancias largas o como residencia
-                            secundaria.</div>
+                        <div class="overlay-title">NID-CONDOR</div>
+                        <div class="overlay-desc"><span class="hidden">Espacios sólidos, envolventes y serenos que nacen del territorio y permanecen en él. Su arquitectura protege, contiene y acompaña, creando una experiencia íntima donde materia, paisaje y vida cotidiana encuentran arraigo, equilibrio y profundidad duradera.</span></div>
                         <div class="overlay-meta">
                             <div class="meta-row">
-                                <!-- <span class="meta-key">C</span><span class="meta-val">Desarrollo residencial escalable</span> -->
+                                <span class="meta-key">Nombre del modelo</span>
+                                <span class="meta-val">Lorem ipsum dolor</span>
                             </div>
                             <div class="meta-row">
-                                <!-- <span class="meta-key">Ubicación</span>
-                                <span class="meta-val">México</span> -->
+                                <span class="meta-key">Código del modelo</span>
+                                <span class="meta-val">México</span>
                             </div>
                             <div class="meta-row">
-                                <!-- <span class="meta-key">Sistema</span>
-                                <span class="meta-val">Modular repetible</span> -->
+                                <span class="meta-key">Superficie total de implantación</span>
+                                <span class="meta-val">Modular repetible</span>
                             </div>
                             <div class="meta-row">
-                                <!-- <span class="meta-key">Etapa</span>
-                                <span class="meta-val">Ejecutado</span> -->
+                                <span class="meta-key">Superficie interior</span>
+                                <span class="meta-val">Ejecutado</span>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-key">Superficie exterior</span>
+                                <span class="meta-val">Ejecutado</span>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-key">Espacio abierto integral</span>
+                                <span class="meta-val">Ejecutado</span>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-key">Inversión estimada</span>
+                                <span class="meta-val">Ejecutado</span>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-key">Costo de transportación</span>
+                                <span class="meta-val">Ejecutado</span>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-key">Eficiencia térmica</span>
+                                <span class="meta-val">Ejecutado</span>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-key">Eficiencia energética</span>
+                                <span class="meta-val">Ejecutado</span>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-key">Tiempo de fabricación y entrega</span>
+                                <span class="meta-val">Ejecutado</span>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-key">Acabado arquitectónico</span>
+                                <span class="meta-val">Ejecutado</span>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-key">Entrega llave en puerta</span>
+                                <span class="meta-val">Ejecutado</span>
                             </div>
                         </div>
-                        <!-- <a class="overlay-btn" href="#">Descarga nuestro Brochure</a> -->
                     </div>
                 </div>
+
+                <!-- NID-AETERUM -->
                 <div class="tarjeta">
                     <div class="tarjeta-photo twobedroomfamilyvilla"></div>
-                    <span class="tarjeta-title-photo">MODELO 3<br>TWO-BEDROOM FAMILY VILLA</span>
+                    <span class="tarjeta-title-photo">NID-AETERUM</span>
                     <div class="tarjeta-overlay">
-                        <div class="overlay-title">MODELO 3<br>TWO-BEDROOM FAMILY VILLA</div>
-                        <div class="overlay-desc">Villa familiar de dos habitaciones con cuarto de lavado completamente
-                            equipado, barra especializada, dos baños completos privados, ideal para familias o retiro
-                            ejecutivo.</div>
+                        <div class="overlay-title">NID-AETERUM</div>
+                        <div class="overlay-desc"><span class="hidden">Una arquitectura continua que integra interior, exterior y naturaleza sin rupturas. Cada espacio prolonga la experiencia de habitar y crea una relación fluida entre materia, luz, paisaje y tiempo, en una composición esencial y permanente.</span></div>
                         <div class="overlay-meta">
                             <div class="meta-row">
-                                <!-- <span class="meta-key">Tipo</span>
-                                <span class="meta-val">Desarrollo residencial escalable</span> -->
+                                <span class="meta-key">Nombre del modelo</span>
+                                <span class="meta-val">Lorem ipsum dolor</span>
                             </div>
                             <div class="meta-row">
-                                <!-- <span class="meta-key">Ubicación</span>
-                                <span class="meta-val">México</span> -->
+                                <span class="meta-key">Código del modelo</span>
+                                <span class="meta-val">México</span>
                             </div>
                             <div class="meta-row">
-                                <!-- <span class="meta-key">Sistema</span>
-                                <span class="meta-val">Modular repetible</span> -->
+                                <span class="meta-key">Superficie total de implantación</span>
+                                <span class="meta-val">Modular repetible</span>
                             </div>
                             <div class="meta-row">
-                                <!-- <span class="meta-key">Etapa</span>
-                                <span class="meta-val">Ejecutado</span> -->
+                                <span class="meta-key">Superficie interior</span>
+                                <span class="meta-val">Ejecutado</span>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-key">Superficie exterior</span>
+                                <span class="meta-val">Ejecutado</span>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-key">Espacio abierto integral</span>
+                                <span class="meta-val">Ejecutado</span>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-key">Inversión estimada</span>
+                                <span class="meta-val">Ejecutado</span>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-key">Costo de transportación</span>
+                                <span class="meta-val">Ejecutado</span>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-key">Eficiencia térmica</span>
+                                <span class="meta-val">Ejecutado</span>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-key">Eficiencia energética</span>
+                                <span class="meta-val">Ejecutado</span>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-key">Tiempo de fabricación y entrega</span>
+                                <span class="meta-val">Ejecutado</span>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-key">Acabado arquitectónico</span>
+                                <span class="meta-val">Ejecutado</span>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-key">Entrega llave en puerta</span>
+                                <span class="meta-val">Ejecutado</span>
                             </div>
                         </div>
-                        <!-- <a class="overlay-btn" href="#">Descarga nuestro Brochure</a> -->
-                    </div>
-                </div>
-                <div class="tarjeta">
-                    <div class="tarjeta-photo conjuntoamenidades"></div>
-                    <span class="tarjeta-title-photo">TERRAZAS<br>DE AMENIDADES</span>
-                    <div class="tarjeta-overlay">
-                        <div class="overlay-title">TERRAZAS<br>DE AMENIDADES</div>
-                        <div class="overlay-desc">[DESCRIPCIÓN]</div>
-                        <div class="overlay-meta">
-                            <div class="meta-row">
-                                <!-- <span class="meta-key">Tipo</span>
-                                <span class="meta-val">Desarrollo residencial escalable</span> -->
-                            </div>
-                            <div class="meta-row">
-                                <!-- <span class="meta-key">Ubicación</span>
-                                <span class="meta-val">México</span> -->
-                            </div>
-                            <div class="meta-row">
-                                <!-- <span class="meta-key">Sistema</span>
-                                <span class="meta-val">Modular repetible</span> -->
-                            </div>
-                            <div class="meta-row">
-                                <!-- <span class="meta-key">Etapa</span>
-                                <span class="meta-val">Ejecutado</span> -->
-                            </div>
-                        </div>
-                        <!-- <a class="overlay-btn" href="#secDeck">Ver información de Terrazas</a> -->
-                    </div>
-                    <div class="tap-hint" id="tapHint">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path d="M9 11V6a2 2 0 0 1 4 0v5" />
-                            <path d="M13 11V9a2 2 0 0 1 4 0v6a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6v-3a2 2 0 0 1 4 0" />
-                        </svg>
-                        <span>Click</span>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 
     <!-- CÓMO SE PRODUCE (CONSTRUCCIÓN MODULAR) -->
@@ -1766,7 +1870,8 @@
                     Cras luctus est a purus interdum venenatis. Curabitur cursus ornare turpis vitae mollis.
                     Aliquam eu rutrum nisi, ut mattis lectus. Aenean tristique nec neque id commodo.</p>
                 <div style="padding-top: 10px;"></div>
-                <a class="nav-elemento" style="max-width: 600px;" href="https://nidoum.com/construccion-modular/"><span>Explora el sisema constructivo</span></a>
+                <a class="nav-elemento" style="max-width: 600px;"
+                    href="https://nidoum.com/construccion-modular/"><span>Explora el sisema constructivo</span></a>
             </div>
 
         </div>
@@ -1892,7 +1997,7 @@
                 <p class="carousel-header-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Cras luctus est a purus interdum venenatis. Curabitur cursus ornare turpis vitae mollis.
                     Aliquam eu rutrum nisi, ut mattis lectus. Aenean tristique nec neque id commodo.</p>
-                    <!-- <div style="padding-top: 10px;"></div>
+                <!-- <div style="padding-top: 10px;"></div>
                 <a class="nav-elemento" style="max-width: 600px;" href="#"><span>Conoce más de nuestros modelos</span></a> -->
             </div>
         </div>
@@ -2032,7 +2137,7 @@
                     <!-- <span class="tarjeta-status">Ejecutado</span> -->
                     <div class="tarjeta-overlay">
                         <div class="overlay-title">TERRAZA 1<br>BIENESTAR Y MEDITACIÓN</div>
-                        <div class="overlay-desc">[DESCRIPCIÓN]</div>
+                        C
                         <div class="overlay-meta">
                             <div class="meta-row">
                                 <!-- <span class="meta-key">Tipo</span>
@@ -2275,7 +2380,8 @@
                     Cras luctus est a purus interdum venenatis. Curabitur cursus ornare turpis vitae mollis.
                     Aliquam eu rutrum nisi, ut mattis lectus. Aenean tristique nec neque id commodo.</p>
                 <div style="padding-top: 10px;"></div>
-                <a class="nav-elemento" style="max-width: 600px;" href="https://nidoum.com/desarrollos/"><span>Ver proyectos</span></a>
+                <a class="nav-elemento" style="max-width: 600px;" href="https://nidoum.com/desarrollos/"><span>Ver
+                        proyectos</span></a>
             </div>
         </div>
         <div class="track-outer" id="trackOuterDes">
@@ -2681,7 +2787,7 @@
 
         })();
 
-        /* ─── PLAY / PAUSE VIDEO ESCENCIA ───────────────────────────── */
+        /* ─── PLAY / PAUSE / MUTE VIDEO ───────────────────────────── */
         (function () {
             const btn = document.getElementById('btnPlayEscencia');
             const video = btn && btn.closest('.tarjeta-unica').querySelector('video');
@@ -2704,6 +2810,23 @@
                 btn.querySelector('.icon-pause').style.display = 'none';
                 btn.querySelector('.icon-play').style.display = '';
             });
+        })();
+        (function () {
+            const btn = document.getElementById('btnMuteEscencia');
+            const video = btn && btn.closest('.tarjeta-unica').querySelector('video');
+            if (!btn || !video) return;
+
+            btn.addEventListener('click', () => {
+                video.muted = !video.muted;
+            });
+
+            function updateMuteIcon() {
+                btn.querySelector('.icon-unmuted').style.display = video.muted ? 'none' : '';
+                btn.querySelector('.icon-muted').style.display = video.muted ? '' : 'none';
+            }
+
+            video.addEventListener('volumechange', updateMuteIcon);
+            updateMuteIcon();
         })();
     </script>
 </body>
