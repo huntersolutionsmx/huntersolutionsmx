@@ -12,8 +12,9 @@
     --sandlight: #e6d6c7;
     --sandlight60: rgba(248, 243, 238, 0.6);
     --sandlight30: rgba(248, 243, 238, 0.3);
-    --sanddark: #7c6454;
-    --sandob: #514946;
+    --sanddark: rgba(124, 100, 84, 1);
+    --sandob: rgba(81, 73, 70, 1);
+);
 
     /* tierra brand colors */
     --terracotalight: rgb(223, 165, 132);
