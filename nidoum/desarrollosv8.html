@@ -38,20 +38,18 @@
             color: var(--sandob);
         }
 
-        .carousel-section {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
-        }
-
-        .carousel-section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
+        /* --- Ahora el contenido es visible por defecto --- */
         .carousel-section {
             width: 100%;
             padding: 5rem 0 7rem;
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        /* La clase 'visible' solo se usa para animación opcional, pero el contenido ya se ve */
+        .carousel-section.visible {
+            /* No es necesario, pero se puede dejar */
         }
 
         .carousel-header {
@@ -103,6 +101,18 @@
             flex-direction: column;
             display: flex;
             gap: 20px;
+        }
+
+        .region-title {
+            font-family: 'Roboto Serif', serif;
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: var(--sandob);
+            padding: 1.5rem 0 0.5rem 0;
+            letter-spacing: 0.04em;
+            border-bottom: 1px solid rgba(124, 100, 84, 0.2);
+            margin-bottom: 0.5rem;
+            width: 100%;
         }
 
         .arrow-btn svg {
@@ -316,6 +326,7 @@
             }
         }
 
+        /* Imágenes de fondo */
         .vinedodelossenderos {
             background-image: url('https://nidoum.com/wp-content/uploads/2026/05/vinedosvs1-scaled.webp');
             filter: brightness(0.75);
@@ -366,13 +377,10 @@
             filter: brightness(0.75);
         }
 
-
         .casamantarraya {
             background-image: url('https://nidoum.com/wp-content/uploads/2026/05/mantarraya-scaled.webp');
             filter: brightness(0.75);
         }
-
-
 
         .duna {
             background-image: url('https://nidoum.com/wp-content/uploads/2026/05/duna-scaled.webp');
@@ -390,38 +398,36 @@
             }
 
             .overlay-desc {
-                /* font-size: 11.5px; */
                 display: none !important;
             }
 
-        }
+            .carousel-section {
+                padding-bottom: 4rem;
+            }
 
-        .carousel-section {
-            padding-bottom: 4rem;
-        }
+            .carousel-header {
+                max-width: 100%;
+                padding: 0 24px;
+                margin-bottom: 1.5rem;
+            }
 
-        .carousel-header {
-            max-width: 100%;
-            padding: 0 24px;
-            margin-bottom: 1.5rem;
-        }
+            .carousel-header h2 {
+                font-size: clamp(1.4rem, 5vw, 1.8rem);
+            }
 
-        .carousel-header h2 {
-            font-size: clamp(1.4rem, 5vw, 1.8rem);
-        }
+            .carousel-header-desc {
+                font-size: 1rem;
+            }
 
-        .carousel-header-desc {
-            font-size: 1rem;
-        }
+            .track-outer {
+                padding-left: 24px;
+            }
 
-        .track-outer {
-            padding-left: 24px;
-        }
-
-        .tarjeta {
-            width: 98%;
-            height: auto;
-            aspect-ratio: 16/9;
+            .tarjeta {
+                width: 98%;
+                height: auto;
+                aspect-ratio: 16/9;
+            }
         }
     </style>
 </head>
@@ -441,6 +447,8 @@
 
         <div class="track-outer" id="trackOuterDes">
             <div class="track" id="trackDes">
+
+                <div class="region-title">San Miguel de Allende</div>
 
                 <div class="tarjeta">
                     <div class="tarjeta-photo vinedodelossenderos"></div>
@@ -472,7 +480,7 @@
                     </div>
                 </div>
 
-
+                <!-- Resto de tarjetas (se mantienen igual) -->
                 <div class="tarjeta">
                     <div class="tarjeta-photo casaclubvinedodelossenderos"></div>
                     <span class="tarjeta-title-photo">Casa Club Viñedo Los Senderos</span>
@@ -615,22 +623,49 @@
                     </div>
                 </div>
 
-                <!--  -->
+                <div class="tarjeta">
+                    <div class="tarjeta-photo diadacommunity"></div>
+                    <span class="tarjeta-title-photo">DIADA COMMUNITY</span>
+                    <span class="tarjeta-status">Ejecutado</span>
+                    <div class="tarjeta-overlay">
+                        <div class="overlay-title">Diada Community</div>
+                        <div class="overlay-desc">Ecocomunidad que integra vivienda, naturaleza y vida comunitaria en
+                            armonía. <br>Un desarrollo residencial sostenible que promueve el bienestar y la conexión con
+                            el entorno, <br>donde cada detalle está pensado para generar pertenencia y calidad de vida.
+                        </div>
+                        <div class="overlay-meta">
+                            <div class="meta-row"><span class="meta-key">Tipología</span><span
+                                    class="meta-val">Desarrollo Residencial Ecocomunidad</span></div>
+                            <div class="meta-row"><span class="meta-key">Ubicación</span><span class="meta-val">Sangre De
+                                    Cristo</span></div>
+                            <div class="meta-row"><span class="meta-key">Etapa</span><span
+                                    class="meta-val">Ejecutado</span></div>
+                        </div>
+                        <a class="overlay-btn" href="#">Recibe Nuestro Portafolio De Proyectos</a>
+                    </div>
+                    <div class="tap-hint">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M9 11V6a2 2 0 0 1 4 0v5" />
+                            <path d="M13 11V9a2 2 0 0 1 4 0v6a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6v-3a2 2 0 0 1 4 0" />
+                        </svg>
+                        <span>Toca para ver info</span>
+                    </div>
+                </div>
 
                 <div class="tarjeta">
                     <div class="tarjeta-photo casapasaret"></div>
-                    <span class="tarjeta-title-photo">SANGRE DE CRISTO<br>Casa Pásaret</span>
+                    <span class="tarjeta-title-photo">Casa Pásaret</span>
                     <span class="tarjeta-status">Ejecutado</span>
                     <div class="tarjeta-overlay">
-                        <div class="overlay-title">Casa Pásaret — Gerard Pásaret</div>
-                        <div class="overlay-desc">Vivienda sólida y elegante, donde cada elemento estructural refleja
-                            precisión y cuidado. Arquitectura contenida; precisión técnica y detalle artesanal donde
-                            el espacio es protagonista.</div>
+                        <div class="overlay-title">Casa Pásaret</div>
+                        <div class="overlay-desc">Casa Pásaret aprovecha la orientación, la ventilación cruzada y las vistas <br>para crear una experiencia cercana al
+entorno natural de Sangre de Cristo. <br>Sus espacios y materiales ofrecen comodidad, claridad y una forma de
+<br>habitar serena, conectada con el paisaje.</div>
                         <div class="overlay-meta">
-                            <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Residencial
-                                    (Unifamiliar)</span></div>
+                            <div class="meta-row"><span class="meta-key">Tipología</span><span class="meta-val">Desarrollo Residencial Ecocomunidad</span></div>
                             <div class="meta-row"><span class="meta-key">Ubicación</span><span
-                                    class="meta-val">México</span></div>
+                                    class="meta-val">Sangre De Cristo</span></div>
                             <div class="meta-row"><span class="meta-key">Etapa</span><span
                                     class="meta-val">Ejecutado</span></div>
                         </div>
@@ -638,20 +673,21 @@
                     </div>
                 </div>
 
+                <div class="region-title">Baja California Sur</div>
+
                 <div class="tarjeta">
                     <div class="tarjeta-photo casamantarraya"></div>
                     <span class="tarjeta-title-photo">CASA MANTARRAYA</span>
                     <span class="tarjeta-status">Ejecutado</span>
                     <div class="tarjeta-overlay">
-                        <div class="overlay-title">Casa Mantarraya — Jeffrey & Laurie Dodge</div>
-                        <div class="overlay-desc">Vivienda contemporánea que sintetiza claridad arquitectónica,
-                            eficiencia y adaptabilidad. Sobriedad arquitectónica y funcionalidad, respaldadas por
-                            materiales durables y térmicamente eficientes.</div>
+                        <div class="overlay-title">Casa Mantarraya</div>
+                        <div class="overlay-desc">Casa Mantarraya parte del clima costero de Baja California Sur <br>para crear espacios frescos, protegidos y
+abiertos al paisaje. <br>La sombra, la ventilación cruzada y las terrazas acompañan la vida diaria, <br>permitiendo
+disfrutar el exterior con comodidad durante distintos momentos del día.</div>
                         <div class="overlay-meta">
-                            <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Residencial
-                                    (Unifamiliar)</span></div>
+                            <div class="meta-row"><span class="meta-key">Tipología</span><span class="meta-val">Residencia Costera Unifamiliar</span></div>
                             <div class="meta-row"><span class="meta-key">Ubicación</span><span
-                                    class="meta-val">México</span></div>
+                                    class="meta-val">Baja California Sur</span></div>
                             <div class="meta-row"><span class="meta-key">Etapa</span><span
                                     class="meta-val">Ejecutado</span></div>
                         </div>
@@ -661,18 +697,17 @@
 
                 <div class="tarjeta">
                     <div class="tarjeta-photo duna"></div>
-                    <span class="tarjeta-title-photo">DUNA VILLA LAS ÁNIMAS</span>
+                    <span class="tarjeta-title-photo">DUNA LAS ÁNIMAS</span>
                     <span class="tarjeta-status">En Desarrollo</span>
                     <div class="tarjeta-overlay">
-                        <div class="overlay-title">Duna Villa las Ánimas</div>
-                        <div class="overlay-desc">Desarrollo multifamiliar estructurado a partir de condiciones que el
-                            ecosistema nos brinda. La relación con el entorno, eficiencia y la capacidad de ejecución
-                            adquieren la mayor relevancia.</div>
+                        <div class="overlay-title">Duna las Ánimas</div>
+                        <div class="overlay-desc">Duna Las Ánimas reúne residencias, hospitalidad, servicios y espacios compartidos en un mismo lugar. <br>El
+proyecto parte del paisaje de Baja California Sur para crear distintas formas de habitar, descansar y encontrarse,<br>
+con una visión capaz de crecer con el tiempo.</div>
                         <div class="overlay-meta">
-                            <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Residencial
-                                    (Multifamiliar)</span></div>
+                            <div class="meta-row"><span class="meta-key">Tipología</span><span class="meta-val">Desarrollo Residencial Y Hospitalidad</span></div>
                             <div class="meta-row"><span class="meta-key">Ubicación</span><span
-                                    class="meta-val">México</span></div>
+                                    class="meta-val">San José Del Cabo</span></div>
                             <div class="meta-row"><span class="meta-key">Etapa</span><span class="meta-val">En
                                     Desarrollo</span></div>
                         </div>
@@ -682,43 +717,53 @@
 
                 <div class="tarjeta">
                     <div class="tarjeta-photo paloblanco"></div>
-                    <span class="tarjeta-title-photo">PALO BLANCO WELLNESS LIVING</span>
+                    <span class="tarjeta-title-photo">PALO BLANCO</span>
                     <span class="tarjeta-status">En Construcción</span>
                     <div class="tarjeta-overlay">
-                        <div class="overlay-title">Palo Blanco Wellness Living</div>
-                        <div class="overlay-desc">Un activo residencial de baja densidad y alto valor
-                            habitable. Centro residencial enfocado en el bienestar. Donde arquitectura y paisaje
-                            convergen en una experiencia de calma y conexión. </div>
+                        <div class="overlay-title">Palo Blanco</div>
+                        <div class="overlay-desc">Palo Blanco reúne vivienda, hospitalidad y bienestar en San José del Cabo. <br>Su arquitectura enlaza espacios para
+habitar, descansar y compartir, mientras los servicios <br>y las áreas comunes acompañan la vida diaria y permiten
+que el proyecto crezca de forma clara,<br> serena y vinculada con el paisaje. </div>
                         <div class="overlay-meta">
-                            <div class="meta-row"><span class="meta-key">Tipo</span><span class="meta-val">Wellness
-                                    Residencial (Uso Mixto)</span></div>
+                            <div class="meta-row"><span class="meta-key">Tipología</span><span class="meta-val">Desarrollo Residencial Y Wellness</span></div>
                             <div class="meta-row"><span class="meta-key">Ubicación</span><span
-                                    class="meta-val">México</span></div>
+                                    class="meta-val">San José Del Cabo</span></div>
                             <div class="meta-row"><span class="meta-key">Etapa</span><span class="meta-val">En
                                     Construcción</span></div>
                         </div>
                         <a class="overlay-btn" href="#">Recibe Nuestro Portafolio De Proyectos</a>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
+
     <script>
+        // Observador de intersección (solo para efecto decorativo, pero el contenido ya es visible)
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
-                else entry.target.classList.remove('visible');
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
             });
         }, { threshold: 0.08 });
+
         document.querySelectorAll('.carousel-section').forEach(el => observer.observe(el));
 
-        // Tap para móvil
-        const isTouch = () => window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+        // Fallback: si por algún motivo el observador no se dispara, forzamos la visibilidad después de 300 ms
+        setTimeout(() => {
+            document.querySelectorAll('.carousel-section').forEach(el => {
+                el.classList.add('visible');
+            });
+        }, 300);
 
+        // Tap para móvil
         const tr = document.getElementById('trackDes');
         if (tr) {
             const tarjetas = Array.from(tr.querySelectorAll('.tarjeta'));
-            let tx0 = 0, mv = false;
+            let tx0 = 0,
+                mv = false;
 
             tr.addEventListener('touchstart', e => {
                 tx0 = e.touches[0].clientX;
@@ -736,6 +781,7 @@
                 if (!alreadyOpen) tapped.classList.add('tapped');
             });
 
+            // Oculta el tap-hint después del primer toque (opcional)
             const tapHint = document.getElementById('tapHint');
             if (tapHint) {
                 tr.addEventListener('touchend', () => tapHint.classList.add('oculto'), { once: true });
