@@ -38,18 +38,12 @@
             color: var(--sandob);
         }
 
-        /* --- Ahora el contenido es visible por defecto --- */
         .carousel-section {
             width: 100%;
             padding: 5rem 0 7rem;
             opacity: 1;
             transform: translateY(0);
             transition: opacity 0.7s ease, transform 0.7s ease;
-        }
-
-        /* La clase 'visible' solo se usa para animación opcional, pero el contenido ya se ve */
-        .carousel-section.visible {
-            /* No es necesario, pero se puede dejar */
         }
 
         .carousel-header {
@@ -115,11 +109,6 @@
             width: 100%;
         }
 
-        .arrow-btn svg {
-            width: 15px;
-            height: 15px;
-        }
-
         .tarjeta {
             position: relative;
             width: 98%;
@@ -151,6 +140,7 @@
             line-height: 1.25;
             transition: opacity 0.4s ease;
             z-index: 1;
+            pointer-events: none;
         }
 
         .tarjeta-status {
@@ -169,6 +159,7 @@
             color: var(--white);
             transition: opacity 0.4s ease;
             z-index: 1;
+            pointer-events: none;
         }
 
         .tarjeta-overlay {
@@ -392,6 +383,181 @@
             filter: brightness(0.75);
         }
 
+        /* ========== GALERÍA MODAL ========== */
+        .galeria-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(81, 73, 70, 0.92);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .galeria-overlay.activo {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .galeria-contenedor {
+            position: relative;
+            width: 90vw;
+            max-width: 1100px;
+            height: 80vh;
+            max-height: 800px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .galeria-imagen {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 6px;
+            transition: opacity 0.35s ease;
+            user-select: none;
+            -webkit-user-select: none;
+            pointer-events: none;
+        }
+
+        .galeria-btn-cerrar {
+            position: fixed;
+            top: 28px;
+            right: 32px;
+            z-index: 10001;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease, transform 0.3s ease;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .galeria-overlay.activo .galeria-btn-cerrar {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .galeria-btn-cerrar:hover {
+            background: rgba(255, 255, 255, 0.18);
+            transform: scale(1.08);
+        }
+
+        .galeria-btn-cerrar svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--white);
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .galeria-flecha {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10001;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease, transform 0.3s ease;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .galeria-overlay.activo .galeria-flecha {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .galeria-flecha:hover {
+            background: rgba(255, 255, 255, 0.16);
+            transform: translateY(-50%) scale(1.08);
+        }
+
+        .galeria-flecha.izquierda {
+            left: 24px;
+        }
+
+        .galeria-flecha.derecha {
+            right: 24px;
+        }
+
+        .galeria-flecha svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--white);
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+        }
+
+        .galeria-contador {
+            position: fixed;
+            bottom: 36px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10001;
+            font-family: 'Albert Sans', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.6);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .galeria-overlay.activo .galeria-contador {
+            opacity: 1;
+        }
+
+        .galeria-titulo-proyecto {
+            position: fixed;
+            top: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10001;
+            font-family: 'Roboto Serif', serif;
+            font-weight: 300;
+            font-size: 1.1rem;
+            letter-spacing: 0.06em;
+            color: rgba(255, 255, 255, 0.75);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            text-align: center;
+        }
+
+        .galeria-overlay.activo .galeria-titulo-proyecto {
+            opacity: 1;
+        }
+
         @media (max-width: 768px) {
             .tarjeta-title-photo {
                 font-size: 22px;
@@ -428,6 +594,52 @@
                 height: auto;
                 aspect-ratio: 16/9;
             }
+
+            .galeria-flecha {
+                width: 38px;
+                height: 38px;
+            }
+
+            .galeria-flecha.izquierda {
+                left: 10px;
+            }
+
+            .galeria-flecha.derecha {
+                right: 10px;
+            }
+
+            .galeria-flecha svg {
+                width: 16px;
+                height: 16px;
+            }
+
+            .galeria-btn-cerrar {
+                top: 18px;
+                right: 16px;
+                width: 38px;
+                height: 38px;
+            }
+
+            .galeria-btn-cerrar svg {
+                width: 15px;
+                height: 15px;
+            }
+
+            .galeria-titulo-proyecto {
+                top: 20px;
+                font-size: 0.9rem;
+            }
+
+            .galeria-contador {
+                bottom: 24px;
+                font-size: 0.65rem;
+            }
+
+            .galeria-contenedor {
+                width: 94vw;
+                height: 65vh;
+                max-height: 600px;
+            }
         }
     </style>
 </head>
@@ -450,7 +662,7 @@
 
                 <div class="region-title">San Miguel de Allende</div>
 
-                <div class="tarjeta">
+                <div class="tarjeta" data-proyecto="Viñedo de los Senderos">
                     <div class="tarjeta-photo vinedodelossenderos"></div>
                     <span class="tarjeta-title-photo">VIÑEDO DE LOS SENDEROS</span>
                     <span class="tarjeta-status">Ejecutado</span>
@@ -470,27 +682,26 @@
                         </div>
                         <a class="overlay-btn" href="#">Recibe Nuestro Portafolio De Proyectos</a>
                     </div>
-                    <div class="tap-hint" id="tapHint">
+                    <div class="tap-hint">
                         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"
                             stroke-linejoin="round">
                             <path d="M9 11V6a2 2 0 0 1 4 0v5" />
                             <path d="M13 11V9a2 2 0 0 1 4 0v6a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6v-3a2 2 0 0 1 4 0" />
                         </svg>
-                        <span>Toca para ver info</span>
+                        <span>Toca para ver más</span>
                     </div>
                 </div>
 
-                <!-- Resto de tarjetas (se mantienen igual) -->
-                <div class="tarjeta">
+                <div class="tarjeta" data-proyecto="Casa Club Viñedo Los Senderos">
                     <div class="tarjeta-photo casaclubvinedodelossenderos"></div>
                     <span class="tarjeta-title-photo">Casa Club Viñedo Los Senderos</span>
                     <span class="tarjeta-status">Ejecutado</span>
                     <div class="tarjeta-overlay">
                         <div class="overlay-title">Casa Club Viñedo Los Senderos</div>
                         <div class="overlay-desc">La Casa Club de Viñedo Los Senderos reúne encuentro, descanso y
-                            contemplación <br>alrededor del agua y la vegetación. Sus pabellones conectan recorridos y
-                            espacios <br> compartidos mediante una arquitectura ligera, pensada para disfrutar el
-                            paisaje,<br>convivir y hacer una pausa en la vida cotidiana.</div>
+                            contemplación alrededor del agua y la vegetación. Sus pabellones conectan recorridos y
+                            espacios compartidos mediante una arquitectura ligera, pensada para disfrutar el
+                            paisaje, convivir y hacer una pausa en la vida cotidiana.</div>
                         <div class="overlay-meta">
                             <div class="meta-row"><span class="meta-key">Tipología</span><span
                                     class="meta-val">Desarrollo Residencial Y Club Ecuestre</span></div>
@@ -501,18 +712,26 @@
                         </div>
                         <a class="overlay-btn" href="#">Recibe Nuestro Portafolio De Proyectos</a>
                     </div>
+                    <div class="tap-hint">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M9 11V6a2 2 0 0 1 4 0v5" />
+                            <path d="M13 11V9a2 2 0 0 1 4 0v6a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6v-3a2 2 0 0 1 4 0" />
+                        </svg>
+                        <span>Toca para ver más</span>
+                    </div>
                 </div>
 
-                <div class="tarjeta">
+                <div class="tarjeta" data-proyecto="Showroom Viñedo Los Senderos">
                     <div class="tarjeta-photo showroomclubvinedodelossenderos"></div>
                     <span class="tarjeta-title-photo">Showroom Viñedo Los Senderos </span>
                     <span class="tarjeta-status">Ejecutado</span>
                     <div class="tarjeta-overlay">
                         <div class="overlay-title">Showroom Viñedo Los Senderos </div>
                         <div class="overlay-desc">El Showroom de Viñedo Los Senderos presenta la identidad del
-                            desarrollo <br>a través de una arquitectura clara y accesible.
-                            Su estructura metálica permite recorrer, <br>descubrir y conversar, mientras cada detalle
-                            muestra la precisión constructiva <br>y
+                            desarrollo a través de una arquitectura clara y accesible.
+                            Su estructura metálica permite recorrer, descubrir y conversar, mientras cada detalle
+                            muestra la precisión constructiva y
                             el trabajo que hace posible cada espacio. </div>
                         <div class="overlay-meta">
                             <div class="meta-row"><span class="meta-key">Tipología</span><span
@@ -524,20 +743,26 @@
                         </div>
                         <a class="overlay-btn" href="#">Recibe Nuestro Portafolio De Proyectos</a>
                     </div>
+                    <div class="tap-hint">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M9 11V6a2 2 0 0 1 4 0v5" />
+                            <path d="M13 11V9a2 2 0 0 1 4 0v6a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6v-3a2 2 0 0 1 4 0" />
+                        </svg>
+                        <span>Toca para ver más</span>
+                    </div>
                 </div>
 
-                <div class="tarjeta">
+                <div class="tarjeta" data-proyecto="Casa VS1">
                     <div class="tarjeta-photo casavinedossmavs1"></div>
                     <span class="tarjeta-title-photo">CASA VS1</span>
                     <span class="tarjeta-status">Ejecutado</span>
                     <div class="tarjeta-overlay">
                         <div class="overlay-title">Casa VS1</div>
-                        <div class="overlay-desc">Casa VS-01 nace de una arquitectura consolidada y encuentra <br> en el
-                            viñedo su propia forma de habitar.
-                            <br>La orientación, la luz natural, la ventilación y las vistas dan forma a espacios
-                            cómodos, serenos <br>y conectados con el
-                            paisaje de San Miguel de Allende.
-                        </div>
+                        <div class="overlay-desc">Casa VS-01 nace de una arquitectura consolidada y encuentra en el
+                            viñedo su propia forma de habitar. La orientación, la luz natural, la ventilación y las
+                            vistas dan forma a espacios cómodos, serenos y conectados con el paisaje de San Miguel de
+                            Allende.</div>
                         <div class="overlay-meta">
                             <div class="meta-row"><span class="meta-key">Tipología</span><span
                                     class="meta-val">Desarrollo Residencial Vitivinícola</span></div>
@@ -548,20 +773,25 @@
                         </div>
                         <a class="overlay-btn" href="#">Recibe Nuestro Portafolio De Proyectos</a>
                     </div>
+                    <div class="tap-hint">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M9 11V6a2 2 0 0 1 4 0v5" />
+                            <path d="M13 11V9a2 2 0 0 1 4 0v6a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6v-3a2 2 0 0 1 4 0" />
+                        </svg>
+                        <span>Toca para ver más</span>
+                    </div>
                 </div>
 
-                <div class="tarjeta">
+                <div class="tarjeta" data-proyecto="Casa VS2">
                     <div class="tarjeta-photo casavinedossmavs2"></div>
                     <span class="tarjeta-title-photo">Casa VS2</span>
                     <span class="tarjeta-status">Ejecutado</span>
                     <div class="tarjeta-overlay">
                         <div class="overlay-title">Casa VS2</div>
-                        <div class="overlay-desc">Casa VS-02 transforma una arquitectura consolidada <br>para crear otra
-                            manera de vivir el viñedo.<br>
-                            La amplitud, la luz y la continuidad entre interiores y exteriores <br>dan forma a una
-                            residencia sobria, cálida y
-                            cercana al paisaje que la rodea.
-                        </div>
+                        <div class="overlay-desc">Casa VS-02 transforma una arquitectura consolidada para crear otra
+                            manera de vivir el viñedo. La amplitud, la luz y la continuidad entre interiores y exteriores
+                            dan forma a una residencia sobria, cálida y cercana al paisaje que la rodea.</div>
                         <div class="overlay-meta">
                             <div class="meta-row"><span class="meta-key">Tipología</span><span
                                     class="meta-val">Desarrollo Residencial Vitivinícola</span></div>
@@ -572,20 +802,26 @@
                         </div>
                         <a class="overlay-btn" href="#">Recibe Nuestro Portafolio De Proyectos</a>
                     </div>
+                    <div class="tap-hint">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M9 11V6a2 2 0 0 1 4 0v5" />
+                            <path d="M13 11V9a2 2 0 0 1 4 0v6a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6v-3a2 2 0 0 1 4 0" />
+                        </svg>
+                        <span>Toca para ver más</span>
+                    </div>
                 </div>
 
-                <div class="tarjeta">
+                <div class="tarjeta" data-proyecto="Ranchitos">
                     <div class="tarjeta-photo ranchitossma"></div>
                     <span class="tarjeta-title-photo">RANCHITOS</span>
                     <span class="tarjeta-status">Ejecutado</span>
                     <div class="tarjeta-overlay">
                         <div class="overlay-title">Ranchitos</div>
                         <div class="overlay-desc">Ranchitos reúne vivienda, vida ecuestre y espacios compartidos en San
-                            Miguel de Allende.
-                            <br>Residencias, caballerizas, pistas y recorridos conviven dentro de un mismo entorno,
-                            <br>creando una experiencia cotidiana vinculada con los caballos, el bienestar y la vida al
-                            aire libre.
-                        </div>
+                            Miguel de Allende. Residencias, caballerizas, pistas y recorridos conviven dentro de un mismo
+                            entorno, creando una experiencia cotidiana vinculada con los caballos, el bienestar y la vida
+                            al aire libre.</div>
                         <div class="overlay-meta">
                             <div class="meta-row"><span class="meta-key">Tipología</span><span
                                     class="meta-val">Desarrollo Residencial</span></div>
@@ -597,19 +833,26 @@
                         </div>
                         <a class="overlay-btn" href="#">Recibe Nuestro Portafolio De Proyectos</a>
                     </div>
+                    <div class="tap-hint">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M9 11V6a2 2 0 0 1 4 0v5" />
+                            <path d="M13 11V9a2 2 0 0 1 4 0v6a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6v-3a2 2 0 0 1 4 0" />
+                        </svg>
+                        <span>Toca para ver más</span>
+                    </div>
                 </div>
 
-                <div class="tarjeta">
+                <div class="tarjeta" data-proyecto="Casa Beckhart">
                     <div class="tarjeta-photo casabeckhartsma"></div>
                     <span class="tarjeta-title-photo">Casa Beckhart</span>
                     <span class="tarjeta-status">Ejecutado</span>
                     <div class="tarjeta-overlay">
                         <div class="overlay-title">Casa Beckhart</div>
                         <div class="overlay-desc">Casa Beckhart adapta una arquitectura consolidada a la vida cotidiana
-                            de Ranchitos.<br>
-                            Sus espacios cálidos, materiales sobrios y detalles precisos acompañan una forma de habitar
-                            cercana a<br>
-                            la actividad ecuestre, al descanso y al paisaje de San Miguel de Allende. </div>
+                            de Ranchitos. Sus espacios cálidos, materiales sobrios y detalles precisos acompañan una
+                            forma de habitar cercana a la actividad ecuestre, al descanso y al paisaje de San Miguel de
+                            Allende.</div>
                         <div class="overlay-meta">
                             <div class="meta-row"><span class="meta-key">Tipología</span><span
                                     class="meta-val">Residencia Dentro De Valle Los Senderos</span></div>
@@ -621,17 +864,25 @@
                         </div>
                         <a class="overlay-btn" href="#">Recibe Nuestro Portafolio De Proyectos</a>
                     </div>
+                    <div class="tap-hint">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M9 11V6a2 2 0 0 1 4 0v5" />
+                            <path d="M13 11V9a2 2 0 0 1 4 0v6a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6v-3a2 2 0 0 1 4 0" />
+                        </svg>
+                        <span>Toca para ver más</span>
+                    </div>
                 </div>
 
-                <div class="tarjeta">
+                <div class="tarjeta" data-proyecto="Diada Community">
                     <div class="tarjeta-photo diadacommunity"></div>
                     <span class="tarjeta-title-photo">DIADA COMMUNITY</span>
                     <span class="tarjeta-status">Ejecutado</span>
                     <div class="tarjeta-overlay">
                         <div class="overlay-title">Diada Community</div>
                         <div class="overlay-desc">Ecocomunidad que integra vivienda, naturaleza y vida comunitaria en
-                            armonía. <br>Un desarrollo residencial sostenible que promueve el bienestar y la conexión con
-                            el entorno, <br>donde cada detalle está pensado para generar pertenencia y calidad de vida.
+                            armonía. Un desarrollo residencial sostenible que promueve el bienestar y la conexión con
+                            el entorno, donde cada detalle está pensado para generar pertenencia y calidad de vida.
                         </div>
                         <div class="overlay-meta">
                             <div class="meta-row"><span class="meta-key">Tipología</span><span
@@ -649,89 +900,129 @@
                             <path d="M9 11V6a2 2 0 0 1 4 0v5" />
                             <path d="M13 11V9a2 2 0 0 1 4 0v6a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6v-3a2 2 0 0 1 4 0" />
                         </svg>
-                        <span>Toca para ver info</span>
+                        <span>Toca para ver más</span>
                     </div>
                 </div>
 
-                <div class="tarjeta">
+                <div class="tarjeta" data-proyecto="Casa Pásaret">
                     <div class="tarjeta-photo casapasaret"></div>
                     <span class="tarjeta-title-photo">Casa Pásaret</span>
                     <span class="tarjeta-status">Ejecutado</span>
                     <div class="tarjeta-overlay">
                         <div class="overlay-title">Casa Pásaret</div>
-                        <div class="overlay-desc">Casa Pásaret aprovecha la orientación, la ventilación cruzada y las vistas <br>para crear una experiencia cercana al
-entorno natural de Sangre de Cristo. <br>Sus espacios y materiales ofrecen comodidad, claridad y una forma de
-<br>habitar serena, conectada con el paisaje.</div>
+                        <div class="overlay-desc">Casa Pásaret aprovecha la orientación, la ventilación cruzada y las
+                            vistas para crear una experiencia cercana al entorno natural de Sangre de Cristo. Sus
+                            espacios y materiales ofrecen comodidad, claridad y una forma de habitar serena, conectada
+                            con el paisaje.</div>
                         <div class="overlay-meta">
-                            <div class="meta-row"><span class="meta-key">Tipología</span><span class="meta-val">Desarrollo Residencial Ecocomunidad</span></div>
-                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
-                                    class="meta-val">Sangre De Cristo</span></div>
+                            <div class="meta-row"><span class="meta-key">Tipología</span><span
+                                    class="meta-val">Desarrollo Residencial Ecocomunidad</span></div>
+                            <div class="meta-row"><span class="meta-key">Ubicación</span><span class="meta-val">Sangre De
+                                    Cristo</span></div>
                             <div class="meta-row"><span class="meta-key">Etapa</span><span
                                     class="meta-val">Ejecutado</span></div>
                         </div>
                         <a class="overlay-btn" href="#">Recibe Nuestro Portafolio De Proyectos</a>
+                    </div>
+                    <div class="tap-hint">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M9 11V6a2 2 0 0 1 4 0v5" />
+                            <path d="M13 11V9a2 2 0 0 1 4 0v6a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6v-3a2 2 0 0 1 4 0" />
+                        </svg>
+                        <span>Toca para ver más</span>
                     </div>
                 </div>
 
                 <div class="region-title">Baja California Sur</div>
 
-                <div class="tarjeta">
+                <div class="tarjeta" data-proyecto="Casa Mantarraya">
                     <div class="tarjeta-photo casamantarraya"></div>
                     <span class="tarjeta-title-photo">CASA MANTARRAYA</span>
                     <span class="tarjeta-status">Ejecutado</span>
                     <div class="tarjeta-overlay">
                         <div class="overlay-title">Casa Mantarraya</div>
-                        <div class="overlay-desc">Casa Mantarraya parte del clima costero de Baja California Sur <br>para crear espacios frescos, protegidos y
-abiertos al paisaje. <br>La sombra, la ventilación cruzada y las terrazas acompañan la vida diaria, <br>permitiendo
-disfrutar el exterior con comodidad durante distintos momentos del día.</div>
+                        <div class="overlay-desc">Casa Mantarraya parte del clima costero de Baja California Sur para
+                            crear espacios frescos, protegidos y abiertos al paisaje. La sombra, la ventilación cruzada y
+                            las terrazas acompañan la vida diaria, permitiendo disfrutar el exterior con comodidad
+                            durante distintos momentos del día.</div>
                         <div class="overlay-meta">
-                            <div class="meta-row"><span class="meta-key">Tipología</span><span class="meta-val">Residencia Costera Unifamiliar</span></div>
-                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
-                                    class="meta-val">Baja California Sur</span></div>
+                            <div class="meta-row"><span class="meta-key">Tipología</span><span
+                                    class="meta-val">Residencia Costera Unifamiliar</span></div>
+                            <div class="meta-row"><span class="meta-key">Ubicación</span><span class="meta-val">Baja
+                                    California Sur</span></div>
                             <div class="meta-row"><span class="meta-key">Etapa</span><span
                                     class="meta-val">Ejecutado</span></div>
                         </div>
                         <a class="overlay-btn" href="#">Recibe Nuestro Portafolio De Proyectos</a>
                     </div>
+                    <div class="tap-hint">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M9 11V6a2 2 0 0 1 4 0v5" />
+                            <path d="M13 11V9a2 2 0 0 1 4 0v6a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6v-3a2 2 0 0 1 4 0" />
+                        </svg>
+                        <span>Toca para ver más</span>
+                    </div>
                 </div>
 
-                <div class="tarjeta">
+                <div class="tarjeta" data-proyecto="Duna las Ánimas">
                     <div class="tarjeta-photo duna"></div>
                     <span class="tarjeta-title-photo">DUNA LAS ÁNIMAS</span>
                     <span class="tarjeta-status">En Desarrollo</span>
                     <div class="tarjeta-overlay">
                         <div class="overlay-title">Duna las Ánimas</div>
-                        <div class="overlay-desc">Duna Las Ánimas reúne residencias, hospitalidad, servicios y espacios compartidos en un mismo lugar. <br>El
-proyecto parte del paisaje de Baja California Sur para crear distintas formas de habitar, descansar y encontrarse,<br>
-con una visión capaz de crecer con el tiempo.</div>
+                        <div class="overlay-desc">Duna Las Ánimas reúne residencias, hospitalidad, servicios y espacios
+                            compartidos en un mismo lugar. El proyecto parte del paisaje de Baja California Sur para
+                            crear distintas formas de habitar, descansar y encontrarse, con una visión capaz de crecer
+                            con el tiempo.</div>
                         <div class="overlay-meta">
-                            <div class="meta-row"><span class="meta-key">Tipología</span><span class="meta-val">Desarrollo Residencial Y Hospitalidad</span></div>
-                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
-                                    class="meta-val">San José Del Cabo</span></div>
+                            <div class="meta-row"><span class="meta-key">Tipología</span><span
+                                    class="meta-val">Desarrollo Residencial Y Hospitalidad</span></div>
+                            <div class="meta-row"><span class="meta-key">Ubicación</span><span class="meta-val">San José
+                                    Del Cabo</span></div>
                             <div class="meta-row"><span class="meta-key">Etapa</span><span class="meta-val">En
                                     Desarrollo</span></div>
                         </div>
                         <a class="overlay-btn" href="#">Recibe Nuestro Portafolio De Proyectos</a>
                     </div>
+                    <div class="tap-hint">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M9 11V6a2 2 0 0 1 4 0v5" />
+                            <path d="M13 11V9a2 2 0 0 1 4 0v6a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6v-3a2 2 0 0 1 4 0" />
+                        </svg>
+                        <span>Toca para ver más</span>
+                    </div>
                 </div>
 
-                <div class="tarjeta">
+                <div class="tarjeta" data-proyecto="Palo Blanco">
                     <div class="tarjeta-photo paloblanco"></div>
                     <span class="tarjeta-title-photo">PALO BLANCO</span>
                     <span class="tarjeta-status">En Construcción</span>
                     <div class="tarjeta-overlay">
                         <div class="overlay-title">Palo Blanco</div>
-                        <div class="overlay-desc">Palo Blanco reúne vivienda, hospitalidad y bienestar en San José del Cabo. <br>Su arquitectura enlaza espacios para
-habitar, descansar y compartir, mientras los servicios <br>y las áreas comunes acompañan la vida diaria y permiten
-que el proyecto crezca de forma clara,<br> serena y vinculada con el paisaje. </div>
+                        <div class="overlay-desc">Palo Blanco reúne vivienda, hospitalidad y bienestar en San José del
+                            Cabo. Su arquitectura enlaza espacios para habitar, descansar y compartir, mientras los
+                            servicios y las áreas comunes acompañan la vida diaria y permiten que el proyecto crezca de
+                            forma clara, serena y vinculada con el paisaje.</div>
                         <div class="overlay-meta">
-                            <div class="meta-row"><span class="meta-key">Tipología</span><span class="meta-val">Desarrollo Residencial Y Wellness</span></div>
-                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
-                                    class="meta-val">San José Del Cabo</span></div>
+                            <div class="meta-row"><span class="meta-key">Tipología</span><span
+                                    class="meta-val">Desarrollo Residencial Y Wellness</span></div>
+                            <div class="meta-row"><span class="meta-key">Ubicación</span><span class="meta-val">San José
+                                    Del Cabo</span></div>
                             <div class="meta-row"><span class="meta-key">Etapa</span><span class="meta-val">En
                                     Construcción</span></div>
                         </div>
                         <a class="overlay-btn" href="#">Recibe Nuestro Portafolio De Proyectos</a>
+                    </div>
+                    <div class="tap-hint">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M9 11V6a2 2 0 0 1 4 0v5" />
+                            <path d="M13 11V9a2 2 0 0 1 4 0v6a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6v-3a2 2 0 0 1 4 0" />
+                        </svg>
+                        <span>Toca para ver más</span>
                     </div>
                 </div>
 
@@ -739,54 +1030,287 @@ que el proyecto crezca de forma clara,<br> serena y vinculada con el paisaje. </
         </div>
     </div>
 
+    <!-- ========== GALERÍA MODAL ========== -->
+    <div class="galeria-overlay" id="galeriaOverlay">
+        <button class="galeria-btn-cerrar" id="galeriaBtnCerrar" aria-label="Cerrar galería">
+            <svg viewBox="0 0 24 24" fill="none">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+        </button>
+        <button class="galeria-flecha izquierda" id="galeriaFlechaIzq" aria-label="Imagen anterior">
+            <svg viewBox="0 0 24 24">
+                <polyline points="15 18 9 12 15 6" />
+            </svg>
+        </button>
+        <button class="galeria-flecha derecha" id="galeriaFlechaDer" aria-label="Imagen siguiente">
+            <svg viewBox="0 0 24 24">
+                <polyline points="9 18 15 12 9 6" />
+            </svg>
+        </button>
+        <div class="galeria-titulo-proyecto" id="galeriaTituloProyecto"></div>
+        <div class="galeria-contador" id="galeriaContador"></div>
+        <div class="galeria-contenedor" id="galeriaContenedor">
+            <img class="galeria-imagen" id="galeriaImagen" src="" alt="Imagen del proyecto" />
+        </div>
+    </div>
+
     <script>
-        // Observador de intersección (solo para efecto decorativo, pero el contenido ya es visible)
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+        (function () {
+            // ===== MAPEO DE CLASES CSS A ARRAYS DE IMÁGENES (ACTUALIZADO) =====
+            const imagenesPorClase = {
+                'vinedodelossenderos': [
+                    'https://nidoum.com/wp-content/uploads/2026/07/vinedo-de-los-senderos-01-scaled.jpg',
+                    'https://nidoum.com/wp-content/uploads/2026/07/vinedo-senderos-2.png',
+                    'https://nidoum.com/wp-content/uploads/2026/07/vinedo-senderos-4.png'
+                ],
+                'casaclubvinedodelossenderos': [
+                    'https://nidoum.com/wp-content/uploads/2026/07/vinedo-senderos-1.png',
+                    'https://nidoum.com/wp-content/uploads/2026/07/vinedo-senderos-2.png',
+                    'https://nidoum.com/wp-content/uploads/2026/07/vinedo-senderos-3.png',
+                    'https://nidoum.com/wp-content/uploads/2026/07/vinedo-senderos-4.png'
+                ],
+                'showroomclubvinedodelossenderos': [
+                    'https://nidoum.com/wp-content/uploads/2026/07/showroom-vinedo-1.png',
+                    'https://nidoum.com/wp-content/uploads/2026/07/showroom-vinedo-2.png',
+                    'https://nidoum.com/wp-content/uploads/2026/07/showroom-vinedo-3.png'
+                ],
+                'casavinedossmavs1': [
+                    'https://nidoum.com/wp-content/uploads/2026/07/casa-vs2-01.jpg',
+                    'https://nidoum.com/wp-content/uploads/2026/07/casa-vs2-02.jpg',
+                    'https://nidoum.com/wp-content/uploads/2026/07/casa-vs2-03.jpg',
+                    'https://nidoum.com/wp-content/uploads/2026/07/casa-vs2-04.jpg'
+                ],
+                'casavinedossmavs2': [
+                    'https://nidoum.com/wp-content/uploads/2026/07/Casa-vs2.jpg',
+                    'https://nidoum.com/wp-content/uploads/2026/07/Casa-vs2-2.jpg',
+                    'https://nidoum.com/wp-content/uploads/2026/07/Casa-vs2-3.jpg',
+                    'https://nidoum.com/wp-content/uploads/2026/07/Casa-vs2-4.jpg'
+                ],
+                'ranchitossma': [
+                    'https://nidoum.com/wp-content/uploads/2026/07/ranchitos.jpg',
+                    'https://nidoum.com/wp-content/uploads/2026/07/ranchitos-2.jpg',
+                    'https://nidoum.com/wp-content/uploads/2026/07/ranchitos-3.jpg',
+                    'https://nidoum.com/wp-content/uploads/2026/07/ranchitos-4.jpg'
+                ],
+                'casabeckhartsma': [
+                    'https://nidoum.com/wp-content/uploads/2026/07/casa-beckhart.jpg',
+                    'https://nidoum.com/wp-content/uploads/2026/07/casa-beckhart-2.jpg',
+                    'https://nidoum.com/wp-content/uploads/2026/07/casa-beckhart-3.jpg',
+                    'https://nidoum.com/wp-content/uploads/2026/07/casa-beckhart-4.jpg'
+                ],
+                'diadacommunity': [
+                    'https://nidoum.com/wp-content/uploads/2026/07/20240817_155102-scaled.webp',
+                    'https://nidoum.com/wp-content/uploads/2026/07/diada-community-2.jpg',
+                    'https://nidoum.com/wp-content/uploads/2026/07/diada-community.jpg'
+                ],
+                'sangredecristo': [
+                    'https://nidoum.com/wp-content/uploads/2026/07/sangre-de-cristo.jpg',
+                    'https://nidoum.com/wp-content/uploads/2026/07/sangre-de-cristo-2.jpg',
+                    'https://nidoum.com/wp-content/uploads/2026/07/sangre-de-cristo-3.jpg',
+                    'https://nidoum.com/wp-content/uploads/2026/07/sangre-de-cristo-4.jpg'
+                ],
+                'casapasaret': [
+                    'https://nidoum.com/wp-content/uploads/2026/07/sangre-de-cristo-1.jpg',
+                    'https://nidoum.com/wp-content/uploads/2026/07/sangre-de-cristo-2-1.jpg',
+                    'https://nidoum.com/wp-content/uploads/2026/07/sangre-de-cristo-3-1.jpg',
+                    'https://nidoum.com/wp-content/uploads/2026/07/sangre-de-cristo-4-1.jpg'
+                ],
+                'casamantarraya': [
+                    'https://nidoum.com/wp-content/uploads/2026/07/mantarraya.jpg',
+                    'https://nidoum.com/wp-content/uploads/2026/07/mantarraya-2.jpg',
+                    'https://nidoum.com/wp-content/uploads/2026/07/mantarraya-3.jpg',
+                    'https://nidoum.com/wp-content/uploads/2026/07/mantarraya-4.jpg'
+                ],
+                'duna': [
+                    'https://nidoum.com/wp-content/uploads/2026/07/duna-villa-4.jpg',
+                    'https://nidoum.com/wp-content/uploads/2026/07/duna-villa.jpg',
+                    'https://nidoum.com/wp-content/uploads/2026/07/duna-villa-2.jpg',
+                    'https://nidoum.com/wp-content/uploads/2026/07/duna-villa-3.jpg'
+                ],
+                'paloblanco': [
+                    'https://nidoum.com/wp-content/uploads/2026/07/palo-blanco.jpg',
+                    'https://nidoum.com/wp-content/uploads/2026/07/palo-blanco-2.jpg',
+                    'https://nidoum.com/wp-content/uploads/2026/07/palo-blanco-3.jpg',
+                    'https://nidoum.com/wp-content/uploads/2026/07/palo-blanco-4.jpg'
+                ]
+            };
+
+            // ===== ELEMENTOS DE LA GALERÍA =====
+            const overlay = document.getElementById('galeriaOverlay');
+            const imgEl = document.getElementById('galeriaImagen');
+            const contadorEl = document.getElementById('galeriaContador');
+            const tituloProyectoEl = document.getElementById('galeriaTituloProyecto');
+            const btnCerrar = document.getElementById('galeriaBtnCerrar');
+            const flechaIzq = document.getElementById('galeriaFlechaIzq');
+            const flechaDer = document.getElementById('galeriaFlechaDer');
+
+            let imagenesActuales = [];
+            let indiceActual = 0;
+            let nombreProyectoActual = '';
+
+            function abrirGaleria(imagenes, nombreProyecto) {
+                if (!imagenes || imagenes.length === 0) return;
+                imagenesActuales = imagenes;
+                indiceActual = 0;
+                nombreProyectoActual = nombreProyecto;
+                actualizarImagen();
+                overlay.classList.add('activo');
+                document.body.style.overflow = 'hidden';
+                tituloProyectoEl.textContent = nombreProyecto;
+            }
+
+            function cerrarGaleria() {
+                overlay.classList.remove('activo');
+                document.body.style.overflow = '';
+                imagenesActuales = [];
+                indiceActual = 0;
+                nombreProyectoActual = '';
+                setTimeout(() => {
+                    imgEl.src = '';
+                }, 400);
+            }
+
+            function actualizarImagen() {
+                if (imagenesActuales.length === 0) return;
+                imgEl.style.opacity = '0';
+                setTimeout(() => {
+                    imgEl.src = imagenesActuales[indiceActual];
+                    imgEl.alt = nombreProyectoActual + ' - Imagen ' + (indiceActual + 1);
+                    contadorEl.textContent = (indiceActual + 1) + ' / ' + imagenesActuales.length;
+                    imgEl.style.opacity = '1';
+                }, 200);
+            }
+
+            function irAAnterior() {
+                if (imagenesActuales.length === 0) return;
+                indiceActual = (indiceActual - 1 + imagenesActuales.length) % imagenesActuales.length;
+                actualizarImagen();
+            }
+
+            function irASiguiente() {
+                if (imagenesActuales.length === 0) return;
+                indiceActual = (indiceActual + 1) % imagenesActuales.length;
+                actualizarImagen();
+            }
+
+            // ===== OBTENER CLASE DE IMAGEN DE UNA TARJETA =====
+            function obtenerClaseImagen(tarjeta) {
+                const photo = tarjeta.querySelector('.tarjeta-photo');
+                if (!photo) return null;
+                const clases = photo.classList;
+                for (const clase of clases) {
+                    if (imagenesPorClase.hasOwnProperty(clase)) {
+                        return clase;
+                    }
+                }
+                return null;
+            }
+
+            function obtenerNombreProyecto(tarjeta) {
+                return tarjeta.getAttribute('data-proyecto') || 'Proyecto';
+            }
+
+            // ===== EVENTOS DE LA GALERÍA =====
+            btnCerrar.addEventListener('click', (e) => {
+                e.stopPropagation();
+                cerrarGaleria();
+            });
+
+            flechaIzq.addEventListener('click', (e) => {
+                e.stopPropagation();
+                irAAnterior();
+            });
+
+            flechaDer.addEventListener('click', (e) => {
+                e.stopPropagation();
+                irASiguiente();
+            });
+
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) {
+                    cerrarGaleria();
                 }
             });
-        }, { threshold: 0.08 });
 
-        document.querySelectorAll('.carousel-section').forEach(el => observer.observe(el));
-
-        // Fallback: si por algún motivo el observador no se dispara, forzamos la visibilidad después de 300 ms
-        setTimeout(() => {
-            document.querySelectorAll('.carousel-section').forEach(el => {
-                el.classList.add('visible');
-            });
-        }, 300);
-
-        // Tap para móvil
-        const tr = document.getElementById('trackDes');
-        if (tr) {
-            const tarjetas = Array.from(tr.querySelectorAll('.tarjeta'));
-            let tx0 = 0,
-                mv = false;
-
-            tr.addEventListener('touchstart', e => {
-                tx0 = e.touches[0].clientX;
-                mv = false;
-            }, { passive: true });
-            tr.addEventListener('touchmove', e => {
-                if (Math.abs(e.touches[0].clientX - tx0) > 6) mv = true;
-            }, { passive: true });
-            tr.addEventListener('touchend', e => {
-                if (mv) return;
-                const tapped = e.target.closest('.tarjeta');
-                if (!tapped) return;
-                const alreadyOpen = tapped.classList.contains('tapped');
-                tarjetas.forEach(c => c.classList.remove('tapped'));
-                if (!alreadyOpen) tapped.classList.add('tapped');
+            document.addEventListener('keydown', (e) => {
+                if (!overlay.classList.contains('activo')) return;
+                if (e.key === 'Escape') {
+                    cerrarGaleria();
+                } else if (e.key === 'ArrowLeft') {
+                    irAAnterior();
+                } else if (e.key === 'ArrowRight') {
+                    irASiguiente();
+                }
             });
 
-            // Oculta el tap-hint después del primer toque (opcional)
-            const tapHint = document.getElementById('tapHint');
-            if (tapHint) {
-                tr.addEventListener('touchend', () => tapHint.classList.add('oculto'), { once: true });
+            // ===== EVENTOS EN LAS TARJETAS =====
+            const track = document.getElementById('trackDes');
+            if (track) {
+                const tarjetas = Array.from(track.querySelectorAll('.tarjeta'));
+
+                tarjetas.forEach(tarjeta => {
+                    tarjeta.addEventListener('click', (e) => {
+                        if (e.target.closest('.overlay-btn')) return;
+                        const claseImg = obtenerClaseImagen(tarjeta);
+                        if (!claseImg) return;
+                        const imagenes = imagenesPorClase[claseImg];
+                        const nombre = obtenerNombreProyecto(tarjeta);
+                        abrirGaleria(imagenes, nombre);
+                    });
+                });
+
+                let tx0 = 0,
+                    mv = false;
+                track.addEventListener('touchstart', e => {
+                    tx0 = e.touches[0].clientX;
+                    mv = false;
+                }, { passive: true });
+                track.addEventListener('touchmove', e => {
+                    if (Math.abs(e.touches[0].clientX - tx0) > 6) mv = true;
+                }, { passive: true });
+                track.addEventListener('touchend', e => {
+                    if (mv) return;
+                    const tapped = e.target.closest('.tarjeta');
+                    if (!tapped) return;
+                    if (e.target.closest('.overlay-btn')) return;
+                    const alreadyOpen = tapped.classList.contains('tapped');
+                    tarjetas.forEach(c => c.classList.remove('tapped'));
+                    if (!alreadyOpen) tapped.classList.add('tapped');
+                });
+
+                const tapHints = track.querySelectorAll('.tap-hint');
+                if (tapHints.length > 0) {
+                    track.addEventListener('touchend', () => {
+                        tapHints.forEach(hint => hint.classList.add('oculto'));
+                    }, { once: true });
+                }
             }
-        }
+
+            // ===== OBSERVER =====
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.08 });
+
+            document.querySelectorAll('.carousel-section').forEach(el => observer.observe(el));
+
+            setTimeout(() => {
+                document.querySelectorAll('.carousel-section').forEach(el => {
+                    el.classList.add('visible');
+                });
+            }, 300);
+
+            document.querySelectorAll('.overlay-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                });
+            });
+
+        })();
     </script>
 
 </body>
