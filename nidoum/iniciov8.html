@@ -464,6 +464,93 @@
             overflow: hidden;
         }
 
+        .nd-cta-wrapper {
+            width: 100%;
+            margin: 0;
+            padding: 0 0 0 24px;
+            box-sizing: border-box;
+        }
+
+        .nd-cta {
+            position: relative;
+            font-family: 'Albert Sans', sans-serif;
+            background-color: #e6d6c7;
+            padding: 1.5rem 0 1.5rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            box-sizing: border-box;
+            padding-right: 24px;
+        }
+
+        .nd-cta__title {
+            font-family: 'Roboto Serif', serif;
+            font-size: clamp(27px, 4.2vw, 50px);
+            font-weight: 200;
+            letter-spacing: 0.08em;
+            color: #514946;
+            line-height: 1.2;
+            margin: 0;
+        }
+
+        .nd-cta__text {
+            font-family: 'Albert Sans', sans-serif;
+            font-weight: 300;
+            font-size: 1rem;
+            color: #7c6454;
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0;
+        }
+
+        .nd-cta__btn {
+            display: inline-flex;
+            align-self: center;
+            gap: 0px;
+            padding: 12px 22px;
+            border: 1px solid rgba(124, 100, 84, 0.5);
+            border-radius: 10px;
+            font-family: 'Albert Sans', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            color: #514946;
+            background: transparent;
+            cursor: pointer;
+            text-decoration: none !important;
+            position: relative;
+            overflow: hidden;
+            transition: color 0.3s ease, border-color 0.3s ease;
+            isolation: isolate;
+            z-index: 2;
+            box-sizing: border-box;
+            line-height: 1;
+            box-shadow: none;
+        }
+
+        .nd-cta__btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(124, 100, 84, 0.85);
+            transform: translateX(-101%);
+            transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 10px;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .nd-cta__btn:hover::before {
+            transform: translateX(0);
+        }
+
+        .nd-cta__btn:hover {
+            color: #ffffff;
+            font-weight: 500;
+            border-color: rgba(124, 100, 84, 0.9);
+        }
+
         /* Interacciones de Tarjeta (Hover y Tap) */
         @media (hover: hover) {
 
@@ -944,9 +1031,6 @@
                 filter: brightness(0.75);
             } */
 
-
-
-
         /* --- 5.4. Etapas (Ciclos de Desarrollo) --- */
         .etapa-card {
             flex-shrink: 0;
@@ -1213,6 +1297,19 @@
                6. ESTILOS RESPONSIVOS (Móvil <= 768px)
                ========================================================================== */
         @media (max-width: 768px) {
+
+            .nd-cta-wrapper {
+                padding-left: 24px;
+            }
+
+            .nd-cta {
+                padding: 1.5rem 24px 1.5rem 0;
+            }
+
+            .nd-cta__btn {
+                padding: 0px 1px;
+                font-size: 11px;
+            }
 
             .etapa-desc--mobile {
                 display: block;
@@ -1752,10 +1849,10 @@
                                 <span class="meta-key">Nombre del modelo</span>
                                 <span class="meta-val">Lorem ipsum dolor</span>
                             </div>
-                            <div class="meta-row">
+                            <!-- <div class="meta-row">
                                 <span class="meta-key">Código del modelo</span>
                                 <span class="meta-val">Lorem ipsum dolor</span>
-                            </div>
+                            </div> -->
                             <div class="meta-row">
                                 <span class="meta-key">Superficie total de implantación</span>
                                 <span class="meta-val">Lorem ipsum dolor</span>
@@ -1764,10 +1861,10 @@
                                 <span class="meta-key">Superficie interior</span>
                                 <span class="meta-val">Lorem ipsum dolor</span>
                             </div>
-                            <div class="meta-row">
+                            <!-- <div class="meta-row">
                                 <span class="meta-key">Superficie exterior</span>
                                 <span class="meta-val">Lorem ipsum dolor</span>
-                            </div>
+                            </div> -->
                             <div class="meta-row">
                                 <span class="meta-key">Espacio abierto integral</span>
                                 <span class="meta-val">Lorem ipsum dolor</span>
@@ -1780,22 +1877,22 @@
                                 <span class="meta-key">Costo de transportación</span>
                                 <span class="meta-val">Lorem ipsum dolor</span>
                             </div>
-                            <div class="meta-row">
+                            <!-- <div class="meta-row">
                                 <span class="meta-key">Eficiencia térmica</span>
                                 <span class="meta-val">Lorem ipsum dolor</span>
-                            </div>
-                            <div class="meta-row">
+                            </div> -->
+                            <!-- <div class="meta-row">
                                 <span class="meta-key">Eficiencia energética</span>
                                 <span class="meta-val">Lorem ipsum dolor</span>
-                            </div>
+                            </div> -->
                             <div class="meta-row">
                                 <span class="meta-key">Tiempo de fabricación y entrega</span>
                                 <span class="meta-val">Lorem ipsum dolor</span>
                             </div>
-                            <div class="meta-row">
+                            <!-- <div class="meta-row">
                                 <span class="meta-key">Acabado arquitectónico</span>
                                 <span class="meta-val">Lorem ipsum dolor</span>
-                            </div>
+                            </div> -->
                             <div class="meta-row">
                                 <span class="meta-key">Entrega llave en puerta</span>
                                 <span class="meta-val">Lorem ipsum dolor</span>
@@ -1828,10 +1925,10 @@
                                 <span class="meta-key">Nombre del modelo</span>
                                 <span class="meta-val">Lorem ipsum dolor</span>
                             </div>
-                            <div class="meta-row">
+                            <!-- <div class="meta-row">
                                 <span class="meta-key">Código del modelo</span>
                                 <span class="meta-val">Lorem ipsum dolor</span>
-                            </div>
+                            </div> -->
                             <div class="meta-row">
                                 <span class="meta-key">Superficie total de implantación</span>
                                 <span class="meta-val">Lorem ipsum dolor</span>
@@ -1840,10 +1937,10 @@
                                 <span class="meta-key">Superficie interior</span>
                                 <span class="meta-val">Lorem ipsum dolor</span>
                             </div>
-                            <div class="meta-row">
+                            <!-- <div class="meta-row">
                                 <span class="meta-key">Superficie exterior</span>
                                 <span class="meta-val">Lorem ipsum dolor</span>
-                            </div>
+                            </div> -->
                             <div class="meta-row">
                                 <span class="meta-key">Espacio abierto integral</span>
                                 <span class="meta-val">Lorem ipsum dolor</span>
@@ -1856,22 +1953,22 @@
                                 <span class="meta-key">Costo de transportación</span>
                                 <span class="meta-val">Lorem ipsum dolor</span>
                             </div>
-                            <div class="meta-row">
+                            <!-- <div class="meta-row">
                                 <span class="meta-key">Eficiencia térmica</span>
                                 <span class="meta-val">Lorem ipsum dolor</span>
-                            </div>
-                            <div class="meta-row">
+                            </div> -->
+                            <!-- <div class="meta-row">
                                 <span class="meta-key">Eficiencia energética</span>
                                 <span class="meta-val">Lorem ipsum dolor</span>
-                            </div>
+                            </div> -->
                             <div class="meta-row">
                                 <span class="meta-key">Tiempo de fabricación y entrega</span>
                                 <span class="meta-val">Lorem ipsum dolor</span>
                             </div>
-                            <div class="meta-row">
+                            <!-- <div class="meta-row">
                                 <span class="meta-key">Acabado arquitectónico</span>
                                 <span class="meta-val">Lorem ipsum dolor</span>
-                            </div>
+                            </div> -->
                             <div class="meta-row">
                                 <span class="meta-key">Entrega llave en puerta</span>
                                 <span class="meta-val">Lorem ipsum dolor</span>
@@ -1895,10 +1992,10 @@
                                 <span class="meta-key">Nombre del modelo</span>
                                 <span class="meta-val">Lorem ipsum dolor</span>
                             </div>
-                            <div class="meta-row">
+                            <!-- <div class="meta-row">
                                 <span class="meta-key">Código del modelo</span>
                                 <span class="meta-val">Lorem ipsum dolor</span>
-                            </div>
+                            </div> -->
                             <div class="meta-row">
                                 <span class="meta-key">Superficie total de implantación</span>
                                 <span class="meta-val">Lorem ipsum dolor</span>
@@ -1907,10 +2004,10 @@
                                 <span class="meta-key">Superficie interior</span>
                                 <span class="meta-val">Lorem ipsum dolor</span>
                             </div>
-                            <div class="meta-row">
+                            <!-- <div class="meta-row">
                                 <span class="meta-key">Superficie exterior</span>
                                 <span class="meta-val">Lorem ipsum dolor</span>
-                            </div>
+                            </div> -->
                             <div class="meta-row">
                                 <span class="meta-key">Espacio abierto integral</span>
                                 <span class="meta-val">Lorem ipsum dolor</span>
@@ -1923,22 +2020,22 @@
                                 <span class="meta-key">Costo de transportación</span>
                                 <span class="meta-val">Lorem ipsum dolor</span>
                             </div>
-                            <div class="meta-row">
+                            <!-- <div class="meta-row">
                                 <span class="meta-key">Eficiencia térmica</span>
                                 <span class="meta-val">Lorem ipsum dolor</span>
-                            </div>
-                            <div class="meta-row">
+                            </div> -->
+                            <!-- <div class="meta-row">
                                 <span class="meta-key">Eficiencia energética</span>
                                 <span class="meta-val">Lorem ipsum dolor</span>
-                            </div>
+                            </div> -->
                             <div class="meta-row">
                                 <span class="meta-key">Tiempo de fabricación y entrega</span>
                                 <span class="meta-val">Lorem ipsum dolor</span>
                             </div>
-                            <div class="meta-row">
+                            <!-- <div class="meta-row">
                                 <span class="meta-key">Acabado arquitectónico</span>
                                 <span class="meta-val">Lorem ipsum dolor</span>
-                            </div>
+                            </div> -->
                             <div class="meta-row">
                                 <span class="meta-key">Entrega llave en puerta</span>
                                 <span class="meta-val">Lorem ipsum dolor</span>
@@ -1950,7 +2047,7 @@
         </div>
     </div>
 
-    <!-- BLOQUE INICIAR MEMBRESÍA NIDOUM (alineado con track-outer) -->
+    <!-- INICIAR MEMBRESÍA NIDOUM -->
     <div class="nd-cta-wrapper">
         <section class="nd-cta">
             <a href="#" class="nd-cta__btn">Iniciar Membresía NIDOUM</a>
@@ -2006,7 +2103,8 @@
                 <h2>HÁBITAT EVOLUTIVO</h2>
                 <p class="carousel-header-desc">Los modelos de hábitat NIDOUM evolucionan desde una unidad individual
                     hasta una configuración Nodo, integrando Extensiones NIDOUM, nuevas posibilidades de habitar y una
-                    relación progresiva con el entorno.<br>Modelo: Representa la unidad base del sistema, expresada mediante NID-EAGLE, NID-CONDOR o NID-AETERUM.</p>
+                    relación progresiva con el entorno.<br>Modelo: Representa la unidad base del sistema, expresada
+                    mediante NID-EAGLE, NID-CONDOR o NID-AETERUM.</p>
             </div>
         </div>
         <div class="tarjetas-triada">
@@ -2019,7 +2117,8 @@
                             <div class="tarjeta-photo escalaunidad"></div>
                             <span class="tarjeta-title-photo">MODELO</span>
                             <div class="tarjeta-overlay">
-                                <div class="overlay-desc">Representa la unidad base del sistema, expresada mediante NID-EAGLE, NID-CONDOR o NID-AETERUM</div>
+                                <div class="overlay-desc">Representa la unidad base del sistema, expresada mediante
+                                    NID-EAGLE, NID-CONDOR o NID-AETERUM</div>
                                 <div class="overlay-meta">
                                     <div class="meta-row"></div>
                                     <div class="meta-row"></div>
@@ -2051,7 +2150,9 @@
                             <div class="tarjeta-photo escalanodo"></div>
                             <span class="tarjeta-title-photo">MODELO INTEGRAL</span>
                             <div class="tarjeta-overlay">
-                                <div class="overlay-desc">Integra un modelo de hábitat con Extensiones NIDOUM que amplían las posibilidades de bienestar, creación, trabajo, encuentro y relación con el entorno.</div>
+                                <div class="overlay-desc">Integra un modelo de hábitat con Extensiones NIDOUM que
+                                    amplían las posibilidades de bienestar, creación, trabajo, encuentro y relación con
+                                    el entorno.</div>
                                 <div class="overlay-meta">
                                     <div class="meta-row"></div>
                                     <div class="meta-row"></div>
@@ -2084,7 +2185,9 @@
                             <div class="tarjeta-photo escalaterritorio"></div>
                             <span class="tarjeta-title-photo">ESCALA TERRITORIO</span>
                             <div class="tarjeta-overlay">
-                                <div class="overlay-desc">Articula distintas combinaciones de modelos de hábitat y Extensiones NIDOUM dentro de una estructura compartida, capaz de activar comunidad, territorio y continuidad.</div>
+                                <div class="overlay-desc">Articula distintas combinaciones de modelos de hábitat y
+                                    Extensiones NIDOUM dentro de una estructura compartida, capaz de activar comunidad,
+                                    territorio y continuidad.</div>
                                 <div class="overlay-meta">
                                     <div class="meta-row"></div>
                                     <div class="meta-row"></div>
@@ -2192,15 +2295,18 @@
             <div class="carousel-header-text">
                 <div class="carousel-header-label">DESARROLLOS</div>
                 <h2>PORTAFOLIO DE PROYECTOS</h2>
-                <p class="carousel-header-desc">Una selección de desarrollos y proyectos donde NIDOUM y ARCOMPANY transforman visión, territorio y arquitectura en ecosistemas habitables que evolucionan con propósito, pertenencia y continuidad.</p>
+                <p class="carousel-header-desc">Una selección de desarrollos y proyectos donde NIDOUM y ARCOMPANY
+                    transforman visión, territorio y arquitectura en ecosistemas habitables que evolucionan con
+                    propósito, pertenencia y continuidad.</p>
                 <div style="padding-top: 10px;"></div>
-                <a class="nav-elemento" style="max-width: 600px;" href="https://nidoum.com/desarrollos/"><span>Explorar El Portafolio</span></a>
+                <a class="nav-elemento" style="max-width: 600px;" href="https://nidoum.com/desarrollos/"><span>Explorar
+                        El Portafolio</span></a>
             </div>
         </div>
         <div class="track-outer" id="trackOuterDes">
             <div class="track" id="trackDes">
 
-                                <div class="tarjeta">
+                <div class="tarjeta">
                     <div class="tarjeta-photo vinedodelossenderos"></div>
                     <span class="tarjeta-title-photo">VIÑEDO DE LOS SENDEROS</span>
                     <span class="tarjeta-status">Ejecutado</span>
@@ -2380,13 +2486,15 @@
                     <div class="tarjeta-overlay">
                         <div class="overlay-title">Diada Community</div>
                         <div class="overlay-desc">Ecocomunidad que integra vivienda, naturaleza y vida comunitaria en
-                            armonía. <br>Un desarrollo residencial sostenible que promueve el bienestar y la conexión con
+                            armonía. <br>Un desarrollo residencial sostenible que promueve el bienestar y la conexión
+                            con
                             el entorno, <br>donde cada detalle está pensado para generar pertenencia y calidad de vida.
                         </div>
                         <div class="overlay-meta">
                             <div class="meta-row"><span class="meta-key">Tipología</span><span
                                     class="meta-val">Desarrollo Residencial Ecocomunidad</span></div>
-                            <div class="meta-row"><span class="meta-key">Ubicación</span><span class="meta-val">Sangre De
+                            <div class="meta-row"><span class="meta-key">Ubicación</span><span class="meta-val">Sangre
+                                    De
                                     Cristo</span></div>
                             <div class="meta-row"><span class="meta-key">Etapa</span><span
                                     class="meta-val">Ejecutado</span></div>
@@ -2409,13 +2517,17 @@
                     <span class="tarjeta-status">Ejecutado</span>
                     <div class="tarjeta-overlay">
                         <div class="overlay-title">Casa Pásaret</div>
-                        <div class="overlay-desc">Casa Pásaret aprovecha la orientación, la ventilación cruzada y las vistas <br>para crear una experiencia cercana al
-entorno natural de Sangre de Cristo. <br>Sus espacios y materiales ofrecen comodidad, claridad y una forma de
-<br>habitar serena, conectada con el paisaje.</div>
+                        <div class="overlay-desc">Casa Pásaret aprovecha la orientación, la ventilación cruzada y las
+                            vistas <br>para crear una experiencia cercana al
+                            entorno natural de Sangre de Cristo. <br>Sus espacios y materiales ofrecen comodidad,
+                            claridad y una forma de
+                            <br>habitar serena, conectada con el paisaje.
+                        </div>
                         <div class="overlay-meta">
-                            <div class="meta-row"><span class="meta-key">Tipología</span><span class="meta-val">Desarrollo Residencial Ecocomunidad</span></div>
-                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
-                                    class="meta-val">Sangre De Cristo</span></div>
+                            <div class="meta-row"><span class="meta-key">Tipología</span><span
+                                    class="meta-val">Desarrollo Residencial Ecocomunidad</span></div>
+                            <div class="meta-row"><span class="meta-key">Ubicación</span><span class="meta-val">Sangre
+                                    De Cristo</span></div>
                             <div class="meta-row"><span class="meta-key">Etapa</span><span
                                     class="meta-val">Ejecutado</span></div>
                         </div>
@@ -2431,13 +2543,17 @@ entorno natural de Sangre de Cristo. <br>Sus espacios y materiales ofrecen comod
                     <span class="tarjeta-status">Ejecutado</span>
                     <div class="tarjeta-overlay">
                         <div class="overlay-title">Casa Mantarraya</div>
-                        <div class="overlay-desc">Casa Mantarraya parte del clima costero de Baja California Sur <br>para crear espacios frescos, protegidos y
-abiertos al paisaje. <br>La sombra, la ventilación cruzada y las terrazas acompañan la vida diaria, <br>permitiendo
-disfrutar el exterior con comodidad durante distintos momentos del día.</div>
+                        <div class="overlay-desc">Casa Mantarraya parte del clima costero de Baja California Sur
+                            <br>para crear espacios frescos, protegidos y
+                            abiertos al paisaje. <br>La sombra, la ventilación cruzada y las terrazas acompañan la vida
+                            diaria, <br>permitiendo
+                            disfrutar el exterior con comodidad durante distintos momentos del día.
+                        </div>
                         <div class="overlay-meta">
-                            <div class="meta-row"><span class="meta-key">Tipología</span><span class="meta-val">Residencia Costera Unifamiliar</span></div>
-                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
-                                    class="meta-val">Baja California Sur</span></div>
+                            <div class="meta-row"><span class="meta-key">Tipología</span><span
+                                    class="meta-val">Residencia Costera Unifamiliar</span></div>
+                            <div class="meta-row"><span class="meta-key">Ubicación</span><span class="meta-val">Baja
+                                    California Sur</span></div>
                             <div class="meta-row"><span class="meta-key">Etapa</span><span
                                     class="meta-val">Ejecutado</span></div>
                         </div>
@@ -2451,13 +2567,16 @@ disfrutar el exterior con comodidad durante distintos momentos del día.</div>
                     <span class="tarjeta-status">En Desarrollo</span>
                     <div class="tarjeta-overlay">
                         <div class="overlay-title">Duna las Ánimas</div>
-                        <div class="overlay-desc">Duna Las Ánimas reúne residencias, hospitalidad, servicios y espacios compartidos en un mismo lugar. <br>El
-proyecto parte del paisaje de Baja California Sur para crear distintas formas de habitar, descansar y encontrarse,<br>
-con una visión capaz de crecer con el tiempo.</div>
+                        <div class="overlay-desc">Duna Las Ánimas reúne residencias, hospitalidad, servicios y espacios
+                            compartidos en un mismo lugar. <br>El
+                            proyecto parte del paisaje de Baja California Sur para crear distintas formas de habitar,
+                            descansar y encontrarse,<br>
+                            con una visión capaz de crecer con el tiempo.</div>
                         <div class="overlay-meta">
-                            <div class="meta-row"><span class="meta-key">Tipología</span><span class="meta-val">Desarrollo Residencial Y Hospitalidad</span></div>
-                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
-                                    class="meta-val">San José Del Cabo</span></div>
+                            <div class="meta-row"><span class="meta-key">Tipología</span><span
+                                    class="meta-val">Desarrollo Residencial Y Hospitalidad</span></div>
+                            <div class="meta-row"><span class="meta-key">Ubicación</span><span class="meta-val">San José
+                                    Del Cabo</span></div>
                             <div class="meta-row"><span class="meta-key">Etapa</span><span class="meta-val">En
                                     Desarrollo</span></div>
                         </div>
@@ -2471,13 +2590,16 @@ con una visión capaz de crecer con el tiempo.</div>
                     <span class="tarjeta-status">En Construcción</span>
                     <div class="tarjeta-overlay">
                         <div class="overlay-title">Palo Blanco</div>
-                        <div class="overlay-desc">Palo Blanco reúne vivienda, hospitalidad y bienestar en San José del Cabo. <br>Su arquitectura enlaza espacios para
-habitar, descansar y compartir, mientras los servicios <br>y las áreas comunes acompañan la vida diaria y permiten
-que el proyecto crezca de forma clara,<br> serena y vinculada con el paisaje. </div>
+                        <div class="overlay-desc">Palo Blanco reúne vivienda, hospitalidad y bienestar en San José del
+                            Cabo. <br>Su arquitectura enlaza espacios para
+                            habitar, descansar y compartir, mientras los servicios <br>y las áreas comunes acompañan la
+                            vida diaria y permiten
+                            que el proyecto crezca de forma clara,<br> serena y vinculada con el paisaje. </div>
                         <div class="overlay-meta">
-                            <div class="meta-row"><span class="meta-key">Tipología</span><span class="meta-val">Desarrollo Residencial Y Wellness</span></div>
-                            <div class="meta-row"><span class="meta-key">Ubicación</span><span
-                                    class="meta-val">San José Del Cabo</span></div>
+                            <div class="meta-row"><span class="meta-key">Tipología</span><span
+                                    class="meta-val">Desarrollo Residencial Y Wellness</span></div>
+                            <div class="meta-row"><span class="meta-key">Ubicación</span><span class="meta-val">San José
+                                    Del Cabo</span></div>
                             <div class="meta-row"><span class="meta-key">Etapa</span><span class="meta-val">En
                                     Construcción</span></div>
                         </div>
@@ -2613,101 +2735,6 @@ que el proyecto crezca de forma clara,<br> serena y vinculada con el paisaje. </
             </div>
         </div>
     </div>
-
-    <style>
-        /* Estilos del botón CTA */
-        .nd-cta-wrapper {
-            width: 100%;
-            margin: 0;
-            padding: 0 0 0 24px;
-            box-sizing: border-box;
-        }
-        .nd-cta {
-            position: relative;
-            font-family: 'Albert Sans', sans-serif;
-            background-color: #e6d6c7;
-            padding: 1.5rem 0 1.5rem 0;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            box-sizing: border-box;
-            padding-right: 24px;
-        }
-        .nd-cta__title {
-            font-family: 'Roboto Serif', serif;
-            font-size: clamp(27px, 4.2vw, 50px);
-            font-weight: 200;
-            letter-spacing: 0.08em;
-            color: #514946;
-            line-height: 1.2;
-            margin: 0;
-        }
-        .nd-cta__text {
-            font-family: 'Albert Sans', sans-serif;
-            font-weight: 300;
-            font-size: 1rem;
-            color: #7c6454;
-            line-height: 1.6;
-            max-width: 700px;
-            margin: 0;
-        }
-        .nd-cta__btn {
-            display: inline-flex;
-            align-self: flex-start;
-            gap: 0px;
-            padding: 12px 22px;
-            border: 1px solid rgba(124, 100, 84, 0.5);
-            border-radius: 10px;
-            font-family: 'Albert Sans', sans-serif;
-            font-size: 12px;
-            font-weight: 400;
-            letter-spacing: 0.32em;
-            text-transform: uppercase;
-            color: #514946;
-            background: transparent;
-            cursor: pointer;
-            text-decoration: none !important;
-            position: relative;
-            overflow: hidden;
-            transition: color 0.3s ease, border-color 0.3s ease;
-            isolation: isolate;
-            z-index: 2;
-            box-sizing: border-box;
-            line-height: 1;
-            box-shadow: none;
-        }
-        .nd-cta__btn::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: rgba(124, 100, 84, 0.85);
-            transform: translateX(-101%);
-            transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 10px;
-            z-index: -1;
-            pointer-events: none;
-        }
-        .nd-cta__btn:hover::before {
-            transform: translateX(0);
-        }
-        .nd-cta__btn:hover {
-            color: #ffffff;
-            font-weight: 500;
-            border-color: rgba(124, 100, 84, 0.9);
-        }
-        @media (max-width: 640px) {
-            .nd-cta-wrapper {
-                padding-left: 24px;
-            }
-            .nd-cta {
-                padding: 1.5rem 24px 1.5rem 0;
-            }
-            .nd-cta__btn {
-                padding: 0px 1px;
-                font-size: 11px;
-            }
-        }
-    </style>
 
     <script>
         /* ─── PARALLAX ──────────────────────────────────────────────── */
