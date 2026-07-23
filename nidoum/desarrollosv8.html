@@ -427,93 +427,63 @@
             pointer-events: none;
         }
 
-        .galeria-btn-cerrar {
-            position: fixed;
-            top: 28px;
-            right: 32px;
-            z-index: 10001;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.3s ease, transform 0.3s ease;
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .galeria-overlay.activo .galeria-btn-cerrar {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .galeria-btn-cerrar:hover {
-            background: rgba(255, 255, 255, 0.18);
-            transform: scale(1.08);
-        }
-
-        .galeria-btn-cerrar svg {
-            width: 18px;
-            height: 18px;
-            stroke: var(--white);
-            stroke-width: 1.5;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
+        /* --- BOTONES DE GALERÍA CON ESTILO ARROW-BTN --- */
+        .galeria-btn-cerrar,
         .galeria-flecha {
-            position: fixed;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 10001;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.06);
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            width: 40px;
+            height: 40px;
+            border-radius: var(--tarjeta-r);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            background: rgba(255, 255, 255, 0.10);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background 0.3s ease, transform 0.3s ease;
+            color: var(--white);
+            transition: background 0.25s, border-color 0.25s, color 0.25s;
+            position: fixed;
+            z-index: 10001;
             opacity: 0;
             pointer-events: none;
         }
 
+        .galeria-overlay.activo .galeria-btn-cerrar,
         .galeria-overlay.activo .galeria-flecha {
             opacity: 1;
             pointer-events: auto;
         }
 
+        .galeria-btn-cerrar:hover,
         .galeria-flecha:hover {
-            background: rgba(255, 255, 255, 0.16);
-            transform: translateY(-50%) scale(1.08);
+            background: var(--sandob);
+            border-color: var(--sandob);
+            color: var(--sandlight);
+        }
+
+        .galeria-btn-cerrar svg,
+        .galeria-flecha svg {
+            width: 15px;
+            height: 15px;
+            stroke: currentColor;
+        }
+
+        .galeria-btn-cerrar {
+            top: 28px;
+            right: 32px;
         }
 
         .galeria-flecha.izquierda {
             left: 24px;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
         .galeria-flecha.derecha {
             right: 24px;
-        }
-
-        .galeria-flecha svg {
-            width: 20px;
-            height: 20px;
-            stroke: var(--white);
-            stroke-width: 1.5;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            fill: none;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
         .galeria-contador {
@@ -595,9 +565,15 @@
                 aspect-ratio: 16/9;
             }
 
+            .galeria-btn-cerrar,
             .galeria-flecha {
                 width: 38px;
                 height: 38px;
+            }
+
+            .galeria-btn-cerrar {
+                top: 18px;
+                right: 16px;
             }
 
             .galeria-flecha.izquierda {
@@ -608,21 +584,10 @@
                 right: 10px;
             }
 
+            .galeria-btn-cerrar svg,
             .galeria-flecha svg {
-                width: 16px;
-                height: 16px;
-            }
-
-            .galeria-btn-cerrar {
-                top: 18px;
-                right: 16px;
-                width: 38px;
-                height: 38px;
-            }
-
-            .galeria-btn-cerrar svg {
-                width: 15px;
-                height: 15px;
+                width: 14px;
+                height: 14px;
             }
 
             .galeria-titulo-proyecto {
@@ -1039,12 +1004,12 @@
             </svg>
         </button>
         <button class="galeria-flecha izquierda" id="galeriaFlechaIzq" aria-label="Imagen anterior">
-            <svg viewBox="0 0 24 24">
+            <svg viewBox="0 0 24 24" fill="none">
                 <polyline points="15 18 9 12 15 6" />
             </svg>
         </button>
         <button class="galeria-flecha derecha" id="galeriaFlechaDer" aria-label="Imagen siguiente">
-            <svg viewBox="0 0 24 24">
+            <svg viewBox="0 0 24 24" fill="none">
                 <polyline points="9 18 15 12 9 6" />
             </svg>
         </button>
@@ -1057,7 +1022,7 @@
 
     <script>
         (function () {
-            // ===== MAPEO DE CLASES CSS A ARRAYS DE IMÁGENES (ACTUALIZADO) =====
+            // ===== MAPEO DE CLASES CSS A ARRAYS DE IMÁGENES =====
             const imagenesPorClase = {
                 'vinedodelossenderos': [
                     'https://nidoum.com/wp-content/uploads/2026/07/vinedo-de-los-senderos-01-scaled.jpg',
