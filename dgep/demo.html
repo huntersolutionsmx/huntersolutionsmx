@@ -1,0 +1,1704 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ediciones La Rana</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+    rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=book_2" />
+  <style>
+    :root {
+      --azul: #054A83;
+      --azul-2: #1A659C;
+      --claro: #FCFDF7;
+      --azul-claro: #C0DFF4;
+      --tinta: #052A47;
+      --rosa: #E5017C;
+      --merlot: #75282D;
+      --linea: rgba(5, 74, 131, .16);
+      --font-display: 'DM Sans', sans-serif;
+      --font-body: 'Roboto', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      * {
+        animation-duration: .001ms !important;
+        transition-duration: .001ms !important;
+      }
+    }
+
+    body {
+      margin: 0;
+      background: var(--claro);
+      color: var(--tinta);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: var(--font-display);
+      color: var(--azul);
+      margin: 0;
+      line-height: 1.08;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .envolvente {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    section {
+      padding: 96px 0;
+    }
+
+    .rotulo {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: .82rem;
+      letter-spacing: .01em;
+      color: var(--azul-2);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .titulo-seccion {
+      font-size: clamp(1.9rem, 3vw, 2.7rem);
+      font-weight: 700;
+      max-width: 640px;
+    }
+
+    .intro-seccion {
+      font-size: 1.05rem;
+      max-width: 560px;
+      color: var(--tinta);
+      margin-top: 16px;
+      opacity: .85;
+    }
+
+    button {
+      font-family: var(--font-body);
+      cursor: pointer;
+    }
+
+    /* ---------- Header ---------- */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(252, 253, 247, .92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--linea);
+    }
+
+    .barra-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 28px;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .marca {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.35rem;
+      color: var(--azul);
+      letter-spacing: -.01em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .marca img.logo-marca {
+      height: 36px;
+      width: auto;
+    }
+
+    .marca .marca-texto {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .marca span {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: .72rem;
+      color: var(--azul-2);
+    }
+
+    nav.enlaces {
+      display: flex;
+      gap: 30px;
+    }
+
+    nav.enlaces a {
+      font-size: .92rem;
+      color: var(--tinta);
+      text-decoration: none;
+      position: relative;
+      padding: 4px 0;
+    }
+
+    nav.enlaces a:hover {
+      color: var(--azul);
+    }
+
+    .acciones-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 3px;
+      padding: 11px 22px;
+      font-size: .9rem;
+      font-weight: 500;
+      transition: transform .15s ease, background .15s ease;
+    }
+
+    .btn:active {
+      transform: scale(.97);
+    }
+
+    .btn-primario {
+      background: var(--azul);
+      color: var(--claro);
+    }
+
+    .btn-primario:hover {
+      background: var(--rosa);
+    }
+
+    .btn-fantasma {
+      background: transparent;
+      color: var(--rosa);
+      border: 1px solid var(--rosa);
+    }
+
+    .btn-fantasma:hover {
+      background: var(--azul);
+      border: 1px solid var(--azul);
+      color: var(--claro);
+    }
+
+    .carrito-btn {
+      position: relative;
+      background: none;
+      border: 1px solid var(--linea);
+      border-radius: 3px;
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .carrito-btn svg {
+      width: 19px;
+      height: 19px;
+      stroke: var(--azul);
+    }
+
+    .carrito-cuenta {
+      position: absolute;
+      top: -7px;
+      right: -7px;
+      background: var(--azul-2);
+      color: var(--claro);
+      font-size: .68rem;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-menu-movil {
+      display: none;
+      background: none;
+      border: none;
+    }
+
+    .btn-menu-movil svg {
+      width: 24px;
+      stroke: var(--azul);
+    }
+
+    /* ---------- Hero ---------- */
+    #inicio {
+      padding-top: 70px;
+      padding-bottom: 60px;
+      overflow: hidden;
+    }
+
+    .hero-envolvente {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-texto h1 {
+      font-size: clamp(2.6rem, 5vw, 4.1rem);
+      font-weight: 700;
+      letter-spacing: -.02em;
+    }
+
+    .hero-texto p {
+      margin-top: 22px;
+      font-size: 1.12rem;
+      color: var(--tinta);
+      max-width: 480px;
+      opacity: .88;
+    }
+
+    .hero-acciones {
+      display: flex;
+      gap: 16px;
+      margin-top: 34px;
+    }
+
+    .hero-cifras {
+      display: flex;
+      gap: 40px;
+      margin-top: 56px;
+      padding-top: 32px;
+      border-top: 1px solid var(--linea);
+    }
+
+    .cifra b {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.7rem;
+      color: var(--azul);
+    }
+
+    .cifra span {
+      font-size: .82rem;
+      color: var(--tinta);
+      opacity: .75;
+    }
+
+    .estante {
+      position: relative;
+      height: 440px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 10px;
+      /* transform: rotate(-2deg); */
+    }
+
+    .lomo {
+      border-radius: 2px 2px 0 0;
+      position: relative;
+      box-shadow: 2px 0 0 rgba(0, 0, 0, .06) inset;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: subir .6s ease forwards;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 14px;
+    }
+
+    .lomo span {
+      writing-mode: vertical-rl;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: .78rem;
+      letter-spacing: .02em;
+      color: inherit;
+    }
+
+    @keyframes subir {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .estante::after {
+      content: "";
+      position: absolute;
+      bottom: -14px;
+      left: -20px;
+      right: -20px;
+      height: 14px;
+      background: var(--azul);
+      border-radius: 2px;
+    }
+
+    /* ---------- Nosotros / Contacto ---------- */
+    #nosotros {
+      background: var(--rosa);
+      color: var(--claro);
+    }
+
+    #nosotros .titulo-seccion,
+    #nosotros .rotulo {
+      color: var(--claro);
+    }
+
+    .nosotros-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      margin-top: 50px;
+    }
+
+    .nosotros-grid p {
+      opacity: .85;
+      margin-top: 18px;
+      max-width: 480px;
+      font-size: 1.02rem;
+    }
+
+    .contacto-lista {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .contacto-lista li {
+      border-bottom: 1px solid rgba(255, 255, 255, .16);
+      padding-bottom: 20px;
+    }
+
+    .contacto-lista b {
+      display: block;
+      font-family: var(--font-display);
+      font-size: .85rem;
+      color: var(--claro);
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    .contacto-lista a {
+      text-decoration: none;
+      color: var(--claro);
+      font-size: 1.02rem;
+    }
+
+    .contacto-lista a:hover {
+      color: var(--claro);
+    }
+
+    /* ---------- Editoriales ---------- */
+    .editoriales-grid {
+      margin-top: 56px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--linea);
+      border: 1px solid var(--linea);
+    }
+
+    .tarjeta-editorial {
+      background: var(--claro);
+      padding: 38px 34px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .marca-editorial {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--claro);
+    }
+
+    .tarjeta-editorial h3 {
+      font-size: 1.3rem;
+    }
+
+    .tarjeta-editorial .direccion {
+      font-size: .88rem;
+      color: var(--tinta);
+      opacity: .75;
+    }
+
+    .tarjeta-editorial .desc {
+      font-size: .94rem;
+      color: var(--tinta);
+      opacity: .9;
+      flex-grow: 1;
+    }
+
+    .enlace-catalogo {
+      font-size: .88rem;
+      font-weight: 500;
+      color: var(--azul);
+      text-decoration: none;
+      border-bottom: 1px solid var(--azul);
+      align-self: flex-start;
+      padding-bottom: 2px;
+    }
+
+    .enlace-catalogo:hover {
+      color: var(--rosa);
+      border-color: var(--rosa);
+    }
+
+    /* ---------- Catálogo ---------- */
+    #catalogo {
+      background: linear-gradient(180deg, var(--claro), #F3F8FD);
+    }
+
+    .filtros {
+      display: flex;
+      gap: 10px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .filtro {
+      border: 1px solid var(--linea);
+      background: transparent;
+      border-radius: 20px;
+      padding: 8px 18px;
+      font-size: .85rem;
+      color: var(--tinta);
+    }
+
+    .filtro.activo {
+      background: var(--rosa);
+      border-color: var(--rosa);
+      color: var(--claro);
+    }
+
+    .catalogo-grid {
+      margin-top: 36px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 34px 30px;
+    }
+
+    .libro {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .portada {
+      aspect-ratio: 2/3;
+      border-radius: 2px;
+      position: relative;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: var(--claro);
+      box-shadow: 0 14px 26px -14px rgba(5, 42, 71, .4);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .libro:hover .portada {
+      transform: translateY(-6px);
+      box-shadow: 0 22px 32px -14px rgba(5, 42, 71, .5);
+    }
+
+    .portada .categoria {
+      font-size: .7rem;
+      letter-spacing: .02em;
+      opacity: .85;
+    }
+
+    .portada .titulo-libro {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.15rem;
+      line-height: 1.15;
+    }
+
+    .portada .autor-libro {
+      font-size: .82rem;
+      opacity: .85;
+      margin-top: 6px;
+    }
+
+    .info-libro {
+      margin-top: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .info-libro .precio {
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: var(--azul);
+    }
+
+    .info-libro .editorial-tag {
+      font-size: .78rem;
+      color: var(--tinta);
+      opacity: .65;
+    }
+
+    .acciones-libro {
+      display: flex;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .accion-mini {
+      flex: 1;
+      border: 1px solid var(--linea);
+      background: var(--claro);
+      border-radius: 3px;
+      padding: 9px 6px;
+      font-size: .76rem;
+      color: var(--tinta);
+      text-align: center;
+    }
+
+    .accion-mini:hover {
+      border-color: var(--azul);
+    }
+
+    .accion-mini.comprar {
+      background: var(--rosa);
+      color: var(--claro);
+      border-color: var(--rosa);
+    }
+
+    .accion-mini.comprar:hover {
+      background: var(--azul);
+      color: var(--claro);
+      border-color: var(--azul);
+    }
+
+    /* ---------- Autores ---------- */
+    #autores {}
+
+    .autores-envolvente {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 60px;
+      margin-top: 50px;
+      align-items: start;
+    }
+
+    .panel-login {
+      background: var(--claro);
+      border: 1px solid var(--linea);
+      border-radius: 4px;
+      padding: 36px;
+    }
+
+    .pestanas {
+      display: flex;
+      gap: 0;
+      margin-bottom: 26px;
+      border-bottom: 1px solid var(--linea);
+    }
+
+    .pestana {
+      background: none;
+      border: none;
+      padding: 10px 0;
+      margin-right: 28px;
+      font-size: .94rem;
+      color: var(--tinta);
+      opacity: .55;
+      border-bottom: 2px solid transparent;
+      position: relative;
+      top: 1px;
+    }
+
+    .pestana.activa {
+      opacity: 1;
+      color: var(--azul);
+      border-color: var(--azul);
+      font-weight: 500;
+    }
+
+    .campo {
+      margin-bottom: 16px;
+    }
+
+    .campo label {
+      display: block;
+      font-size: .8rem;
+      color: var(--tinta);
+      margin-bottom: 6px;
+    }
+
+    .campo input {
+      width: 100%;
+      border: 1px solid var(--linea);
+      border-radius: 3px;
+      padding: 11px 12px;
+      font-size: .94rem;
+      font-family: var(--font-body);
+      background: #fff;
+      color: var(--tinta);
+    }
+
+    .campo input:focus {
+      outline: 2px solid var(--azul-claro);
+      border-color: var(--azul);
+    }
+
+    .panel-login .btn {
+      width: 100%;
+      margin-top: 6px;
+    }
+
+    .panel-login .nota {
+      font-size: .78rem;
+      color: var(--tinta);
+      opacity: .65;
+      margin-top: 16px;
+      text-align: center;
+    }
+
+    .feed {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .feed-titular {
+      font-size: .92rem;
+      color: var(--tinta);
+      opacity: .75;
+      margin-bottom: 4px;
+    }
+
+    .publicacion {
+      border: 1px solid var(--linea);
+      border-radius: 4px;
+      padding: 22px;
+      background: var(--claro);
+      display: flex;
+      gap: 16px;
+    }
+
+    .avatar {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: var(--claro);
+      font-size: .95rem;
+    }
+
+    .publicacion-cuerpo {
+      flex-grow: 1;
+    }
+
+    .publicacion-cabeza {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .publicacion-cabeza b {
+      font-family: var(--font-display);
+      font-size: .98rem;
+    }
+
+    .publicacion-cabeza span {
+      font-size: .76rem;
+      color: var(--tinta);
+      opacity: .6;
+    }
+
+    .publicacion p {
+      margin-top: 8px;
+      font-size: .94rem;
+      color: var(--tinta);
+      opacity: .9;
+    }
+
+    .etiqueta-evento {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: .76rem;
+      background: var(--azul-claro);
+      color: var(--azul);
+      padding: 5px 12px;
+      border-radius: 20px;
+    }
+
+    /* ---------- Streaming ---------- */
+    #streaming {
+      background: var(--tinta);
+      color: var(--claro);
+    }
+
+    #streaming .rotulo {
+      color: var(--azul-claro);
+    }
+
+    #streaming .titulo-seccion {
+      color: var(--claro);
+    }
+
+    .streaming-envolvente {
+      display: grid;
+      grid-template-columns: 1.3fr .9fr;
+      gap: 44px;
+      margin-top: 50px;
+    }
+
+    .reproductor {
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, var(--azul), var(--tinta));
+      border-radius: 4px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .reproductor .en-vivo {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: #C4432B;
+      color: #fff;
+      font-size: .72rem;
+      padding: 5px 10px;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .reproductor .en-vivo::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #fff;
+      animation: pulso 1.4s infinite;
+    }
+
+    @keyframes pulso {
+      50% {
+        opacity: .3;
+      }
+    }
+
+    .boton-play {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .14);
+      border: 1px solid rgba(255, 255, 255, .4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(4px);
+    }
+
+    .boton-play svg {
+      width: 22px;
+      margin-left: 3px;
+      fill: #fff;
+    }
+
+    .reproductor .pie-video {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 18px 20px;
+      background: linear-gradient(0deg, rgba(3, 43, 76, .85), transparent);
+    }
+
+    .reproductor .pie-video b {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+    }
+
+    .reproductor .pie-video span {
+      display: block;
+      font-size: .82rem;
+      opacity: .75;
+      margin-top: 3px;
+    }
+
+    .lista-agenda {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .item-agenda {
+      display: flex;
+      gap: 16px;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, .14);
+      align-items: center;
+    }
+
+    .fecha-agenda {
+      width: 52px;
+      flex-shrink: 0;
+      text-align: center;
+      font-family: var(--font-display);
+    }
+
+    .fecha-agenda .dia {
+      font-size: 1.4rem;
+      font-weight: 700;
+      display: block;
+    }
+
+    .fecha-agenda .mes {
+      font-size: .7rem;
+      opacity: .7;
+    }
+
+    .detalle-agenda {
+      flex-grow: 1;
+    }
+
+    .detalle-agenda b {
+      font-family: var(--font-display);
+      font-size: .95rem;
+    }
+
+    .detalle-agenda span {
+      display: block;
+      font-size: .8rem;
+      opacity: .7;
+      margin-top: 2px;
+    }
+
+    .btn-recordar {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, .35);
+      color: var(--claro);
+      border-radius: 3px;
+      padding: 8px 14px;
+      font-size: .78rem;
+      flex-shrink: 0;
+    }
+
+    .btn-recordar:hover {
+      background: rgba(255, 255, 255, .12);
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+      padding: 56px 0 34px;
+      border-top: 1px solid var(--linea);
+    }
+
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .footer-marca {
+      font-family: var(--font-display);
+      font-weight: 800;
+      color: var(--azul);
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-marca img.logo-marca {
+      height: 32px;
+      width: auto;
+    }
+
+    .footer-marca-texto p {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: .85rem;
+      color: var(--tinta);
+      opacity: .7;
+      margin-top: 8px;
+      max-width: 280px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 12px;
+    }
+
+    .footer-social a {
+      width: 38px;
+      height: 38px;
+      border: 1px solid var(--linea);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+
+    .footer-social a svg {
+      width: 16px;
+      stroke: var(--azul);
+    }
+
+    .footer-legal {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--linea);
+      font-size: .78rem;
+      color: var(--tinta);
+      opacity: .6;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* ---------- Modal / Toast ---------- */
+    .fondo-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 43, 76, .55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+      padding: 20px;
+    }
+
+    .fondo-modal.abierto {
+      display: flex;
+    }
+
+    .modal {
+      background: var(--claro);
+      border-radius: 6px;
+      max-width: 460px;
+      width: 100%;
+      padding: 32px;
+      max-height: 85vh;
+      overflow-y: auto;
+    }
+
+    .modal-cabeza {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+
+    .cerrar-modal {
+      background: none;
+      border: none;
+      font-size: 1.3rem;
+      color: var(--tinta);
+      line-height: 1;
+    }
+
+    .modal .resumen-compra {
+      background: #F3F8FD;
+      border-radius: 4px;
+      padding: 16px;
+      margin: 18px 0;
+      font-size: .9rem;
+    }
+
+    .modal .resumen-compra div {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .modal .resumen-compra .total {
+      font-weight: 700;
+      color: var(--azul);
+      border-top: 1px solid var(--linea);
+      padding-top: 8px;
+      margin-top: 8px;
+    }
+
+    .puntos-lista {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .puntos-lista li {
+      border-bottom: 1px solid var(--linea);
+      padding-bottom: 14px;
+      font-size: .92rem;
+    }
+
+    .puntos-lista b {
+      display: block;
+      font-family: var(--font-display);
+      font-size: .98rem;
+      margin-bottom: 3px;
+    }
+
+    .puntos-lista span {
+      color: var(--tinta);
+      opacity: .7;
+      font-size: .85rem;
+    }
+
+    .aviso-seguro {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: .8rem;
+      color: var(--tinta);
+      opacity: .75;
+      margin-top: 16px;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 26px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      opacity: 0;
+      background: var(--tinta);
+      color: var(--claro);
+      padding: 14px 24px;
+      border-radius: 4px;
+      font-size: .9rem;
+      z-index: 300;
+      transition: opacity .25s ease, transform .25s ease;
+      pointer-events: none;
+    }
+
+    .toast.mostrar {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    @media (max-width:860px) {
+
+      nav.enlaces,
+      .acciones-header .btn {
+        display: none;
+      }
+
+      .btn-menu-movil {
+        display: block;
+      }
+
+      .hero-envolvente,
+      .nosotros-grid,
+      .autores-envolvente,
+      .streaming-envolvente {
+        grid-template-columns: 1fr;
+      }
+
+      .editoriales-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .catalogo-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .estante {
+        margin-top: 40px;
+        height: 280px;
+      }
+
+      section {
+        padding: 64px 0;
+      }
+    }
+
+    @media (max-width:520px) {
+      .catalogo-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-cifras {
+        gap: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="barra-nav">
+      <div class="marca">
+        <img class="logo-marca" src="https://www.huntersolutions.com.mx/wp-content/uploads/2026/09/laranalogo.png" alt="Logotipo Ediciones La Rana">
+        <span class="marca-texto">Ediciones<br>La Rana</span>
+      </div>
+      <nav class="enlaces">
+        <a href="#inicio">Inicio</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#editoriales">Editoriales</a>
+        <a href="#catalogo">Catálogo</a>
+        <a href="#autores">Autores</a>
+        <a href="#streaming">Streaming</a>
+      </nav>
+      <div class="acciones-header">
+        <button class="carrito-btn" onclick="alternarModal('modal-carrito')" aria-label="Ver carrito">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span class="carrito-cuenta" id="contador-carrito">0</span>
+        </button>
+        <a href="#autores" class="btn btn-fantasma">Iniciar sesión</a>
+        <button class="btn-menu-movil" aria-label="Abrir menú"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+            <path d="M3 6h18M3 12h18M3 18h18" />
+          </svg></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ INICIO ============ -->
+    <section id="inicio">
+      <div class="envolvente hero-envolvente">
+        <div class="hero-texto">
+          <p class="rotulo"><span class="material-symbols-outlined">book_2</span>Plataforma editorial del Estado de Guanajuato</p>
+          <h1>Todo lo que se escribe, se edita y se lee en Guanajuato, en un solo lugar.</h1>
+          <p>Publicaciones, autores, convocatorias, presentaciones y venta directa de las editoriales guanajuatenses,
+            reunidas en una plataforma con identidad propia y pagos seguros vía Finanzas del Estado.</p>
+          <div class="hero-acciones">
+            <a href="#catalogo" class="btn btn-primario">Explorar catálogo</a>
+            <a href="#nosotros" class="btn btn-fantasma">Conocer el proyecto</a>
+          </div>
+          <div class="hero-cifras">
+            <div class="cifra"><b>340+</b><span>Títulos en catálogo</span></div>
+            <div class="cifra"><b>18</b><span>Editoriales aliadas</span></div>
+            <div class="cifra"><b>52</b><span>Autores activos</span></div>
+          </div>
+        </div>
+        <div class="estante" aria-hidden="true">
+          <div class="lomo" style="width:34px; height:78%; background:var(--azul); color:var(--azul-claro); animation-delay:.05s;">
+            <span>NARRATIVA</span>
+          </div>
+          <div class="lomo" style="width:46px; height:95%; background:var(--azul-2); animation-delay:.15s;">
+            <span>QUIJOTE</span>
+          </div>
+          <div class="lomo"
+            style="width:30px; height:62%; background:var(--azul-claro); color:var(--azul); animation-delay:.25s;">
+            <span>POESÍA</span>
+          </div>
+          <div class="lomo" style="width:40px; height:88%; background:var(--tinta); color:var(--azul-claro); animation-delay:.35s;">
+            <span>ENSAYO</span>
+          </div>
+          <div class="lomo" style="width:34px; height:70%; background:var(--azul-2); animation-delay:.45s;">
+            <span>CRÓNICA</span>
+          </div>
+          <div class="lomo" style="width:44px; height:100%; background:var(--azul); color:var(--azul-claro); animation-delay:.55s;">
+            <span>PÍPILA</span>
+          </div>
+          <div class="lomo"
+            style="width:30px; height:58%; background:var(--azul-claro); color:var(--azul); animation-delay:.65s;">
+            <span>INFANTIL</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ NOSOTROS / CONTACTO ============ -->
+    <section id="nosotros">
+      <div class="envolvente">
+        <p class="rotulo"><span class="material-symbols-outlined">book_2</span>Nosotros</p>
+        <h2 class="titulo-seccion">Un proyecto de la Secretaría de Cultura del Estado de Guanajuato.</h2>
+        <div class="nosotros-grid">
+          <div>
+            <p>Impulsamos la consolidación digital de la producción editorial guanajuatense: dar identidad propia,
+              visibilidad y un canal directo de venta a las editoriales, autores y colecciones del estado, dentro de un
+              entorno atractivo, flexible y con personalidad distintiva.</p>
+            <p style="margin-top:18px;">Este sitio es una demostración de interfaz (front-end) del proyecto y no procesa
+              transacciones reales.</p>
+          </div>
+          <ul class="contacto-lista">
+            <li>
+              <b>Oficina central</b>
+              <a href="#" onclick="return false;">Cjon. de la Condesa 8, Zona Centro, 36000 Guanajuato, Gto</a>
+            </li>
+            <li>
+              <b>Contacto editorial</b>
+              <a href="#" onclick="return false;">editorial@cultura.guanajuato.gob.mx</a>
+            </li>
+            <li>
+              <b>Ediciones La Rana — Instagram</b>
+              <a href="https://www.instagram.com/edicioneslarana/" target="_blank" rel="noopener">@edicioneslarana</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EDITORIALES ============ -->
+    <section id="editoriales">
+      <div class="envolvente">
+        <p class="rotulo"><span class="material-symbols-outlined">book_2</span>Nuestras editoriales</p>
+        <h2 class="titulo-seccion">Sellos editoriales del estado, cada uno con su propio catálogo.</h2>
+        <div class="editoriales-grid">
+
+          <div class="tarjeta-editorial">
+            <div class="marca-editorial" style="background:var(--azul);">LR</div>
+            <h3>Ediciones La Rana</h3>
+            <p class="direccion">Casa de la Cultura, Guanajuato Capital</p>
+            <p class="desc">Sello histórico de la Secretaría de Cultura dedicado a narrativa, poesía y rescate editorial
+              guanajuatense.</p>
+            <a class="enlace-catalogo" href="#catalogo">Ver catálogo</a>
+          </div>
+
+          <div class="tarjeta-editorial">
+            <div class="marca-editorial" style="background:var(--rosa);">EC</div>
+            <h3>Editorial Ocelote</h3>
+            <p class="direccion">Zona Centro, Guanajuato Capital</p>
+            <p class="desc">Ensayo, historia regional y memoria de los movimientos que dieron identidad al estado.</p>
+            <a class="enlace-catalogo" href="#catalogo">Ver catálogo</a>
+          </div>
+
+          <div class="tarjeta-editorial">
+            <div class="marca-editorial" style="background:var(--tinta);">SS</div>
+            <h3>Sindicato Sentimental</h3>
+            <p class="direccion">San Miguel de Allende, Guanajuato</p>
+            <p class="desc">Literatura infantil y juvenil, cómic e ilustración, con foco en nuevas voces guanajuatenses.
+            </p>
+            <a class="enlace-catalogo" href="#catalogo">Ver catálogo</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CATÁLOGO ============ -->
+    <section id="catalogo">
+      <div class="envolvente">
+        <p class="rotulo"><span class="material-symbols-outlined">book_2</span>Catálogo digital</p>
+        <h2 class="titulo-seccion">Compra directa, con pagos seguros vía Finanzas del Estado.</h2>
+        <p class="intro-seccion">Títulos propios y de editoriales guanajuatenses, disponibles en línea y en puntos de
+          distribución oficiales.</p>
+
+        <div class="filtros">
+          <button class="filtro activo">Todos</button>
+          <button class="filtro">Narrativa</button>
+          <button class="filtro">Poesía</button>
+          <button class="filtro">Ensayo</button>
+          <button class="filtro">Infantil</button>
+        </div>
+
+        <div class="catalogo-grid" id="grid-catalogo"></div>
+      </div>
+    </section>
+
+    <!-- ============ AUTORES ============ -->
+    <section id="autores">
+      <div class="envolvente">
+        <p class="rotulo"><span class="material-symbols-outlined">book_2</span>Comunidad de autores</p>
+        <h2 class="titulo-seccion">Un espacio para que los autores compartan su obra, sus eventos y contenido exclusivo.
+        </h2>
+
+        <div class="autores-envolvente">
+          <div class="panel-login">
+            <div class="pestanas">
+              <button class="pestana activa" onclick="cambiarPestana(this,'iniciar')">Iniciar sesión</button>
+              <button class="pestana" onclick="cambiarPestana(this,'registro')">Crear cuenta</button>
+            </div>
+            <form onsubmit="return enviarLogin(event)">
+              <div class="campo">
+                <label for="correo-autor">Correo electrónico</label>
+                <input type="email" id="correo-autor" placeholder="tu@correo.com" required>
+              </div>
+              <div class="campo">
+                <label for="clave-autor">Contraseña</label>
+                <input type="password" id="clave-autor" placeholder="••••••••" required>
+              </div>
+              <button type="submit" class="btn btn-primario" id="boton-login">Entrar a mi perfil</button>
+            </form>
+            <p class="nota">Perfil verificado para autores publicados con editoriales guanajuatenses.</p>
+          </div>
+
+          <div class="feed">
+            <p class="feed-titular">Así se ve la comunidad una vez dentro</p>
+
+            <div class="publicacion">
+              <div class="avatar" style="background:var(--azul);">MR</div>
+              <div class="publicacion-cuerpo">
+                <div class="publicacion-cabeza"><b>Marisol Reyna</b><span>Editorial Bicentenario</span></div>
+                <p>Ya está disponible el segundo tiraje de "Callejones de Tinta". Gracias por el recibimiento en la
+                  presentación de Guanajuato Capital.</p>
+                <span class="etiqueta-evento">📖 Nueva publicación</span>
+              </div>
+            </div>
+
+            <div class="publicacion">
+              <div class="avatar" style="background:var(--azul-2);">JT</div>
+              <div class="publicacion-cuerpo">
+                <div class="publicacion-cabeza"><b>Julián Tovar</b><span>Ediciones La Rana</span></div>
+                <p>Este jueves platico sobre el proceso detrás de "El Silencio del Pípila" en streaming, en vivo desde
+                  la plataforma.</p>
+                <span class="etiqueta-evento">🎥 Presentación en streaming</span>
+              </div>
+            </div>
+
+            <div class="publicacion">
+              <div class="avatar" style="background:var(--tinta);">CA</div>
+              <div class="publicacion-cuerpo">
+                <div class="publicacion-cabeza"><b>Camila Arredondo</b><span>Cuadernos del Pípila</span></div>
+                <p>Convocatoria abierta para el taller infantil de cuento ilustrado — cupo limitado, sede San Miguel de
+                  Allende.</p>
+                <span class="etiqueta-evento">📣 Convocatoria abierta</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ STREAMING ============ -->
+    <section id="streaming">
+      <div class="envolvente">
+        <p class="rotulo"><span class="material-symbols-outlined">book_2</span>Streaming nativo</p>
+        <h2 class="titulo-seccion">Presentaciones de autores y editoriales, transmitidas desde la propia plataforma.
+        </h2>
+
+        <div class="streaming-envolvente">
+          <div class="reproductor">
+            <span class="en-vivo">EN VIVO</span>
+            <button class="boton-play" aria-label="Reproducir"
+              onclick="mostrarToast('Reproducción de demostración — sin transmisión real')">
+              <svg viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </button>
+            <div class="pie-video">
+              <b>Presentación: "El Silencio del Pípila"</b>
+              <span>Julián Tovar · Ediciones La Rana · Teatro Cervantes, Guanajuato</span>
+            </div>
+          </div>
+
+          <div class="lista-agenda">
+            <div class="item-agenda">
+              <div class="fecha-agenda"><span class="dia">12</span><span class="mes">SEP</span></div>
+              <div class="detalle-agenda"><b>Callejones de Tinta — segunda edición</b><span>Marisol Reyna · Editorial
+                  Bicentenario</span></div>
+              <button class="btn-recordar"
+                onclick="mostrarToast('Te avisaremos antes de la transmisión')">Recordarme</button>
+            </div>
+            <div class="item-agenda">
+              <div class="fecha-agenda"><span class="dia">19</span><span class="mes">SEP</span></div>
+              <div class="detalle-agenda"><b>Taller: cuento ilustrado infantil</b><span>Camila Arredondo · Cuadernos del
+                  Pípila</span></div>
+              <button class="btn-recordar"
+                onclick="mostrarToast('Te avisaremos antes de la transmisión')">Recordarme</button>
+            </div>
+            <div class="item-agenda">
+              <div class="fecha-agenda"><span class="dia">27</span><span class="mes">SEP</span></div>
+              <div class="detalle-agenda"><b>Feria del libro guanajuatense — mesa editorial</b><span>Tres editoriales ·
+                  Casa de la Cultura</span></div>
+              <button class="btn-recordar"
+                onclick="mostrarToast('Te avisaremos antes de la transmisión')">Recordarme</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="envolvente">
+      <div class="footer-grid">
+        <div class="footer-marca">
+          <img class="logo-marca" src="https://www.huntersolutions.com.mx/wp-content/uploads/2026/09/laranalogo.png" alt="Logotipo Ediciones La Rana">
+          <div class="footer-marca-texto">
+            Ediciones La Rana
+            <p>Plataforma editorial de la Secretaría de Cultura del Estado de Guanajuato. Demostración de interfaz —
+              front-end.</p>
+          </div>
+        </div>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/edicioneslarana/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6">
+              <rect x="2" y="2" width="20" height="20" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.5" cy="6.5" r="1" />
+            </svg>
+          </a>
+          <a href="#" onclick="return false;" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+            </svg>
+          </a>
+          <a href="#" onclick="return false;" aria-label="X">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6">
+              <path d="M4 4l16 16M20 4L4 20" />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-legal">
+        <span>© 2026 Secretaría de Cultura del Estado de Guanajuato.</span>
+        <span>Demo de front-end — no representa un sistema en producción.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ MODAL CARRITO ============ -->
+  <div class="fondo-modal" id="modal-carrito">
+    <div class="modal">
+      <div class="modal-cabeza">
+        <h3 style="font-size:1.2rem;">Tu carrito</h3>
+        <button class="cerrar-modal" onclick="cerrarModal('modal-carrito')">×</button>
+      </div>
+      <div id="contenido-carrito">
+        <p style="font-size:.9rem; opacity:.7;">Tu carrito está vacío.</p>
+      </div>
+      <div class="resumen-compra" id="resumen-carrito" style="display:none;">
+        <div><span>Subtotal</span><span id="subtotal-carrito">$0 MXN</span></div>
+        <div class="total"><span>Total</span><span id="total-carrito">$0 MXN</span></div>
+      </div>
+      <button class="btn btn-primario" style="width:100%; margin-top:16px;" onclick="irAPago()">Continuar al
+        pago</button>
+      <p class="aviso-seguro">🔒 Pago seguro procesado a través de Finanzas del Estado de Guanajuato.</p>
+    </div>
+  </div>
+
+  <!-- ============ MODAL COMPRA DIRECTA ============ -->
+  <div class="fondo-modal" id="modal-compra">
+    <div class="modal">
+      <div class="modal-cabeza">
+        <h3 style="font-size:1.2rem;">Comprar en línea</h3>
+        <button class="cerrar-modal" onclick="cerrarModal('modal-compra')">×</button>
+      </div>
+      <p style="font-size:.92rem;" id="texto-modal-compra">Título seleccionado</p>
+      <div class="resumen-compra">
+        <div><span>Envío digital / físico</span><span>Incluido</span></div>
+        <div class="total"><span>Total a pagar</span><span id="total-compra">$0 MXN</span></div>
+      </div>
+      <button class="btn btn-primario" style="width:100%;"
+        onclick="mostrarToast('Simulación de pago completada — demo de interfaz'); cerrarModal('modal-compra')">Pagar
+        con Finanzas del Estado</button>
+      <p class="aviso-seguro">🔒 Esta ventana es una simulación de interfaz; no procesa pagos reales.</p>
+    </div>
+  </div>
+
+  <!-- ============ MODAL PUNTOS DE DISTRIBUCIÓN ============ -->
+  <div class="fondo-modal" id="modal-distribucion">
+    <div class="modal">
+      <div class="modal-cabeza">
+        <h3 style="font-size:1.2rem;">Puntos de distribución oficiales</h3>
+        <button class="cerrar-modal" onclick="cerrarModal('modal-distribucion')">×</button>
+      </div>
+      <ul class="puntos-lista">
+        <li><b>Casa de la Cultura de Guanajuato</b><span>Positos 7, Zona Centro, Guanajuato Capital</span></li>
+        <li><b>Librería Rayuela</b><span>Jardín de la Unión, Guanajuato Capital</span></li>
+        <li><b>Biblioteca Pública Wigberto Jiménez Moreno</b><span>León, Guanajuato</span></li>
+        <li><b>Feria del Libro Guanajuatense</b><span>Explanada de la Alhóndiga de Granaditas · fechas de
+            temporada</span></li>
+        <li><b>Envío a domicilio</b><span>Disponible para todo el estado a través del catálogo digital</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // ---------- Datos ficticios del catálogo ----------
+    const libros = [
+      { titulo: "Callejones de Tinta", autor: "Marisol Reyna", editorial: "Editorial Bicentenario", categoria: "Narrativa", precio: 245, color: "var(--azul)", portada: "https://m.media-amazon.com/images/I/919J8I9S6QL.jpg" },
+      { titulo: "El Silencio del Pípila", autor: "Julián Tovar", editorial: "Ediciones La Rana", categoria: "Narrativa", precio: 280, color: "var(--azul-2)", portada: "https://m.media-amazon.com/images/I/511Gtt2UHDL.jpg" },
+      { titulo: "Cuadernos de Cantera", autor: "Renata Solórzano", editorial: "Ediciones La Rana", categoria: "Poesía", precio: 190, color: "var(--tinta)", portada: "https://m.media-amazon.com/images/I/41CmhkfCysL.jpg" },
+      { titulo: "Historia Mínima del Bajío", autor: "Ignacio Ferreiro", editorial: "Editorial Bicentenario", categoria: "Ensayo", precio: 310, color: "var(--azul)", portada: "https://m.media-amazon.com/images/I/41hYYnmTP-L.jpg" },
+      { titulo: "El Duende de la Alhóndiga", autor: "Camila Arredondo", editorial: "Cuadernos del Pípila", categoria: "Infantil", precio: 165, color: "var(--azul-2)", portada: "https://m.media-amazon.com/images/I/31-FX5MEo9L.jpg" },
+      { titulo: "Versos del Callejón del Beso", autor: "Renata Solórzano", editorial: "Ediciones La Rana", categoria: "Poesía", precio: 175, color: "var(--tinta)", portada: "https://m.media-amazon.com/images/I/41KDisVRGHL.jpg" },
+    ];
+
+    const cuadricula = document.getElementById('grid-catalogo');
+    function pintarCatalogo() {
+      cuadricula.innerHTML = libros.map((libro, i) => `
+      <div class="libro">
+       
+          <div class="portada" style="background:linear-gradient(180deg, rgba(3,43,76,.65) 0%, rgba(3,43,76,.05) 35%, rgba(3,43,76,.75) 100%), ${libro.color} url('${libro.portada}') center/cover no-repeat;">
+          <span class="categoria">${libro.categoria}</span>
+          <div>
+            <div class="titulo-libro">${libro.titulo}</div>
+            <div class="autor-libro">${libro.autor}</div>
+          </div>
+        </div>
+        <div class="info-libro">
+          <span class="precio">$${libro.precio} MXN</span>
+          <span class="editorial-tag">${libro.editorial}</span>
+        </div>
+        <div class="acciones-libro">
+          <button class="accion-mini" onclick="agregarCarrito(${i})">Agregar</button>
+          <button class="accion-mini comprar" onclick="comprarAhora(${i})">Comprar</button>
+        </div>
+        <button class="accion-mini" style="margin-top:8px;" onclick="alternarModal('modal-distribucion')">Puntos de distribución</button>
+      </div>
+    `).join('');
+    }
+    pintarCatalogo();
+
+    // ---------- Filtros (demostrativo) ----------
+    document.querySelectorAll('.filtro').forEach(boton => {
+      boton.addEventListener('click', () => {
+        document.querySelectorAll('.filtro').forEach(b => b.classList.remove('activo'));
+        boton.classList.add('activo');
+        const categoria = boton.textContent.trim();
+        const filtrados = categoria === 'Todos' ? libros : libros.filter(l => l.categoria === categoria);
+        const anterior = libros.slice();
+        cuadricula.innerHTML = '';
+        libros.length = 0; libros.push(...filtrados);
+        pintarCatalogo();
+        libros.length = 0; libros.push(...anterior);
+      });
+    });
+
+    // ---------- Carrito ----------
+    let carrito = [];
+    function agregarCarrito(i) {
+      carrito.push(libros[i]);
+      document.getElementById('contador-carrito').textContent = carrito.length;
+      mostrarToast(`"${libros[i].titulo}" se agregó al carrito`);
+    }
+    function comprarAhora(i) {
+      const libro = libros[i];
+      document.getElementById('texto-modal-compra').textContent = `${libro.titulo} — ${libro.autor}`;
+      document.getElementById('total-compra').textContent = `$${libro.precio} MXN`;
+      alternarModal('modal-compra');
+    }
+    function irAPago() {
+      if (carrito.length === 0) { mostrarToast('Agrega al menos un título para continuar'); return; }
+      cerrarModal('modal-carrito');
+      document.getElementById('texto-modal-compra').textContent = `${carrito.length} título(s) en tu pedido`;
+      const total = carrito.reduce((s, l) => s + l.precio, 0);
+      document.getElementById('total-compra').textContent = `$${total} MXN`;
+      alternarModal('modal-compra');
+    }
+    function pintarCarrito() {
+      const contenedor = document.getElementById('contenido-carrito');
+      const resumen = document.getElementById('resumen-carrito');
+      if (carrito.length === 0) {
+        contenedor.innerHTML = '<p style="font-size:.9rem; opacity:.7;">Tu carrito está vacío.</p>';
+        resumen.style.display = 'none'; return;
+      }
+      contenedor.innerHTML = carrito.map(l => `
+      <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--linea); font-size:.9rem;">
+        <span>${l.titulo}</span><span>$${l.precio} MXN</span>
+      </div>`).join('');
+      const total = carrito.reduce((s, l) => s + l.precio, 0);
+      document.getElementById('subtotal-carrito').textContent = `$${total} MXN`;
+      document.getElementById('total-carrito').textContent = `$${total} MXN`;
+      resumen.style.display = 'block';
+    }
+
+    // ---------- Modales ----------
+    function alternarModal(id) {
+      if (id === 'modal-carrito') pintarCarrito();
+      document.getElementById(id).classList.add('abierto');
+    }
+    function cerrarModal(id) { document.getElementById(id).classList.remove('abierto'); }
+    document.querySelectorAll('.fondo-modal').forEach(fondo => {
+      fondo.addEventListener('click', e => { if (e.target === fondo) fondo.classList.remove('abierto'); });
+    });
+
+    // ---------- Autores: pestañas + login demo ----------
+    function cambiarPestana(boton, tipo) {
+      document.querySelectorAll('.pestana').forEach(p => p.classList.remove('activa'));
+      boton.classList.add('activa');
+      document.getElementById('boton-login').textContent = tipo === 'iniciar' ? 'Entrar a mi perfil' : 'Crear mi perfil de autor';
+    }
+    function enviarLogin(e) {
+      e.preventDefault();
+      mostrarToast('Acceso de demostración — sin autenticación real');
+      return false;
+    }
+
+    // ---------- Toast ----------
+    let temporizadorToast;
+    function mostrarToast(texto) {
+      const toast = document.getElementById('toast');
+      toast.textContent = texto;
+      toast.classList.add('mostrar');
+      clearTimeout(temporizadorToast);
+      temporizadorToast = setTimeout(() => toast.classList.remove('mostrar'), 2600);
+    }
+
+    // ---------- Menú móvil (despliegue simple) ----------
+    document.querySelector('.btn-menu-movil').addEventListener('click', () => {
+      const nav = document.querySelector('nav.enlaces');
+      const abierto = nav.style.display === 'flex';
+      nav.style.cssText = abierto ? '' : 'display:flex; position:absolute; top:100%; left:0; right:0; background:var(--claro); flex-direction:column; padding:20px 28px; gap:16px; border-bottom:1px solid var(--linea);';
+    });
+  </script>
+</body>
+</html>
